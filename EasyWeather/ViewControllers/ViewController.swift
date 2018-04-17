@@ -21,13 +21,11 @@
 //
 
 import UIKit
-import GoogleMobileAds
 import Kingfisher
 import CoreLocation
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var bannerView: GADBannerView?
     @IBOutlet weak var cityLabel: UILabel?
     @IBOutlet weak var descriptionLabel: UILabel?
     @IBOutlet weak var temperatureLabel: UILabel?
@@ -42,10 +40,7 @@ class ViewController: UIViewController {
         
         apiClient.currentDelegate = self
         apiClient.forecastDelegate = self
-        
-        prepareAd()
-        loadAd()
-        
+                
         fetchCurrentForCity(city: "Berlin", countryCode: "DE")
         fetchForecastForCity(city: "Berlin", countryCode: "DE")
     }
@@ -60,49 +55,6 @@ class ViewController: UIViewController {
     
     func fetchForecastForCity(city: String, countryCode: String) {
         self.apiClient.fetchForecastForCity(name: city, code: countryCode)
-    }
-}
-
-extension ViewController : GADBannerViewDelegate {
-    func prepareAd() {
-        self.bannerView?.rootViewController = self
-        self.bannerView?.adUnitID = "ca-app-pub-9763601123242224/2722512631"
-        self.bannerView?.adSize = kGADAdSizeBanner
-        self.bannerView?.delegate = self
-    }
-    
-    func loadAd() {
-        let request = GADRequest()
-        request.testDevices = ["0a9a839d0ee76bb847d2122d02d951d8"]
-        bannerView?.load(request)
-    }
-    
-    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
-        bannerView.alpha = 0
-        
-        UIView.animate(withDuration: 1, animations: {
-            bannerView.alpha = 1
-        })
-    }
-    
-    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
-        
-    }
-    
-    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
-        
-    }
-    
-    func adViewWillDismissScreen(_ bannerView: GADBannerView) {
-    
-    }
-    
-    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
-        
-    }
-    
-    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
-        
     }
 }
 

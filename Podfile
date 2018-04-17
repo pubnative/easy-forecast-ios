@@ -8,7 +8,6 @@ target 'EasyWeather' do
   pod 'SwiftyJSON'
   pod 'Alamofire', '~> 4.6'
   pod 'Firebase/Core'
-  pod 'Google-Mobile-Ads-SDK'
   pod 'AlamofireObjectMapper', '~> 5.0'
   pod 'Kingfisher', '~> 4.0'
   

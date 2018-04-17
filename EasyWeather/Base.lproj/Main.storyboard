@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -117,14 +117,6 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="oSh-7E-jW7"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="17p-r3-1d6" customClass="GADBannerView">
-                                <rect key="frame" x="27" y="617" width="320" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="0oA-fZ-XHX"/>
-                                    <constraint firstAttribute="width" constant="320" id="34A-Wg-2Hg"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.37647058823529411" green="0.49019607843137253" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -134,7 +126,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sdW-lZ-VUd" secondAttribute="trailing" id="7he-6O-eeq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="noQ-KW-VbH" secondAttribute="trailing" constant="20" id="Fw4-57-gRo"/>
                             <constraint firstItem="ALg-00-IQG" firstAttribute="top" secondItem="U9T-3s-zfI" secondAttribute="bottom" constant="8" id="OTo-hM-rlR"/>
-                            <constraint firstItem="17p-r3-1d6" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="T5g-4m-nkP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ALg-00-IQG" secondAttribute="trailing" constant="20" id="Wxk-s4-Pbs"/>
                             <constraint firstItem="noQ-KW-VbH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="X5D-wX-I2c"/>
                             <constraint firstItem="U9T-3s-zfI" firstAttribute="top" secondItem="noQ-KW-VbH" secondAttribute="bottom" constant="16" id="XOq-qP-Srn"/>
@@ -150,13 +141,11 @@
                             <constraint firstItem="Nax-Xg-4dR" firstAttribute="top" secondItem="ALg-00-IQG" secondAttribute="bottom" id="tho-wb-6uP"/>
                             <constraint firstItem="Nax-Xg-4dR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tpP-O5-Kwx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Nax-Xg-4dR" secondAttribute="bottom" id="wSp-3z-9uT"/>
-                            <constraint firstItem="17p-r3-1d6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="x1M-lZ-CYh"/>
                             <constraint firstItem="sdW-lZ-VUd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="yQj-ck-0fE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="bannerView" destination="17p-r3-1d6" id="xMM-KC-cbm"/>
                         <outlet property="cityLabel" destination="8Y9-7a-RLa" id="yJ8-Qs-KV0"/>
                         <outlet property="descriptionLabel" destination="do8-JI-MDl" id="SkZ-56-BwU"/>
                         <outlet property="forecastTable" destination="Nax-Xg-4dR" id="yj7-kf-qhN"/>
