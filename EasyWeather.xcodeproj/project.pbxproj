@@ -34,7 +34,6 @@
 		E7CC276C203AF265006A95B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CC276B203AF265006A95B9 /* AppDelegate.swift */; };
 		E7CC276E203AF265006A95B9 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CC276D203AF265006A95B9 /* WeatherViewController.swift */; };
 		E7CC2771203AF265006A95B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7CC276F203AF265006A95B9 /* Main.storyboard */; };
-		E7CC2774203AF265006A95B9 /* EasyWeather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7CC2772203AF265006A95B9 /* EasyWeather.xcdatamodeld */; };
 		E7CC2776203AF265006A95B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7CC2775203AF265006A95B9 /* Assets.xcassets */; };
 		E7CC2779203AF265006A95B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7CC2777203AF265006A95B9 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -70,7 +69,6 @@
 		E7CC276B203AF265006A95B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7CC276D203AF265006A95B9 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		E7CC2770203AF265006A95B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E7CC2773203AF265006A95B9 /* EasyWeather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EasyWeather.xcdatamodel; sourceTree = "<group>"; };
 		E7CC2775203AF265006A95B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7CC2778203AF265006A95B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7CC277A203AF265006A95B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -195,7 +193,6 @@
 				E7CC2775203AF265006A95B9 /* Assets.xcassets */,
 				5A6A8C112086090000494187 /* GoogleService-Info.plist */,
 				E7CC277A203AF265006A95B9 /* Info.plist */,
-				E7CC2772203AF265006A95B9 /* EasyWeather.xcdatamodeld */,
 			);
 			path = EasyWeather;
 			sourceTree = "<group>";
@@ -356,7 +353,6 @@
 				E75E469A203B3EDF00FF9672 /* CurrentWeather.swift in Sources */,
 				E75E4690203B3E8500FF9672 /* ForecastSys.swift in Sources */,
 				E776E9A8203B1D0200101093 /* Country.swift in Sources */,
-				E7CC2774203AF265006A95B9 /* EasyWeather.xcdatamodeld in Sources */,
 				E75E4696203B3EC100FF9672 /* CurrentSys.swift in Sources */,
 				E75E46A3203B468600FF9672 /* ApiClient.swift in Sources */,
 				E75E46A0203B3F0C00FF9672 /* CurrentResponse.swift in Sources */,
@@ -553,19 +549,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		E7CC2772203AF265006A95B9 /* EasyWeather.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				E7CC2773203AF265006A95B9 /* EasyWeather.xcdatamodel */,
-			);
-			currentVersion = E7CC2773203AF265006A95B9 /* EasyWeather.xcdatamodel */;
-			path = EasyWeather.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = E7CC2760203AF265006A95B9 /* Project object */;
 }
