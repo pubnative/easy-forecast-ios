@@ -26,7 +26,7 @@ import ObjectMapper
 class ForecastCity: NSObject {
     var id: Int64?
     var name: String?
-    var coord: ForecastCoord?
+    var coordinate: ForecastCoordinate?
     var country: String?
     
     required init?(map: Map) {
@@ -36,7 +36,7 @@ class ForecastCity: NSObject {
     func mapping(map: Map) {
         id <- map["id"]
         name <- map["name"]
-        coord <- map["coord"]
+        coordinate <- map["coord"]
         country <- map["country"]
     }
 }

@@ -23,16 +23,16 @@
 import UIKit
 import ObjectMapper
 
-class ForecastCoord: Mappable {
-    var lat: Double?
-    var lon: Double?
+class ForecastCoordinate: Mappable {
+    var latitude: Double?
+    var longitude: Double?
     
     required init?(map: Map) {
         
     }
     
     func mapping(map: Map) {
-        lat <- map["lat"]
-        lon <- map["lon"]
+        latitude <- map["lat"]
+        longitude <- map["lon"]
     }
 }

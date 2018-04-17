@@ -24,25 +24,25 @@ import UIKit
 import ObjectMapper
 
 class ForecastItem: Mappable {
-    var dt: Int64?
+    var date: Int64?
     var main: ForecastMain?
     var weather: [ForecastWeather]?
     var clouds: ForecastClouds?
     var wind: ForecastWind?
     var sys: ForecastSys?
-    var dt_txt: String?
+    var dateString: String?
     
     required init?(map: Map) {
         
     }
     
     func mapping(map: Map) {
-        dt <- map["dt"]
+        date <- map["dt"]
         main <- map["main"]
         weather <- map["weather"]
         clouds <- map["clouds"]
         wind <- map["wind"]
         sys <- map["sys"]
-        dt_txt <- map["dt_txt"]
+        dateString <- map["dt_txt"]
     }
 }

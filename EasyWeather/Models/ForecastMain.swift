@@ -24,9 +24,9 @@ import UIKit
 import ObjectMapper
 
 class ForecastMain: Mappable {
-    var temp: Double?
-    var temp_min: Double?
-    var temp_max: Double?
+    var temperature: Double?
+    var temperature_min: Double?
+    var temperature_max: Double?
     var pressure: Double?
     var sea_level: Double?
     var grnd_level: Double?
@@ -37,9 +37,9 @@ class ForecastMain: Mappable {
     }
     
     func mapping(map: Map) {
-        temp <- map["temp"]
-        temp_min <- map["temp_min"]
-        temp_max <- map["temp_max"]
+        temperature <- map["temp"]
+        temperature_min <- map["temp_min"]
+        temperature_max <- map["temp_max"]
         pressure <- map["pressure"]
         sea_level <- map["sea_level"]
         grnd_level <- map["grnd_level"]

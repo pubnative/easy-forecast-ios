@@ -67,7 +67,7 @@ extension ViewController : CurrentUpdateDelegate {
         if item.weather?.count != 0 {
             self.descriptionLabel?.text = item.weather?.first?.description
         }
-        if let temp = item.main?.temp {
+        if let temp = item.main?.temperature {
             self.temperatureLabel?.text = "\(round(temp))"
         }
         
@@ -108,12 +108,12 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
         
         let item = forecasts[indexPath.row]
         
-        if let timestamp = item.dt_txt {
+        if let timestamp = item.dateString {
             let dateView = cell.viewWithTag(1) as! UILabel
             dateView.text = timestamp
         }
         
-        if let temperature = item.main?.temp {
+        if let temperature = item.main?.temperature {
             let tempView = cell.viewWithTag(2) as! UILabel
             tempView.text = "\(round(temperature))"
         }
