@@ -37,7 +37,7 @@ class ForecastCell: UITableViewCell
         dayLabel.text = formatForecastDate(forecast: forecast)
         if let forecast = forecast.weather?.first?.main?.capitalized {
             weatherType.text = forecast
-            weatherIcon.image = UIImage (named: forecast)
+            weatherIcon.image = UIImage (named: "\(forecast) Mini")
         }
         
         if let highTemp = forecast.main?.temperature_max {
