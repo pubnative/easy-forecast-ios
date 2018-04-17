@@ -26,8 +26,6 @@ import AlamofireObjectMapper
 
 class ApiClient: NSObject {
     let baseUrl = "https://api.openweathermap.org/data/2.5/"
-    let imageBaseUrl = "https://openweathermap.org/img/w/"
-    let imageExtension = ".png"
     let apiKey = "850f4c439bc200a6c0994b056f0c92b8"
     let defaultUnitFormat = "metric"
     

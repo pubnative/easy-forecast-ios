@@ -24,7 +24,7 @@ import UIKit
 import ObjectMapper
 
 class ForecastItem: Mappable {
-    var date: Int64?
+    var date: Double?
     var main: ForecastMain?
     var weather: [ForecastWeather]?
     var clouds: ForecastClouds?

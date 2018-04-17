@@ -32,6 +32,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var currentWeatherImage: UIImageView!
     @IBOutlet weak var currentWeatherTypeLabel: UILabel!
     @IBOutlet weak var forecastTable: UITableView!
+    @IBOutlet weak var currentWeatherView: UIView!
     
     var apiClient = ApiClient()
     var forecasts = [ForecastItem]()
@@ -77,20 +78,31 @@ class WeatherViewController: UIViewController {
     
     func updateMainUI(item:CurrentResponse)
     {
+        dateLabel.text  = "Today: \(getCurrentDate())"
+        
         if let name = item.name {
-            self.cityLabel.text = name
+            cityLabel.text = name
         }
         
         if item.weather?.count != 0 {
             if let weatherType = item.weather?.first?.main?.capitalized {
-                self.currentWeatherTypeLabel.text = weatherType
-                self.currentWeatherImage.image = UIImage (named: weatherType)
+                currentWeatherTypeLabel.text = weatherType
+                currentWeatherImage.image = UIImage (named: weatherType)
             }
         }
         
         if let temp = item.main?.temperature {
-            self.temperatureLabel.text = "\(round(temp))"
+            temperatureLabel.text = "\(round(temp))°"
         }
+    }
+    
+    func getCurrentDate() -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeZone = .none
+        
+        return dateFormatter.string(from: Date())
     }
 }
 
@@ -117,7 +129,9 @@ extension WeatherViewController : ForecastUpdateDelegate
                 forecasts.append(item)
             }
         }
-        self.forecastTable?.reloadData()
+        forecastTable?.reloadData()
+        forecastTable.isHidden = false
+        currentWeatherView.isHidden = false
     }
     
     func requestForecastDidFail(withError: Error)
@@ -126,37 +140,31 @@ extension WeatherViewController : ForecastUpdateDelegate
     }
 }
 
-extension WeatherViewController : UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
+extension WeatherViewController : UITableViewDelegate, UITableViewDataSource
+{
+    func numberOfSections(in tableView: UITableView) -> Int
+    {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
         return forecasts.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastCell", for: indexPath)
-        
-        let item = forecasts[indexPath.row]
-        
-        if let timestamp = item.dateString {
-            let dateView = cell.viewWithTag(1) as! UILabel
-            dateView.text = timestamp
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 80
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastCell", for: indexPath) as? ForecastCell {
+            cell.configureCell(forecast: forecasts[indexPath.row])
+            return cell
+        } else {
+            return ForecastCell()
         }
-        
-        if let temperature = item.main?.temperature {
-            let tempView = cell.viewWithTag(2) as! UILabel
-            tempView.text = "\(round(temperature))"
-        }
-        
-        if let icon = item.weather?.first?.icon {
-            let iconView = cell.viewWithTag(3) as! UIImageView
-            let url = URL(string: "https://openweathermap.org/img/w/\(icon).png")
-            iconView.kf.setImage(with: url)
-        }
-        
-        return cell
     }
 }
 

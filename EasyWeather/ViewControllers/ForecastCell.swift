@@ -31,13 +31,42 @@ class ForecastCell: UITableViewCell
     @IBOutlet weak var highTempLabel: UILabel!
     @IBOutlet weak var lowTempLabel: UILabel!
 
-    func configureCell(forecast: Forecast)
+    func configureCell(forecast: ForecastItem)
     {
-        lowTempLabel.text = forecast.lowTemp
-        highTempLabel.text = forecast.highTemp
-        weatherType.text = forecast.weatherType
-        dayLabel.text = forecast.date
-        weatherIcon.image = UIImage (named: forecast.weatherType)
+
+        dayLabel.text = formatForecastDate(forecast: forecast)
+        if let forecast = forecast.weather?.first?.main?.capitalized {
+            weatherType.text = forecast
+            weatherIcon.image = UIImage (named: forecast)
+        }
+        
+        if let highTemp = forecast.main?.temperature_max {
+            highTempLabel.text = "\(round(highTemp))°"
+        }
+        
+        if let lowTemp = forecast.main?.temperature_min {
+            lowTempLabel.text = "\(round(lowTemp))°"
+        }
+    }
+    
+    func formatForecastDate(forecast: ForecastItem) -> String
+    {
+        if let date = forecast.date {
+            let unixConvertedDate = Date (timeIntervalSince1970: date)
+            return unixConvertedDate.dayOfTheWeek()
+        }
+        return Date().dayOfTheWeek()
     }
 
+}
+
+extension Date
+{
+    func dayOfTheWeek() -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, HH:mm"
+        return dateFormatter.string(from: self)
+        
+    }
 }
