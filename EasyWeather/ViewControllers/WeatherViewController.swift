@@ -24,62 +24,93 @@ import UIKit
 import Kingfisher
 import CoreLocation
 
-class ViewController: UIViewController {
+class WeatherViewController: UIViewController {
     
-    @IBOutlet weak var cityLabel: UILabel?
-    @IBOutlet weak var descriptionLabel: UILabel?
-    @IBOutlet weak var temperatureLabel: UILabel?
-    @IBOutlet weak var forecastTable: UITableView?
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var currentWeatherImage: UIImageView!
+    @IBOutlet weak var currentWeatherTypeLabel: UILabel!
+    @IBOutlet weak var forecastTable: UITableView!
     
     var apiClient = ApiClient()
     var forecasts = [ForecastItem]()
     var locationManager = CLLocationManager()
+    var currentLocation : CLLocation!
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
         apiClient.currentDelegate = self
         apiClient.forecastDelegate = self
-                
-        fetchCurrentForCity(city: "Berlin", countryCode: "DE")
-        fetchForecastForCity(city: "Berlin", countryCode: "DE")
-    }
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startMonitoringSignificantLocationChanges()
+        
+        apiClient.fetchCurrentForCity(name: "Berlin", code: "DE")
+        apiClient.fetchForecastForCity(name: "Berlin", code: "DE")
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
-    func fetchCurrentForCity(city: String, countryCode: String) {
-        self.apiClient.fetchCurrentForCity(name: city, code: countryCode)
+    override func viewDidAppear(_ animated: Bool)
+    {
+        super.viewDidAppear(animated)
+//        locationAuthStatus()
     }
     
-    func fetchForecastForCity(city: String, countryCode: String) {
-        self.apiClient.fetchForecastForCity(name: city, code: countryCode)
+    func locationAuthStatus()
+    {
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            currentLocation = locationManager.location
+            Location.sharedInstance.latitude = currentLocation.coordinate.latitude
+            Location.sharedInstance.longitude = currentLocation.coordinate.longitude
+            apiClient.fetchCurrentForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
+            apiClient.fetchForecastForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
+        } else {
+            locationManager.requestWhenInUseAuthorization()
+            locationAuthStatus()
+        }
+    }
+    
+    func updateMainUI(item:CurrentResponse)
+    {
+        if let name = item.name {
+            self.cityLabel.text = name
+        }
+        
+        if item.weather?.count != 0 {
+            if let weatherType = item.weather?.first?.main?.capitalized {
+                self.currentWeatherTypeLabel.text = weatherType
+                self.currentWeatherImage.image = UIImage (named: weatherType)
+            }
+        }
+        
+        if let temp = item.main?.temperature {
+            self.temperatureLabel.text = "\(round(temp))"
+        }
     }
 }
 
-extension ViewController : CurrentUpdateDelegate {
-    func requestCurrentDidSucceed(withData: CurrentResponse) {
-        let item = withData
-        if let name = item.name {
-            self.cityLabel?.text = name
-        }
-        if item.weather?.count != 0 {
-            self.descriptionLabel?.text = item.weather?.first?.description
-        }
-        if let temp = item.main?.temperature {
-            self.temperatureLabel?.text = "\(round(temp))"
-        }
-        
+extension WeatherViewController : CurrentUpdateDelegate
+{
+    func requestCurrentDidSucceed(withData: CurrentResponse)
+    {
+        updateMainUI(item: withData)
     }
     
-    func requestCurrentDidFail(withError: Error) {
+    func requestCurrentDidFail(withError: Error)
+    {
         NSLog(withError.localizedDescription)
     }
 }
 
-extension ViewController : ForecastUpdateDelegate {
-    func requestForecastDidSucceed(withData: ForecastResponse) {
+extension WeatherViewController : ForecastUpdateDelegate
+{
+    func requestForecastDidSucceed(withData: ForecastResponse)
+    {
         forecasts.removeAll()
         if let list = withData.list {
             for item in list {
@@ -89,12 +120,13 @@ extension ViewController : ForecastUpdateDelegate {
         self.forecastTable?.reloadData()
     }
     
-    func requestForecastDidFail(withError: Error) {
+    func requestForecastDidFail(withError: Error)
+    {
         NSLog(withError.localizedDescription)
     }
 }
 
-extension ViewController : UITableViewDelegate, UITableViewDataSource {
+extension WeatherViewController : UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -128,14 +160,6 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ViewController: CLLocationManagerDelegate {
-    func setupLocationManager() {
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-    }
+extension WeatherViewController: CLLocationManagerDelegate {
+
 }
