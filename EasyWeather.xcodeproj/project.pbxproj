@@ -114,6 +114,7 @@
 		E776E9A5203B1C1700101093 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E7CC276D203AF265006A95B9 /* ViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -168,7 +169,6 @@
 				E776E9A5203B1C1700101093 /* ViewControllers */,
 				E776E9A3203AF3A800101093 /* GoogleService-Info.plist */,
 				E7CC276B203AF265006A95B9 /* AppDelegate.swift */,
-				E7CC276D203AF265006A95B9 /* ViewController.swift */,
 				E7CC276F203AF265006A95B9 /* Main.storyboard */,
 				E7CC2775203AF265006A95B9 /* Assets.xcassets */,
 				E7CC2777203AF265006A95B9 /* LaunchScreen.storyboard */,
@@ -209,7 +209,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0920;
-				ORGANIZATIONNAME = "ErosTech Solutions";
+				ORGANIZATIONNAME = EasyNaps;
 				TargetAttributes = {
 					E7CC2767203AF265006A95B9 = {
 						CreatedOnToolsVersion = 9.2;
@@ -484,7 +484,7 @@
 				DEVELOPMENT_TEAM = TN65BQ22T6;
 				INFOPLIST_FILE = EasyWeather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.erostech.EasyWeather;
+				PRODUCT_BUNDLE_IDENTIFIER = com.easynaps.EasyWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -500,7 +500,7 @@
 				DEVELOPMENT_TEAM = TN65BQ22T6;
 				INFOPLIST_FILE = EasyWeather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.erostech.EasyWeather;
+				PRODUCT_BUNDLE_IDENTIFIER = com.easynaps.EasyWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
