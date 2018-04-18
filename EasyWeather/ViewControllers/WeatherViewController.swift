@@ -33,12 +33,13 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var currentWeatherTypeLabel: UILabel!
     @IBOutlet weak var forecastTable: UITableView!
     @IBOutlet weak var currentWeatherView: UIView!
+    @IBOutlet weak var warningLabel: UILabel!
     
     var apiClient = ApiClient()
     var forecasts = [ForecastItem]()
     var locationManager = CLLocationManager()
-    var currentLocation : CLLocation!
-
+    var refreshControl: UIRefreshControl!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -46,39 +47,40 @@ class WeatherViewController: UIViewController {
         apiClient.currentDelegate = self
         apiClient.forecastDelegate = self
         
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshWeatherData(_:)), for: .valueChanged)
+        refreshControl.backgroundColor = UIColor(red:0.87, green:0.87, blue:0.87, alpha:1.00)
+        refreshControl.tintColor =  UIColor(red:0.20, green:0.00, blue:0.24, alpha:1.00)
+        if #available(iOS 10.0, *) {
+            forecastTable.refreshControl = refreshControl
+        } else {
+            forecastTable.addSubview(refreshControl)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+    
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startMonitoringSignificantLocationChanges()
-        
-        apiClient.fetchCurrentForCity(name: "Berlin", code: "DE")
-        apiClient.fetchForecastForCity(name: "Berlin", code: "DE")
-
     }
     
-    override func viewDidAppear(_ animated: Bool)
+    @objc private func refreshWeatherData(_ sender: Any)
     {
-        super.viewDidAppear(animated)
-//        locationAuthStatus()
+        locationManager.startUpdatingLocation()
+        fetchWeatherData()
     }
     
-    func locationAuthStatus()
+    private func fetchWeatherData()
     {
-        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-            currentLocation = locationManager.location
-            Location.sharedInstance.latitude = currentLocation.coordinate.latitude
-            Location.sharedInstance.longitude = currentLocation.coordinate.longitude
-            apiClient.fetchCurrentForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
-            apiClient.fetchForecastForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
-        } else {
-            locationManager.requestWhenInUseAuthorization()
-            locationAuthStatus()
-        }
+        apiClient.fetchCurrentForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
+        apiClient.fetchForecastForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
     }
     
     func updateMainUI(item:CurrentResponse)
     {
-        dateLabel.text  = "Today: \(getCurrentDate())"
+        dateLabel.text  = "Today: \(getCurrentDateWithTime())"
         
         if let name = item.name {
             cityLabel.text = name
@@ -103,6 +105,14 @@ class WeatherViewController: UIViewController {
         dateFormatter.timeZone = .none
         
         return dateFormatter.string(from: Date())
+    }
+    
+    func getCurrentDateWithTime() -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, HH:mm"
+        return dateFormatter.string(from: Date())
+        
     }
 }
 
@@ -129,6 +139,15 @@ extension WeatherViewController : ForecastUpdateDelegate
                 forecasts.append(item)
             }
         }
+        
+        let updateString = "Last Updated at \(getCurrentDateWithTime())"
+        let attributes: [NSAttributedStringKey : Any] = [.foregroundColor : UIColor(red:0.20, green:0.00, blue:0.24, alpha:1.00)]
+        self.refreshControl.attributedTitle = NSAttributedString(string: updateString, attributes: attributes)
+        if refreshControl.isRefreshing
+        {
+            self.refreshControl.endRefreshing()
+        }
+        
         forecastTable?.reloadData()
         forecastTable.isHidden = false
         currentWeatherView.isHidden = false
@@ -169,5 +188,36 @@ extension WeatherViewController : UITableViewDelegate, UITableViewDataSource
 }
 
 extension WeatherViewController: CLLocationManagerDelegate {
-
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        Location.sharedInstance.latitude = locations.last?.coordinate.latitude
+        Location.sharedInstance.longitude = locations.last?.coordinate.longitude
+        fetchWeatherData()
+        locationManager.stopUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
+    {
+        switch status {
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+            break
+        case .authorizedWhenInUse:
+            warningLabel.isHidden = false
+            manager.startUpdatingLocation()
+            break
+        case .authorizedAlways:
+            // This app will only get the location when in use
+            break
+        case .restricted:
+            // restricted by e.g. parental controls. User can't enable Location Services
+            break
+        case .denied:
+            warningLabel.isHidden = false
+            forecastTable.isHidden = true
+            currentWeatherView.isHidden = true
+            break
+        }
+    }
 }

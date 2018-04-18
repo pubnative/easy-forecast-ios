@@ -19,6 +19,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ooopss.. You did not give us the permission to use your location for weather updates.. 😢" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKl-6J-kLW">
+                                <rect key="frame" x="20" y="308.5" width="335" height="70"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                <color key="textColor" red="0.26274509800000001" green="0.0" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Etc-aJ-YLf" userLabel="Current Weather View">
                                 <rect key="frame" x="0.0" y="20" width="375" height="300"/>
                                 <subviews>
@@ -156,11 +162,15 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Nax-Xg-4dR" secondAttribute="trailing" id="6by-bv-rrv"/>
                             <constraint firstItem="Etc-aJ-YLf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="HyN-g9-Rd7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JKl-6J-kLW" secondAttribute="trailing" constant="20" id="LN0-jm-3tF"/>
                             <constraint firstItem="Etc-aJ-YLf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="d30-PB-gmX"/>
                             <constraint firstItem="Nax-Xg-4dR" firstAttribute="top" secondItem="Etc-aJ-YLf" secondAttribute="bottom" id="jbD-nb-CIz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Etc-aJ-YLf" secondAttribute="trailing" id="kPU-aD-LdY"/>
+                            <constraint firstItem="JKl-6J-kLW" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="oLV-pR-ZLl"/>
+                            <constraint firstItem="JKl-6J-kLW" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qEk-e5-3qz"/>
                             <constraint firstItem="Nax-Xg-4dR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tpP-O5-Kwx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Nax-Xg-4dR" secondAttribute="bottom" id="wSp-3z-9uT"/>
+                            <constraint firstItem="JKl-6J-kLW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="xom-ya-UMG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -173,11 +183,12 @@
                         <outlet property="dateLabel" destination="6DO-Lt-PoB" id="B5Q-QA-ico"/>
                         <outlet property="forecastTable" destination="Nax-Xg-4dR" id="yif-oT-P3L"/>
                         <outlet property="temperatureLabel" destination="feS-0D-sfz" id="aQJ-9a-ArI"/>
+                        <outlet property="warningLabel" destination="JKl-6J-kLW" id="gtb-aM-1dD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="433" y="-35"/>
+            <point key="canvasLocation" x="432.80000000000001" y="-35.532233883058474"/>
         </scene>
     </scenes>
 </document>
