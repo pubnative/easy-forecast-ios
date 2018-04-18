@@ -195,7 +195,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
             manager.requestWhenInUseAuthorization()
             break
         case .authorizedWhenInUse:
-            warningLabel.isHidden = false
+            warningLabel.isHidden = true
             manager.startUpdatingLocation()
             break
         case .authorizedAlways:
