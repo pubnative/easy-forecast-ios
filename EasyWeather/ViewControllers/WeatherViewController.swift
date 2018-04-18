@@ -37,11 +37,11 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var warningLabel: UILabel!
     @IBOutlet weak var bannerAdContainer: UIView!
     @IBOutlet weak var bannerAdContainerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var refreshButton: UIButton!
     
     var apiClient = ApiClient()
     var forecasts = [ForecastItem]()
     var locationManager = CLLocationManager()
-    var refreshControl: UIRefreshControl!
     var moPubBanner = MPAdView()
     var moPubInterstitial = MPInterstitialAdController()
     var bannerAdRequest =  PNLiteBannerAdRequest()
@@ -64,16 +64,6 @@ class WeatherViewController: UIViewController {
         
         bannerAdRequest.requestAd(with: self, withZoneID: "2")
         interstitialAdRequest.requestAd(with: self, withZoneID: "4")
-        
-        refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshWeatherData(_:)), for: .valueChanged)
-        refreshControl.backgroundColor = UIColor(red:0.87, green:0.87, blue:0.87, alpha:1.00)
-        refreshControl.tintColor =  UIColor(red:0.20, green:0.00, blue:0.24, alpha:1.00)
-        if #available(iOS 10.0, *) {
-            forecastTable.refreshControl = refreshControl
-        } else {
-            forecastTable.addSubview(refreshControl)
-        }
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -84,7 +74,7 @@ class WeatherViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
-    @objc private func refreshWeatherData(_ sender: Any)
+    @IBAction func refreshWeatherTouchUpInside(_ sender: UIButton)
     {
         locationManager.startUpdatingLocation()
         fetchWeatherData()
@@ -96,7 +86,7 @@ class WeatherViewController: UIViewController {
         apiClient.fetchForecastForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
     }
     
-    func updateMainUI(item:CurrentResponse)
+    func updateCurrentWeatherView(item:CurrentResponse)
     {
         dateLabel.text  = "Today: \(getCurrentDateWithTime())"
         
@@ -129,7 +119,7 @@ extension WeatherViewController : CurrentUpdateDelegate
 {
     func requestCurrentDidSucceed(withData: CurrentResponse)
     {
-        updateMainUI(item: withData)
+        updateCurrentWeatherView(item: withData)
     }
     
     func requestCurrentDidFail(withError: Error)
@@ -147,14 +137,6 @@ extension WeatherViewController : ForecastUpdateDelegate
             for item in list {
                 forecasts.append(item)
             }
-        }
-        
-        let updateString = "Last Updated at \(getCurrentDateWithTime())"
-        let attributes: [NSAttributedStringKey : Any] = [.foregroundColor : UIColor(red:0.20, green:0.00, blue:0.24, alpha:1.00),.font : UIFont(name : "AvenirNext-Medium", size : 14)!]
-        self.refreshControl.attributedTitle = NSAttributedString(string: updateString, attributes: attributes)
-        if refreshControl.isRefreshing
-        {
-            self.refreshControl.endRefreshing()
         }
         
         forecastTable?.reloadData()
