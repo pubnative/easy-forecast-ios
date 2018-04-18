@@ -1,0 +1,6 @@
+framework module PubnativeLite {
+  umbrella header "PubnativeLite.h"
+
+  export *
+  module * { export * }
+}

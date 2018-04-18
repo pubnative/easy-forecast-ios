@@ -23,6 +23,7 @@
 import UIKit
 import Kingfisher
 import CoreLocation
+import PubnativeLite
 
 class WeatherViewController: UIViewController {
     
@@ -34,18 +35,34 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var forecastTable: UITableView!
     @IBOutlet weak var currentWeatherView: UIView!
     @IBOutlet weak var warningLabel: UILabel!
+    @IBOutlet weak var bannerAdContainer: UIView!
     
     var apiClient = ApiClient()
     var forecasts = [ForecastItem]()
     var locationManager = CLLocationManager()
     var refreshControl: UIRefreshControl!
-    
+    var moPubBanner = MPAdView()
+    var moPubInterstitial = MPInterstitialAdController()
+    var bannerAdRequest =  PNLiteBannerAdRequest()
+    var interstitialAdRequest =  PNLiteInterstitialAdRequest()
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
         apiClient.currentDelegate = self
         apiClient.forecastDelegate = self
+        
+        moPubBanner = MPAdView (adUnitId: "a4eac931d95444f0a95adc77093a22ab", size: MOPUB_BANNER_SIZE)
+        moPubBanner.delegate = self
+        moPubBanner.stopAutomaticallyRefreshingContents()
+        bannerAdContainer.addSubview(moPubBanner)
+        
+        moPubInterstitial = MPInterstitialAdController.init(forAdUnitId: "a91bc5a72fd54888ac248e7656b69b2e")
+        moPubInterstitial.delegate = self
+        
+        bannerAdRequest.requestAd(with: self, withZoneID: "2")
+        interstitialAdRequest.requestAd(with: self, withZoneID: "4")
         
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshWeatherData(_:)), for: .valueChanged)
@@ -210,5 +227,47 @@ extension WeatherViewController: CLLocationManagerDelegate {
             currentWeatherView.isHidden = true
             break
         }
+    }
+}
+
+extension WeatherViewController : PNLiteAdRequestDelegate
+{
+    func requestDidStart(_ request: PNLiteAdRequest!)
+    {
+        
+    }
+    
+    func request(_ request: PNLiteAdRequest!, didLoadWith ad: PNLiteAd!)
+    {
+        print("Request loaded with ad: \(ad)")
+        
+        if (request == bannerAdRequest) {
+            moPubBanner.keywords = PNLitePrebidUtils.createPrebidKeywords(with: ad, withZoneID: "2")
+            moPubBanner.loadAd()
+        } else {
+            moPubInterstitial.keywords = PNLitePrebidUtils.createPrebidKeywords(with: ad, withZoneID: "4")
+            moPubInterstitial.loadAd()
+        }
+    }
+    
+    func request(_ request: PNLiteAdRequest!, didFailWithError error: Error!)
+    {
+        print("Request\(request) failed with error: \(error.localizedDescription)")
+    }
+}
+
+extension WeatherViewController : MPAdViewDelegate
+{
+    func viewControllerForPresentingModalView() -> UIViewController!
+    {
+        return self
+    }
+}
+
+extension WeatherViewController : MPInterstitialAdControllerDelegate
+{
+    func interstitialDidLoadAd(_ interstitial: MPInterstitialAdController!)
+    {
+        moPubInterstitial.show(from: self)
     }
 }
