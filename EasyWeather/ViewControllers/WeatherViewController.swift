@@ -98,15 +98,6 @@ class WeatherViewController: UIViewController {
         }
     }
     
-    func getCurrentDate() -> String
-    {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeZone = .none
-        
-        return dateFormatter.string(from: Date())
-    }
-    
     func getCurrentDateWithTime() -> String
     {
         let dateFormatter = DateFormatter()
