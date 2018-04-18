@@ -150,7 +150,7 @@ extension WeatherViewController : ForecastUpdateDelegate
         }
         
         let updateString = "Last Updated at \(getCurrentDateWithTime())"
-        let attributes: [NSAttributedStringKey : Any] = [.foregroundColor : UIColor(red:0.20, green:0.00, blue:0.24, alpha:1.00)]
+        let attributes: [NSAttributedStringKey : Any] = [.foregroundColor : UIColor(red:0.20, green:0.00, blue:0.24, alpha:1.00),.font : UIFont(name : "AvenirNext-Medium", size : 14)!]
         self.refreshControl.attributedTitle = NSAttributedString(string: updateString, attributes: attributes)
         if refreshControl.isRefreshing
         {
