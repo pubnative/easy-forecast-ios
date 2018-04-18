@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ooopss.. You did not give us the permission to use your location for weather updates.. 😢" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKl-6J-kLW">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ooopss.. You did not give us the permission to use your location for weather updates.. 😢" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKl-6J-kLW">
                                 <rect key="frame" x="20" y="308.5" width="335" height="70"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                 <color key="textColor" red="0.26274509800000001" green="0.0" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -157,14 +157,19 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="oSh-7E-jW7"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V5k-Lc-3cg">
-                                <rect key="frame" x="67" y="269" width="320" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5k-Lc-3cg">
+                                <rect key="frame" x="27.5" y="667" width="320" height="0.0"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="3Ew-pJ-ayh"/>
+                                    <constraint firstAttribute="height" id="7xU-Pt-aYp"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="V5k-Lc-3cg" secondAttribute="bottom" id="2VM-ng-QGw"/>
+                            <constraint firstItem="V5k-Lc-3cg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="44U-Bc-gCU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Nax-Xg-4dR" secondAttribute="trailing" id="6by-bv-rrv"/>
                             <constraint firstItem="Etc-aJ-YLf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="HyN-g9-Rd7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JKl-6J-kLW" secondAttribute="trailing" constant="20" id="LN0-jm-3tF"/>
@@ -174,13 +179,15 @@
                             <constraint firstItem="JKl-6J-kLW" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="oLV-pR-ZLl"/>
                             <constraint firstItem="JKl-6J-kLW" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qEk-e5-3qz"/>
                             <constraint firstItem="Nax-Xg-4dR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tpP-O5-Kwx"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Nax-Xg-4dR" secondAttribute="bottom" id="wSp-3z-9uT"/>
                             <constraint firstItem="JKl-6J-kLW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="xom-ya-UMG"/>
+                            <constraint firstItem="V5k-Lc-3cg" firstAttribute="top" secondItem="Nax-Xg-4dR" secondAttribute="bottom" id="yps-aW-gcB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Easy Weather" id="DLp-fK-iNZ"/>
                     <connections>
+                        <outlet property="bannerAdContainer" destination="V5k-Lc-3cg" id="20j-O9-mVF"/>
+                        <outlet property="bannerAdContainerHeightConstraint" destination="7xU-Pt-aYp" id="dbD-6q-U1Z"/>
                         <outlet property="cityLabel" destination="0dN-TU-PVf" id="V2P-1o-Hll"/>
                         <outlet property="currentWeatherImage" destination="VRw-cw-JAi" id="5Vf-EA-t8z"/>
                         <outlet property="currentWeatherTypeLabel" destination="sUD-Ah-eEN" id="m0Q-mD-ig7"/>

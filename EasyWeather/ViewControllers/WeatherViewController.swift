@@ -36,6 +36,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var currentWeatherView: UIView!
     @IBOutlet weak var warningLabel: UILabel!
     @IBOutlet weak var bannerAdContainer: UIView!
+    @IBOutlet weak var bannerAdContainerHeightConstraint: NSLayoutConstraint!
     
     var apiClient = ApiClient()
     var forecasts = [ForecastItem]()
@@ -261,6 +262,16 @@ extension WeatherViewController : MPAdViewDelegate
     func viewControllerForPresentingModalView() -> UIViewController!
     {
         return self
+    }
+    
+    func adViewDidLoadAd(_ view: MPAdView!)
+    {
+        bannerAdContainerHeightConstraint.constant = MOPUB_BANNER_SIZE.height
+    }
+    
+    func adViewDidFail(toLoadAd view: MPAdView!)
+    {
+        bannerAdContainerHeightConstraint.constant = 0
     }
 }
 
