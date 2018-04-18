@@ -10,5 +10,7 @@ target 'EasyWeather' do
   pod 'Firebase/Core'
   pod 'AlamofireObjectMapper', '~> 5.0'
   pod 'Kingfisher', '~> 4.0'
+  pod 'Fabric'
+  pod 'Crashlytics'
   
 end
