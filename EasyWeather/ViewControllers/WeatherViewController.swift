@@ -245,7 +245,7 @@ extension WeatherViewController : PNLiteAdRequestDelegate
         if (request == bannerAdRequest) {
             moPubBanner.keywords = PNLitePrebidUtils.createPrebidKeywords(with: ad, withZoneID: "2")
             moPubBanner.loadAd()
-        } else {
+        } else if (request == interstitialAdRequest) {
             moPubInterstitial.keywords = PNLitePrebidUtils.createPrebidKeywords(with: ad, withZoneID: "4")
             moPubInterstitial.loadAd()
         }
