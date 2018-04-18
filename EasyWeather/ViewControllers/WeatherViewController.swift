@@ -200,10 +200,15 @@ extension WeatherViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
-        Location.sharedInstance.latitude = locations.last?.coordinate.latitude
-        Location.sharedInstance.longitude = locations.last?.coordinate.longitude
-        fetchWeatherData()
-        locationManager.stopUpdatingLocation()
+        let location = locations.last
+        let locationDate = location?.timestamp
+        let howRecent = locationDate?.timeIntervalSinceNow
+        if (fabs(howRecent!) < 15.0) {
+            Location.sharedInstance.latitude = locations.last?.coordinate.latitude
+            Location.sharedInstance.longitude = locations.last?.coordinate.longitude
+            fetchWeatherData()
+            locationManager.stopUpdatingLocation()
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
