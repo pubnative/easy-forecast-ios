@@ -69,15 +69,15 @@ class WeatherViewController: UIViewController {
         moPubInterstitial = MPInterstitialAdController.init(forAdUnitId: "a91bc5a72fd54888ac248e7656b69b2e")
         moPubInterstitial.delegate = self
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
-            self.interstitialAdRequest.requestAd(with: self, withZoneID: "4")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: {
+//            self.interstitialAdRequest.requestAd(with: self, withZoneID: "4")
         })
     }
     
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
-        
+        loadingIndicator.startAnimating()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
@@ -92,7 +92,8 @@ class WeatherViewController: UIViewController {
     
     @IBAction func refreshWeatherTouchUpInside(_ sender: UIButton)
     {
-        locationManager.requestLocation()
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
     }
     
     @objc private func fetchWeatherData()
@@ -215,6 +216,8 @@ extension WeatherViewController: CLLocationManagerDelegate {
         Location.sharedInstance.latitude = locations.last?.coordinate.latitude
         Location.sharedInstance.longitude = locations.last?.coordinate.longitude
         fetchWeatherData()
+        manager.stopUpdatingLocation()
+        manager.delegate = nil;
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -229,7 +232,8 @@ extension WeatherViewController: CLLocationManagerDelegate {
             break
         case .authorizedWhenInUse:
             warningLabel.isHidden = true
-            manager.requestLocation()
+            bannerAdContainer.isHidden = false
+            manager.startUpdatingLocation()
             break
         case .authorizedAlways:
             // This app will only get the location when in use
@@ -238,9 +242,11 @@ extension WeatherViewController: CLLocationManagerDelegate {
             // restricted by e.g. parental controls. User can't enable Location Services
             break
         case .denied:
+            loadingIndicator.stopAnimating()
             warningLabel.isHidden = false
             forecastTable.isHidden = true
             currentWeatherView.isHidden = true
+            bannerAdContainer.isHidden = true
             break
         }
     }
