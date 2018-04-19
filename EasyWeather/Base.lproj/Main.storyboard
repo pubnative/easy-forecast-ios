@@ -115,7 +115,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="26" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2P-BF-pmr" userLabel="High Temperature Label">
-                                                    <rect key="frame" x="282" y="15" width="24" height="25"/>
+                                                    <rect key="frame" x="337" y="15" width="24" height="25"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="18"/>
                                                     <color key="textColor" red="0.2627450980392157" green="0.0" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -127,7 +127,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3T-C6-cyc" userLabel="Low Temperature Label">
-                                                    <rect key="frame" x="285" y="41" width="21" height="24"/>
+                                                    <rect key="frame" x="340" y="41" width="21" height="24"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                                     <color key="textColor" red="0.63921568627450975" green="0.30980392156862746" blue="0.67450980392156867" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -171,6 +171,11 @@
                                     <constraint firstAttribute="height" id="7xU-Pt-aYp"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="32b-gQ-HYF">
+                                <rect key="frame" x="169" y="325" width="37" height="37"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -179,7 +184,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Nax-Xg-4dR" secondAttribute="trailing" id="6by-bv-rrv"/>
                             <constraint firstItem="Etc-aJ-YLf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="HyN-g9-Rd7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JKl-6J-kLW" secondAttribute="trailing" constant="20" id="LN0-jm-3tF"/>
+                            <constraint firstItem="32b-gQ-HYF" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Noq-7J-yOr"/>
                             <constraint firstItem="Etc-aJ-YLf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="d30-PB-gmX"/>
+                            <constraint firstItem="32b-gQ-HYF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="esy-Ch-cnt"/>
                             <constraint firstItem="Nax-Xg-4dR" firstAttribute="top" secondItem="Etc-aJ-YLf" secondAttribute="bottom" id="jbD-nb-CIz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Etc-aJ-YLf" secondAttribute="trailing" id="kPU-aD-LdY"/>
                             <constraint firstItem="JKl-6J-kLW" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="oLV-pR-ZLl"/>
@@ -200,6 +207,7 @@
                         <outlet property="currentWeatherView" destination="Etc-aJ-YLf" id="V0t-bM-uvj"/>
                         <outlet property="dateLabel" destination="6DO-Lt-PoB" id="B5Q-QA-ico"/>
                         <outlet property="forecastTable" destination="Nax-Xg-4dR" id="yif-oT-P3L"/>
+                        <outlet property="loadingIndicator" destination="32b-gQ-HYF" id="QrN-RU-KG5"/>
                         <outlet property="refreshButton" destination="5Rj-Pf-Wq9" id="2I3-gZ-vRm"/>
                         <outlet property="temperatureLabel" destination="feS-0D-sfz" id="aQJ-9a-ArI"/>
                         <outlet property="warningLabel" destination="JKl-6J-kLW" id="gtb-aM-1dD"/>

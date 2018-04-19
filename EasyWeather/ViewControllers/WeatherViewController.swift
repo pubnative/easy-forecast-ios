@@ -38,6 +38,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var bannerAdContainer: UIView!
     @IBOutlet weak var bannerAdContainerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var refreshButton: UIButton!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     var apiClient = ApiClient()
     var forecasts = [ForecastItem]()
@@ -76,12 +77,13 @@ class WeatherViewController: UIViewController {
     
     @IBAction func refreshWeatherTouchUpInside(_ sender: UIButton)
     {
-        locationManager.startUpdatingLocation()
         fetchWeatherData()
     }
     
     private func fetchWeatherData()
     {
+        loadingIndicator.startAnimating()
+        locationManager.startUpdatingLocation()
         apiClient.fetchCurrentForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
         apiClient.fetchForecastForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
     }
@@ -120,11 +122,13 @@ extension WeatherViewController : CurrentUpdateDelegate
     func requestCurrentDidSucceed(withData: CurrentResponse)
     {
         updateCurrentWeatherView(item: withData)
+        loadingIndicator.stopAnimating()
     }
     
     func requestCurrentDidFail(withError: Error)
     {
         NSLog(withError.localizedDescription)
+        loadingIndicator.stopAnimating()
     }
 }
 
@@ -142,11 +146,13 @@ extension WeatherViewController : ForecastUpdateDelegate
         forecastTable?.reloadData()
         forecastTable.isHidden = false
         currentWeatherView.isHidden = false
+        loadingIndicator.stopAnimating()
     }
     
     func requestForecastDidFail(withError: Error)
     {
         NSLog(withError.localizedDescription)
+        loadingIndicator.stopAnimating()
     }
 }
 
