@@ -49,10 +49,13 @@ class WeatherViewController: UIViewController {
     var mRectAdRequest =  PNLiteMRectAdRequest()
     var interstitialAdRequest =  PNLiteInterstitialAdRequest()
     var dataSource = [Any]()
+    var isInitialWeatherLoaded = false
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        loadingIndicator.startAnimating()
         
         apiClient.currentDelegate = self
         apiClient.forecastDelegate = self
@@ -68,16 +71,11 @@ class WeatherViewController: UIViewController {
         
         moPubInterstitial = MPInterstitialAdController.init(forAdUnitId: "a91bc5a72fd54888ac248e7656b69b2e")
         moPubInterstitial.delegate = self
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: {
-//            self.interstitialAdRequest.requestAd(with: self, withZoneID: "4")
-        })
     }
     
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
-        loadingIndicator.startAnimating()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
@@ -99,10 +97,21 @@ class WeatherViewController: UIViewController {
     @objc private func fetchWeatherData()
     {
         loadingIndicator.startAnimating()
-        bannerAdRequest.requestAd(with: self, withZoneID: "2")
-        mRectAdRequest.requestAd(with: self, withZoneID: "3")
+        requestAds()
         apiClient.fetchCurrentForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
         apiClient.fetchForecastForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
+    }
+    
+    func requestAds()
+    {
+        bannerAdRequest.requestAd(with: self, withZoneID: "2")
+        mRectAdRequest.requestAd(with: self, withZoneID: "3")
+        if !isInitialWeatherLoaded {
+            isInitialWeatherLoaded = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
+                self.interstitialAdRequest.requestAd(with: self, withZoneID: "4")
+            })
+        }
     }
     
     func updateCurrentWeatherView(item:CurrentResponse)
@@ -130,7 +139,6 @@ class WeatherViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d, HH:mm"
         return dateFormatter.string(from: Date())
-        
     }
 }
 
@@ -220,7 +228,8 @@ extension WeatherViewController: CLLocationManagerDelegate {
         manager.delegate = nil;
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
+    {
         
     }
     
@@ -261,8 +270,6 @@ extension WeatherViewController : PNLiteAdRequestDelegate
     
     func request(_ request: PNLiteAdRequest!, didLoadWith ad: PNLiteAd!)
     {
-        print("Request loaded with ad: \(ad)")
-        
         if (request == bannerAdRequest) {
             moPubBanner.keywords = PNLitePrebidUtils.createPrebidKeywords(with: ad, withZoneID: "2")
             moPubBanner.loadAd()
