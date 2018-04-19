@@ -47,6 +47,7 @@ class WeatherViewController: UIViewController {
     var moPubInterstitial = MPInterstitialAdController()
     var bannerAdRequest =  PNLiteBannerAdRequest()
     var interstitialAdRequest =  PNLiteInterstitialAdRequest()
+    var isWeatherInitiallyLoaded = false
 
     override func viewDidLoad()
     {
@@ -64,7 +65,9 @@ class WeatherViewController: UIViewController {
         moPubInterstitial.delegate = self
         
         bannerAdRequest.requestAd(with: self, withZoneID: "2")
-        interstitialAdRequest.requestAd(with: self, withZoneID: "4")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
+            self.interstitialAdRequest.requestAd(with: self, withZoneID: "4")
+        })
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -73,17 +76,26 @@ class WeatherViewController: UIViewController {
     
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(WeatherViewController.refreshWeatherTouchUpInside(_:)), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool)
+    {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)        
     }
     
     @IBAction func refreshWeatherTouchUpInside(_ sender: UIButton)
     {
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
         fetchWeatherData()
     }
     
-    private func fetchWeatherData()
+    @objc private func fetchWeatherData()
     {
         loadingIndicator.startAnimating()
-        locationManager.startUpdatingLocation()
         apiClient.fetchCurrentForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
         apiClient.fetchForecastForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
     }
@@ -188,15 +200,15 @@ extension WeatherViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
-        let location = locations.last
-        let locationDate = location?.timestamp
-        let howRecent = locationDate?.timeIntervalSinceNow
-        if (fabs(howRecent!) < 15.0) {
-            Location.sharedInstance.latitude = locations.last?.coordinate.latitude
-            Location.sharedInstance.longitude = locations.last?.coordinate.longitude
+        locationManager = manager
+        Location.sharedInstance.latitude = locations.last?.coordinate.latitude
+        Location.sharedInstance.longitude = locations.last?.coordinate.longitude
+        if !isWeatherInitiallyLoaded {
             fetchWeatherData()
-            locationManager.stopUpdatingLocation()
+            isWeatherInitiallyLoaded = true
         }
+        locationManager.stopUpdatingLocation()
+        locationManager.delegate = nil
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
