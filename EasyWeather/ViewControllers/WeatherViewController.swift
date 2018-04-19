@@ -47,7 +47,6 @@ class WeatherViewController: UIViewController {
     var moPubInterstitial = MPInterstitialAdController()
     var bannerAdRequest =  PNLiteBannerAdRequest()
     var interstitialAdRequest =  PNLiteInterstitialAdRequest()
-    var isWeatherInitiallyLoaded = false
 
     override func viewDidLoad()
     {
@@ -88,9 +87,7 @@ class WeatherViewController: UIViewController {
     
     @IBAction func refreshWeatherTouchUpInside(_ sender: UIButton)
     {
-        locationManager.delegate = self
-        locationManager.startUpdatingLocation()
-        fetchWeatherData()
+        locationManager.requestLocation()
     }
     
     @objc private func fetchWeatherData()
@@ -102,7 +99,7 @@ class WeatherViewController: UIViewController {
     
     func updateCurrentWeatherView(item:CurrentResponse)
     {
-        dateLabel.text  = "Today: \(getCurrentDateWithTime())"
+        dateLabel.text  = "Last Update: \(getCurrentDateWithTime())"
         
         if let name = item.name {
             cityLabel.text = name
@@ -200,15 +197,13 @@ extension WeatherViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
-        locationManager = manager
         Location.sharedInstance.latitude = locations.last?.coordinate.latitude
         Location.sharedInstance.longitude = locations.last?.coordinate.longitude
-        if !isWeatherInitiallyLoaded {
-            fetchWeatherData()
-            isWeatherInitiallyLoaded = true
-        }
-        locationManager.stopUpdatingLocation()
-        locationManager.delegate = nil
+        fetchWeatherData()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
@@ -219,7 +214,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
             break
         case .authorizedWhenInUse:
             warningLabel.isHidden = true
-            manager.startUpdatingLocation()
+            manager.requestLocation()
             break
         case .authorizedAlways:
             // This app will only get the location when in use
