@@ -41,13 +41,15 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     var apiClient = ApiClient()
-    var forecasts = [ForecastItem]()
     var locationManager = CLLocationManager()
     var moPubBanner = MPAdView()
+    var moPubMrect = MPAdView()
     var moPubInterstitial = MPInterstitialAdController()
     var bannerAdRequest =  PNLiteBannerAdRequest()
+    var mRectAdRequest =  PNLiteMRectAdRequest()
     var interstitialAdRequest =  PNLiteInterstitialAdRequest()
-
+    var dataSource = [Any]()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -60,10 +62,13 @@ class WeatherViewController: UIViewController {
         moPubBanner.stopAutomaticallyRefreshingContents()
         bannerAdContainer.addSubview(moPubBanner)
         
+        moPubMrect = MPAdView (adUnitId: "7f797ff5c287480cbf15e9f1735fb8d7", size: MOPUB_MEDIUM_RECT_SIZE)
+        moPubMrect.delegate = self
+        moPubMrect.stopAutomaticallyRefreshingContents()
+        
         moPubInterstitial = MPInterstitialAdController.init(forAdUnitId: "a91bc5a72fd54888ac248e7656b69b2e")
         moPubInterstitial.delegate = self
         
-        bannerAdRequest.requestAd(with: self, withZoneID: "2")
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
             self.interstitialAdRequest.requestAd(with: self, withZoneID: "4")
         })
@@ -72,7 +77,7 @@ class WeatherViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
-    
+        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
@@ -93,13 +98,15 @@ class WeatherViewController: UIViewController {
     @objc private func fetchWeatherData()
     {
         loadingIndicator.startAnimating()
+        bannerAdRequest.requestAd(with: self, withZoneID: "2")
+        mRectAdRequest.requestAd(with: self, withZoneID: "3")
         apiClient.fetchCurrentForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
         apiClient.fetchForecastForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
     }
     
     func updateCurrentWeatherView(item:CurrentResponse)
     {
-        dateLabel.text  = "Last Update: \(getCurrentDateWithTime())"
+        dateLabel.text  = "Last Updated: \(getCurrentDateWithTime())"
         
         if let name = item.name {
             cityLabel.text = name
@@ -145,10 +152,10 @@ extension WeatherViewController : ForecastUpdateDelegate
 {
     func requestForecastDidSucceed(withData: ForecastResponse)
     {
-        forecasts.removeAll()
+        dataSource.removeAll()
         if let list = withData.list {
             for item in list {
-                forecasts.append(item)
+                dataSource.append(item)
             }
         }
         
@@ -174,21 +181,29 @@ extension WeatherViewController : UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return forecasts.count
+        return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 80
+        if (dataSource[indexPath.row] is MPAdView) {
+            return 270
+        } else {
+            return 80
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastCell", for: indexPath) as? ForecastCell {
-            cell.configureCell(forecast: forecasts[indexPath.row])
-            return cell
+        if (dataSource[indexPath.row] is MPAdView) {
+            let mRectCell = tableView.dequeueReusableCell(withIdentifier: "MRectCell", for: indexPath) as! MRectCell
+            moPubMrect = dataSource[indexPath.row] as! MPAdView
+            mRectCell.mediumAdContainer.addSubview(moPubMrect)
+            return mRectCell
         } else {
-            return ForecastCell()
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastCell", for: indexPath) as! ForecastCell
+            cell.configureCell(forecast: dataSource[indexPath.row] as! ForecastItem)
+            return cell
         }
     }
 }
@@ -245,6 +260,9 @@ extension WeatherViewController : PNLiteAdRequestDelegate
         if (request == bannerAdRequest) {
             moPubBanner.keywords = PNLitePrebidUtils.createPrebidKeywords(with: ad, withZoneID: "2")
             moPubBanner.loadAd()
+        } else if (request == mRectAdRequest) {
+            moPubMrect.keywords = PNLitePrebidUtils.createPrebidKeywords(with: ad, withZoneID: "3")
+            moPubMrect.loadAd()
         } else if (request == interstitialAdRequest) {
             moPubInterstitial.keywords = PNLitePrebidUtils.createPrebidKeywords(with: ad, withZoneID: "4")
             moPubInterstitial.loadAd()
@@ -266,12 +284,19 @@ extension WeatherViewController : MPAdViewDelegate
     
     func adViewDidLoadAd(_ view: MPAdView!)
     {
-        bannerAdContainerHeightConstraint.constant = MOPUB_BANNER_SIZE.height
+        if (view == moPubBanner) {
+            bannerAdContainerHeightConstraint.constant = MOPUB_BANNER_SIZE.height
+        } else if (view == moPubMrect) {
+            dataSource.insert(view, at: 7)
+            forecastTable.reloadData()
+        }
     }
     
     func adViewDidFail(toLoadAd view: MPAdView!)
     {
-        bannerAdContainerHeightConstraint.constant = 0
+        if (view == moPubBanner) {
+            bannerAdContainerHeightConstraint.constant = 0
+        }
     }
 }
 

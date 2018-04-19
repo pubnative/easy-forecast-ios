@@ -211,6 +211,7 @@
 		5AD947602087843200DD7E8C /* MPAdConversionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD9469A2087843100DD7E8C /* MPAdConversionTracker.m */; };
 		5AD947612087843200DD7E8C /* MoPub.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD9469B2087843100DD7E8C /* MoPub.m */; };
 		5AD947622087843200DD7E8C /* MPInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD9469E2087843100DD7E8C /* MPInterstitialCustomEvent.m */; };
+		5AECDF312088C728003049AE /* MRectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDF302088C728003049AE /* MRectCell.swift */; };
 		E7566C36203C3A8C00487557 /* ForecastUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7566C35203C3A8C00487557 /* ForecastUpdateDelegate.swift */; };
 		E7566C38203C3B1F00487557 /* CurrentUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7566C37203C3B1F00487557 /* CurrentUpdateDelegate.swift */; };
 		E75E4682203B3DB500FF9672 /* ForecastCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75E4681203B3DB500FF9672 /* ForecastCity.swift */; };
@@ -669,6 +670,7 @@
 		5AD9469E2087843100DD7E8C /* MPInterstitialCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPInterstitialCustomEvent.m; sourceTree = "<group>"; };
 		5AD9469F2087843100DD7E8C /* MoPub-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MoPub-Bridging-Header.h"; sourceTree = "<group>"; };
 		5AD946A02087843100DD7E8C /* MPInterstitialAdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPInterstitialAdController.h; sourceTree = "<group>"; };
+		5AECDF302088C728003049AE /* MRectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MRectCell.swift; sourceTree = "<group>"; };
 		E7566C35203C3A8C00487557 /* ForecastUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastUpdateDelegate.swift; sourceTree = "<group>"; };
 		E7566C37203C3B1F00487557 /* CurrentUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUpdateDelegate.swift; sourceTree = "<group>"; };
 		E75E4681203B3DB500FF9672 /* ForecastCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCity.swift; sourceTree = "<group>"; };
@@ -1381,6 +1383,7 @@
 		E776E9A5203B1C1700101093 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5AECDF302088C728003049AE /* MRectCell.swift */,
 				5A6A8C1520862C8B00494187 /* ForecastCell.swift */,
 				E7CC276D203AF265006A95B9 /* WeatherViewController.swift */,
 			);
@@ -1726,6 +1729,7 @@
 				5AD947382087843200DD7E8C /* MPNativeAdRendererImageHandler.m in Sources */,
 				5AD946C12087843100DD7E8C /* MPQRunLoopOperation.m in Sources */,
 				5AD946CF2087843100DD7E8C /* MPCoreInstanceProvider.m in Sources */,
+				5AECDF312088C728003049AE /* MRectCell.swift in Sources */,
 				5AD946A12087843100DD7E8C /* MPAdView.m in Sources */,
 				5AD946CB2087843100DD7E8C /* MPHTMLInterstitialViewController.m in Sources */,
 				5AD946C22087843100DD7E8C /* MPLogEvent+NativeVideo.m in Sources */,
@@ -1970,6 +1974,7 @@
 					"$(PROJECT_DIR)/EasyWeather/MoPubSDK/Viewability/MOAT",
 				);
 				INFOPLIST_FILE = EasyWeather/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1996,6 +2001,7 @@
 					"$(PROJECT_DIR)/EasyWeather/MoPubSDK/Viewability/MOAT",
 				);
 				INFOPLIST_FILE = EasyWeather/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
