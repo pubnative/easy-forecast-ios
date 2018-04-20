@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -34,8 +33,8 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0dN-TU-PVf">
-                                        <rect key="frame" x="16" y="65" width="0.0" height="0.0"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0dN-TU-PVf">
+                                        <rect key="frame" x="16" y="65" width="343" height="0.0"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="32"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -86,6 +85,7 @@
                                     <constraint firstItem="F0s-VN-VxX" firstAttribute="trailing" secondItem="5Rj-Pf-Wq9" secondAttribute="trailing" constant="16" id="fd2-3A-wpe"/>
                                     <constraint firstItem="VRw-cw-JAi" firstAttribute="centerY" secondItem="feS-0D-sfz" secondAttribute="centerY" id="i6B-3C-eym"/>
                                     <constraint firstAttribute="height" constant="300" id="kTZ-bM-Xlo"/>
+                                    <constraint firstItem="F0s-VN-VxX" firstAttribute="trailing" secondItem="0dN-TU-PVf" secondAttribute="trailing" constant="16" id="zGs-dS-Nok"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="F0s-VN-VxX"/>
                             </view>
