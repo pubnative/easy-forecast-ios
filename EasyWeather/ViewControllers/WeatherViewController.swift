@@ -299,6 +299,7 @@ extension WeatherViewController : MPAdViewDelegate
     {
         if (view == moPubBanner) {
             bannerAdContainerHeightConstraint.constant = MOPUB_BANNER_SIZE.height
+            bannerAdContainer.isHidden = false
         } else if (view == moPubMrect) {
             dataSource.insert(view, at: 7)
             forecastTable.reloadData()
@@ -309,6 +310,7 @@ extension WeatherViewController : MPAdViewDelegate
     {
         if (view == moPubBanner) {
             bannerAdContainerHeightConstraint.constant = 0
+            bannerAdContainer.isHidden = true
         }
     }
 }
