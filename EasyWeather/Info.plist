@@ -39,9 +39,9 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app uses your location to get weather information</string>
 	<key>NSLocationUsageDescription</key>
+	<string>This app uses your location to get weather information</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app uses your location to get weather information</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

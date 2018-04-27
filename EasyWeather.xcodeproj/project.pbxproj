@@ -1967,7 +1967,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K97RS28HQU;
+				DEVELOPMENT_TEAM = TL55SBB4FM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1980,7 +1980,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/EasyWeather/MoPubSDK/Viewability/Avid",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.easynaps.EasyWeather;
+				PRODUCT_BUNDLE_IDENTIFIER = net.easynaps.EasyWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "EasyWeather/Adapters/PNLite-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -1994,7 +1994,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K97RS28HQU;
+				DEVELOPMENT_TEAM = TL55SBB4FM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2007,7 +2007,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/EasyWeather/MoPubSDK/Viewability/Avid",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.easynaps.EasyWeather;
+				PRODUCT_BUNDLE_IDENTIFIER = net.easynaps.EasyWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "EasyWeather/Adapters/PNLite-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
