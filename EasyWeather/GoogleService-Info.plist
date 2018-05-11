@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>796788527323-atm4pm84djsol7cb5cjuduqqevj0ijkf.apps.googleusercontent.com</string>
+	<string>796788527323-r5i8n05kd5vkh5qt9800ed7qfjir3s6e.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.796788527323-atm4pm84djsol7cb5cjuduqqevj0ijkf</string>
+	<string>com.googleusercontent.apps.796788527323-r5i8n05kd5vkh5qt9800ed7qfjir3s6e</string>
 	<key>API_KEY</key>
 	<string>AIzaSyC8-Q1DJHFnu9uI-9hif0kHIWnertCs4qY</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.easynaps.EasyWeather</string>
+	<string>net.easynaps.EasyForecast</string>
 	<key>PROJECT_ID</key>
 	<string>pubnative-easy-weather</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:796788527323:ios:edbd1adc8c15882a</string>
+	<string>1:796788527323:ios:043512a24ba0198e</string>
 	<key>DATABASE_URL</key>
 	<string>https://pubnative-easy-weather.firebaseio.com</string>
 </dict>

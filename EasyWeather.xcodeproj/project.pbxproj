@@ -8,11 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2E1289B11BE255C43CB298A3 /* Pods_EasyWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA2170FD41C850FF622A68E /* Pods_EasyWeather.framework */; };
-		5A6A8C122086090000494187 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A6A8C112086090000494187 /* GoogleService-Info.plist */; };
 		5A6A8C142086297700494187 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A8C132086297600494187 /* Location.swift */; };
 		5A6A8C1620862C8B00494187 /* ForecastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A8C1520862C8B00494187 /* ForecastCell.swift */; };
-		5AD944E72087829600DD7E8C /* PubnativeLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD944E62087829600DD7E8C /* PubnativeLite.framework */; };
-		5AD944E82087829600DD7E8C /* PubnativeLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD944E62087829600DD7E8C /* PubnativeLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5AAEF8E320A1D88F006C7CD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5AAEF8E220A1D88F006C7CD4 /* GoogleService-Info.plist */; };
 		5AD944F6208782CE00DD7E8C /* PNLiteMoPubMRectCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD944ED208782CE00DD7E8C /* PNLiteMoPubMRectCustomEvent.m */; };
 		5AD944F7208782CE00DD7E8C /* PNLiteMoPubBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD944EE208782CE00DD7E8C /* PNLiteMoPubBannerCustomEvent.m */; };
 		5AD944F8208782CE00DD7E8C /* PNLiteMoPubInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD944F3208782CE00DD7E8C /* PNLiteMoPubInterstitialCustomEvent.m */; };
@@ -212,6 +210,8 @@
 		5AD947612087843200DD7E8C /* MoPub.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD9469B2087843100DD7E8C /* MoPub.m */; };
 		5AD947622087843200DD7E8C /* MPInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD9469E2087843100DD7E8C /* MPInterstitialCustomEvent.m */; };
 		5AECDF312088C728003049AE /* MRectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDF302088C728003049AE /* MRectCell.swift */; };
+		5AFFDC8020A34BC400713BC3 /* PubnativeLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFFDC7F20A34BC400713BC3 /* PubnativeLite.framework */; };
+		5AFFDC8120A34BC400713BC3 /* PubnativeLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFFDC7F20A34BC400713BC3 /* PubnativeLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E7566C36203C3A8C00487557 /* ForecastUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7566C35203C3A8C00487557 /* ForecastUpdateDelegate.swift */; };
 		E7566C38203C3B1F00487557 /* CurrentUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7566C37203C3B1F00487557 /* CurrentUpdateDelegate.swift */; };
 		E75E4682203B3DB500FF9672 /* ForecastCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75E4681203B3DB500FF9672 /* ForecastCity.swift */; };
@@ -246,7 +246,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5AD944E82087829600DD7E8C /* PubnativeLite.framework in Embed Frameworks */,
+				5AFFDC8120A34BC400713BC3 /* PubnativeLite.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,10 +257,9 @@
 		15701703DFD883A08558AB00 /* Pods-EasyWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyWeather.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyWeather/Pods-EasyWeather.release.xcconfig"; sourceTree = "<group>"; };
 		3EA2170FD41C850FF622A68E /* Pods_EasyWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		468D9A763598D44D9B0194E8 /* Pods-EasyWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyWeather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyWeather/Pods-EasyWeather.debug.xcconfig"; sourceTree = "<group>"; };
-		5A6A8C112086090000494187 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5A6A8C132086297600494187 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		5A6A8C1520862C8B00494187 /* ForecastCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastCell.swift; sourceTree = "<group>"; };
-		5AD944E62087829600DD7E8C /* PubnativeLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PubnativeLite.framework; sourceTree = "<group>"; };
+		5AAEF8E220A1D88F006C7CD4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5AD944ED208782CE00DD7E8C /* PNLiteMoPubMRectCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNLiteMoPubMRectCustomEvent.m; sourceTree = "<group>"; };
 		5AD944EE208782CE00DD7E8C /* PNLiteMoPubBannerCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNLiteMoPubBannerCustomEvent.m; sourceTree = "<group>"; };
 		5AD944EF208782CE00DD7E8C /* PNLiteMoPubUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNLiteMoPubUtils.h; sourceTree = "<group>"; };
@@ -671,6 +670,7 @@
 		5AD9469F2087843100DD7E8C /* MoPub-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MoPub-Bridging-Header.h"; sourceTree = "<group>"; };
 		5AD946A02087843100DD7E8C /* MPInterstitialAdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPInterstitialAdController.h; sourceTree = "<group>"; };
 		5AECDF302088C728003049AE /* MRectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MRectCell.swift; sourceTree = "<group>"; };
+		5AFFDC7F20A34BC400713BC3 /* PubnativeLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PubnativeLite.framework; sourceTree = "<group>"; };
 		E7566C35203C3A8C00487557 /* ForecastUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastUpdateDelegate.swift; sourceTree = "<group>"; };
 		E7566C37203C3B1F00487557 /* CurrentUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUpdateDelegate.swift; sourceTree = "<group>"; };
 		E75E4681203B3DB500FF9672 /* ForecastCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCity.swift; sourceTree = "<group>"; };
@@ -707,8 +707,8 @@
 			files = (
 				5AD946A42087843100DD7E8C /* MPUBMoatMobileAppKit.framework in Frameworks */,
 				2E1289B11BE255C43CB298A3 /* Pods_EasyWeather.framework in Frameworks */,
-				5AD944E72087829600DD7E8C /* PubnativeLite.framework in Frameworks */,
 				5AD946A32087843100DD7E8C /* libAvid-mopub-3.6.1.a in Frameworks */,
+				5AFFDC8020A34BC400713BC3 /* PubnativeLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1403,7 +1403,7 @@
 		E7CC275F203AF265006A95B9 = {
 			isa = PBXGroup;
 			children = (
-				5AD944E62087829600DD7E8C /* PubnativeLite.framework */,
+				5AFFDC7F20A34BC400713BC3 /* PubnativeLite.framework */,
 				E7CC276A203AF265006A95B9 /* EasyWeather */,
 				E7CC2769203AF265006A95B9 /* Products */,
 				9CE1A5FC539F853B68140ACE /* Pods */,
@@ -1431,7 +1431,7 @@
 				E7CC276F203AF265006A95B9 /* Main.storyboard */,
 				E7CC2777203AF265006A95B9 /* LaunchScreen.storyboard */,
 				E7CC2775203AF265006A95B9 /* Assets.xcassets */,
-				5A6A8C112086090000494187 /* GoogleService-Info.plist */,
+				5AAEF8E220A1D88F006C7CD4 /* GoogleService-Info.plist */,
 				E7CC277A203AF265006A95B9 /* Info.plist */,
 			);
 			path = EasyWeather;
@@ -1508,7 +1508,6 @@
 				5AD946B72087843100DD7E8C /* MPDAAIcon@3x.png in Resources */,
 				5AD946B22087843100DD7E8C /* MPUnmutedBtn@2x.png in Resources */,
 				E7CC2779203AF265006A95B9 /* LaunchScreen.storyboard in Resources */,
-				5A6A8C122086090000494187 /* GoogleService-Info.plist in Resources */,
 				E7CC2776203AF265006A95B9 /* Assets.xcassets in Resources */,
 				5AD946B32087843100DD7E8C /* MPCountdownTimer.html in Resources */,
 				5AD946BB2087843100DD7E8C /* MPMutedBtn@2x.png in Resources */,
@@ -1516,6 +1515,7 @@
 				5AD946AA2087843100DD7E8C /* MRAID.bundle in Resources */,
 				5AD946BA2087843100DD7E8C /* MPMutedBtn.png in Resources */,
 				5AD946B92087843100DD7E8C /* MPPlayBtn.png in Resources */,
+				5AAEF8E320A1D88F006C7CD4 /* GoogleService-Info.plist in Resources */,
 				5AD946AC2087843100DD7E8C /* MPUnmutedBtn@3x.png in Resources */,
 				5AD946B42087843100DD7E8C /* MPCloseButtonX@2x.png in Resources */,
 				5AD946B62087843100DD7E8C /* MPCloseButtonX.png in Resources */,
@@ -1862,6 +1862,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -1919,6 +1920,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -1966,8 +1968,10 @@
 			baseConfigurationReference = 468D9A763598D44D9B0194E8 /* Pods-EasyWeather.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_CODE_COVERAGE = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K97RS28HQU;
+				DEVELOPMENT_TEAM = TL55SBB4FM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1980,11 +1984,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/EasyWeather/MoPubSDK/Viewability/Avid",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.easynaps.EasyWeather;
+				PRODUCT_BUNDLE_IDENTIFIER = net.easynaps.EasyForecast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "EasyWeather/Adapters/PNLite-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1993,8 +1998,10 @@
 			baseConfigurationReference = 15701703DFD883A08558AB00 /* Pods-EasyWeather.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_CODE_COVERAGE = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K97RS28HQU;
+				DEVELOPMENT_TEAM = TL55SBB4FM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2007,11 +2014,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/EasyWeather/MoPubSDK/Viewability/Avid",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.easynaps.EasyWeather;
+				PRODUCT_BUNDLE_IDENTIFIER = net.easynaps.EasyForecast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "EasyWeather/Adapters/PNLite-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
