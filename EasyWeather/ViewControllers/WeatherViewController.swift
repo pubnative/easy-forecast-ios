@@ -60,16 +60,16 @@ class WeatherViewController: UIViewController {
         apiClient.currentDelegate = self
         apiClient.forecastDelegate = self
         
-        moPubBanner = MPAdView (adUnitId: "a4eac931d95444f0a95adc77093a22ab", size: MOPUB_BANNER_SIZE)
+        moPubBanner = MPAdView (adUnitId: "4d657c9ed31f48fea349f81e5859fe73", size: MOPUB_BANNER_SIZE)
         moPubBanner.delegate = self
         moPubBanner.stopAutomaticallyRefreshingContents()
         bannerAdContainer.addSubview(moPubBanner)
         
-        moPubMrect = MPAdView (adUnitId: "7f797ff5c287480cbf15e9f1735fb8d7", size: MOPUB_MEDIUM_RECT_SIZE)
+        moPubMrect = MPAdView (adUnitId: "06669f9c42fb42129cfaee66ec5f7f94", size: MOPUB_MEDIUM_RECT_SIZE)
         moPubMrect.delegate = self
         moPubMrect.stopAutomaticallyRefreshingContents()
         
-        moPubInterstitial = MPInterstitialAdController.init(forAdUnitId: "a91bc5a72fd54888ac248e7656b69b2e")
+        moPubInterstitial = MPInterstitialAdController.init(forAdUnitId: "7ac3209f96484a4c89a22fd40b6a8fc4")
         moPubInterstitial.delegate = self
     }
     
@@ -109,7 +109,7 @@ class WeatherViewController: UIViewController {
         if !isInitialWeatherLoaded {
             isInitialWeatherLoaded = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
-                self.interstitialAdRequest.requestAd(with: self, withZoneID: "4")
+                self.interstitialAdRequest.requestAd(with: self, withZoneID: "1")
             })
         }
     }
@@ -299,6 +299,7 @@ extension WeatherViewController : MPAdViewDelegate
     {
         if (view == moPubBanner) {
             bannerAdContainerHeightConstraint.constant = MOPUB_BANNER_SIZE.height
+            bannerAdContainer.isHidden = false
         } else if (view == moPubMrect) {
             dataSource.insert(view, at: 7)
             forecastTable.reloadData()
@@ -309,6 +310,7 @@ extension WeatherViewController : MPAdViewDelegate
     {
         if (view == moPubBanner) {
             bannerAdContainerHeightConstraint.constant = 0
+            bannerAdContainer.isHidden = true
         }
     }
 }

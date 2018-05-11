@@ -35,9 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         Fabric.with([Crashlytics.self])
-        PubnativeLite.initWithAppToken("543027b8e954474cbcd9a98481622a3b")
+        PubnativeLite.initWithAppToken("3e98d63843d8437c8d35a05edab557dd")
         PubnativeLite.setCoppa(false)
-        PubnativeLite.setTestMode(true)
+        PubnativeLite.setTestMode(false)
         return true
     }
 
