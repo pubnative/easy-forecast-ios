@@ -80,17 +80,17 @@ class WeatherViewController: UIViewController {
         moPubInterstitial.delegate = self
         
         dfpBanner = DFPBannerView(adSize: kGADAdSizeBanner)
-        dfpBanner.adUnitID = "/6499/example/banner"
+        dfpBanner.adUnitID = "/219576711/EasyForecast_Banner"
         dfpBanner.delegate = self
         dfpBanner.rootViewController = self
         bannerAdContainer.addSubview(dfpBanner)
         
         dfpMrect = DFPBannerView(adSize: kGADAdSizeMediumRectangle)
-        dfpMrect.adUnitID = "/6499/example/banner"
+        dfpMrect.adUnitID = "/219576711/EasyForecast_MRect"
         dfpMrect.delegate = self
         dfpMrect.rootViewController = self
         
-        dfpInterstitial = DFPInterstitial(adUnitID: "/6499/example/interstitial")
+        dfpInterstitial = DFPInterstitial(adUnitID: "/219576711/EasyForecast_Interstitial")
         dfpInterstitial.delegate = self
     }
     
