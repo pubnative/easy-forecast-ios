@@ -6,6 +6,10 @@
 #import "PNLiteMoPubBannerCustomEvent.h"
 #import "PNLiteMoPubMRectCustomEvent.h"
 #import "PNLiteMoPubInterstitialCustomEvent.h"
+#import "PNLiteDFPUtils.h"
+#import "PNLiteDFPBannerCustomEvent.h"
+#import "PNLiteDFPMRectCustomEvent.h"
+#import "PNLiteDFPInterstitialCustomEvent.h"
 
 #import "MoPub.h"
 

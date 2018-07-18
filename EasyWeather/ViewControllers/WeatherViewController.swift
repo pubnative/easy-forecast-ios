@@ -24,6 +24,7 @@ import UIKit
 import Kingfisher
 import CoreLocation
 import PubnativeLite
+import GoogleMobileAds
 
 class WeatherViewController: UIViewController {
     
@@ -45,11 +46,17 @@ class WeatherViewController: UIViewController {
     var moPubBanner = MPAdView()
     var moPubMrect = MPAdView()
     var moPubInterstitial = MPInterstitialAdController()
-    var bannerAdRequest =  PNLiteBannerAdRequest()
-    var mRectAdRequest =  PNLiteMRectAdRequest()
-    var interstitialAdRequest =  PNLiteInterstitialAdRequest()
+    var moPubBannerAdRequest =  PNLiteBannerAdRequest()
+    var moPubMRectAdRequest =  PNLiteMRectAdRequest()
+    var moPubInterstitialAdRequest =  PNLiteInterstitialAdRequest()
     var dataSource = [Any]()
     var isInitialWeatherLoaded = false
+    var dfpBanner: DFPBannerView!
+    var dfpMrect: DFPBannerView!
+    var dfpInterstitial: DFPInterstitial!
+    var dfpBannerAdRequest =  PNLiteBannerAdRequest()
+    var dfpMRectAdRequest =  PNLiteMRectAdRequest()
+    var dfpInterstitialAdRequest =  PNLiteInterstitialAdRequest()
     
     override func viewDidLoad()
     {
@@ -71,6 +78,20 @@ class WeatherViewController: UIViewController {
         
         moPubInterstitial = MPInterstitialAdController.init(forAdUnitId: "7ac3209f96484a4c89a22fd40b6a8fc4")
         moPubInterstitial.delegate = self
+        
+        dfpBanner = DFPBannerView(adSize: kGADAdSizeBanner)
+        dfpBanner.adUnitID = "/6499/example/banner"
+        dfpBanner.delegate = self
+        dfpBanner.rootViewController = self
+        bannerAdContainer.addSubview(dfpBanner)
+        
+        dfpMrect = DFPBannerView(adSize: kGADAdSizeMediumRectangle)
+        dfpMrect.adUnitID = "/6499/example/banner"
+        dfpMrect.delegate = self
+        dfpMrect.rootViewController = self
+        
+        dfpInterstitial = DFPInterstitial(adUnitID: "/6499/example/interstitial")
+        dfpInterstitial.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -97,19 +118,32 @@ class WeatherViewController: UIViewController {
     @objc private func fetchWeatherData()
     {
         loadingIndicator.startAnimating()
-        requestAds()
+//        requestMoPubAds()
+        requestDFPAds()
         apiClient.fetchCurrentForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
         apiClient.fetchForecastForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
     }
     
-    func requestAds()
+    func requestMoPubAds()
     {
-        bannerAdRequest.requestAd(with: self, withZoneID: "2")
-        mRectAdRequest.requestAd(with: self, withZoneID: "3")
+        moPubBannerAdRequest.requestAd(with: self, withZoneID: "2")
+        moPubMRectAdRequest.requestAd(with: self, withZoneID: "3")
         if !isInitialWeatherLoaded {
             isInitialWeatherLoaded = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
-                self.interstitialAdRequest.requestAd(with: self, withZoneID: "1")
+                self.moPubInterstitialAdRequest.requestAd(with: self, withZoneID: "1")
+            })
+        }
+    }
+    
+    func requestDFPAds()
+    {
+        dfpBannerAdRequest.requestAd(with: self, withZoneID: "2")
+        dfpMRectAdRequest.requestAd(with: self, withZoneID: "3")
+        if !isInitialWeatherLoaded {
+            isInitialWeatherLoaded = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
+                self.dfpInterstitialAdRequest.requestAd(with: self, withZoneID: "1")
             })
         }
     }
@@ -270,15 +304,27 @@ extension WeatherViewController : PNLiteAdRequestDelegate
     
     func request(_ request: PNLiteAdRequest!, didLoadWith ad: PNLiteAd!)
     {
-        if (request == bannerAdRequest) {
-            moPubBanner.keywords = PNLitePrebidUtils.createPrebidKeywords(with: ad, withZoneID: "2")
+        if (request == moPubBannerAdRequest) {
+            moPubBanner.keywords = PNLitePrebidUtils.createPrebidKeywordsString(with: ad, withZoneID: "2")
             moPubBanner.loadAd()
-        } else if (request == mRectAdRequest) {
-            moPubMrect.keywords = PNLitePrebidUtils.createPrebidKeywords(with: ad, withZoneID: "3")
+        } else if (request == moPubMRectAdRequest) {
+            moPubMrect.keywords = PNLitePrebidUtils.createPrebidKeywordsString(with: ad, withZoneID: "3")
             moPubMrect.loadAd()
-        } else if (request == interstitialAdRequest) {
-            moPubInterstitial.keywords = PNLitePrebidUtils.createPrebidKeywords(with: ad, withZoneID: "4")
+        } else if (request == moPubInterstitialAdRequest) {
+            moPubInterstitial.keywords = PNLitePrebidUtils.createPrebidKeywordsString(with: ad, withZoneID: "4")
             moPubInterstitial.loadAd()
+        } else if (request == dfpBannerAdRequest) {
+            let request = DFPRequest()
+            request.customTargeting = PNLitePrebidUtils.createPrebidKeywordsDictionary(with: ad, withZoneID: "2") as? [AnyHashable : Any]
+            dfpBanner.load(request)
+        } else if (request == dfpMRectAdRequest) {
+            let request = DFPRequest()
+            request.customTargeting = PNLitePrebidUtils.createPrebidKeywordsDictionary(with: ad, withZoneID: "3") as? [AnyHashable : Any]
+            dfpMrect.load(request)
+        } else if (request == dfpInterstitialAdRequest) {
+            let request = DFPRequest()
+            request.customTargeting = PNLitePrebidUtils.createPrebidKeywordsDictionary(with: ad, withZoneID: "4") as? [AnyHashable : Any]
+            dfpInterstitial.load(request)
         }
     }
     
@@ -320,5 +366,45 @@ extension WeatherViewController : MPInterstitialAdControllerDelegate
     func interstitialDidLoadAd(_ interstitial: MPInterstitialAdController!)
     {
         moPubInterstitial.show(from: self)
+    }
+}
+
+extension WeatherViewController : GADBannerViewDelegate
+{
+    func adViewDidReceiveAd(_ bannerView: GADBannerView)
+    {
+        if (bannerView == dfpBanner) {
+            bannerAdContainerHeightConstraint.constant = kGADAdSizeBanner.size.height
+            bannerAdContainer.isHidden = false
+        } else if (bannerView == dfpMrect) {
+            dataSource.insert(view, at: 7)
+            forecastTable.reloadData()
+        }
+    }
+    
+    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError)
+    {
+        if (bannerView == dfpBanner) {
+            bannerAdContainerHeightConstraint.constant = 0
+            bannerAdContainer.isHidden = true
+        }
+        
+        print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+}
+extension WeatherViewController : GADInterstitialDelegate
+{
+    func interstitialDidReceiveAd(_ ad: GADInterstitial)
+    {
+        if (dfpInterstitial.isReady) {
+            dfpInterstitial.present(fromRootViewController: self)
+        } else {
+            print("Ad wasn't ready")
+        }
+    }
+    
+    func interstitial(_ ad: GADInterstitial, didFailToReceiveAdWithError error: GADRequestError)
+    {
+        print("interstitial:didFailToReceiveAdWithError: \(error.localizedDescription)")
     }
 }

@@ -10,6 +10,12 @@
 		2E1289B11BE255C43CB298A3 /* Pods_EasyWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA2170FD41C850FF622A68E /* Pods_EasyWeather.framework */; };
 		5A6A8C142086297700494187 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A8C132086297600494187 /* Location.swift */; };
 		5A6A8C1620862C8B00494187 /* ForecastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A8C1520862C8B00494187 /* ForecastCell.swift */; };
+		5A995D3420FF7E6300368279 /* PNLiteDFPUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A995D2C20FF7E6300368279 /* PNLiteDFPUtils.m */; };
+		5A995D3520FF7E6300368279 /* PNLiteDFPMRectCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A995D2D20FF7E6300368279 /* PNLiteDFPMRectCustomEvent.m */; };
+		5A995D3620FF7E6300368279 /* PNLiteDFPBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A995D2E20FF7E6300368279 /* PNLiteDFPBannerCustomEvent.m */; };
+		5A995D3720FF7E6300368279 /* PNLiteDFPInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A995D3220FF7E6300368279 /* PNLiteDFPInterstitialCustomEvent.m */; };
+		5A995D3920FF801200368279 /* PubnativeLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A995D3820FF801100368279 /* PubnativeLite.framework */; };
+		5A995D3A20FF801200368279 /* PubnativeLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5A995D3820FF801100368279 /* PubnativeLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5AAEF8E320A1D88F006C7CD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5AAEF8E220A1D88F006C7CD4 /* GoogleService-Info.plist */; };
 		5AD944F6208782CE00DD7E8C /* PNLiteMoPubMRectCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD944ED208782CE00DD7E8C /* PNLiteMoPubMRectCustomEvent.m */; };
 		5AD944F7208782CE00DD7E8C /* PNLiteMoPubBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD944EE208782CE00DD7E8C /* PNLiteMoPubBannerCustomEvent.m */; };
@@ -210,8 +216,6 @@
 		5AD947612087843200DD7E8C /* MoPub.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD9469B2087843100DD7E8C /* MoPub.m */; };
 		5AD947622087843200DD7E8C /* MPInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD9469E2087843100DD7E8C /* MPInterstitialCustomEvent.m */; };
 		5AECDF312088C728003049AE /* MRectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDF302088C728003049AE /* MRectCell.swift */; };
-		5AFFDC8020A34BC400713BC3 /* PubnativeLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFFDC7F20A34BC400713BC3 /* PubnativeLite.framework */; };
-		5AFFDC8120A34BC400713BC3 /* PubnativeLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFFDC7F20A34BC400713BC3 /* PubnativeLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E7566C36203C3A8C00487557 /* ForecastUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7566C35203C3A8C00487557 /* ForecastUpdateDelegate.swift */; };
 		E7566C38203C3B1F00487557 /* CurrentUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7566C37203C3B1F00487557 /* CurrentUpdateDelegate.swift */; };
 		E75E4682203B3DB500FF9672 /* ForecastCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75E4681203B3DB500FF9672 /* ForecastCity.swift */; };
@@ -246,7 +250,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5AFFDC8120A34BC400713BC3 /* PubnativeLite.framework in Embed Frameworks */,
+				5A995D3A20FF801200368279 /* PubnativeLite.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,6 +263,15 @@
 		468D9A763598D44D9B0194E8 /* Pods-EasyWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyWeather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyWeather/Pods-EasyWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		5A6A8C132086297600494187 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		5A6A8C1520862C8B00494187 /* ForecastCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastCell.swift; sourceTree = "<group>"; };
+		5A995D2C20FF7E6300368279 /* PNLiteDFPUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNLiteDFPUtils.m; sourceTree = "<group>"; };
+		5A995D2D20FF7E6300368279 /* PNLiteDFPMRectCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNLiteDFPMRectCustomEvent.m; sourceTree = "<group>"; };
+		5A995D2E20FF7E6300368279 /* PNLiteDFPBannerCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNLiteDFPBannerCustomEvent.m; sourceTree = "<group>"; };
+		5A995D2F20FF7E6300368279 /* PNLiteDFPInterstitialCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNLiteDFPInterstitialCustomEvent.h; sourceTree = "<group>"; };
+		5A995D3020FF7E6300368279 /* PNLiteDFPUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNLiteDFPUtils.h; sourceTree = "<group>"; };
+		5A995D3120FF7E6300368279 /* PNLiteDFPMRectCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNLiteDFPMRectCustomEvent.h; sourceTree = "<group>"; };
+		5A995D3220FF7E6300368279 /* PNLiteDFPInterstitialCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNLiteDFPInterstitialCustomEvent.m; sourceTree = "<group>"; };
+		5A995D3320FF7E6300368279 /* PNLiteDFPBannerCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNLiteDFPBannerCustomEvent.h; sourceTree = "<group>"; };
+		5A995D3820FF801100368279 /* PubnativeLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PubnativeLite.framework; sourceTree = "<group>"; };
 		5AAEF8E220A1D88F006C7CD4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5AD944ED208782CE00DD7E8C /* PNLiteMoPubMRectCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNLiteMoPubMRectCustomEvent.m; sourceTree = "<group>"; };
 		5AD944EE208782CE00DD7E8C /* PNLiteMoPubBannerCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNLiteMoPubBannerCustomEvent.m; sourceTree = "<group>"; };
@@ -670,7 +683,6 @@
 		5AD9469F2087843100DD7E8C /* MoPub-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MoPub-Bridging-Header.h"; sourceTree = "<group>"; };
 		5AD946A02087843100DD7E8C /* MPInterstitialAdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPInterstitialAdController.h; sourceTree = "<group>"; };
 		5AECDF302088C728003049AE /* MRectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MRectCell.swift; sourceTree = "<group>"; };
-		5AFFDC7F20A34BC400713BC3 /* PubnativeLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PubnativeLite.framework; sourceTree = "<group>"; };
 		E7566C35203C3A8C00487557 /* ForecastUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastUpdateDelegate.swift; sourceTree = "<group>"; };
 		E7566C37203C3B1F00487557 /* CurrentUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUpdateDelegate.swift; sourceTree = "<group>"; };
 		E75E4681203B3DB500FF9672 /* ForecastCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCity.swift; sourceTree = "<group>"; };
@@ -708,7 +720,7 @@
 				5AD946A42087843100DD7E8C /* MPUBMoatMobileAppKit.framework in Frameworks */,
 				2E1289B11BE255C43CB298A3 /* Pods_EasyWeather.framework in Frameworks */,
 				5AD946A32087843100DD7E8C /* libAvid-mopub-3.6.1.a in Frameworks */,
-				5AFFDC8020A34BC400713BC3 /* PubnativeLite.framework in Frameworks */,
+				5A995D3920FF801200368279 /* PubnativeLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,10 +757,27 @@
 			path = Current;
 			sourceTree = "<group>";
 		};
+		5A995D2B20FF7E6300368279 /* DFPAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				5A995D2C20FF7E6300368279 /* PNLiteDFPUtils.m */,
+				5A995D2D20FF7E6300368279 /* PNLiteDFPMRectCustomEvent.m */,
+				5A995D2E20FF7E6300368279 /* PNLiteDFPBannerCustomEvent.m */,
+				5A995D2F20FF7E6300368279 /* PNLiteDFPInterstitialCustomEvent.h */,
+				5A995D3020FF7E6300368279 /* PNLiteDFPUtils.h */,
+				5A995D3120FF7E6300368279 /* PNLiteDFPMRectCustomEvent.h */,
+				5A995D3220FF7E6300368279 /* PNLiteDFPInterstitialCustomEvent.m */,
+				5A995D3320FF7E6300368279 /* PNLiteDFPBannerCustomEvent.h */,
+			);
+			name = DFPAdapter;
+			path = "../../../../iOS PNLite/pubnative-lite-ios-sdk/PubnativeLite/PubnativeLiteDemo/Adapters/DFPAdapter";
+			sourceTree = "<group>";
+		};
 		5AD944EB208782CE00DD7E8C /* Adapters */ = {
 			isa = PBXGroup;
 			children = (
 				5AD944EC208782CE00DD7E8C /* MoPubAdapter */,
+				5A995D2B20FF7E6300368279 /* DFPAdapter */,
 				5AD944F5208782CE00DD7E8C /* PNLite-Bridging-Header.h */,
 			);
 			path = Adapters;
@@ -1403,7 +1432,7 @@
 		E7CC275F203AF265006A95B9 = {
 			isa = PBXGroup;
 			children = (
-				5AFFDC7F20A34BC400713BC3 /* PubnativeLite.framework */,
+				5A995D3820FF801100368279 /* PubnativeLite.framework */,
 				E7CC276A203AF265006A95B9 /* EasyWeather */,
 				E7CC2769203AF265006A95B9 /* Products */,
 				9CE1A5FC539F853B68140ACE /* Pods */,
@@ -1638,6 +1667,7 @@
 				5AD9475F2087843200DD7E8C /* MPBannerCustomEvent.m in Sources */,
 				E75E4684203B3DC600FF9672 /* ForecastCoordinate.swift in Sources */,
 				5AD946A22087843100DD7E8C /* MPViewabilityAdapterAvid.m in Sources */,
+				5A995D3620FF7E6300368279 /* PNLiteDFPBannerCustomEvent.m in Sources */,
 				5AD946F92087843100DD7E8C /* MRBundleManager.m in Sources */,
 				5AD946A62087843100DD7E8C /* MPViewabilityTracker.m in Sources */,
 				5AD947592087843200DD7E8C /* MPRewardedVideoConnection.m in Sources */,
@@ -1650,6 +1680,7 @@
 				5AD9473A2087843200DD7E8C /* MPTableViewCellImpressionTracker.m in Sources */,
 				5AD946CE2087843100DD7E8C /* MPHTMLBannerCustomEvent.m in Sources */,
 				5AD947612087843200DD7E8C /* MoPub.m in Sources */,
+				5A995D3520FF7E6300368279 /* PNLiteDFPMRectCustomEvent.m in Sources */,
 				5AD946C92087843100DD7E8C /* MPVASTTracking.m in Sources */,
 				5AD9472C2087843200DD7E8C /* MPNativePositionSource.m in Sources */,
 				5AD946D82087843100DD7E8C /* MPAdConfiguration.m in Sources */,
@@ -1676,6 +1707,7 @@
 				5AD946EF2087843100DD7E8C /* MRNativeCommandHandler.m in Sources */,
 				5AD947392087843200DD7E8C /* MPNativeView.m in Sources */,
 				E75E4682203B3DB500FF9672 /* ForecastCity.swift in Sources */,
+				5A995D3720FF7E6300368279 /* PNLiteDFPInterstitialCustomEvent.m in Sources */,
 				5AD947492087843200DD7E8C /* MOPUBNativeVideoCustomEvent.m in Sources */,
 				5AD9471F2087843200DD7E8C /* MPVASTResponse.m in Sources */,
 				E7566C38203C3B1F00487557 /* CurrentUpdateDelegate.swift in Sources */,
@@ -1752,6 +1784,7 @@
 				E75E46A3203B468600FF9672 /* ApiClient.swift in Sources */,
 				5AD946E12087843100DD7E8C /* MPClosableView.m in Sources */,
 				E75E46A0203B3F0C00FF9672 /* CurrentResponse.swift in Sources */,
+				5A995D3420FF7E6300368279 /* PNLiteDFPUtils.m in Sources */,
 				5AD9470C2087843200DD7E8C /* NSHTTPURLResponse+MPAdditions.m in Sources */,
 				5AD947232087843200DD7E8C /* MPNativeAdRequest.m in Sources */,
 				5AD947432087843200DD7E8C /* MPNativeAd.m in Sources */,

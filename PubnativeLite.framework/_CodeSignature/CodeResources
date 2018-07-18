@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/PNLiteAd.h</key>
 		<data>
-		WPsDOOQC2ROTaXp+ZeLQ4kSkUFY=
+		GXNq+TX32+ivw5DjhJbtDTzi55Q=
 		</data>
 		<key>Headers/PNLiteAdCache.h</key>
 		<data>
@@ -20,13 +20,21 @@
 		<data>
 		PTWjOvXSpSLoO3oXb1/MdSmMjIY=
 		</data>
+		<key>Headers/PNLiteAdView.h</key>
+		<data>
+		bJDXN/8PnicYMHuOrXVILB5+VDw=
+		</data>
 		<key>Headers/PNLiteBannerAdRequest.h</key>
 		<data>
 		2871gRAgcvGTs1JUTphyLo785FU=
 		</data>
+		<key>Headers/PNLiteBannerAdView.h</key>
+		<data>
+		z31CN5f6PFlI2Hi9m4X8PMbnxGk=
+		</data>
 		<key>Headers/PNLiteBannerPresenter.h</key>
 		<data>
-		LY6HnBikl68kJoOJDTklUDdqyxE=
+		x4xbSUwOH6GrDaDcgX0e8JWPrac=
 		</data>
 		<key>Headers/PNLiteBannerPresenterFactory.h</key>
 		<data>
@@ -44,9 +52,17 @@
 		<data>
 		lydPaz01xNrQLi4LMBNie7AIS3w=
 		</data>
+		<key>Headers/PNLiteContentInfoView.h</key>
+		<data>
+		l7qQzcnRcHmuH8FeXq5jseQ6AOc=
+		</data>
 		<key>Headers/PNLiteDataModel.h</key>
 		<data>
 		KqVfBscxYg+s6IkQpAZpRWCjn1M=
+		</data>
+		<key>Headers/PNLiteInterstitialAd.h</key>
+		<data>
+		KaxvEmhXWd8rlZ2Hxg23kFVM88E=
 		</data>
 		<key>Headers/PNLiteInterstitialAdRequest.h</key>
 		<data>
@@ -54,7 +70,7 @@
 		</data>
 		<key>Headers/PNLiteInterstitialPresenter.h</key>
 		<data>
-		5RGWZ965QIOYdkaGfBET+pdRIAo=
+		T4TV36gH6ozStF6TlU77Pf8HEP0=
 		</data>
 		<key>Headers/PNLiteInterstitialPresenterFactory.h</key>
 		<data>
@@ -70,15 +86,19 @@
 		</data>
 		<key>Headers/PNLiteMRAIDView.h</key>
 		<data>
-		oCDcvkJ7LPceR518BN0/jvxB+dc=
+		pQ+f8ZlhBsBPQyfzvKpI0DTiT7U=
 		</data>
 		<key>Headers/PNLiteMRectAdRequest.h</key>
 		<data>
 		JMN41xiCqXOWvq5TaIuwiF0ek2k=
 		</data>
+		<key>Headers/PNLiteMRectAdView.h</key>
+		<data>
+		nb87HoLUXwIuU7RkS0CYHfAjRug=
+		</data>
 		<key>Headers/PNLiteMRectPresenter.h</key>
 		<data>
-		psALmVNY7X48pG0kXH7CctXI+g4=
+		UvZJO4pS/QWWwynm+az0aoaOYNM=
 		</data>
 		<key>Headers/PNLiteMRectPresenterFactory.h</key>
 		<data>
@@ -86,31 +106,115 @@
 		</data>
 		<key>Headers/PNLitePrebidUtils.h</key>
 		<data>
-		8tWC+Ns8JnjArHkyWyfmd4ROCnk=
+		pofUSmW5KXJthfXM76+FJxJHqUg=
 		</data>
 		<key>Headers/PNLiteRequestParameter.h</key>
 		<data>
 		pO4hqhb3PhJYaSxsIZRXqlEH9DQ=
 		</data>
+		<key>Headers/PNLiteSettings.h</key>
+		<data>
+		OUVlKxxUq99+sndz3ofYrq7jDng=
+		</data>
 		<key>Headers/PNLiteTargetingModel.h</key>
 		<data>
 		XiXWEIkyWtdyTIftjVDlAdvF1xw=
 		</data>
+		<key>Headers/PNLiteUserDataManager.h</key>
+		<data>
+		dHWEyvs8rquS13WbpVzOPvXb8uI=
+		</data>
 		<key>Headers/PubnativeLite.h</key>
 		<data>
-		lsxnP+QrZEyyFwSZqeZ4VJ5egKI=
+		mi5qyTeFB1X0NpMPfDN0RSiHEWg=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		YIiH5P0HnqlFtr8Xm3DvunRgKvA=
+		a0U7bc7rO3yrvM+fhBLbtoOz3U0=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		YjYtKAoDjk/G9v/6lS9Xi4obj0I=
 		</data>
+		<key>PNLiteClose.png</key>
+		<data>
+		n1yE8ymcpvWE3ViYwcTzG3665/M=
+		</data>
+		<key>PNLiteClose@2x.png</key>
+		<data>
+		YJGWo+hV40wha6GqWRAKRS9/4Uk=
+		</data>
+		<key>PNLiteClose@3x.png</key>
+		<data>
+		HiJUP6J3ffmKg92ZbHc5AdHXyHc=
+		</data>
 		<key>PNLiteCloseButton.png</key>
 		<data>
 		mEsJPcb3U2QtLoYg5PZL2hJybnk=
+		</data>
+		<key>PNLiteConsentPageViewController.nib</key>
+		<data>
+		z0dDtEoDIebfpE3KtA2UjMlJBXE=
+		</data>
+		<key>PNLiteExternalLink.png</key>
+		<data>
+		wrNA+lNFcIu4O70AtWXb05DRsYU=
+		</data>
+		<key>PNLiteExternalLink@2x.png</key>
+		<data>
+		W/exFw13T+OaUPQZZzYiVYKOOJE=
+		</data>
+		<key>PNLiteFullScreen.png</key>
+		<data>
+		wZzA2+xe9UJ7GOGC6nMUjmOmrRg=
+		</data>
+		<key>PNLiteFullScreen@2x.png</key>
+		<data>
+		RIvdv+uyMWb4it0X3u97W/axqgg=
+		</data>
+		<key>PNLiteMute.png</key>
+		<data>
+		L/pb43eMpFLEgdx7rsqwYIAvWvk=
+		</data>
+		<key>PNLiteMute@2x.png</key>
+		<data>
+		C1UfnfWQNmD1vWkTCEZucUIqW5M=
+		</data>
+		<key>PNLitePlay.png</key>
+		<data>
+		dZu8YCOw7WDuJeBIORE7wb+r1NI=
+		</data>
+		<key>PNLitePlay@2x.png</key>
+		<data>
+		J8s5MkDacBrK0cjD/YhorJtz2o0=
+		</data>
+		<key>PNLiteUnmute.png</key>
+		<data>
+		UuvE9CMJS+dRjKGTQbOlEgkNkqk=
+		</data>
+		<key>PNLiteUnmute@2x.png</key>
+		<data>
+		5rJtDoYWQXO16No+mmeBDFJaufg=
+		</data>
+		<key>PNLiteVASTPlayerFullScreenViewController.nib/objects-11.0+.nib</key>
+		<data>
+		5AWY9OJmzVfuv/RhA5dIG7WRhI4=
+		</data>
+		<key>PNLiteVASTPlayerFullScreenViewController.nib/runtime.nib</key>
+		<data>
+		hT+U5FQk8Jm/ctPx9eQUcS0IF8s=
+		</data>
+		<key>PNLiteVASTPlayerInterstitialViewController.nib</key>
+		<data>
+		yDYsQdX9cz+155kJ5gF3/4g6/j8=
+		</data>
+		<key>PNLiteVASTPlayerViewController.nib/objects-11.0+.nib</key>
+		<data>
+		Dmm6iYTkif2htMNrPjDcJhvb0Xg=
+		</data>
+		<key>PNLiteVASTPlayerViewController.nib/runtime.nib</key>
+		<data>
+		OBsN1YCoeA1gGKoeiJMGPHPgV+Y=
 		</data>
 		<key>PrivateHeaders/PNLiteAdTracker.h</key>
 		<data>
@@ -126,7 +230,7 @@
 		</data>
 		<key>PrivateHeaders/PNLiteAssetGroupType.h</key>
 		<data>
-		rSddqb7SBDUDjH5HDxaVz3WITHE=
+		cOblgdYF7Quj/CIAaRrXdvyQCZ4=
 		</data>
 		<key>PrivateHeaders/PNLiteBackButton.h</key>
 		<data>
@@ -136,9 +240,17 @@
 		<data>
 		8ZdhmR+ye5S/MQTTkEGCD1wvlA8=
 		</data>
+		<key>PrivateHeaders/PNLiteCheckConsentRequest.h</key>
+		<data>
+		AI7cSMKaK7pR1HKFvY9ZlA5UhC8=
+		</data>
 		<key>PrivateHeaders/PNLiteCloseButton.h</key>
 		<data>
 		YcozbIxMviYhultPQj88eL+2+h4=
+		</data>
+		<key>PrivateHeaders/PNLiteConsentEndpoints.h</key>
+		<data>
+		7NJhSjv7RtwOCAcY85J/f2I6DgA=
 		</data>
 		<key>PrivateHeaders/PNLiteCryptoUtils.h</key>
 		<data>
@@ -154,7 +266,7 @@
 		</data>
 		<key>PrivateHeaders/PNLiteHttpRequest.h</key>
 		<data>
-		o8vL69WCDUWnFyEQolvCRMQ9lG0=
+		TBV069OsXNw5s8ldw1SA9YHtlF8=
 		</data>
 		<key>PrivateHeaders/PNLiteInterstitialPresenterDecorator.h</key>
 		<data>
@@ -208,6 +320,14 @@
 		<data>
 		L8lfgHJBlSVulu/6dtmZ8ppJ4CY=
 		</data>
+		<key>PrivateHeaders/PNLiteProgressLabel.h</key>
+		<data>
+		jeKYlzJcZZjtZlHPCxR+Ggx23JQ=
+		</data>
+		<key>PrivateHeaders/PNLitePropertyAnimation.h</key>
+		<data>
+		OhxntJowUR/r5wjL1ALu4P0s2DE=
+		</data>
 		<key>PrivateHeaders/PNLiteReachability.h</key>
 		<data>
 		ZZ/xzRts7vvvj0BKnknv5ybkqZI=
@@ -216,9 +336,73 @@
 		<data>
 		RH1MH8xjfL7NDJlksJtJGvoyLik=
 		</data>
-		<key>PrivateHeaders/PNLiteSettings.h</key>
+		<key>PrivateHeaders/PNLiteRevokeConsentRequest.h</key>
 		<data>
-		OUVlKxxUq99+sndz3ofYrq7jDng=
+		iVOj8GtJe+KkFn89wQAzmWYIuvE=
+		</data>
+		<key>PrivateHeaders/PNLiteUserConsentModel.h</key>
+		<data>
+		VWwnGB9/pE6NX/x7rzABr+6eyLg=
+		</data>
+		<key>PrivateHeaders/PNLiteUserConsentRequest.h</key>
+		<data>
+		LXyVJjLG5leNL7Lonyxg5whCLGc=
+		</data>
+		<key>PrivateHeaders/PNLiteUserConsentRequestModel.h</key>
+		<data>
+		fELj5hVgqnTya/PxajWaTj3R+IA=
+		</data>
+		<key>PrivateHeaders/PNLiteUserConsentResponseModel.h</key>
+		<data>
+		K4E/coC23K3CLSsKAw6d5wI6EiA=
+		</data>
+		<key>PrivateHeaders/PNLiteUserConsentResponseStatus.h</key>
+		<data>
+		fAqJK7aWUWj1qWPwj5t7EV4AwbY=
+		</data>
+		<key>PrivateHeaders/PNLiteVASTEventProcessor.h</key>
+		<data>
+		Jw/hkf5m3sa/sCsEynboYtGRpKg=
+		</data>
+		<key>PrivateHeaders/PNLiteVASTInterstitialPresenter.h</key>
+		<data>
+		/WKUtUBNTyK3D/r11c3/8AT0PIk=
+		</data>
+		<key>PrivateHeaders/PNLiteVASTMRectPresenter.h</key>
+		<data>
+		6dzTjodOayHfv/SlvJDKGKoO+h8=
+		</data>
+		<key>PrivateHeaders/PNLiteVASTMediaFile.h</key>
+		<data>
+		5Lc4EJ+xNZUuNfejnsVgLUY5E5o=
+		</data>
+		<key>PrivateHeaders/PNLiteVASTMediaFilePicker.h</key>
+		<data>
+		6xAZu3Zjp+q4fuBGEFMnxtjWWeA=
+		</data>
+		<key>PrivateHeaders/PNLiteVASTModel.h</key>
+		<data>
+		sZ2FDGpHd8+naSZCXpjXkGm52Ng=
+		</data>
+		<key>PrivateHeaders/PNLiteVASTParser.h</key>
+		<data>
+		EvCob22XPfQj2GOp/aeKC0ogVa4=
+		</data>
+		<key>PrivateHeaders/PNLiteVASTPlayerInterstitialViewController.h</key>
+		<data>
+		YzUWHBPBZMpPytG+KFxJEF2G2aA=
+		</data>
+		<key>PrivateHeaders/PNLiteVASTPlayerViewController.h</key>
+		<data>
+		RYNj3x9wrSz4KeOEb9UGEbKt5E4=
+		</data>
+		<key>PrivateHeaders/PNLiteVASTSchema.h</key>
+		<data>
+		PpTi0/PaahLNBZvnsXXWOymOa80=
+		</data>
+		<key>PrivateHeaders/PNLiteVASTXMLUtil.h</key>
+		<data>
+		QDEhhiJs+qDmRQpyGGTeLl/XFpY=
 		</data>
 		<key>PrivateHeaders/PNLitemraidjs.h</key>
 		<data>
@@ -235,11 +419,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			WPsDOOQC2ROTaXp+ZeLQ4kSkUFY=
+			GXNq+TX32+ivw5DjhJbtDTzi55Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			4sbYUjvDTlxDUdfGbVlDtXomkZmBRcqF3OJ9n/HikXA=
+			Oo4IEkBvz6FeRa7mcrear6MzcEU0MbV6+SD3dSXkeDk=
 			</data>
 		</dict>
 		<key>Headers/PNLiteAdCache.h</key>
@@ -275,6 +459,17 @@
 			g3iLrXpcuIHJutyS7uTK91cEXd2g6ErOicNsr4BnG0w=
 			</data>
 		</dict>
+		<key>Headers/PNLiteAdView.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			bJDXN/8PnicYMHuOrXVILB5+VDw=
+			</data>
+			<key>hash2</key>
+			<data>
+			0mZF5P+uiyXOSn5vuHo1RCB41UZvElwCwjkNXmDLfgw=
+			</data>
+		</dict>
 		<key>Headers/PNLiteBannerAdRequest.h</key>
 		<dict>
 			<key>hash</key>
@@ -286,15 +481,26 @@
 			eAkSbfzhKJJNiiLGkJoSVa9xZSCjriQD9K3uUUvO7DE=
 			</data>
 		</dict>
+		<key>Headers/PNLiteBannerAdView.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			z31CN5f6PFlI2Hi9m4X8PMbnxGk=
+			</data>
+			<key>hash2</key>
+			<data>
+			OR4G/tl38Bxtw8Eh8GVmaCMqpRBiQTmfMNiLuCo/IDw=
+			</data>
+		</dict>
 		<key>Headers/PNLiteBannerPresenter.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			LY6HnBikl68kJoOJDTklUDdqyxE=
+			x4xbSUwOH6GrDaDcgX0e8JWPrac=
 			</data>
 			<key>hash2</key>
 			<data>
-			K6JoUxV6bXkSdpYqJnCbcWwxFPcxPPUAPpmgAuROtNQ=
+			r0VqLA2VwXGwzpwC3wvS4r44GW/pbmyFNOeN0wwRKNU=
 			</data>
 		</dict>
 		<key>Headers/PNLiteBannerPresenterFactory.h</key>
@@ -341,6 +547,17 @@
 			ow7uagE/GWzbljutwapf7FUpPSb1vazLwZsRoNoldso=
 			</data>
 		</dict>
+		<key>Headers/PNLiteContentInfoView.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			l7qQzcnRcHmuH8FeXq5jseQ6AOc=
+			</data>
+			<key>hash2</key>
+			<data>
+			fEoBEncFcaFRSG5sBjx2A6KmDfbCT1nW1FnlzOHVHzo=
+			</data>
+		</dict>
 		<key>Headers/PNLiteDataModel.h</key>
 		<dict>
 			<key>hash</key>
@@ -350,6 +567,17 @@
 			<key>hash2</key>
 			<data>
 			X/sDBM5kY0GzC2XeL44NrtrOe1cBqt8Qp+6bYRLyZzQ=
+			</data>
+		</dict>
+		<key>Headers/PNLiteInterstitialAd.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			KaxvEmhXWd8rlZ2Hxg23kFVM88E=
+			</data>
+			<key>hash2</key>
+			<data>
+			cQWdHs5YuaV2Sgb+ZvQM2qXUtZnAthlEOUircPDnMxU=
 			</data>
 		</dict>
 		<key>Headers/PNLiteInterstitialAdRequest.h</key>
@@ -367,11 +595,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			5RGWZ965QIOYdkaGfBET+pdRIAo=
+			T4TV36gH6ozStF6TlU77Pf8HEP0=
 			</data>
 			<key>hash2</key>
 			<data>
-			L6bhNBgd00qFEM3lhfFYzewd9dfaGgnVbCFWcjAPx5I=
+			g/+Cz/NIYRZQhEtflzG6XAEJI9ba1bBq2hHPbe/wpnU=
 			</data>
 		</dict>
 		<key>Headers/PNLiteInterstitialPresenterFactory.h</key>
@@ -411,11 +639,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			oCDcvkJ7LPceR518BN0/jvxB+dc=
+			pQ+f8ZlhBsBPQyfzvKpI0DTiT7U=
 			</data>
 			<key>hash2</key>
 			<data>
-			/A293BQiu1ur0wF4QqtHUqyTG1ptAaMyPa+brgZrFYk=
+			mHsj5Lmb9R7KB3FtX3F7FIeLbr9Ov0I04B0+ko4H+24=
 			</data>
 		</dict>
 		<key>Headers/PNLiteMRectAdRequest.h</key>
@@ -429,15 +657,26 @@
 			ItI2AVAJZs99uIoP1koSDldOijJZh6OxsKNwl/E/ROk=
 			</data>
 		</dict>
+		<key>Headers/PNLiteMRectAdView.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			nb87HoLUXwIuU7RkS0CYHfAjRug=
+			</data>
+			<key>hash2</key>
+			<data>
+			JNMfRsZGDWcgnRDnCJGF6pMbkQBKUvLm+YRS8CEdQDw=
+			</data>
+		</dict>
 		<key>Headers/PNLiteMRectPresenter.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			psALmVNY7X48pG0kXH7CctXI+g4=
+			UvZJO4pS/QWWwynm+az0aoaOYNM=
 			</data>
 			<key>hash2</key>
 			<data>
-			LFQ/fl2aS2pv2TYbJTevdjo4Jb8gxnhkk6FhpLGL0Dc=
+			rVaQu5+yaCUekKuVz4Bym5LYrdYuVJSmiR8QhgLOZzY=
 			</data>
 		</dict>
 		<key>Headers/PNLiteMRectPresenterFactory.h</key>
@@ -455,11 +694,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			8tWC+Ns8JnjArHkyWyfmd4ROCnk=
+			pofUSmW5KXJthfXM76+FJxJHqUg=
 			</data>
 			<key>hash2</key>
 			<data>
-			FLjZFphDQ4Kda8rz6PSZUxGQ4h4n+L0qFs7BRQBZIPE=
+			+/yVNx/ke+H8k3gS3re/8P97b5nWn7wWwbejOdl4hSE=
 			</data>
 		</dict>
 		<key>Headers/PNLiteRequestParameter.h</key>
@@ -473,6 +712,17 @@
 			lFzMuwtwRtYcihxsirLoCUy0hrk53G9+6dkbeRPYJqs=
 			</data>
 		</dict>
+		<key>Headers/PNLiteSettings.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			OUVlKxxUq99+sndz3ofYrq7jDng=
+			</data>
+			<key>hash2</key>
+			<data>
+			sah6t7S9qo2Xl80k/y6bCFmRtFwJR0TxbZGQKVlWBWY=
+			</data>
+		</dict>
 		<key>Headers/PNLiteTargetingModel.h</key>
 		<dict>
 			<key>hash</key>
@@ -484,15 +734,26 @@
 			dGHqqAcS83Q/GX0eq1DP0rNW/dT6BHn2w2F7I4mW4Uw=
 			</data>
 		</dict>
+		<key>Headers/PNLiteUserDataManager.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			dHWEyvs8rquS13WbpVzOPvXb8uI=
+			</data>
+			<key>hash2</key>
+			<data>
+			X3vGWZJ9HaSluAmRM3jK8dqqwBRKCPYts3+4kOoD47U=
+			</data>
+		</dict>
 		<key>Headers/PubnativeLite.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			lsxnP+QrZEyyFwSZqeZ4VJ5egKI=
+			mi5qyTeFB1X0NpMPfDN0RSiHEWg=
 			</data>
 			<key>hash2</key>
 			<data>
-			iLl+bkc8KkayUIg7U0YV7uP3boB+CFS05adLxEoapYQ=
+			Ss8MPP6X8loAFPmv7f8FVP+GzqF1UlSFnwoaScOQ9UA=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -506,6 +767,39 @@
 			xc57o3fu3eDSmucZPhHrRIvOLfZeKFc3owYf9Dsnzs8=
 			</data>
 		</dict>
+		<key>PNLiteClose.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			n1yE8ymcpvWE3ViYwcTzG3665/M=
+			</data>
+			<key>hash2</key>
+			<data>
+			QrBcpN01NXBexKW3Esx6SKQbXHOcNpg8Ngx019iZnNs=
+			</data>
+		</dict>
+		<key>PNLiteClose@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YJGWo+hV40wha6GqWRAKRS9/4Uk=
+			</data>
+			<key>hash2</key>
+			<data>
+			Ls+Bjn0VMnNrq+Pd+pCUqBgN855cLqyL4t6u91/vUdo=
+			</data>
+		</dict>
+		<key>PNLiteClose@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			HiJUP6J3ffmKg92ZbHc5AdHXyHc=
+			</data>
+			<key>hash2</key>
+			<data>
+			yciNsQR6jm5NRqiz5Mh6OPz3Bhvu7B74U2n2HBwws2M=
+			</data>
+		</dict>
 		<key>PNLiteCloseButton.png</key>
 		<dict>
 			<key>hash</key>
@@ -515,6 +809,182 @@
 			<key>hash2</key>
 			<data>
 			N+3UYG0s0rgFIWo5gTW2TdN28+AO+ymduzfNsGT0D7M=
+			</data>
+		</dict>
+		<key>PNLiteConsentPageViewController.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			z0dDtEoDIebfpE3KtA2UjMlJBXE=
+			</data>
+			<key>hash2</key>
+			<data>
+			ZfqTH/GNDaJZmiyHQxWW8aFN6of9hQscsCzDS5/f8HU=
+			</data>
+		</dict>
+		<key>PNLiteExternalLink.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			wrNA+lNFcIu4O70AtWXb05DRsYU=
+			</data>
+			<key>hash2</key>
+			<data>
+			42YsP3ZM38QRT49c7FYONTEBMhxWokxH42LiV4jIYII=
+			</data>
+		</dict>
+		<key>PNLiteExternalLink@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			W/exFw13T+OaUPQZZzYiVYKOOJE=
+			</data>
+			<key>hash2</key>
+			<data>
+			4+oqYCH80BAhg9SPGEnKhOpXq54Ni7/55mmu3xHYGkw=
+			</data>
+		</dict>
+		<key>PNLiteFullScreen.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			wZzA2+xe9UJ7GOGC6nMUjmOmrRg=
+			</data>
+			<key>hash2</key>
+			<data>
+			2dpyq9GbPcqpTlCHPvpu11C1w0KmdIz7VB7HXGFXyGw=
+			</data>
+		</dict>
+		<key>PNLiteFullScreen@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			RIvdv+uyMWb4it0X3u97W/axqgg=
+			</data>
+			<key>hash2</key>
+			<data>
+			Md2ErZ0WTYyoQkq3YH70N7LIQZafilVeTYr8KUJFumA=
+			</data>
+		</dict>
+		<key>PNLiteMute.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			L/pb43eMpFLEgdx7rsqwYIAvWvk=
+			</data>
+			<key>hash2</key>
+			<data>
+			FO3G7Va+WoJHsBDmAvGESsJvIBfQxF15/EsLt+e8Fbk=
+			</data>
+		</dict>
+		<key>PNLiteMute@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			C1UfnfWQNmD1vWkTCEZucUIqW5M=
+			</data>
+			<key>hash2</key>
+			<data>
+			knIX54Pe/dM5HrELLpozBmwz7YgmiceUO+HN9m5+yy4=
+			</data>
+		</dict>
+		<key>PNLitePlay.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			dZu8YCOw7WDuJeBIORE7wb+r1NI=
+			</data>
+			<key>hash2</key>
+			<data>
+			cq/KWXZI9XXpBJJyNXmUb9Qs7fzDlJSdR13KeerPB/o=
+			</data>
+		</dict>
+		<key>PNLitePlay@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			J8s5MkDacBrK0cjD/YhorJtz2o0=
+			</data>
+			<key>hash2</key>
+			<data>
+			ngc6OxvLLBw5YyZEXoBLicwMo3tVzROq6v4pJx+dRt0=
+			</data>
+		</dict>
+		<key>PNLiteUnmute.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			UuvE9CMJS+dRjKGTQbOlEgkNkqk=
+			</data>
+			<key>hash2</key>
+			<data>
+			1LJP/s2+cc/zI3eGUj3GJKgYGhZiRacYjqzj1Kb10X0=
+			</data>
+		</dict>
+		<key>PNLiteUnmute@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			5rJtDoYWQXO16No+mmeBDFJaufg=
+			</data>
+			<key>hash2</key>
+			<data>
+			54kwHHu7DXxXDSDN5dFvA+i0o0ytJ1rtYkRe5a+ldeM=
+			</data>
+		</dict>
+		<key>PNLiteVASTPlayerFullScreenViewController.nib/objects-11.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			5AWY9OJmzVfuv/RhA5dIG7WRhI4=
+			</data>
+			<key>hash2</key>
+			<data>
+			p939crNU++0Bl2IdM0R/tEZOjpRsxCsz6cNuMhzN7gU=
+			</data>
+		</dict>
+		<key>PNLiteVASTPlayerFullScreenViewController.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			hT+U5FQk8Jm/ctPx9eQUcS0IF8s=
+			</data>
+			<key>hash2</key>
+			<data>
+			hwycyCpOC8CwIlV1miLOlOm9fm+1CYpp1xzuNJ+fTrA=
+			</data>
+		</dict>
+		<key>PNLiteVASTPlayerInterstitialViewController.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			yDYsQdX9cz+155kJ5gF3/4g6/j8=
+			</data>
+			<key>hash2</key>
+			<data>
+			td9rjIdyA//131pmQFRYqL6qq2XgxqafW8w7kuY4uLw=
+			</data>
+		</dict>
+		<key>PNLiteVASTPlayerViewController.nib/objects-11.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Dmm6iYTkif2htMNrPjDcJhvb0Xg=
+			</data>
+			<key>hash2</key>
+			<data>
+			NZsAeBBsTKurLbQ8bbGfzDCRkHyCM7seJ1KZAtbSOdQ=
+			</data>
+		</dict>
+		<key>PNLiteVASTPlayerViewController.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			OBsN1YCoeA1gGKoeiJMGPHPgV+Y=
+			</data>
+			<key>hash2</key>
+			<data>
+			OXYO1k2Ab7kxuUruh0ZF6Uq8AaA5xNbGsU+4H/NsHPQ=
 			</data>
 		</dict>
 		<key>PrivateHeaders/PNLiteAdTracker.h</key>
@@ -554,11 +1024,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			rSddqb7SBDUDjH5HDxaVz3WITHE=
+			cOblgdYF7Quj/CIAaRrXdvyQCZ4=
 			</data>
 			<key>hash2</key>
 			<data>
-			+XpjszWwIC+dzqSndJtf1HyLbaIXw0FjDZ8vLRT54mE=
+			Hh2HJmBqSn5QSjDoIKJ8FFJKmr9EuJ+mipVip0zkK1c=
 			</data>
 		</dict>
 		<key>PrivateHeaders/PNLiteBackButton.h</key>
@@ -583,6 +1053,17 @@
 			RayPQicfSEvt003Hwzhd6oUXCpnEkQBDufA2wGYi+ZU=
 			</data>
 		</dict>
+		<key>PrivateHeaders/PNLiteCheckConsentRequest.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			AI7cSMKaK7pR1HKFvY9ZlA5UhC8=
+			</data>
+			<key>hash2</key>
+			<data>
+			cul2aPSotUrADwkugWwun6Y2GJkFm7SR18+lm8pARoE=
+			</data>
+		</dict>
 		<key>PrivateHeaders/PNLiteCloseButton.h</key>
 		<dict>
 			<key>hash</key>
@@ -592,6 +1073,17 @@
 			<key>hash2</key>
 			<data>
 			uGSKLhCFnHsR/6Wvyatlde1XyedfbW2q3TjBapjYk6A=
+			</data>
+		</dict>
+		<key>PrivateHeaders/PNLiteConsentEndpoints.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			7NJhSjv7RtwOCAcY85J/f2I6DgA=
+			</data>
+			<key>hash2</key>
+			<data>
+			oC2KO2ZtR2+iJS0rGtBDW9uO4kyJ4AskwoQXCPcpRdg=
 			</data>
 		</dict>
 		<key>PrivateHeaders/PNLiteCryptoUtils.h</key>
@@ -631,11 +1123,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			o8vL69WCDUWnFyEQolvCRMQ9lG0=
+			TBV069OsXNw5s8ldw1SA9YHtlF8=
 			</data>
 			<key>hash2</key>
 			<data>
-			nTYR9s6lwRtJBcFe4Jwdjk9sMXAQz/UKUJSh2vJD9QY=
+			XxLojZ9vSx+fOuXD5A7J/l82plDvPPcUG+FdQe4t+tA=
 			</data>
 		</dict>
 		<key>PrivateHeaders/PNLiteInterstitialPresenterDecorator.h</key>
@@ -781,6 +1273,28 @@
 			5zJzugkVC1H+03D6SZsomc1+uMrmlR/NppZRz+g1aiI=
 			</data>
 		</dict>
+		<key>PrivateHeaders/PNLiteProgressLabel.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			jeKYlzJcZZjtZlHPCxR+Ggx23JQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			lPIiUPpP1I8LGhlNE9j9VSxL0e4+ujz1kVT8QxXLUCc=
+			</data>
+		</dict>
+		<key>PrivateHeaders/PNLitePropertyAnimation.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			OhxntJowUR/r5wjL1ALu4P0s2DE=
+			</data>
+			<key>hash2</key>
+			<data>
+			Jc+AgwzSg7eLOsUy6BNbXRoPmTfFYuEPAVKypKpqoqU=
+			</data>
+		</dict>
 		<key>PrivateHeaders/PNLiteReachability.h</key>
 		<dict>
 			<key>hash</key>
@@ -803,15 +1317,191 @@
 			FjBpd6QCNiLOnzDAC69bl/QvBg1gE+pM6qf3UWKUAws=
 			</data>
 		</dict>
-		<key>PrivateHeaders/PNLiteSettings.h</key>
+		<key>PrivateHeaders/PNLiteRevokeConsentRequest.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			OUVlKxxUq99+sndz3ofYrq7jDng=
+			iVOj8GtJe+KkFn89wQAzmWYIuvE=
 			</data>
 			<key>hash2</key>
 			<data>
-			sah6t7S9qo2Xl80k/y6bCFmRtFwJR0TxbZGQKVlWBWY=
+			YIZYJsTWnZ+w3rDaEQHd3wsc7SajCFBT7GC6Lh4phkg=
+			</data>
+		</dict>
+		<key>PrivateHeaders/PNLiteUserConsentModel.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			VWwnGB9/pE6NX/x7rzABr+6eyLg=
+			</data>
+			<key>hash2</key>
+			<data>
+			RFL/uGYAglWc4k2XwVpL1agfjZ4Z56zmoOQsLvApYgA=
+			</data>
+		</dict>
+		<key>PrivateHeaders/PNLiteUserConsentRequest.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			LXyVJjLG5leNL7Lonyxg5whCLGc=
+			</data>
+			<key>hash2</key>
+			<data>
+			09ApwI7wxfejrucD82YWNdrWhK68jiMoZO2/3SAaYPQ=
+			</data>
+		</dict>
+		<key>PrivateHeaders/PNLiteUserConsentRequestModel.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			fELj5hVgqnTya/PxajWaTj3R+IA=
+			</data>
+			<key>hash2</key>
+			<data>
+			m0esbKUwNCmePUyTRf1jfu6hcOoxo6LIHt5wI+8cjT8=
+			</data>
+		</dict>
+		<key>PrivateHeaders/PNLiteUserConsentResponseModel.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			K4E/coC23K3CLSsKAw6d5wI6EiA=
+			</data>
+			<key>hash2</key>
+			<data>
+			zw2huUZmlBgbpezV43qPohWgHBchzPtOy3xU2GSAnFo=
+			</data>
+		</dict>
+		<key>PrivateHeaders/PNLiteUserConsentResponseStatus.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			fAqJK7aWUWj1qWPwj5t7EV4AwbY=
+			</data>
+			<key>hash2</key>
+			<data>
+			e/crHK4JaiJO5ttuvl4FUQ8HwUsTve53kQfQQf0mxGA=
+			</data>
+		</dict>
+		<key>PrivateHeaders/PNLiteVASTEventProcessor.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Jw/hkf5m3sa/sCsEynboYtGRpKg=
+			</data>
+			<key>hash2</key>
+			<data>
+			iqT2c+fYKSzlR94t77CrHME/7J96f6PIf2Eh7zlt2TQ=
+			</data>
+		</dict>
+		<key>PrivateHeaders/PNLiteVASTInterstitialPresenter.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			/WKUtUBNTyK3D/r11c3/8AT0PIk=
+			</data>
+			<key>hash2</key>
+			<data>
+			U4lrDBSiSOw9UA9I1At2I5zPvFZmT/kVser43OJ47iM=
+			</data>
+		</dict>
+		<key>PrivateHeaders/PNLiteVASTMRectPresenter.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			6dzTjodOayHfv/SlvJDKGKoO+h8=
+			</data>
+			<key>hash2</key>
+			<data>
+			xrfI5cJ/Ms/+T1V0YwGlfH7et+WDFiHdv6aXMDt+GzQ=
+			</data>
+		</dict>
+		<key>PrivateHeaders/PNLiteVASTMediaFile.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			5Lc4EJ+xNZUuNfejnsVgLUY5E5o=
+			</data>
+			<key>hash2</key>
+			<data>
+			HBGdQ8lqOkxcgehbwO1XfMApHViICY20uZ2PoshVBOM=
+			</data>
+		</dict>
+		<key>PrivateHeaders/PNLiteVASTMediaFilePicker.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			6xAZu3Zjp+q4fuBGEFMnxtjWWeA=
+			</data>
+			<key>hash2</key>
+			<data>
+			AvAl3nrZPLYVfm2MGIYIPhUgP3SIHq/FE8jMrGv9OIw=
+			</data>
+		</dict>
+		<key>PrivateHeaders/PNLiteVASTModel.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			sZ2FDGpHd8+naSZCXpjXkGm52Ng=
+			</data>
+			<key>hash2</key>
+			<data>
+			lSR5ISqvAtDHzab20md6KzSh7ybi+0DVQbUuMcBMNCw=
+			</data>
+		</dict>
+		<key>PrivateHeaders/PNLiteVASTParser.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			EvCob22XPfQj2GOp/aeKC0ogVa4=
+			</data>
+			<key>hash2</key>
+			<data>
+			YXAB32j5SGZ7HKE4S/L5zRHEqY61t2A0q+zbFN+w7+Y=
+			</data>
+		</dict>
+		<key>PrivateHeaders/PNLiteVASTPlayerInterstitialViewController.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YzUWHBPBZMpPytG+KFxJEF2G2aA=
+			</data>
+			<key>hash2</key>
+			<data>
+			Qvgzceame360WMnEsPEwFiQeGhiIGaRwXmU8o66LOf8=
+			</data>
+		</dict>
+		<key>PrivateHeaders/PNLiteVASTPlayerViewController.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			RYNj3x9wrSz4KeOEb9UGEbKt5E4=
+			</data>
+			<key>hash2</key>
+			<data>
+			mBjIlmcxyHwOXfXhmfJx9mwLvCp61UGQDEltztoPURg=
+			</data>
+		</dict>
+		<key>PrivateHeaders/PNLiteVASTSchema.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			PpTi0/PaahLNBZvnsXXWOymOa80=
+			</data>
+			<key>hash2</key>
+			<data>
+			pQcA1iHBVuboTra2tObX4+oY3ioliaVF2PmG2S0yRjo=
+			</data>
+		</dict>
+		<key>PrivateHeaders/PNLiteVASTXMLUtil.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			QDEhhiJs+qDmRQpyGGTeLl/XFpY=
+			</data>
+			<key>hash2</key>
+			<data>
+			ScGq7G7tyapRc9Qp7MD1BcdaBPP+6Iz0QRcm2bMrrak=
 			</data>
 		</dict>
 		<key>PrivateHeaders/PNLitemraidjs.h</key>
