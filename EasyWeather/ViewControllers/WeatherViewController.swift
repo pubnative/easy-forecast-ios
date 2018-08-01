@@ -323,7 +323,7 @@ extension WeatherViewController : PNLiteAdRequestDelegate
             dfpMrect.load(request)
         } else if (request == dfpInterstitialAdRequest) {
             let request = DFPRequest()
-            request.customTargeting = PNLitePrebidUtils.createPrebidKeywordsDictionary(with: ad, withZoneID: "4") as? [AnyHashable : Any]
+            request.customTargeting = PNLitePrebidUtils.createPrebidKeywordsDictionary(with: ad, withZoneID: "1") as? [AnyHashable : Any]
             dfpInterstitial.load(request)
         }
     }

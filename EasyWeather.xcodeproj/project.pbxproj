@@ -14,9 +14,9 @@
 		5A995D3520FF7E6300368279 /* PNLiteDFPMRectCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A995D2D20FF7E6300368279 /* PNLiteDFPMRectCustomEvent.m */; };
 		5A995D3620FF7E6300368279 /* PNLiteDFPBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A995D2E20FF7E6300368279 /* PNLiteDFPBannerCustomEvent.m */; };
 		5A995D3720FF7E6300368279 /* PNLiteDFPInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A995D3220FF7E6300368279 /* PNLiteDFPInterstitialCustomEvent.m */; };
-		5A995D3920FF801200368279 /* PubnativeLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A995D3820FF801100368279 /* PubnativeLite.framework */; };
-		5A995D3A20FF801200368279 /* PubnativeLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5A995D3820FF801100368279 /* PubnativeLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5AAEF8E320A1D88F006C7CD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5AAEF8E220A1D88F006C7CD4 /* GoogleService-Info.plist */; };
+		5AD3983E2111FE9B00C1C9C5 /* PubnativeLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD3983D2111FE9B00C1C9C5 /* PubnativeLite.framework */; };
+		5AD3983F2111FE9B00C1C9C5 /* PubnativeLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD3983D2111FE9B00C1C9C5 /* PubnativeLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5AD944F6208782CE00DD7E8C /* PNLiteMoPubMRectCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD944ED208782CE00DD7E8C /* PNLiteMoPubMRectCustomEvent.m */; };
 		5AD944F7208782CE00DD7E8C /* PNLiteMoPubBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD944EE208782CE00DD7E8C /* PNLiteMoPubBannerCustomEvent.m */; };
 		5AD944F8208782CE00DD7E8C /* PNLiteMoPubInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD944F3208782CE00DD7E8C /* PNLiteMoPubInterstitialCustomEvent.m */; };
@@ -250,7 +250,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5A995D3A20FF801200368279 /* PubnativeLite.framework in Embed Frameworks */,
+				5AD3983F2111FE9B00C1C9C5 /* PubnativeLite.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,8 +271,8 @@
 		5A995D3120FF7E6300368279 /* PNLiteDFPMRectCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNLiteDFPMRectCustomEvent.h; sourceTree = "<group>"; };
 		5A995D3220FF7E6300368279 /* PNLiteDFPInterstitialCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNLiteDFPInterstitialCustomEvent.m; sourceTree = "<group>"; };
 		5A995D3320FF7E6300368279 /* PNLiteDFPBannerCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNLiteDFPBannerCustomEvent.h; sourceTree = "<group>"; };
-		5A995D3820FF801100368279 /* PubnativeLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PubnativeLite.framework; sourceTree = "<group>"; };
 		5AAEF8E220A1D88F006C7CD4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5AD3983D2111FE9B00C1C9C5 /* PubnativeLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PubnativeLite.framework; sourceTree = "<group>"; };
 		5AD944ED208782CE00DD7E8C /* PNLiteMoPubMRectCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNLiteMoPubMRectCustomEvent.m; sourceTree = "<group>"; };
 		5AD944EE208782CE00DD7E8C /* PNLiteMoPubBannerCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNLiteMoPubBannerCustomEvent.m; sourceTree = "<group>"; };
 		5AD944EF208782CE00DD7E8C /* PNLiteMoPubUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNLiteMoPubUtils.h; sourceTree = "<group>"; };
@@ -720,7 +720,7 @@
 				5AD946A42087843100DD7E8C /* MPUBMoatMobileAppKit.framework in Frameworks */,
 				2E1289B11BE255C43CB298A3 /* Pods_EasyWeather.framework in Frameworks */,
 				5AD946A32087843100DD7E8C /* libAvid-mopub-3.6.1.a in Frameworks */,
-				5A995D3920FF801200368279 /* PubnativeLite.framework in Frameworks */,
+				5AD3983E2111FE9B00C1C9C5 /* PubnativeLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1432,7 +1432,7 @@
 		E7CC275F203AF265006A95B9 = {
 			isa = PBXGroup;
 			children = (
-				5A995D3820FF801100368279 /* PubnativeLite.framework */,
+				5AD3983D2111FE9B00C1C9C5 /* PubnativeLite.framework */,
 				E7CC276A203AF265006A95B9 /* EasyWeather */,
 				E7CC2769203AF265006A95B9 /* Products */,
 				9CE1A5FC539F853B68140ACE /* Pods */,
