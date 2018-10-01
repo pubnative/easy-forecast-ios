@@ -20,55 +20,39 @@
 //  THE SOFTWARE.
 //
 
-#import "PNLiteMoPubUtils.h"
+#import "PNLiteDFPUtils.h"
 
-NSString *const kPNLiteMoPubAdapterKeyZoneID = @"pn_zone_id";
-NSString *const kPNLiteMoPubAdapterKeyAppToken = @"pn_app_token";
+NSString *const kPNLiteDFPAdapterKeyZoneID = @"pn_zone_id";
 
-@implementation PNLiteMoPubUtils
+@implementation PNLiteDFPUtils
 
-+ (BOOL)isZoneIDValid:(NSDictionary *)extras
++ (BOOL)areExtrasValid:(NSString *)extras
 {
-    if ([PNLiteMoPubUtils zoneID:extras]) {
+    if ([PNLiteDFPUtils zoneID:extras]) {
         return YES;
     } else {
         return NO;
     }
 }
 
-+ (BOOL)isAppTokenValid:(NSDictionary *)extras
++ (NSString *)zoneID:(NSString *)extras
 {
-    if ([PNLiteMoPubUtils appToken:extras]) {
-        return YES;
-    } else {
-        return NO;
-    }
-}
-
-+ (BOOL)areExtrasValid:(NSDictionary *)extras
-{
-    return [PNLiteMoPubUtils zoneID:extras] && [PNLiteMoPubUtils appToken:extras];
-}
-
-+ (NSString *)zoneID:(NSDictionary *)extras
-{
-    return [PNLiteMoPubUtils valueWithKey:kPNLiteMoPubAdapterKeyZoneID fromExtras:extras];
-}
-
-+ (NSString *)appToken:(NSDictionary *)extras
-{
-    return [PNLiteMoPubUtils valueWithKey:kPNLiteMoPubAdapterKeyAppToken fromExtras:extras];
+    return [PNLiteDFPUtils valueWithKey:kPNLiteDFPAdapterKeyZoneID fromExtras:extras];
 }
 
 + (NSString *)valueWithKey:(NSString *)key
-                fromExtras:(NSDictionary *)extras {
+                fromExtras:(NSString *)extras
+{
     NSString *result = nil;
-    if (extras && [extras objectForKey:key]) {
-        NSString *param = [extras objectForKey:key];
-        if ([param length] != 0) {
-            result = param;
-        }
+    NSData *jsonData = [extras dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSMutableDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                                      options:0
+                                                                        error:&error];
+    if (!error) {
+        result = (NSString *)dictionary[key];
     }
+    
     return result;
 }
 

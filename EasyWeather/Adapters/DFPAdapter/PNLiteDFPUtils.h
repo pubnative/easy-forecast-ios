@@ -22,12 +22,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PNLiteMoPubUtils : NSObject
+@interface PNLiteDFPUtils : NSObject
 
-+ (BOOL)isZoneIDValid:(NSDictionary *)extras;
-+ (BOOL)isAppTokenValid:(NSDictionary *)extras;
-+ (BOOL)areExtrasValid:(NSDictionary *)extras;
-+ (NSString *)appToken:(NSDictionary*)extras;
-+ (NSString *)zoneID:(NSDictionary *)extras;
++ (BOOL)areExtrasValid:(NSString *)extras;
++ (NSString *)zoneID:(NSString *)extras;
 
 @end

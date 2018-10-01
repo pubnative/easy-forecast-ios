@@ -39,6 +39,7 @@
 
 - (void)dealloc
 {
+    [self.bannerPresenter stopTracking];
     self.bannerPresenter = nil;
     self.bannerPresenterFactory = nil;
     self.ad = nil;
@@ -46,7 +47,7 @@
 
 - (void)requestAdWithSize:(CGSize)size customEventInfo:(NSDictionary *)info
 {
-    if ([PNLiteMoPubUtils areExtrasValid:info]) {
+    if ([PNLiteMoPubUtils isZoneIDValid:info]) {
         self.size = size;
         if (CGSizeEqualToSize(MOPUB_BANNER_SIZE, size)) {
             self.ad = [[PNLiteAdCache sharedInstance] retrieveAdFromCacheWithZoneID:[PNLiteMoPubUtils zoneID:info]];
@@ -92,6 +93,7 @@
 {
     [self.delegate trackImpression];
     [self.delegate bannerCustomEvent:self didLoadAd:banner];
+    [self.bannerPresenter startTracking];
 }
 
 - (void)bannerPresenter:(PNLiteBannerPresenter *)bannerPresenter didFailWithError:(NSError *)error

@@ -21,13 +21,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <PubnativeLite/PubnativeLite.h>
 
-@interface PNLiteMoPubUtils : NSObject
+@import GoogleMobileAds;
 
-+ (BOOL)isZoneIDValid:(NSDictionary *)extras;
-+ (BOOL)isAppTokenValid:(NSDictionary *)extras;
-+ (BOOL)areExtrasValid:(NSDictionary *)extras;
-+ (NSString *)appToken:(NSDictionary*)extras;
-+ (NSString *)zoneID:(NSDictionary *)extras;
+@interface PNLiteDFPMRectCustomEvent : NSObject <GADCustomEventBanner>
 
 @end

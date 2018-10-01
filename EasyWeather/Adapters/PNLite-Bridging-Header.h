@@ -6,6 +6,9 @@
 #import "PNLiteMoPubBannerCustomEvent.h"
 #import "PNLiteMoPubMRectCustomEvent.h"
 #import "PNLiteMoPubInterstitialCustomEvent.h"
+#import "PNLiteMoPubMediationBannerCustomEvent.h"
+#import "PNLiteMoPubMediationMRectCustomEvent.h"
+#import "PNLiteMoPubMediationInterstitialCustomEvent.h"
 #import "PNLiteDFPUtils.h"
 #import "PNLiteDFPBannerCustomEvent.h"
 #import "PNLiteDFPMRectCustomEvent.h"
@@ -55,4 +58,3 @@
 #import "MPRewardedVideoReward.h"
 #import "MPRewardedVideoCustomEvent.h"
 #import "MPRewardedVideoError.h"
-
