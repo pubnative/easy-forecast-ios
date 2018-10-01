@@ -100,7 +100,7 @@ class WeatherViewController: UIViewController {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
-        NotificationCenter.default.addObserver(self, selector: #selector(WeatherViewController.refreshWeatherTouchUpInside(_:)), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(WeatherViewController.refreshWeatherTouchUpInside(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool)
@@ -243,6 +243,9 @@ extension WeatherViewController : UITableViewDelegate, UITableViewDataSource
             moPubMrect = dataSource[indexPath.row] as! MPAdView
             mRectCell.mediumAdContainer.addSubview(moPubMrect)
             return mRectCell
+        } else if (dataSource[indexPath.row] is GADBannerView) {
+            // DFPMRectCell has to be created in here.
+            return UITableViewCell (frame: CGRect(x: 0, y: 0, width: 300, height: 250))
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastCell", for: indexPath) as! ForecastCell
             cell.configureCell(forecast: dataSource[indexPath.row] as! ForecastItem)
@@ -377,7 +380,7 @@ extension WeatherViewController : GADBannerViewDelegate
             bannerAdContainerHeightConstraint.constant = kGADAdSizeBanner.size.height
             bannerAdContainer.isHidden = false
         } else if (bannerView == dfpMrect) {
-            dataSource.insert(view, at: 7)
+            dataSource.insert(bannerView, at: 7)
             forecastTable.reloadData()
         }
     }
