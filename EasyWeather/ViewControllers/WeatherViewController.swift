@@ -53,8 +53,6 @@ class WeatherViewController: UIViewController {
     {
         super.viewDidLoad()
         
-        HyBidUserDataManager.sharedInstance()?.canCollectData()
-        
         loadingIndicator.startAnimating()
         apiClient.currentDelegate = self
         apiClient.forecastDelegate = self

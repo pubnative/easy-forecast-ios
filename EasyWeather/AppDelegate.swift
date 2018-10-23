@@ -37,10 +37,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics.self])
         HyBid.initWithAppToken("3e98d63843d8437c8d35a05edab557dd") { (success) in
             print("HyBid Successfully Initialized")
+            self.askForConsent()
         }
         HyBid.setCoppa(false)
         HyBid.setTestMode(false)
         return true
+    }
+    
+    func askForConsent()
+    {
+        if !HyBidUserDataManager.sharedInstance().canCollectData() {
+            if(UserDefaults.standard.object(forKey: "ConsentCheckDate") == nil) {
+                HyBidUserDataManager.sharedInstance().showConsentRequestScreen()
+                UserDefaults.standard.set(Date(), forKey: "ConsentCheckDate")
+            } else {
+                let consentCheckDate = UserDefaults.standard.object(forKey: "ConsentCheckDate") as? Date
+                let components = Calendar.current.dateComponents([.minute, .hour, .day, .month, .year], from: consentCheckDate!, to: Date())
+                if (components.day! > 31) {
+                    HyBidUserDataManager.sharedInstance().showConsentRequestScreen()
+                    UserDefaults.standard.set(Date(), forKey: "ConsentCheckDate")
+                }
+            }
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
