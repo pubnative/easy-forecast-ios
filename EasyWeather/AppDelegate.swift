@@ -25,7 +25,7 @@ import CoreData
 import Firebase
 import Fabric
 import Crashlytics
-import PubnativeLite
+import HyBid
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -35,11 +35,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         Fabric.with([Crashlytics.self])
-        PubnativeLite.initWithAppToken("3e98d63843d8437c8d35a05edab557dd") { (success) in
-            print("PubNative Lite Successfully Initialized")
+        HyBid.initWithAppToken("3e98d63843d8437c8d35a05edab557dd") { (success) in
+            print("HyBid Successfully Initialized")
         }
-        PubnativeLite.setCoppa(false)
-        PubnativeLite.setTestMode(false)
+        HyBid.setCoppa(false)
+        HyBid.setTestMode(false)
         return true
     }
 

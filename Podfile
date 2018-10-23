@@ -12,5 +12,4 @@ target 'EasyWeather' do
   pod 'Kingfisher', '~> 4.0'
   pod 'Fabric'
   pod 'Crashlytics'
-  pod 'Google-Mobile-Ads-SDK'
 end
