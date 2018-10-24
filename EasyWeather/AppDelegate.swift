@@ -25,20 +25,40 @@ import CoreData
 import Firebase
 import Fabric
 import Crashlytics
-import PubnativeLite
+import HyBid
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         Fabric.with([Crashlytics.self])
-        PubnativeLite.initWithAppToken("3e98d63843d8437c8d35a05edab557dd")
-        PubnativeLite.setCoppa(false)
-        PubnativeLite.setTestMode(false)
+        HyBid.initWithAppToken("3e98d63843d8437c8d35a05edab557dd") { (success) in
+            print("HyBid Successfully Initialized")
+            self.askForConsent()
+        }
+        HyBid.setCoppa(false)
+        HyBid.setTestMode(false)
         return true
+    }
+    
+    func askForConsent()
+    {
+        if !HyBidUserDataManager.sharedInstance().canCollectData() {
+            if(UserDefaults.standard.object(forKey: "ConsentCheckDate") == nil) {
+                HyBidUserDataManager.sharedInstance().showConsentRequestScreen()
+                UserDefaults.standard.set(Date(), forKey: "ConsentCheckDate")
+            } else {
+                let consentCheckDate = UserDefaults.standard.object(forKey: "ConsentCheckDate") as? Date
+                let components = Calendar.current.dateComponents([.minute, .hour, .day, .month, .year], from: consentCheckDate!, to: Date())
+                if (components.day! > 31) {
+                    HyBidUserDataManager.sharedInstance().showConsentRequestScreen()
+                    UserDefaults.standard.set(Date(), forKey: "ConsentCheckDate")
+                }
+            }
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
