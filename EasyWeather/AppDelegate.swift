@@ -55,8 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let idfa = UserDefaults.standard.object(forKey: "IDFA") as! String
                     if (idfa == HyBidSettings.sharedInstance()?.advertisingId){
                         let consentCheckDate = UserDefaults.standard.object(forKey: "ConsentCheckDate") as? Date
-                        let components = Calendar.current.dateComponents([.minute, .hour, .day, .month, .year], from: consentCheckDate!, to: Date())
-                        if (components.day! > 31) {
+                        let components = Calendar.current.dateComponents([.day], from: consentCheckDate!, to: Date())
+                        if (components.day! >= 31) {
                             showConsentAndSaveParameters()
                         }
                     } else {
