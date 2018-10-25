@@ -23,7 +23,7 @@
 import UIKit
 import Kingfisher
 import CoreLocation
-import PubnativeLite
+import HyBid
 
 class WeatherViewController: UIViewController {
     
@@ -42,12 +42,10 @@ class WeatherViewController: UIViewController {
     
     var apiClient = ApiClient()
     var locationManager = CLLocationManager()
-    var moPubBanner = MPAdView()
-    var moPubMrect = MPAdView()
-    var moPubInterstitial = MPInterstitialAdController()
-    var bannerAdRequest =  PNLiteBannerAdRequest()
-    var mRectAdRequest =  PNLiteMRectAdRequest()
-    var interstitialAdRequest =  PNLiteInterstitialAdRequest()
+    
+    var bannerAdView = HyBidBannerAdView()
+    var mRectAdView = HyBidMRectAdView()
+    var interstitialAd : HyBidInterstitialAd!
     var dataSource = [Any]()
     var isInitialWeatherLoaded = false
     
@@ -56,21 +54,11 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         
         loadingIndicator.startAnimating()
-        
         apiClient.currentDelegate = self
         apiClient.forecastDelegate = self
         
-        moPubBanner = MPAdView (adUnitId: "4d657c9ed31f48fea349f81e5859fe73", size: MOPUB_BANNER_SIZE)
-        moPubBanner.delegate = self
-        moPubBanner.stopAutomaticallyRefreshingContents()
-        bannerAdContainer.addSubview(moPubBanner)
-        
-        moPubMrect = MPAdView (adUnitId: "06669f9c42fb42129cfaee66ec5f7f94", size: MOPUB_MEDIUM_RECT_SIZE)
-        moPubMrect.delegate = self
-        moPubMrect.stopAutomaticallyRefreshingContents()
-        
-        moPubInterstitial = MPInterstitialAdController.init(forAdUnitId: "7ac3209f96484a4c89a22fd40b6a8fc4")
-        moPubInterstitial.delegate = self
+        bannerAdContainer.addSubview(bannerAdView)
+        self.interstitialAd = HyBidInterstitialAd(zoneID: "1", andWith: self)
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -78,8 +66,7 @@ class WeatherViewController: UIViewController {
         super.viewWillAppear(animated)
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(WeatherViewController.refreshWeatherTouchUpInside(_:)), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(WeatherViewController.refreshWeatherTouchUpInside(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool)
@@ -96,20 +83,22 @@ class WeatherViewController: UIViewController {
     
     @objc private func fetchWeatherData()
     {
+        bannerAdContainerHeightConstraint.constant = 0
+        bannerAdContainer.isHidden = true
         loadingIndicator.startAnimating()
-        requestAds()
+        requestHyBidAds()
         apiClient.fetchCurrentForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
         apiClient.fetchForecastForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
     }
     
-    func requestAds()
+    func requestHyBidAds()
     {
-        bannerAdRequest.requestAd(with: self, withZoneID: "2")
-        mRectAdRequest.requestAd(with: self, withZoneID: "3")
+        self.bannerAdView.load(withZoneID: "2", andWith: self)
+        self.mRectAdView.load(withZoneID: "3", andWith: self)
         if !isInitialWeatherLoaded {
             isInitialWeatherLoaded = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
-                self.interstitialAdRequest.requestAd(with: self, withZoneID: "1")
+                self.interstitialAd.load()
             })
         }
     }
@@ -167,7 +156,6 @@ extension WeatherViewController : ForecastUpdateDelegate
                 dataSource.append(item)
             }
         }
-        
         forecastTable?.reloadData()
         forecastTable.isHidden = false
         currentWeatherView.isHidden = false
@@ -195,7 +183,7 @@ extension WeatherViewController : UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        if (dataSource[indexPath.row] is MPAdView) {
+        if (dataSource[indexPath.row] is HyBidMRectAdView) {
             return 270
         } else {
             return 80
@@ -204,10 +192,10 @@ extension WeatherViewController : UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        if (dataSource[indexPath.row] is MPAdView) {
+        if (dataSource[indexPath.row] is HyBidMRectAdView) {
             let mRectCell = tableView.dequeueReusableCell(withIdentifier: "MRectCell", for: indexPath) as! MRectCell
-            moPubMrect = dataSource[indexPath.row] as! MPAdView
-            mRectCell.mediumAdContainer.addSubview(moPubMrect)
+            mRectAdView = dataSource[indexPath.row] as! HyBidMRectAdView
+            mRectCell.mediumAdContainer.addSubview(mRectAdView)
             return mRectCell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastCell", for: indexPath) as! ForecastCell
@@ -261,64 +249,63 @@ extension WeatherViewController: CLLocationManagerDelegate {
     }
 }
 
-extension WeatherViewController : PNLiteAdRequestDelegate
+extension WeatherViewController : HyBidAdViewDelegate
 {
-    func requestDidStart(_ request: PNLiteAdRequest!)
+    func adViewDidLoad(_ adView: HyBidAdView!)
     {
-        
-    }
-    
-    func request(_ request: PNLiteAdRequest!, didLoadWith ad: PNLiteAd!)
-    {
-        if (request == bannerAdRequest) {
-            moPubBanner.keywords = PNLitePrebidUtils.createPrebidKeywords(with: ad, withZoneID: "2")
-            moPubBanner.loadAd()
-        } else if (request == mRectAdRequest) {
-            moPubMrect.keywords = PNLitePrebidUtils.createPrebidKeywords(with: ad, withZoneID: "3")
-            moPubMrect.loadAd()
-        } else if (request == interstitialAdRequest) {
-            moPubInterstitial.keywords = PNLitePrebidUtils.createPrebidKeywords(with: ad, withZoneID: "4")
-            moPubInterstitial.loadAd()
-        }
-    }
-    
-    func request(_ request: PNLiteAdRequest!, didFailWithError error: Error!)
-    {
-        print("Request\(request) failed with error: \(error.localizedDescription)")
-    }
-}
-
-extension WeatherViewController : MPAdViewDelegate
-{
-    func viewControllerForPresentingModalView() -> UIViewController!
-    {
-        return self
-    }
-    
-    func adViewDidLoadAd(_ view: MPAdView!)
-    {
-        if (view == moPubBanner) {
-            bannerAdContainerHeightConstraint.constant = MOPUB_BANNER_SIZE.height
+        if (adView == bannerAdView) {
+            bannerAdContainerHeightConstraint.constant = 50
             bannerAdContainer.isHidden = false
-        } else if (view == moPubMrect) {
-            dataSource.insert(view, at: 7)
+        } else if (adView == mRectAdView) {
+            dataSource.insert(adView, at: 7)
             forecastTable.reloadData()
         }
     }
     
-    func adViewDidFail(toLoadAd view: MPAdView!)
+    func adView(_ adView: HyBidAdView!, didFailWithError error: Error!)
     {
-        if (view == moPubBanner) {
+        if (adView == bannerAdView) {
             bannerAdContainerHeightConstraint.constant = 0
             bannerAdContainer.isHidden = true
         }
     }
+    
+    func adViewDidTrackClick(_ adView: HyBidAdView!)
+    {
+        
+    }
+    
+    func adViewDidTrackImpression(_ adView: HyBidAdView!)
+    {
+        
+    }
 }
 
-extension WeatherViewController : MPInterstitialAdControllerDelegate
+extension WeatherViewController : HyBidInterstitialAdDelegate
 {
-    func interstitialDidLoadAd(_ interstitial: MPInterstitialAdController!)
+    func interstitialDidLoad()
     {
-        moPubInterstitial.show(from: self)
+        print("Interstitial did load:")
+        self.interstitialAd.show()
+    }
+    
+    func interstitialDidFailWithError(_ error: Error!)
+    {
+        print("Interstitial did fail with error: \(error.localizedDescription)")
+    }
+    
+    func interstitialDidTrackClick()
+    {
+        print("Interstitial did track click:")
+    }
+    
+    func interstitialDidTrackImpression()
+    {
+        print("Interstitial did track impression:")
+    }
+    
+    func interstitialDidDismiss()
+    {
+        print("Interstitial did dismiss:")
     }
 }
