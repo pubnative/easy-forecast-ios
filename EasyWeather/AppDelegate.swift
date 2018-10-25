@@ -70,9 +70,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func showConsentAndSaveParameters()
     {
-        HyBidUserDataManager.sharedInstance().showConsentRequestScreen()
-        UserDefaults.standard.set(Date(), forKey: "ConsentCheckDate")
-        UserDefaults.standard.set(identifierForAdvertising(), forKey: "IDFA")
+        HyBidUserDataManager.sharedInstance()?.loadConsentPage(completion: { (loadError) in
+            if (loadError == nil) {
+                HyBidUserDataManager.sharedInstance()?.showConsentPage({
+          
+                }, didDismiss: {
+                    UserDefaults.standard.set(Date(), forKey: "ConsentCheckDate")
+                    UserDefaults.standard.set(self.identifierForAdvertising(), forKey: "IDFA")
+                })
+            }
+        })
     }
     
     func identifierForAdvertising() -> String?
