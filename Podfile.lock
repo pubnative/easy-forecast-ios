@@ -18,7 +18,7 @@ PODS:
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
     - GoogleUtilities/Network (~> 5.2)
-    - GoogleUtilities/NSData+zlib (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
   - FirebaseCore (5.1.5):
     - GoogleUtilities/Logger (~> 5.2)
@@ -30,7 +30,7 @@ PODS:
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
     - GoogleUtilities/Network (~> 5.2)
-    - GoogleUtilities/NSData+zlib (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
   - GoogleUtilities/AppDelegateSwizzler (5.3.3):
     - GoogleUtilities/Environment
@@ -43,21 +43,19 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/Network (5.3.3):
     - GoogleUtilities/Logger
-    - GoogleUtilities/NSData+zlib
+    - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - GoogleUtilities/NSData+zlib (5.3.3)
+  - "GoogleUtilities/NSData+zlib (5.3.3)"
   - GoogleUtilities/Reachability (5.3.3):
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (5.3.3):
     - GoogleUtilities/Logger
-  - Kingfisher (4.10.0)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - ObjectMapper (3.3.0)
-  - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.6)
@@ -65,8 +63,21 @@ DEPENDENCIES:
   - Crashlytics
   - Fabric
   - Firebase/Core
-  - Kingfisher (~> 4.0)
-  - SwiftyJSON
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireObjectMapper
+    - Crashlytics
+    - Fabric
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseInstanceID
+    - GoogleAppMeasurement
+    - GoogleUtilities
+    - nanopb
+    - ObjectMapper
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
@@ -79,11 +90,9 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 78ba376fcd5b94c001f9999b2cbd3d1f1e56e78d
   GoogleAppMeasurement: 2b3a023a61239c8d002e6e4fcf4abce8eddce0e0
   GoogleUtilities: 8208aee3e97a1ae93d44c57e96c476a5a3b03f0a
-  Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
-  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 09c573d39f2b9e86410d33a711e3e373d1247569
+PODFILE CHECKSUM: aaf8b3a615fe14fc0628566ce2d48367b5453ea3
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.2

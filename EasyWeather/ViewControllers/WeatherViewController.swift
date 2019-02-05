@@ -21,7 +21,6 @@
 //
 
 import UIKit
-import Kingfisher
 import CoreLocation
 import HyBid
 
