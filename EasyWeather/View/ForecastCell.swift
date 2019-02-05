@@ -22,24 +22,24 @@
 
 import UIKit
 
-class ForecastCell: UITableViewCell
-{
-
+class ForecastCell: UITableViewCell {
+    
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var weatherType: UILabel!
     @IBOutlet weak var highTempLabel: UILabel!
     @IBOutlet weak var lowTempLabel: UILabel!
 
-    func configureCell(forecast: ForecastItem)
-    {
-
+    func configureCell(forecast: ForecastItem) {
         dayLabel.text = formatForecastDate(forecast: forecast)
-        if let forecast = forecast.weather?.first?.main?.capitalized {
-            weatherType.text = forecast
-            weatherIcon.image = UIImage (named: "\(forecast) Mini")
-        }
         
+        if let forecast = forecast.weather?.first {
+            weatherType.text = forecast.main?.capitalized
+            if let forecastWeatherID = forecast.id {
+                weatherIcon.image = UIImage(named: getWeatherIconName(forWeatherID: forecastWeatherID))
+            }
+        }
+                
         if let highTemp = forecast.main?.temperature_max {
             highTempLabel.text = "\(round(highTemp))°"
         }
@@ -49,24 +49,11 @@ class ForecastCell: UITableViewCell
         }
     }
     
-    func formatForecastDate(forecast: ForecastItem) -> String
-    {
+    func formatForecastDate(forecast: ForecastItem) -> String {
         if let date = forecast.date {
             let unixConvertedDate = Date (timeIntervalSince1970: date)
-            return unixConvertedDate.dayOfTheWeek()
+            return unixConvertedDate.dayOfTheWeekWithTime()
         }
-        return Date().dayOfTheWeek()
-    }
-
-}
-
-extension Date
-{
-    func dayOfTheWeek() -> String
-    {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM d, HH:mm"
-        return dateFormatter.string(from: self)
-        
+        return Date().dayOfTheWeekWithTime()
     }
 }

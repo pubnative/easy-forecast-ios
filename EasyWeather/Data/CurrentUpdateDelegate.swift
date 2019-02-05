@@ -23,6 +23,6 @@
 import UIKit
 
 protocol CurrentUpdateDelegate {
-    mutating func requestCurrentDidSucceed(withData: CurrentResponse)
-    mutating func requestCurrentDidFail(withError: Error)
+    mutating func requestCurrentDidSucceed(withData data: CurrentResponse)
+    mutating func requestCurrentDidFail(withError error: Error)
 }

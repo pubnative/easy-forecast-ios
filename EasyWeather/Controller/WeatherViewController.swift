@@ -111,9 +111,11 @@ class WeatherViewController: UIViewController {
         }
         
         if item.weather?.count != 0 {
-            if let weatherType = item.weather?.first?.main?.capitalized {
-                currentWeatherTypeLabel.text = weatherType
-                currentWeatherImage.image = UIImage (named: weatherType)
+            if let currentWeahter = item.weather?.first {
+                currentWeatherTypeLabel.text = currentWeahter.main?.capitalized
+                if let currentWeatherID = currentWeahter.id {
+                    currentWeatherImage.image = UIImage(named: getWeatherIconName(forWeatherID: currentWeatherID))
+                }
             }
         }
         
@@ -132,38 +134,35 @@ class WeatherViewController: UIViewController {
 
 extension WeatherViewController : CurrentUpdateDelegate
 {
-    func requestCurrentDidSucceed(withData: CurrentResponse)
-    {
-        updateCurrentWeatherView(item: withData)
+    func requestCurrentDidSucceed(withData data: CurrentResponse) {
+        updateCurrentWeatherView(item: data)
         loadingIndicator.stopAnimating()
     }
     
-    func requestCurrentDidFail(withError: Error)
-    {
-        NSLog(withError.localizedDescription)
+    func requestCurrentDidFail(withError error: Error) {
+        NSLog(error.localizedDescription)
         loadingIndicator.stopAnimating()
     }
 }
 
 extension WeatherViewController : ForecastUpdateDelegate
 {
-    func requestForecastDidSucceed(withData: ForecastResponse)
-    {
+    func requestForecastDidSucceed(withData data: ForecastResponse) {
+
         dataSource.removeAll()
-        if let list = withData.list {
+        if let list = data.list {
             for item in list {
                 dataSource.append(item)
             }
-        }
+        }        
         forecastTable?.reloadData()
         forecastTable.isHidden = false
         currentWeatherView.isHidden = false
         loadingIndicator.stopAnimating()
     }
     
-    func requestForecastDidFail(withError: Error)
-    {
-        NSLog(withError.localizedDescription)
+    func requestForecastDidFail(withError error: Error) {
+        NSLog(error.localizedDescription)
         loadingIndicator.stopAnimating()
     }
 }
