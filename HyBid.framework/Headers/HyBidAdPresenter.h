@@ -24,26 +24,25 @@
 #import <UIKit/UIKit.h>
 #import "HyBidAd.h"
 
-@class HyBidLeaderboardPresenter;
+@class HyBidAdPresenter;
 
-@protocol HyBidLeaderboardPresenterDelegate<NSObject>
+@protocol HyBidAdPresenterDelegate<NSObject>
 
-- (void)leaderboardPresenter:(HyBidLeaderboardPresenter *)leaderboardPresenter
-      didLoadWithLeaderboard:(UIView *)leaderboard;
-- (void)leaderboardPresenterDidClick:(HyBidLeaderboardPresenter *)leaderboardPresenter;
-- (void)leaderboardPresenter:(HyBidLeaderboardPresenter *)leaderboardPresenter
+- (void)adPresenter:(HyBidAdPresenter *)adPresenter
+      didLoadWithAd:(UIView *)adView;
+- (void)adPresenterDidClick:(HyBidAdPresenter *)adPresenter;
+- (void)adPresenter:(HyBidAdPresenter *)adPresenter
        didFailWithError:(NSError *)error;
 
 @end
 
-@interface HyBidLeaderboardPresenter : NSObject
+@interface HyBidAdPresenter : NSObject
 
 @property (nonatomic, readonly) HyBidAd *ad;
-@property (nonatomic, strong) NSObject <HyBidLeaderboardPresenterDelegate> *delegate;
+@property (nonatomic, strong) NSObject <HyBidAdPresenterDelegate> *delegate;
 
 - (void)load;
 - (void)startTracking;
 - (void)stopTracking;
 
 @end
-
