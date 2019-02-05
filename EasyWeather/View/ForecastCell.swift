@@ -36,7 +36,7 @@ class ForecastCell: UITableViewCell {
         if let forecast = forecast.weather?.first {
             weatherType.text = forecast.main?.capitalized
             if let forecastWeatherID = forecast.id {
-                weatherIcon.image = UIImage(named: getWeatherIconName(forWeatherID: forecastWeatherID))
+                weatherIcon.image = UIImage(named: weatherIconName(forWeatherID: forecastWeatherID))
             }
         }
                 
@@ -50,7 +50,7 @@ class ForecastCell: UITableViewCell {
     }
     
     func formatForecastDate(forecast: ForecastItem) -> String {
-        if let date = forecast.date {
+        if let date = forecast.dateAsDouble {
             let unixConvertedDate = Date (timeIntervalSince1970: date)
             return unixConvertedDate.dayOfTheWeekWithTime()
         }

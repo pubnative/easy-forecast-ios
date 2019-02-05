@@ -114,7 +114,7 @@ class WeatherViewController: UIViewController {
             if let currentWeahter = item.weather?.first {
                 currentWeatherTypeLabel.text = currentWeahter.main?.capitalized
                 if let currentWeatherID = currentWeahter.id {
-                    currentWeatherImage.image = UIImage(named: getWeatherIconName(forWeatherID: currentWeatherID))
+                    currentWeatherImage.image = UIImage(named: weatherIconName(forWeatherID: currentWeatherID))
                 }
             }
         }
@@ -148,13 +148,34 @@ extension WeatherViewController : CurrentUpdateDelegate
 extension WeatherViewController : ForecastUpdateDelegate
 {
     func requestForecastDidSucceed(withData data: ForecastResponse) {
+        
+        var responseForecast = [ForecastItem]()
+        var orderedForecast = [[ForecastItem]]()
 
         dataSource.removeAll()
         if let list = data.list {
             for item in list {
                 dataSource.append(item)
+                responseForecast.append(item)
             }
-        }        
+        }
+        
+        let groupedForecast = Dictionary(grouping: responseForecast) { (forecastItem) -> Date in
+            return forecastItem.date!.reduceToDayMonthYear()
+        }
+        
+        // provide a sorting for your keys somehow
+        let sortedKeys = groupedForecast.keys.sorted()
+        sortedKeys.forEach { (key) in
+            let values = groupedForecast[key]
+            orderedForecast.append(values ?? [])
+        }
+        
+        var summaryArray = [SummaryWeather]()
+        for forecast in orderedForecast {
+            summaryArray.append(SummaryWeather(fromForecast: forecast))
+        }
+        
         forecastTable?.reloadData()
         forecastTable.isHidden = false
         currentWeatherView.isHidden = false

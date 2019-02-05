@@ -20,33 +20,29 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
-import ObjectMapper
+import Foundation
 
-class CurrentResponse: Mappable {
-    var coordinates: CurrentCoordinate?
-    var weather: [CurrentWeather]?
-    var main: CurrentMain?
-    var wind: CurrentWind?
-    var clouds: CurrentClouds?
-    var date: Int64?
-    var sys: CurrentSys?
-    var id: Int64?
-    var name: String?
-    
-    required init?(map: Map) {
-        
+extension Date {
+    static func dateFrom(string: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        return dateFormatter.date(from: string) ?? Date()
     }
     
-    func mapping(map: Map) {
-        coordinates <- map["coord"]
-        weather <- map["weather"]
-        main <- map["main"]
-        wind <- map["wind"]
-        clouds <- map["clouds"]
-        date <- map["dt"]
-        sys <- map["sys"]
-        id <- map["id"]
-        name <- map["name"]
+    func dayOfTheWeekWithTime() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, HH:mm"
+        return dateFormatter.string(from: self)
+    }
+    
+    func reduceToDayMonthYear() -> Date {
+        let calendar = Calendar.current
+        let month = calendar.component(.month, from: self)
+        let day = calendar.component(.day, from: self)
+        let year = calendar.component(.year, from: self)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        return dateFormatter.date(from: "\(day)/\(month)/\(year)") ?? Date()
     }
 }

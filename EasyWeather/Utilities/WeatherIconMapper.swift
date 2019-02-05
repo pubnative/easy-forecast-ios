@@ -20,29 +20,33 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
-import ObjectMapper
+import Foundation
 
-class ForecastItem: Mappable {
-    var date: Double?
-    var main: ForecastMain?
-    var weather: [ForecastWeather]?
-    var clouds: ForecastClouds?
-    var wind: ForecastWind?
-    var sys: ForecastSys?
-    var dateString: String?
-    
-    required init?(map: Map) {
-        
-    }
-    
-    func mapping(map: Map) {
-        date <- map["dt"]
-        main <- map["main"]
-        weather <- map["weather"]
-        clouds <- map["clouds"]
-        wind <- map["wind"]
-        sys <- map["sys"]
-        dateString <- map["dt_txt"]
+func weatherIconName(forWeatherID weatherID:Int64) -> String {
+    switch (weatherID) {
+    case 0...300:
+        return "thunderstorm-with-sun"
+    case 301...500:
+        return "light-rain"
+    case 501...600:
+        return "shower"
+    case 601...700:
+        return "light-snow"
+    case 701...771:
+        return "fog"
+    case 772...799:
+        return "thunderstorm"
+    case 800:
+        return "sunny"
+    case 801...804:
+        return "light-cloudy"
+    case 900...903, 905...1000 :
+        return "thunderstorm"
+    case 903:
+        return "snow"
+    case 904:
+        return "sunny"
+    default:
+        return "question-mark"
     }
 }
