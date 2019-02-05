@@ -136,6 +136,15 @@
 			path = Current;
 			sourceTree = "<group>";
 		};
+		5ACDB1AE22099D3D00E13AAD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5AECDF302088C728003049AE /* MRectCell.swift */,
+				5A6A8C1520862C8B00494187 /* ForecastCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		74C92EB397DF789A89B40109 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,14 +173,12 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		E776E9A5203B1C1700101093 /* ViewControllers */ = {
+		E776E9A5203B1C1700101093 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5AECDF302088C728003049AE /* MRectCell.swift */,
-				5A6A8C1520862C8B00494187 /* ForecastCell.swift */,
 				E7CC276D203AF265006A95B9 /* WeatherViewController.swift */,
 			);
-			path = ViewControllers;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		E776E9A6203B1C1F00101093 /* Models */ = {
@@ -206,9 +213,10 @@
 		E7CC276A203AF265006A95B9 /* EasyWeather */ = {
 			isa = PBXGroup;
 			children = (
-				E75E46A1203B467300FF9672 /* Data */,
 				E776E9A6203B1C1F00101093 /* Models */,
-				E776E9A5203B1C1700101093 /* ViewControllers */,
+				5ACDB1AE22099D3D00E13AAD /* View */,
+				E776E9A5203B1C1700101093 /* Controller */,
+				E75E46A1203B467300FF9672 /* Data */,
 				E7CC276B203AF265006A95B9 /* AppDelegate.swift */,
 				E7CC276F203AF265006A95B9 /* Main.storyboard */,
 				E7CC2777203AF265006A95B9 /* LaunchScreen.storyboard */,
