@@ -25,7 +25,7 @@ import ObjectMapper
 
 class ForecastResponse: Mappable {
     var city: ForecastCity?
-    var cnt: Int64?
+    var cnt: Int?
     var list: [ForecastItem]?
     
     required init?(map: Map) {

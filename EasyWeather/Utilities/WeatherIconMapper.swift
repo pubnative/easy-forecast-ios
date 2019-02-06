@@ -22,7 +22,7 @@
 
 import Foundation
 
-func weatherIconName(forWeatherID weatherID:Int64) -> String {
+func weatherIconName(forWeatherID weatherID:Int) -> String {
     switch (weatherID) {
     case 0...300:
         return "thunderstorm-with-sun"

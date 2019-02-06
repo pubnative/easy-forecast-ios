@@ -31,7 +31,7 @@ class CurrentResponse: Mappable {
     var clouds: CurrentClouds?
     var dateAsDouble: Double?
     var sys: CurrentSys?
-    var id: Int64?
+    var id: Double?
     var name: String?
     
     required init?(map: Map) {

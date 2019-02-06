@@ -24,7 +24,7 @@ import UIKit
 import ObjectMapper
 
 class ForecastCity: NSObject {
-    var id: Int64?
+    var id: Double?
     var name: String?
     var coordinate: ForecastCoordinate?
     var country: String?

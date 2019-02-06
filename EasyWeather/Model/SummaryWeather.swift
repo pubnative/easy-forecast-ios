@@ -26,7 +26,7 @@ class SummaryWeather {
     var temperature: Double?
     var temperature_min: Double?
     var temperature_max: Double?
-    var id: Int64?
+    var id: Int?
     var description: String?
     
     init(fromForecast forecast:[ForecastItem]) {
@@ -36,11 +36,11 @@ class SummaryWeather {
         print("\(desc) & \(code)")
     }
     
-    func mostCommonWeatherCondition(fromForecast forecast:[ForecastItem]) -> (String, Int64) {
+    func mostCommonWeatherCondition(fromForecast forecast:[ForecastItem]) -> (String, Int) {
         var weatherDescriptionDictionary = [String : Int]()
-        var weatherIDDictionary = [Int64 : Int]()
+        var weatherIDDictionary = [Int : Int]()
         var mostCommonWeatherDescription = ""
-        var mostCommonWeatherID : Int64 = 0
+        var mostCommonWeatherID : Int = 0
         
         for forecastItem in forecast {
             if let forecastWeather = forecastItem.weather?.first {

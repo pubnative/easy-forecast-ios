@@ -24,7 +24,7 @@ import UIKit
 import ObjectMapper
 
 class ForecastWeather: Mappable {
-    var id: Int64?
+    var id: Int?
     var main: String?
     var description: String?
     var icon: String?

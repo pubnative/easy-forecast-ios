@@ -25,8 +25,8 @@ import ObjectMapper
 
 class CurrentSys: Mappable {
     var country: String?
-    var sunrise: Int64?
-    var sunset: Int64?
+    var sunrise: Double?
+    var sunset: Double?
     
     required init?(map: Map) {
         
