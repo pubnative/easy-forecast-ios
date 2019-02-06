@@ -36,7 +36,7 @@ class ForecastCell: UITableViewCell {
         if let forecast = forecast.weather?.first {
             weatherType.text = forecast.main?.capitalized
             if let forecastWeatherID = forecast.id {
-                weatherIcon.image = UIImage(named: weatherIconName(forWeatherID: forecastWeatherID))
+                weatherIcon.image = UIImage(named: weatherIconImageName(forWeatherID: forecastWeatherID))
             }
         }
                 

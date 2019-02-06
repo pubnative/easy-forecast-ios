@@ -22,7 +22,7 @@
 
 import Foundation
 
-func weatherIconName(forWeatherID weatherID:Int) -> String {
+func weatherIconImageName(forWeatherID weatherID:Int) -> String {
     switch (weatherID) {
     case 0...300:
         return "thunderstorm-with-sun"
@@ -48,5 +48,34 @@ func weatherIconName(forWeatherID weatherID:Int) -> String {
         return "sunny"
     default:
         return "question-mark"
+    }
+}
+
+func weatherBackgroundImageName(forWeatherID weatherID:Int) -> String {
+    switch (weatherID) {
+    case 0...300:
+        return "thunderstorm-with-sun-bg"
+    case 301...500:
+        return "light-rain-bg"
+    case 501...600:
+        return "shower-bg"
+    case 601...700:
+        return "light-snow-bg"
+    case 701...771:
+        return "fog-bg"
+    case 772...799:
+        return "thunderstorm-bg"
+    case 800:
+        return "sunny-bg"
+    case 801...804:
+        return "light-cloudy-bg"
+    case 900...903, 905...1000 :
+        return "thunderstorm-bg"
+    case 903:
+        return "snow-bg"
+    case 904:
+        return "sunny-bg"
+    default:
+        return ""
     }
 }

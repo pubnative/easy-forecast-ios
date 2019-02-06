@@ -114,7 +114,7 @@ class WeatherViewController: UIViewController {
             if let currentWeahter = item.weather?.first {
                 currentWeatherTypeLabel.text = currentWeahter.main?.capitalized
                 if let currentWeatherID = currentWeahter.id {
-                    currentWeatherImage.image = UIImage(named: weatherIconName(forWeatherID: currentWeatherID))
+                    currentWeatherImage.image = UIImage(named: weatherIconImageName(forWeatherID: currentWeatherID))
                 }
             }
         }
