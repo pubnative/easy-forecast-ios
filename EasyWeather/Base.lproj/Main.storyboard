@@ -245,6 +245,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="refresh" width="60" height="60"/>
+        <image name="refresh" width="135" height="135"/>
     </resources>
 </document>

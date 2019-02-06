@@ -29,6 +29,7 @@ class SummaryWeather {
     var id: Int?
     var description: String?
     var date: Date?
+    var forecast: [ForecastItem]?
     
     init(fromForecast forecast:[ForecastItem], withDate date: Date) {
         self.temperature = calculateAverageTemperature(fromForecast: forecast)
@@ -37,6 +38,7 @@ class SummaryWeather {
         self.id = mostCommonWeatherID(fromForecast: forecast)
         self.description = mostCommonWeatherCondition(fromForecast: forecast)
         self.date = date
+        self.forecast = forecast
     }
     
     func calculateAverageTemperature(fromForecast forecast:[ForecastItem]) -> Double {
