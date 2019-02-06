@@ -26,17 +26,26 @@ import HyBid
 
 class WeatherViewController: UIViewController {
     
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var temperatureLabel: UILabel!
-    @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var currentWeatherImage: UIImageView!
-    @IBOutlet weak var currentWeatherTypeLabel: UILabel!
-    @IBOutlet weak var forecastTable: UITableView!
+    @IBOutlet weak var refreshButton: UIButton!
+    @IBOutlet weak var infoButton: UIButton!
+    
     @IBOutlet weak var currentWeatherView: UIView!
+    @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var currentWeatherDescriptionLabel: UILabel!
+    @IBOutlet weak var currentTemperatureLabel: UILabel!
+    
+    @IBOutlet weak var useCurrentLocationButton: UIButton!
+    @IBOutlet weak var searchCityButton: UIButton!
+    @IBOutlet weak var sunriseImageView: UIImageView!
+    @IBOutlet weak var sunriseTimeLabel: UILabel!
+    @IBOutlet weak var sunsetImageView: UIImageView!
+    @IBOutlet weak var sunsetTimeLabel: UILabel!
+    
+    @IBOutlet weak var forecastWeatherTableView: UITableView!
     @IBOutlet weak var warningLabel: UILabel!
     @IBOutlet weak var bannerAdContainer: UIView!
     @IBOutlet weak var bannerAdContainerHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var refreshButton: UIButton!
+    
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     var apiClient = ApiClient()
@@ -104,23 +113,18 @@ class WeatherViewController: UIViewController {
     
     func updateCurrentWeatherView(item:CurrentResponse)
     {
-        dateLabel.text  = "Last Updated: \(getCurrentDateWithTime())"
-        
         if let name = item.name {
-            cityLabel.text = name
+            cityNameLabel.text = name
         }
         
         if item.weather?.count != 0 {
             if let currentWeahter = item.weather?.first {
-                currentWeatherTypeLabel.text = currentWeahter.main?.capitalized
-                if let currentWeatherID = currentWeahter.id {
-                    currentWeatherImage.image = UIImage(named: weatherIconImageName(forWeatherID: currentWeatherID))
-                }
+                currentWeatherDescriptionLabel.text = currentWeahter.main?.capitalized
             }
         }
         
         if let temp = item.main?.temperature {
-            temperatureLabel.text = "\(round(temp))°"
+            currentTemperatureLabel.text = "\(round(temp))°"
         }
     }
     
@@ -176,8 +180,8 @@ extension WeatherViewController : ForecastUpdateDelegate
             summaryArray.append(SummaryWeather(fromForecast: forecast, withDate: sortedKeys[index]))
         }
         
-        forecastTable?.reloadData()
-        forecastTable.isHidden = false
+        forecastWeatherTableView?.reloadData()
+        forecastWeatherTableView.isHidden = false
         currentWeatherView.isHidden = false
         loadingIndicator.stopAnimating()
     }
@@ -260,7 +264,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
         case .denied:
             loadingIndicator.stopAnimating()
             warningLabel.isHidden = false
-            forecastTable.isHidden = true
+            forecastWeatherTableView.isHidden = true
             currentWeatherView.isHidden = true
             bannerAdContainer.isHidden = true
             break
@@ -277,7 +281,7 @@ extension WeatherViewController : HyBidAdViewDelegate
             bannerAdContainer.isHidden = false
         } else if (adView == mRectAdView) {
             dataSource.insert(adView, at: 7)
-            forecastTable.reloadData()
+            forecastWeatherTableView.reloadData()
         }
     }
     

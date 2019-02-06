@@ -26,15 +26,14 @@ class ForecastCell: UITableViewCell {
     
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var dayLabel: UILabel!
-    @IBOutlet weak var weatherType: UILabel!
+    @IBOutlet weak var weatherDescriptionType: UILabel!
     @IBOutlet weak var highTempLabel: UILabel!
-    @IBOutlet weak var lowTempLabel: UILabel!
 
     func configureCell(forecast: ForecastItem) {
         dayLabel.text = formatForecastDate(forecast: forecast)
         
         if let forecast = forecast.weather?.first {
-            weatherType.text = forecast.main?.capitalized
+            weatherDescriptionType.text = forecast.main?.capitalized
             if let forecastWeatherID = forecast.id {
                 weatherIcon.image = UIImage(named: weatherIconImageName(forWeatherID: forecastWeatherID))
             }
@@ -42,10 +41,6 @@ class ForecastCell: UITableViewCell {
                 
         if let highTemp = forecast.main?.temperature_max {
             highTempLabel.text = "\(round(highTemp))°"
-        }
-        
-        if let lowTemp = forecast.main?.temperature_min {
-            lowTempLabel.text = "\(round(lowTemp))°"
         }
     }
     
