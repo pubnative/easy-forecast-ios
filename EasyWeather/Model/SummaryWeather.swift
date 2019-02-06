@@ -28,43 +28,57 @@ class SummaryWeather {
     var temperature_max: Double?
     var id: Int?
     var description: String?
+    var date: Date?
     
-    init(fromForecast forecast:[ForecastItem]) {
-       let (desc, code) = mostCommonWeatherCondition(fromForecast: forecast)
-        self.description = desc
-        self.id = code
-        print("\(desc) & \(code)")
+    init(fromForecast forecast:[ForecastItem], withDate date: Date) {
+        self.temperature = calculateAverageTemperature(fromForecast: forecast)
+        self.temperature_min = calculateAverageMinimumTemperature(fromForecast: forecast)
+        self.temperature_max = calculateAverageMaximumTemperature(fromForecast: forecast)
+        self.id = mostCommonWeatherID(fromForecast: forecast)
+        self.description = mostCommonWeatherCondition(fromForecast: forecast)
+        self.date = date
     }
     
-    func mostCommonWeatherCondition(fromForecast forecast:[ForecastItem]) -> (String, Int) {
-        var weatherDescriptionDictionary = [String : Int]()
+    func calculateAverageTemperature(fromForecast forecast:[ForecastItem]) -> Double {
+        var averageTemperature: Double = 0
+        for forecastItem in forecast {
+            if let temperature = forecastItem.main?.temperature {
+                averageTemperature = averageTemperature + temperature
+            }
+        }
+        return averageTemperature / Double(forecast.count)
+    }
+    
+    func calculateAverageMinimumTemperature(fromForecast forecast:[ForecastItem]) -> Double {
+        var averageMinimumTemperature: Double = 0
+        for forecastItem in forecast {
+            if let temperature_min = forecastItem.main?.temperature_min {
+                averageMinimumTemperature = averageMinimumTemperature + temperature_min
+            }
+        }
+        return averageMinimumTemperature / Double(forecast.count)
+    }
+    
+    func calculateAverageMaximumTemperature(fromForecast forecast:[ForecastItem]) -> Double {
+        var averageMaximumTemperature: Double = 0
+        for forecastItem in forecast {
+            if let temperature_max = forecastItem.main?.temperature_max {
+                averageMaximumTemperature = averageMaximumTemperature + temperature_max
+            }
+        }
+        return averageMaximumTemperature / Double(forecast.count)
+    }
+    
+    func mostCommonWeatherID(fromForecast forecast:[ForecastItem]) -> Int {
         var weatherIDDictionary = [Int : Int]()
-        var mostCommonWeatherDescription = ""
         var mostCommonWeatherID : Int = 0
         
         for forecastItem in forecast {
             if let forecastWeather = forecastItem.weather?.first {
-                if let weatherDescriptionCount = weatherDescriptionDictionary[forecastWeather.description!] {
-                    weatherDescriptionDictionary[forecastWeather.description!] = weatherDescriptionCount + 1
-                } else {
-                    weatherDescriptionDictionary[forecastWeather.description!] =  1
-                }
-                
                 if let weatherIDCount = weatherIDDictionary[forecastWeather.id!] {
                     weatherIDDictionary[forecastWeather.id!] = weatherIDCount + 1
                 } else {
                     weatherIDDictionary[forecastWeather.id!] =  1
-                }
-            }
-    
-            for key in weatherDescriptionDictionary.keys {
-                if mostCommonWeatherDescription == "" {
-                    mostCommonWeatherDescription = key
-                } else {
-                    let count = weatherDescriptionDictionary[key]!
-                    if count > weatherDescriptionDictionary[mostCommonWeatherDescription]! {
-                        mostCommonWeatherDescription = key
-                    }
                 }
             }
             
@@ -78,9 +92,35 @@ class SummaryWeather {
                     }
                 }
             }
-            
         }
-        return (mostCommonWeatherDescription, mostCommonWeatherID)
+        return mostCommonWeatherID
+    }
+    
+    func mostCommonWeatherCondition(fromForecast forecast:[ForecastItem]) -> String {
+        var weatherDescriptionDictionary = [String : Int]()
+        var mostCommonWeatherDescription = ""
+        
+        for forecastItem in forecast {
+            if let forecastWeather = forecastItem.weather?.first {
+                if let weatherDescriptionCount = weatherDescriptionDictionary[forecastWeather.description!] {
+                    weatherDescriptionDictionary[forecastWeather.description!] = weatherDescriptionCount + 1
+                } else {
+                    weatherDescriptionDictionary[forecastWeather.description!] =  1
+                }
+            }
+            
+            for key in weatherDescriptionDictionary.keys {
+                if mostCommonWeatherDescription == "" {
+                    mostCommonWeatherDescription = key
+                } else {
+                    let count = weatherDescriptionDictionary[key]!
+                    if count > weatherDescriptionDictionary[mostCommonWeatherDescription]! {
+                        mostCommonWeatherDescription = key
+                    }
+                }
+            }
+        }
+        return mostCommonWeatherDescription
     }
 }
 

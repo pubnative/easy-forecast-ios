@@ -172,8 +172,8 @@ extension WeatherViewController : ForecastUpdateDelegate
         }
         
         var summaryArray = [SummaryWeather]()
-        for forecast in orderedForecast {
-            summaryArray.append(SummaryWeather(fromForecast: forecast))
+        for (index,forecast) in orderedForecast.enumerated() {
+            summaryArray.append(SummaryWeather(fromForecast: forecast, withDate: sortedKeys[index]))
         }
         
         forecastTable?.reloadData()

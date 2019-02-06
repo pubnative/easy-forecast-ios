@@ -38,11 +38,12 @@ extension Date {
     
     func reduceToDayMonthYear() -> Date {
         let calendar = Calendar.current
-        let month = calendar.component(.month, from: self)
         let day = calendar.component(.day, from: self)
+        let month = calendar.component(.month, from: self)
         let year = calendar.component(.year, from: self)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         return dateFormatter.date(from: "\(day)/\(month)/\(year)") ?? Date()
     }
 }
