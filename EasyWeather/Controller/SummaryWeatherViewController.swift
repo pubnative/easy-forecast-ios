@@ -24,29 +24,31 @@ import UIKit
 import CoreLocation
 import HyBid
 
-class WeatherViewController: UIViewController {
+class SummaryWeatherViewController: UIViewController {
     
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var infoButton: UIButton!
-    
+    @IBOutlet weak var searchCityButton: UIButton!
+    @IBOutlet weak var useCurrentLocationButton: UIButton!
+
     @IBOutlet weak var currentWeatherView: UIView!
+    @IBOutlet weak var bannerAdContainer: UIView!
+
+    @IBOutlet weak var warningLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var currentWeatherDescriptionLabel: UILabel!
     @IBOutlet weak var currentTemperatureLabel: UILabel!
-    
-    @IBOutlet weak var useCurrentLocationButton: UIButton!
-    @IBOutlet weak var searchCityButton: UIButton!
-    @IBOutlet weak var sunriseImageView: UIImageView!
     @IBOutlet weak var sunriseTimeLabel: UILabel!
-    @IBOutlet weak var sunsetImageView: UIImageView!
     @IBOutlet weak var sunsetTimeLabel: UILabel!
+
+    @IBOutlet weak var currentWeatherBackgroundView: UIImageView!
+    @IBOutlet weak var sunriseImageView: UIImageView!
+    @IBOutlet weak var sunsetImageView: UIImageView!
     
     @IBOutlet weak var forecastWeatherTableView: UITableView!
-    @IBOutlet weak var warningLabel: UILabel!
-    @IBOutlet weak var bannerAdContainer: UIView!
-    @IBOutlet weak var bannerAdContainerHeightConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var bannerAdContainerHeightConstraint: NSLayoutConstraint!
+
     
     var apiClient = ApiClient()
     var locationManager = CLLocationManager()
@@ -54,14 +56,27 @@ class WeatherViewController: UIViewController {
     var bannerAdView = HyBidBannerAdView()
     var mRectAdView = HyBidMRectAdView()
     var interstitialAd : HyBidInterstitialAd!
+    
     var dataSource = [Any]()
     var isInitialWeatherLoaded = false
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+            #selector(SummaryWeatherViewController.refreshWeatherTouchUpInside(_:)),
+                                 for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor.red
+        
+        return refreshControl
+    }()
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+        setupParallaxForBackgroundImage()
+        forecastWeatherTableView.addSubview(refreshControl)
         loadingIndicator.startAnimating()
+        
         apiClient.currentDelegate = self
         apiClient.forecastDelegate = self
         
@@ -74,7 +89,7 @@ class WeatherViewController: UIViewController {
         super.viewWillAppear(animated)
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        NotificationCenter.default.addObserver(self, selector: #selector(WeatherViewController.refreshWeatherTouchUpInside(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SummaryWeatherViewController.refreshWeatherTouchUpInside(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool)
@@ -99,6 +114,23 @@ class WeatherViewController: UIViewController {
         apiClient.fetchForecastForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
     }
     
+    func setupParallaxForBackgroundImage() {
+        let min = CGFloat(-30)
+        let max = CGFloat(30)
+        
+        let xMotion = UIInterpolatingMotionEffect(keyPath: "layer.transform.translation.x", type: .tiltAlongHorizontalAxis)
+        xMotion.minimumRelativeValue = min
+        xMotion.maximumRelativeValue = max
+        
+        let yMotion = UIInterpolatingMotionEffect(keyPath: "layer.transform.translation.y", type: .tiltAlongVerticalAxis)
+        yMotion.minimumRelativeValue = min
+        yMotion.maximumRelativeValue = max
+        
+        let motionEffectGroup = UIMotionEffectGroup()
+        motionEffectGroup.motionEffects = [xMotion, yMotion]
+        currentWeatherBackgroundView.addMotionEffect(motionEffectGroup)
+    }
+    
     func requestHyBidAds()
     {
         self.bannerAdView.load(withZoneID: "2", andWith: self)
@@ -111,7 +143,7 @@ class WeatherViewController: UIViewController {
         }
     }
     
-    func updateCurrentWeatherView(item:CurrentResponse)
+    func updateCurrentWeatherView(item: CurrentResponse)
     {
         if let name = item.name {
             cityNameLabel.text = name
@@ -119,7 +151,8 @@ class WeatherViewController: UIViewController {
         
         if item.weather?.count != 0 {
             if let currentWeahter = item.weather?.first {
-                currentWeatherDescriptionLabel.text = currentWeahter.main?.capitalized
+                currentWeatherDescriptionLabel.text = currentWeahter.description?.capitalized
+                currentWeatherBackgroundView.image = UIImage(named: weatherBackgroundImageName(forWeatherID: currentWeahter.id!))
             }
         }
         
@@ -127,16 +160,9 @@ class WeatherViewController: UIViewController {
             currentTemperatureLabel.text = "\(round(temp))°"
         }
     }
-    
-    func getCurrentDateWithTime() -> String
-    {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM d, HH:mm"
-        return dateFormatter.string(from: Date())
-    }
 }
 
-extension WeatherViewController : CurrentUpdateDelegate
+extension SummaryWeatherViewController : CurrentUpdateDelegate
 {
     func requestCurrentDidSucceed(withData data: CurrentResponse) {
         updateCurrentWeatherView(item: data)
@@ -149,50 +175,65 @@ extension WeatherViewController : CurrentUpdateDelegate
     }
 }
 
-extension WeatherViewController : ForecastUpdateDelegate
+extension SummaryWeatherViewController : ForecastUpdateDelegate
 {
     func requestForecastDidSucceed(withData data: ForecastResponse) {
         
-        var responseForecast = [ForecastItem]()
-        var orderedForecast = [[ForecastItem]]()
+        var responseForecastArray = [ForecastItem]()
 
         dataSource.removeAll()
         if let list = data.list {
             for item in list {
                 dataSource.append(item)
-                responseForecast.append(item)
+                responseForecastArray.append(item)
             }
         }
         
-        let groupedForecast = Dictionary(grouping: responseForecast) { (forecastItem) -> Date in
-            return forecastItem.date!.reduceToDayMonthYear()
-        }
-        
-        // provide a sorting for your keys somehow
-        let sortedKeys = groupedForecast.keys.sorted()
-        sortedKeys.forEach { (key) in
-            let values = groupedForecast[key]
-            orderedForecast.append(values ?? [])
-        }
-        
-        var summaryArray = [SummaryWeather]()
-        for (index,forecast) in orderedForecast.enumerated() {
-            summaryArray.append(SummaryWeather(fromForecast: forecast, withDate: sortedKeys[index]))
-        }
-        
+        let summaryArray = summarizeForecastWeather(usingForecastWeatherArray: responseForecastArray) as [Any]
+        dataSource = summaryArray
+        print(summaryArray)
+
         forecastWeatherTableView?.reloadData()
         forecastWeatherTableView.isHidden = false
         currentWeatherView.isHidden = false
         loadingIndicator.stopAnimating()
+        refreshControl.endRefreshing()
     }
     
     func requestForecastDidFail(withError error: Error) {
         NSLog(error.localizedDescription)
         loadingIndicator.stopAnimating()
+        refreshControl.endRefreshing()
+    }
+    
+    func groupForecastWeather(usingForecastWeatherArray forecastWeatherArray: [ForecastItem]) -> [Date : [ForecastItem]] {
+        return Dictionary(grouping: forecastWeatherArray) { (forecastItem) -> Date in
+            return forecastItem.date!.reduceToDayMonthYear()
+        }
+    }
+    
+    func orderGroupedForecastWeather(usingForecastWeatherArray forecastWeatherArray: [ForecastItem]) -> ([[ForecastItem]], [Date]) {
+        var orderedForecastArray = [[ForecastItem]]()
+        let groupedForecastDictionary = groupForecastWeather(usingForecastWeatherArray: forecastWeatherArray)
+        let sortedKeys = groupedForecastDictionary.keys.sorted()
+        sortedKeys.forEach { (key) in
+            let values = groupedForecastDictionary[key]
+            orderedForecastArray.append(values ?? [])
+        }
+        return (orderedForecastArray, sortedKeys)
+    }
+    
+    func summarizeForecastWeather(usingForecastWeatherArray forecastWeatherArray: [ForecastItem]) -> [ForecastSummaryItem] {
+        let (orderedForecastArray, sortedKeys) = orderGroupedForecastWeather(usingForecastWeatherArray: forecastWeatherArray)
+        var forecastSummaryArray = [ForecastSummaryItem]()
+        for (index,forecast) in orderedForecastArray.enumerated() {
+            forecastSummaryArray.append(ForecastSummaryItem(fromForecast: forecast, withDate: sortedKeys[index]))
+        }
+        return forecastSummaryArray
     }
 }
 
-extension WeatherViewController : UITableViewDelegate, UITableViewDataSource
+extension SummaryWeatherViewController : UITableViewDelegate, UITableViewDataSource
 {
     func numberOfSections(in tableView: UITableView) -> Int
     {
@@ -221,14 +262,14 @@ extension WeatherViewController : UITableViewDelegate, UITableViewDataSource
             mRectCell.mediumAdContainer.addSubview(mRectAdView)
             return mRectCell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastCell", for: indexPath) as! ForecastCell
-            cell.configureCell(forecast: dataSource[indexPath.row] as! ForecastItem)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastSummaryCell", for: indexPath) as! ForecastSummaryCell
+            cell.configureCell(forecastSummary: dataSource[indexPath.row] as! ForecastSummaryItem)
             return cell
         }
     }
 }
 
-extension WeatherViewController: CLLocationManagerDelegate {
+extension SummaryWeatherViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
@@ -272,7 +313,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
     }
 }
 
-extension WeatherViewController : HyBidAdViewDelegate
+extension SummaryWeatherViewController : HyBidAdViewDelegate
 {
     func adViewDidLoad(_ adView: HyBidAdView!)
     {
@@ -280,7 +321,7 @@ extension WeatherViewController : HyBidAdViewDelegate
             bannerAdContainerHeightConstraint.constant = 50
             bannerAdContainer.isHidden = false
         } else if (adView == mRectAdView) {
-            dataSource.insert(adView, at: 7)
+            dataSource.insert(adView, at: 2)
             forecastWeatherTableView.reloadData()
         }
     }
@@ -304,7 +345,7 @@ extension WeatherViewController : HyBidAdViewDelegate
     }
 }
 
-extension WeatherViewController : HyBidInterstitialAdDelegate
+extension SummaryWeatherViewController : HyBidInterstitialAdDelegate
 {
     func interstitialDidLoad()
     {

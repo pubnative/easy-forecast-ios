@@ -22,33 +22,29 @@
 
 import UIKit
 
-class ForecastCell: UITableViewCell {
+class ForecastSummaryCell: UITableViewCell {
     
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var weatherDescriptionType: UILabel!
-    @IBOutlet weak var highTempLabel: UILabel!
+    @IBOutlet weak var averageTemperatureLabel: UILabel!
 
-    func configureCell(forecast: ForecastItem) {
-        dayLabel.text = formatForecastDate(forecast: forecast)
+    func configureCell(forecastSummary: ForecastSummaryItem) {
         
-        if let forecast = forecast.weather?.first {
-            weatherDescriptionType.text = forecast.main?.capitalized
-            if let forecastWeatherID = forecast.id {
-                weatherIcon.image = UIImage(named: weatherIconImageName(forWeatherID: forecastWeatherID))
-            }
+        if let weatherID = forecastSummary.id {
+            weatherIcon.image = UIImage(named: weatherIconImageName(forWeatherID: weatherID))
         }
-                
-        if let highTemp = forecast.main?.temperature_max {
-            highTempLabel.text = "\(round(highTemp))°"
+        
+        if let weatherDescription =  forecastSummary.description {
+            weatherDescriptionType.text = weatherDescription.capitalized
         }
-    }
-    
-    func formatForecastDate(forecast: ForecastItem) -> String {
-        if let date = forecast.dateAsDouble {
-            let unixConvertedDate = Date (timeIntervalSince1970: date)
-            return unixConvertedDate.dayOfTheWeekWithTime()
+        
+        if let averageTemperature = forecastSummary.temperature {
+            averageTemperatureLabel.text = "\(round(averageTemperature))°"
         }
-        return Date().dayOfTheWeekWithTime()
+        
+        if let date = forecastSummary.date {
+            dayLabel.text = date.dayOfTheWeek()
+        }
     }
 }

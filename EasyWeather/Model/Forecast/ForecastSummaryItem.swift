@@ -22,7 +22,7 @@
 
 import Foundation
 
-class SummaryWeather {
+class ForecastSummaryItem {
     var temperature: Double?
     var temperature_min: Double?
     var temperature_max: Double?
