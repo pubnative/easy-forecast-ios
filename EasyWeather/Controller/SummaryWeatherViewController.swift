@@ -22,38 +22,27 @@
 
 import UIKit
 import CoreLocation
-import HyBid
 
 class SummaryWeatherViewController: UIViewController {
     
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var searchCityButton: UIButton!
     @IBOutlet weak var useCurrentLocationButton: UIButton!
-
     @IBOutlet weak var currentWeatherView: UIView!
     @IBOutlet weak var bannerAdContainer: UIView!
-
     @IBOutlet weak var warningLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var currentWeatherDescriptionLabel: UILabel!
     @IBOutlet weak var currentTemperatureLabel: UILabel!
     @IBOutlet weak var sunriseTimeLabel: UILabel!
     @IBOutlet weak var sunsetTimeLabel: UILabel!
-
     @IBOutlet weak var currentWeatherBackgroundView: UIImageView!
-
     @IBOutlet weak var forecastWeatherTableView: UITableView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var bannerAdContainerHeightConstraint: NSLayoutConstraint!
 
-    
     var apiClient = ApiClient()
     var locationManager = CLLocationManager()
-    
-    var bannerAdView = HyBidBannerAdView()
-    var mRectAdView = HyBidMRectAdView()
-    var interstitialAd : HyBidInterstitialAd!
-    
     var dataSource = [Any]()
     var isInitialWeatherLoaded = false
     
@@ -68,12 +57,8 @@ class SummaryWeatherViewController: UIViewController {
         super.viewDidLoad()
         setupParallaxForBackgroundImage()
         forecastWeatherTableView.addSubview(refreshControl)
-        
         apiClient.currentDelegate = self
         apiClient.forecastDelegate = self
-        
-        bannerAdContainer.addSubview(bannerAdView)
-        self.interstitialAd = HyBidInterstitialAd(zoneID: "1", andWith: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,7 +82,6 @@ class SummaryWeatherViewController: UIViewController {
     func fetchWeatherData() {
         bannerAdContainerHeightConstraint.constant = 0
         bannerAdContainer.isHidden = true
-        requestHyBidAds()
         apiClient.fetchCurrentForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
         apiClient.fetchForecastForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
     }
@@ -117,17 +101,6 @@ class SummaryWeatherViewController: UIViewController {
         let motionEffectGroup = UIMotionEffectGroup()
         motionEffectGroup.motionEffects = [xMotion, yMotion]
         currentWeatherBackgroundView.addMotionEffect(motionEffectGroup)
-    }
-    
-    func requestHyBidAds() {
-        self.bannerAdView.load(withZoneID: "2", andWith: self)
-        self.mRectAdView.load(withZoneID: "3", andWith: self)
-        if !isInitialWeatherLoaded {
-            isInitialWeatherLoaded = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
-                self.interstitialAd.load()
-            })
-        }
     }
     
     func updateCurrentWeatherView(item: CurrentResponse) {
@@ -232,32 +205,17 @@ extension SummaryWeatherViewController : UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if (dataSource[indexPath.row] is HyBidMRectAdView) {
-            return 270
-        } else {
-            return 80
-        }
+        return 80
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (dataSource[indexPath.row] is HyBidMRectAdView) {
-            let mRectCell = tableView.dequeueReusableCell(withIdentifier: "MRectCell", for: indexPath) as! MRectCell
-            mRectAdView = dataSource[indexPath.row] as! HyBidMRectAdView
-            mRectCell.mediumAdContainer.addSubview(mRectAdView)
-            return mRectCell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastSummaryCell", for: indexPath) as! ForecastSummaryCell
-            cell.configureCell(withForecastSummaryItem: dataSource[indexPath.row] as! ForecastSummaryItem)
-            return cell
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastSummaryCell", for: indexPath) as! ForecastSummaryCell
+        cell.configureCell(withForecastSummaryItem: dataSource[indexPath.row] as! ForecastSummaryItem)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (dataSource[indexPath.row] is HyBidMRectAdView) {
-
-        } else {
-            // send data to detail screen
-        }
+        
     }
 }
 
@@ -300,66 +258,5 @@ extension SummaryWeatherViewController: CLLocationManagerDelegate {
             bannerAdContainer.isHidden = true
             break
         }
-    }
-}
-
-extension SummaryWeatherViewController : HyBidAdViewDelegate
-{
-    func adViewDidLoad(_ adView: HyBidAdView!)
-    {
-        if (adView == bannerAdView) {
-            bannerAdContainerHeightConstraint.constant = 50
-            bannerAdContainer.isHidden = false
-        } else if (adView == mRectAdView) {
-            dataSource.insert(adView, at: 2)
-            forecastWeatherTableView.reloadData()
-        }
-    }
-    
-    func adView(_ adView: HyBidAdView!, didFailWithError error: Error!)
-    {
-        if (adView == bannerAdView) {
-            bannerAdContainerHeightConstraint.constant = 0
-            bannerAdContainer.isHidden = true
-        }
-    }
-    
-    func adViewDidTrackClick(_ adView: HyBidAdView!)
-    {
-        
-    }
-    
-    func adViewDidTrackImpression(_ adView: HyBidAdView!)
-    {
-        
-    }
-}
-
-extension SummaryWeatherViewController : HyBidInterstitialAdDelegate
-{
-    func interstitialDidLoad()
-    {
-        print("Interstitial did load:")
-        self.interstitialAd.show()
-    }
-    
-    func interstitialDidFailWithError(_ error: Error!)
-    {
-        print("Interstitial did fail with error: \(error.localizedDescription)")
-    }
-    
-    func interstitialDidTrackClick()
-    {
-        print("Interstitial did track click:")
-    }
-    
-    func interstitialDidTrackImpression()
-    {
-        print("Interstitial did track impression:")
-    }
-    
-    func interstitialDidDismiss()
-    {
-        print("Interstitial did dismiss:")
     }
 }
