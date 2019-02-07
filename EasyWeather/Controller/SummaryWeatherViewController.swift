@@ -28,6 +28,7 @@ class SummaryWeatherViewController: UIViewController {
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var searchCityButton: UIButton!
     @IBOutlet weak var useCurrentLocationButton: UIButton!
+    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var currentWeatherView: UIView!
     @IBOutlet weak var bannerAdContainer: UIView!
     @IBOutlet weak var warningLabel: UILabel!
@@ -55,10 +56,12 @@ class SummaryWeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupParallaxForBackgroundImage()
-        forecastWeatherTableView.addSubview(refreshControl)
         apiClient.currentDelegate = self
         apiClient.forecastDelegate = self
+        forecastWeatherTableView.isHidden = true
+        currentWeatherView.isHidden = true
+        setupParallaxForBackgroundImage()
+        forecastWeatherTableView.addSubview(refreshControl)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,15 +92,12 @@ class SummaryWeatherViewController: UIViewController {
     func setupParallaxForBackgroundImage() {
         let min = CGFloat(-30)
         let max = CGFloat(30)
-        
         let xMotion = UIInterpolatingMotionEffect(keyPath: "layer.transform.translation.x", type: .tiltAlongHorizontalAxis)
         xMotion.minimumRelativeValue = min
         xMotion.maximumRelativeValue = max
-        
         let yMotion = UIInterpolatingMotionEffect(keyPath: "layer.transform.translation.y", type: .tiltAlongVerticalAxis)
         yMotion.minimumRelativeValue = min
         yMotion.maximumRelativeValue = max
-        
         let motionEffectGroup = UIMotionEffectGroup()
         motionEffectGroup.motionEffects = [xMotion, yMotion]
         currentWeatherBackgroundView.addMotionEffect(motionEffectGroup)
@@ -116,17 +116,14 @@ class SummaryWeatherViewController: UIViewController {
         if let temp = item.main?.temperature {
             currentTemperatureLabel.text = "\(round(temp))°"
         }
-        
         if let sunrise = item.sys?.sunrise {
             let unixConvertedDate = Date(timeIntervalSince1970: sunrise)
             sunriseTimeLabel.text = unixConvertedDate.timeOfTheDay()
         }
-        
         if let sunset = item.sys?.sunset {
             let unixConvertedDate = Date(timeIntervalSince1970: sunset)
             sunsetTimeLabel.text = unixConvertedDate.timeOfTheDay()
         }
-
     }
 }
 
@@ -153,7 +150,8 @@ extension SummaryWeatherViewController : ForecastUpdateDelegate {
             }
         }
         
-        let summaryArray = summarizeForecastWeather(usingForecastWeatherArray: responseForecastArray) as [Any]
+        var summaryArray = summarizeForecastWeather(usingForecastWeatherArray: responseForecastArray) as [Any]
+        summaryArray.removeFirst()
         dataSource = summaryArray
         forecastWeatherTableView?.reloadData()
         forecastWeatherTableView.isHidden = false
@@ -242,6 +240,7 @@ extension SummaryWeatherViewController: CLLocationManagerDelegate {
         case .authorizedWhenInUse:
             warningLabel.isHidden = true
             bannerAdContainer.isHidden = false
+            backgroundView.isHidden = false
             manager.startUpdatingLocation()
             break
         case .authorizedAlways:
@@ -253,6 +252,7 @@ extension SummaryWeatherViewController: CLLocationManagerDelegate {
         case .denied:
             loadingIndicator.stopAnimating()
             warningLabel.isHidden = false
+            backgroundView.isHidden = true
             forecastWeatherTableView.isHidden = true
             currentWeatherView.isHidden = true
             bannerAdContainer.isHidden = true
