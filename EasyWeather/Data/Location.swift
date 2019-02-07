@@ -22,14 +22,12 @@
 
 import CoreLocation
 
-class Location
-{
+class Location{
     static var sharedInstance = Location()
+    var latitude : Double!
+    var longitude : Double!
     
     private init() {
         
     }
-    
-    var latitude : Double!
-    var longitude : Double!
 }

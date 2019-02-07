@@ -115,10 +115,10 @@
 		5A6A8C172086495800494187 /* Forecast */ = {
 			isa = PBXGroup;
 			children = (
-				5ACDB1B52209F1C600E13AAD /* ForecastSummaryItem.swift */,
 				E75E4681203B3DB500FF9672 /* ForecastCity.swift */,
 				E75E4683203B3DC600FF9672 /* ForecastCoordinate.swift */,
 				E75E4685203B3DD800FF9672 /* ForecastItem.swift */,
+				5ACDB1B52209F1C600E13AAD /* ForecastSummaryItem.swift */,
 				E75E4687203B3DF100FF9672 /* ForecastMain.swift */,
 				E75E4689203B3E0700FF9672 /* ForecastWeather.swift */,
 				E75E468B203B3E6500FF9672 /* ForecastClouds.swift */,

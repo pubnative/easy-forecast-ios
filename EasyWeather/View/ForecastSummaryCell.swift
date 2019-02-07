@@ -29,21 +29,21 @@ class ForecastSummaryCell: UITableViewCell {
     @IBOutlet weak var weatherDescriptionType: UILabel!
     @IBOutlet weak var averageTemperatureLabel: UILabel!
 
-    func configureCell(forecastSummary: ForecastSummaryItem) {
+    func configureCell(withForecastSummaryItem forecastSummaryItem: ForecastSummaryItem) {
         
-        if let weatherID = forecastSummary.id {
+        if let weatherID = forecastSummaryItem.id {
             weatherIcon.image = UIImage(named: weatherIconImageName(forWeatherID: weatherID))
         }
         
-        if let weatherDescription =  forecastSummary.description {
+        if let weatherDescription =  forecastSummaryItem.description {
             weatherDescriptionType.text = weatherDescription.capitalized
         }
         
-        if let averageTemperature = forecastSummary.temperature {
+        if let averageTemperature = forecastSummaryItem.temperature {
             averageTemperatureLabel.text = "\(round(averageTemperature))°"
         }
         
-        if let date = forecastSummary.date {
+        if let date = forecastSummaryItem.date {
             dayLabel.text = date.dayOfTheWeek()
         }
     }

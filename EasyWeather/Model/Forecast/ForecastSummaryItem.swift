@@ -77,10 +77,12 @@ class ForecastSummaryItem {
         
         for forecastItem in forecast {
             if let forecastWeather = forecastItem.weather?.first {
-                if let weatherIDCount = weatherIDDictionary[forecastWeather.id!] {
-                    weatherIDDictionary[forecastWeather.id!] = weatherIDCount + 1
-                } else {
-                    weatherIDDictionary[forecastWeather.id!] =  1
+                if let forecastWeatherID = forecastWeather.id {
+                    if let weatherIDCount = weatherIDDictionary[forecastWeatherID] {
+                        weatherIDDictionary[forecastWeatherID] = weatherIDCount + 1
+                    } else {
+                        weatherIDDictionary[forecastWeatherID] =  1
+                    }
                 }
             }
             
@@ -104,10 +106,12 @@ class ForecastSummaryItem {
         
         for forecastItem in forecast {
             if let forecastWeather = forecastItem.weather?.first {
-                if let weatherDescriptionCount = weatherDescriptionDictionary[forecastWeather.description!] {
-                    weatherDescriptionDictionary[forecastWeather.description!] = weatherDescriptionCount + 1
-                } else {
-                    weatherDescriptionDictionary[forecastWeather.description!] =  1
+                if let forecastWeatherDescription = forecastWeather.description {
+                    if let weatherDescriptionCount = weatherDescriptionDictionary[forecastWeatherDescription] {
+                        weatherDescriptionDictionary[forecastWeatherDescription] = weatherDescriptionCount + 1
+                    } else {
+                        weatherDescriptionDictionary[forecastWeatherDescription] =  1
+                    }
                 }
             }
             

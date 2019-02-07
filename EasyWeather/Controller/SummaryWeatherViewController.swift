@@ -26,7 +26,6 @@ import HyBid
 
 class SummaryWeatherViewController: UIViewController {
     
-    @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var searchCityButton: UIButton!
     @IBOutlet weak var useCurrentLocationButton: UIButton!
@@ -42,9 +41,7 @@ class SummaryWeatherViewController: UIViewController {
     @IBOutlet weak var sunsetTimeLabel: UILabel!
 
     @IBOutlet weak var currentWeatherBackgroundView: UIImageView!
-    @IBOutlet weak var sunriseImageView: UIImageView!
-    @IBOutlet weak var sunsetImageView: UIImageView!
-    
+
     @IBOutlet weak var forecastWeatherTableView: UITableView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var bannerAdContainerHeightConstraint: NSLayoutConstraint!
@@ -62,20 +59,15 @@ class SummaryWeatherViewController: UIViewController {
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action:
-            #selector(SummaryWeatherViewController.refreshWeatherTouchUpInside(_:)),
-                                 for: UIControl.Event.valueChanged)
-        refreshControl.tintColor = UIColor.red
-        
+        refreshControl.addTarget(self, action: #selector(SummaryWeatherViewController.refreshWeather), for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor.white
         return refreshControl
     }()
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         setupParallaxForBackgroundImage()
         forecastWeatherTableView.addSubview(refreshControl)
-        loadingIndicator.startAnimating()
         
         apiClient.currentDelegate = self
         apiClient.forecastDelegate = self
@@ -84,31 +76,27 @@ class SummaryWeatherViewController: UIViewController {
         self.interstitialAd = HyBidInterstitialAd(zoneID: "1", andWith: self)
     }
     
-    override func viewWillAppear(_ animated: Bool)
-    {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        loadingIndicator.startAnimating()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        NotificationCenter.default.addObserver(self, selector: #selector(SummaryWeatherViewController.refreshWeatherTouchUpInside(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SummaryWeatherViewController.refreshWeather), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
-    override func viewWillDisappear(_ animated: Bool)
-    {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)        
     }
     
-    @IBAction func refreshWeatherTouchUpInside(_ sender: UIButton)
-    {
+    @objc func refreshWeather() {
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
     }
     
-    @objc private func fetchWeatherData()
-    {
+    func fetchWeatherData() {
         bannerAdContainerHeightConstraint.constant = 0
         bannerAdContainer.isHidden = true
-        loadingIndicator.startAnimating()
         requestHyBidAds()
         apiClient.fetchCurrentForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
         apiClient.fetchForecastForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
@@ -131,8 +119,7 @@ class SummaryWeatherViewController: UIViewController {
         currentWeatherBackgroundView.addMotionEffect(motionEffectGroup)
     }
     
-    func requestHyBidAds()
-    {
+    func requestHyBidAds() {
         self.bannerAdView.load(withZoneID: "2", andWith: self)
         self.mRectAdView.load(withZoneID: "3", andWith: self)
         if !isInitialWeatherLoaded {
@@ -143,27 +130,34 @@ class SummaryWeatherViewController: UIViewController {
         }
     }
     
-    func updateCurrentWeatherView(item: CurrentResponse)
-    {
+    func updateCurrentWeatherView(item: CurrentResponse) {
         if let name = item.name {
             cityNameLabel.text = name
         }
-        
         if item.weather?.count != 0 {
             if let currentWeahter = item.weather?.first {
                 currentWeatherDescriptionLabel.text = currentWeahter.description?.capitalized
                 currentWeatherBackgroundView.image = UIImage(named: weatherBackgroundImageName(forWeatherID: currentWeahter.id!))
             }
         }
-        
         if let temp = item.main?.temperature {
             currentTemperatureLabel.text = "\(round(temp))°"
         }
+        
+        if let sunrise = item.sys?.sunrise {
+            let unixConvertedDate = Date(timeIntervalSince1970: sunrise)
+            sunriseTimeLabel.text = unixConvertedDate.timeOfTheDay()
+        }
+        
+        if let sunset = item.sys?.sunset {
+            let unixConvertedDate = Date(timeIntervalSince1970: sunset)
+            sunsetTimeLabel.text = unixConvertedDate.timeOfTheDay()
+        }
+
     }
 }
 
-extension SummaryWeatherViewController : CurrentUpdateDelegate
-{
+extension SummaryWeatherViewController : CurrentUpdateDelegate {
     func requestCurrentDidSucceed(withData data: CurrentResponse) {
         updateCurrentWeatherView(item: data)
         loadingIndicator.stopAnimating()
@@ -175,12 +169,9 @@ extension SummaryWeatherViewController : CurrentUpdateDelegate
     }
 }
 
-extension SummaryWeatherViewController : ForecastUpdateDelegate
-{
+extension SummaryWeatherViewController : ForecastUpdateDelegate {
     func requestForecastDidSucceed(withData data: ForecastResponse) {
-        
         var responseForecastArray = [ForecastItem]()
-
         dataSource.removeAll()
         if let list = data.list {
             for item in list {
@@ -191,8 +182,6 @@ extension SummaryWeatherViewController : ForecastUpdateDelegate
         
         let summaryArray = summarizeForecastWeather(usingForecastWeatherArray: responseForecastArray) as [Any]
         dataSource = summaryArray
-        print(summaryArray)
-
         forecastWeatherTableView?.reloadData()
         forecastWeatherTableView.isHidden = false
         currentWeatherView.isHidden = false
@@ -233,20 +222,16 @@ extension SummaryWeatherViewController : ForecastUpdateDelegate
     }
 }
 
-extension SummaryWeatherViewController : UITableViewDelegate, UITableViewDataSource
-{
-    func numberOfSections(in tableView: UITableView) -> Int
-    {
+extension SummaryWeatherViewController : UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if (dataSource[indexPath.row] is HyBidMRectAdView) {
             return 270
         } else {
@@ -254,8 +239,7 @@ extension SummaryWeatherViewController : UITableViewDelegate, UITableViewDataSou
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (dataSource[indexPath.row] is HyBidMRectAdView) {
             let mRectCell = tableView.dequeueReusableCell(withIdentifier: "MRectCell", for: indexPath) as! MRectCell
             mRectAdView = dataSource[indexPath.row] as! HyBidMRectAdView
@@ -263,16 +247,24 @@ extension SummaryWeatherViewController : UITableViewDelegate, UITableViewDataSou
             return mRectCell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastSummaryCell", for: indexPath) as! ForecastSummaryCell
-            cell.configureCell(forecastSummary: dataSource[indexPath.row] as! ForecastSummaryItem)
+            cell.configureCell(withForecastSummaryItem: dataSource[indexPath.row] as! ForecastSummaryItem)
             return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (dataSource[indexPath.row] is HyBidMRectAdView) {
+
+        } else {
+            // send data to detail screen
         }
     }
 }
 
 extension SummaryWeatherViewController: CLLocationManagerDelegate {
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
-    {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         Location.sharedInstance.latitude = locations.last?.coordinate.latitude
         Location.sharedInstance.longitude = locations.last?.coordinate.longitude
         fetchWeatherData()
@@ -280,13 +272,11 @@ extension SummaryWeatherViewController: CLLocationManagerDelegate {
         manager.delegate = nil;
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
-    {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error){
         
     }
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
-    {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus){
         switch status {
         case .notDetermined:
             manager.requestWhenInUseAuthorization()
