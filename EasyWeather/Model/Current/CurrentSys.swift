@@ -21,8 +21,20 @@
 //
 
 import UIKit
+import ObjectMapper
 
-protocol ForecastUpdateDelegate {
-    mutating func requestForecastDidSucceed(withData data: ForecastResponse)
-    mutating func requestForecastDidFail(withError error: Error)
+class CurrentSys: Mappable {
+    var country: String?
+    var sunrise: Double?
+    var sunset: Double?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        country <- map["country"]
+        sunrise <- map["sunrise"]
+        sunset <- map["sunset"]
+    }
 }

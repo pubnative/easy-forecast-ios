@@ -21,8 +21,22 @@
 //
 
 import UIKit
+import ObjectMapper
 
-protocol ForecastUpdateDelegate {
-    mutating func requestForecastDidSucceed(withData data: ForecastResponse)
-    mutating func requestForecastDidFail(withError error: Error)
+class ForecastCity: NSObject {
+    var id: Double?
+    var name: String?
+    var coordinate: ForecastCoordinate?
+    var country: String?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        id <- map["id"]
+        name <- map["name"]
+        coordinate <- map["coord"]
+        country <- map["country"]
+    }
 }

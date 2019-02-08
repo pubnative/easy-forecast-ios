@@ -21,8 +21,20 @@
 //
 
 import UIKit
+import ObjectMapper
 
-protocol ForecastUpdateDelegate {
-    mutating func requestForecastDidSucceed(withData data: ForecastResponse)
-    mutating func requestForecastDidFail(withError error: Error)
+class ForecastResponse: Mappable {
+    var city: ForecastCity?
+    var cnt: Int?
+    var list: [ForecastItem]?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        city <- map["city"]
+        cnt <- map["cnt"]
+        list <- map["list"]
+    }
 }

@@ -22,7 +22,29 @@
 
 import UIKit
 
-protocol ForecastUpdateDelegate {
-    mutating func requestForecastDidSucceed(withData data: ForecastResponse)
-    mutating func requestForecastDidFail(withError error: Error)
+class ForecastSummaryCell: UITableViewCell {
+    
+    @IBOutlet weak var weatherIcon: UIImageView!
+    @IBOutlet weak var dayLabel: UILabel!
+    @IBOutlet weak var weatherDescriptionType: UILabel!
+    @IBOutlet weak var averageTemperatureLabel: UILabel!
+
+    func configureCell(withForecastSummaryItem forecastSummaryItem: ForecastSummaryItem) {
+        
+        if let weatherID = forecastSummaryItem.id {
+            weatherIcon.image = UIImage(named: weatherIconImageName(forWeatherID: weatherID))
+        }
+        
+        if let weatherDescription =  forecastSummaryItem.description {
+            weatherDescriptionType.text = weatherDescription.capitalized
+        }
+        
+        if let averageTemperature = forecastSummaryItem.temperature {
+            averageTemperatureLabel.text = "\(round(averageTemperature))°"
+        }
+        
+        if let date = forecastSummaryItem.date {
+            dayLabel.text = date.dayOfTheWeek()
+        }
+    }
 }

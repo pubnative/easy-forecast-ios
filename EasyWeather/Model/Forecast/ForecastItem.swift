@@ -21,8 +21,30 @@
 //
 
 import UIKit
+import ObjectMapper
 
-protocol ForecastUpdateDelegate {
-    mutating func requestForecastDidSucceed(withData data: ForecastResponse)
-    mutating func requestForecastDidFail(withError error: Error)
+class ForecastItem: Mappable {
+    var dateAsDouble: Double?
+    var main: ForecastMain?
+    var weather: [ForecastWeather]?
+    var clouds: ForecastClouds?
+    var wind: ForecastWind?
+    var sys: ForecastSys?
+    var dateString: String?
+    var date: Date!
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        dateAsDouble <- map["dt"]
+        main <- map["main"]
+        weather <- map["weather"]
+        clouds <- map["clouds"]
+        wind <- map["wind"]
+        sys <- map["sys"]
+        dateString <- map["dt_txt"]
+        date = Date.dateFrom(string: dateString!)
+    }
 }
