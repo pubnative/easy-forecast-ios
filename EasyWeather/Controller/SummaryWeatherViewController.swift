@@ -46,6 +46,7 @@ class SummaryWeatherViewController: UIViewController {
     var locationManager = CLLocationManager()
     var dataSource = [Any]()
     var isInitialWeatherLoaded = false
+    var cityName: String!
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -66,7 +67,12 @@ class SummaryWeatherViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadingIndicator.startAnimating()
+        if !isInitialWeatherLoaded {
+            loadingIndicator.startAnimating()
+        }
+        if cityName != nil {
+            fetchWeather(forCity: cityName)
+        }
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         NotificationCenter.default.addObserver(self, selector: #selector(SummaryWeatherViewController.refreshWeather), name: UIApplication.willEnterForegroundNotification, object: nil)
@@ -82,11 +88,23 @@ class SummaryWeatherViewController: UIViewController {
         locationManager.startUpdatingLocation()
     }
     
+    
+    func fetchWeather(forCity cityName: String) {
+        bannerAdContainerHeightConstraint.constant = 0
+        bannerAdContainer.isHidden = true
+        apiClient.fetchCurrentForCity(name: cityName.lowercased())
+        apiClient.fetchForecastForCity(name: cityName.lowercased())
+    }
+    
     func fetchWeatherData() {
         bannerAdContainerHeightConstraint.constant = 0
         bannerAdContainer.isHidden = true
         apiClient.fetchCurrentForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
         apiClient.fetchForecastForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
+    }
+    
+    @IBAction func useCurrentLocationButtonPressed(_ sender: UIButton) {
+        fetchWeatherData()
     }
     
     func setupParallaxForBackgroundImage() {
@@ -127,7 +145,7 @@ class SummaryWeatherViewController: UIViewController {
     }
 }
 
-extension SummaryWeatherViewController : CurrentUpdateDelegate {
+extension SummaryWeatherViewController: CurrentUpdateDelegate {
     func requestCurrentDidSucceed(withData data: CurrentResponse) {
         updateCurrentWeatherView(item: data)
         loadingIndicator.stopAnimating()
@@ -139,7 +157,7 @@ extension SummaryWeatherViewController : CurrentUpdateDelegate {
     }
 }
 
-extension SummaryWeatherViewController : ForecastUpdateDelegate {
+extension SummaryWeatherViewController: ForecastUpdateDelegate {
     func requestForecastDidSucceed(withData data: ForecastResponse) {
         var responseForecastArray = [ForecastItem]()
         dataSource.removeAll()
@@ -193,7 +211,7 @@ extension SummaryWeatherViewController : ForecastUpdateDelegate {
     }
 }
 
-extension SummaryWeatherViewController : UITableViewDelegate, UITableViewDataSource {
+extension SummaryWeatherViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
