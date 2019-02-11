@@ -30,9 +30,9 @@ extension Date {
         return dateFormatter.date(from: string) ?? Date()
     }
     
-    func dayOfTheWeekWithTime() -> String {
+    func dayOfTheMonth() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM d, HH:mm"
+        dateFormatter.dateFormat = "d MMMM"
         return dateFormatter.string(from: self)
     }
     

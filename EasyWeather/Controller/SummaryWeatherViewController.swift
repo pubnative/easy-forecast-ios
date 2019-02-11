@@ -61,7 +61,10 @@ class SummaryWeatherViewController: UIViewController {
         apiClient.forecastDelegate = self
         forecastWeatherTableView.isHidden = true
         currentWeatherView.isHidden = true
-        setupParallaxForBackgroundImage()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+        currentWeatherBackgroundView.addParallaxEffect()
         forecastWeatherTableView.addSubview(refreshControl)
     }
     
@@ -90,6 +93,7 @@ class SummaryWeatherViewController: UIViewController {
     
     
     func fetchWeather(forCity cityName: String) {
+        self.cityName = nil
         bannerAdContainerHeightConstraint.constant = 0
         bannerAdContainer.isHidden = true
         apiClient.fetchCurrentForCity(name: cityName.lowercased())
@@ -105,20 +109,6 @@ class SummaryWeatherViewController: UIViewController {
     
     @IBAction func useCurrentLocationButtonPressed(_ sender: UIButton) {
         fetchWeatherData()
-    }
-    
-    func setupParallaxForBackgroundImage() {
-        let min = CGFloat(-30)
-        let max = CGFloat(30)
-        let xMotion = UIInterpolatingMotionEffect(keyPath: "layer.transform.translation.x", type: .tiltAlongHorizontalAxis)
-        xMotion.minimumRelativeValue = min
-        xMotion.maximumRelativeValue = max
-        let yMotion = UIInterpolatingMotionEffect(keyPath: "layer.transform.translation.y", type: .tiltAlongVerticalAxis)
-        yMotion.minimumRelativeValue = min
-        yMotion.maximumRelativeValue = max
-        let motionEffectGroup = UIMotionEffectGroup()
-        motionEffectGroup.motionEffects = [xMotion, yMotion]
-        currentWeatherBackgroundView.addMotionEffect(motionEffectGroup)
     }
     
     func updateCurrentWeatherView(item: CurrentResponse) {
@@ -231,7 +221,10 @@ extension SummaryWeatherViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        guard let forecastSummaryDetailViewController = storyboard?.instantiateViewController(withIdentifier: "forecastWeatherDetailViewController") as? ForecastWeatherDetailViewController else { return }
+        guard let forecastSummaryItem = dataSource[indexPath.row] as? ForecastSummaryItem else { return }
+        forecastSummaryDetailViewController.initWith(forecastSummaryItem: forecastSummaryItem, andWithCityName: cityNameLabel.text!)
+        navigationController?.pushViewController(forecastSummaryDetailViewController, animated: true)
     }
 }
 

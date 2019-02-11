@@ -23,7 +23,6 @@
 import UIKit
 
 extension UIView {
-    
     func bindToKeyboard(){
         NotificationCenter.default.addObserver(self, selector: #selector(UIView.keyboardWillChange(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }

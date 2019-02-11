@@ -52,23 +52,27 @@ class ForecastSummaryItem {
     }
     
     func calculateAverageMinimumTemperature(fromForecast forecast:[ForecastItem]) -> Double {
-        var averageMinimumTemperature: Double = 0
+        var minimumTemperature: Double = (forecast.first?.main?.temperature_min)!
         for forecastItem in forecast {
             if let temperature_min = forecastItem.main?.temperature_min {
-                averageMinimumTemperature = averageMinimumTemperature + temperature_min
+                if temperature_min < minimumTemperature {
+                    minimumTemperature = temperature_min
+                }
             }
         }
-        return averageMinimumTemperature / Double(forecast.count)
+        return minimumTemperature
     }
     
     func calculateAverageMaximumTemperature(fromForecast forecast:[ForecastItem]) -> Double {
-        var averageMaximumTemperature: Double = 0
+        var maximumTemperature: Double = (forecast.first?.main?.temperature_max)!
         for forecastItem in forecast {
             if let temperature_max = forecastItem.main?.temperature_max {
-                averageMaximumTemperature = averageMaximumTemperature + temperature_max
+                if temperature_max > maximumTemperature {
+                    maximumTemperature = temperature_max
+                }
             }
         }
-        return averageMaximumTemperature / Double(forecast.count)
+        return maximumTemperature
     }
     
     func mostCommonWeatherID(fromForecast forecast:[ForecastItem]) -> Int {

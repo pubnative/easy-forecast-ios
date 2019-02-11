@@ -1,5 +1,5 @@
 //
-//  Copyright © 2019 EasyNaps. All rights reserved.
+//  Copyright © 2018 EasyNaps. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,14 +22,30 @@
 
 import UIKit
 
-class InfoViewController: UIViewController {
+class ForecastDetailCell: UITableViewCell {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    @IBOutlet weak var weatherIcon: UIImageView!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var weatherDescriptionType: UILabel!
+    @IBOutlet weak var averageTemperatureLabel: UILabel!
     
-    @IBAction func closeButtonPressed(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+    func configureCell(withForecastItem forecastItem: ForecastItem) {
+        
+        if let weather = forecastItem.weather?.first {
+            if let weatherID = weather.id {
+                weatherIcon.image = UIImage(named: weatherIconImageName(forWeatherID: weatherID))
+            }
+            if let weatherDescription =  weather.description {
+                weatherDescriptionType.text = weatherDescription.capitalized
+            }
+        }
+        if let temperature = forecastItem.main?.temperature {
+            averageTemperatureLabel.text = "\(round(temperature))°"
+        }
+        
+        if let date = forecastItem.date {
+            timeLabel.text = date.timeOfTheDay()
+        }
     }
-    
+
 }

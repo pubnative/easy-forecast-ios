@@ -14,6 +14,9 @@
 		5A0A81FC220DC0DF00DB332B /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0A81FB220DC0DF00DB332B /* InfoViewController.swift */; };
 		5A257F66220D8B4500FDCCDB /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A257F65220D8B4500FDCCDB /* CustomTextField.swift */; };
 		5A257F68220D8B7B00FDCCDB /* SearchCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A257F67220D8B7B00FDCCDB /* SearchCityViewController.swift */; };
+		5A4CDA0822118ECF00217E5F /* ForecastWeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CDA0722118ECF00217E5F /* ForecastWeatherDetailViewController.swift */; };
+		5A4CDA0A2211998200217E5F /* ForecastDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CDA092211998200217E5F /* ForecastDetailCell.swift */; };
+		5A4CDA0C2211BA2600217E5F /* ParallaxEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CDA0B2211BA2600217E5F /* ParallaxEffect.swift */; };
 		5A6A8C142086297700494187 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A8C132086297600494187 /* Location.swift */; };
 		5A6A8C1620862C8B00494187 /* ForecastSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A8C1520862C8B00494187 /* ForecastSummaryCell.swift */; };
 		5AAEF8E320A1D88F006C7CD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5AAEF8E220A1D88F006C7CD4 /* GoogleService-Info.plist */; };
@@ -71,6 +74,9 @@
 		5A0A81FB220DC0DF00DB332B /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		5A257F65220D8B4500FDCCDB /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		5A257F67220D8B7B00FDCCDB /* SearchCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityViewController.swift; sourceTree = "<group>"; };
+		5A4CDA0722118ECF00217E5F /* ForecastWeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastWeatherDetailViewController.swift; sourceTree = "<group>"; };
+		5A4CDA092211998200217E5F /* ForecastDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastDetailCell.swift; sourceTree = "<group>"; };
+		5A4CDA0B2211BA2600217E5F /* ParallaxEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallaxEffect.swift; sourceTree = "<group>"; };
 		5A6A8C132086297600494187 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		5A6A8C1520862C8B00494187 /* ForecastSummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastSummaryCell.swift; sourceTree = "<group>"; };
 		5AAEF8E220A1D88F006C7CD4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -157,6 +163,7 @@
 				5A257F65220D8B4500FDCCDB /* CustomTextField.swift */,
 				5AECDF302088C728003049AE /* MRectCell.swift */,
 				5A6A8C1520862C8B00494187 /* ForecastSummaryCell.swift */,
+				5A4CDA092211998200217E5F /* ForecastDetailCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -174,6 +181,7 @@
 			children = (
 				5ACDB1B12209DAE700E13AAD /* DateExtension.swift */,
 				5A04DDB0220D9155001FAFEC /* KeyboardBoundView.swift */,
+				5A4CDA0B2211BA2600217E5F /* ParallaxEffect.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -212,6 +220,7 @@
 				E7CC276D203AF265006A95B9 /* SummaryWeatherViewController.swift */,
 				5A257F67220D8B7B00FDCCDB /* SearchCityViewController.swift */,
 				5A0A81FB220DC0DF00DB332B /* InfoViewController.swift */,
+				5A4CDA0722118ECF00217E5F /* ForecastWeatherDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -419,6 +428,7 @@
 				E75E468A203B3E0700FF9672 /* ForecastWeather.swift in Sources */,
 				E75E4684203B3DC600FF9672 /* ForecastCoordinate.swift in Sources */,
 				E75E4688203B3DF100FF9672 /* ForecastMain.swift in Sources */,
+				5A4CDA0A2211998200217E5F /* ForecastDetailCell.swift in Sources */,
 				E75E4692203B3E9100FF9672 /* ForecastResponse.swift in Sources */,
 				E75E4698203B3ED000FF9672 /* CurrentMain.swift in Sources */,
 				5A257F66220D8B4500FDCCDB /* CustomTextField.swift in Sources */,
@@ -426,6 +436,7 @@
 				E75E469E203B3F0100FF9672 /* CurrentClouds.swift in Sources */,
 				E75E4682203B3DB500FF9672 /* ForecastCity.swift in Sources */,
 				E7566C38203C3B1F00487557 /* CurrentUpdateDelegate.swift in Sources */,
+				5A4CDA0822118ECF00217E5F /* ForecastWeatherDetailViewController.swift in Sources */,
 				E75E468C203B3E6500FF9672 /* ForecastClouds.swift in Sources */,
 				E75E468E203B3E7100FF9672 /* ForecastWind.swift in Sources */,
 				5A04DDB1220D9155001FAFEC /* KeyboardBoundView.swift in Sources */,
@@ -439,6 +450,7 @@
 				E75E46A3203B468600FF9672 /* ApiClient.swift in Sources */,
 				E75E46A0203B3F0C00FF9672 /* CurrentResponse.swift in Sources */,
 				5A257F68220D8B7B00FDCCDB /* SearchCityViewController.swift in Sources */,
+				5A4CDA0C2211BA2600217E5F /* ParallaxEffect.swift in Sources */,
 				E75E469C203B3EF300FF9672 /* CurrentWind.swift in Sources */,
 				E7CC276E203AF265006A95B9 /* SummaryWeatherViewController.swift in Sources */,
 				E7566C36203C3A8C00487557 /* ForecastUpdateDelegate.swift in Sources */,
