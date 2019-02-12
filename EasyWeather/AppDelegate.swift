@@ -34,7 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        UIApplication.shared.statusBarStyle = .lightContent
         FirebaseApp.configure()
         Fabric.with([Crashlytics.self])
         HyBid.initWithAppToken("3e98d63843d8437c8d35a05edab557dd") { (success) in

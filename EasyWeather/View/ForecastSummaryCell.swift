@@ -28,11 +28,13 @@ class ForecastSummaryCell: UITableViewCell {
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var weatherDescriptionType: UILabel!
     @IBOutlet weak var averageTemperatureLabel: UILabel!
-
+    @IBOutlet weak var detailArrowImage: UIImageView!
+    
     func configureCell(withForecastSummaryItem forecastSummaryItem: ForecastSummaryItem) {
         
         if let weatherID = forecastSummaryItem.id {
-            weatherIcon.image = UIImage(named: weatherIconImageName(forWeatherID: weatherID))
+            let weatherIconImage = UIImage(named: weatherIconImageName(forWeatherID: weatherID))!.withRenderingMode(.alwaysTemplate)
+            weatherIcon.image = weatherIconImage
         }
         
         if let weatherDescription =  forecastSummaryItem.description {
@@ -46,5 +48,8 @@ class ForecastSummaryCell: UITableViewCell {
         if let date = forecastSummaryItem.date {
             dayLabel.text = date.dayOfTheWeek()
         }
+        
+        let arrowImage = UIImage(named:"next")!.withRenderingMode(.alwaysTemplate)
+        detailArrowImage.image = arrowImage
     }
 }

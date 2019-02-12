@@ -46,11 +46,11 @@ class SearchCityViewController: UIViewController {
     @objc func searchButtonPressed() {
         guard let summaryWeatherViewController = navigationController?.viewControllers.first as? SummaryWeatherViewController else { return }
         summaryWeatherViewController.cityName = cityName
-        navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: false)
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: false)
     }
     
     @IBAction func textFieldTextHasChanged(_ sender: CustomTextField) {
