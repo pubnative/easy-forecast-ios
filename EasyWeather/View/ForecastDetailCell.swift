@@ -33,7 +33,9 @@ class ForecastDetailCell: UITableViewCell {
         
         if let weather = forecastItem.weather?.first {
             if let weatherID = weather.id {
-                weatherIcon.image = UIImage(named: weatherIconImageName(forWeatherID: weatherID))
+                let weatherIconImage = UIImage(named: weatherIconImageName(forWeatherID: weatherID))!.withRenderingMode(.alwaysTemplate)
+                weatherIcon.image = weatherIconImage
+                weatherIcon.tintColor = #colorLiteral(red: 0.4509803922, green: 0.4, blue: 0.6823529412, alpha: 1)
             }
             if let weatherDescription =  weather.description {
                 weatherDescriptionType.text = weatherDescription.capitalized

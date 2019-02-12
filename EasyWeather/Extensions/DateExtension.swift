@@ -30,9 +30,9 @@ extension Date {
         return dateFormatter.date(from: string) ?? Date()
     }
     
-    func dayOfTheMonth() -> String {
+    func shortDate() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d MMMM"
+        dateFormatter.dateFormat = "dd/MM/yyyy"
         return dateFormatter.string(from: self)
     }
     

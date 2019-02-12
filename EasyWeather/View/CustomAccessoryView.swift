@@ -22,21 +22,10 @@
 
 import UIKit
 
-@IBDesignable
+class CustomAccessoryView: UIView {
 
-class RoundedImageView: UIImageView {
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        setupView()
-    }
-    
-    override func prepareForInterfaceBuilder() {
-        setupView()
-    }
-    
-    func setupView() {
-        self.layer.cornerRadius = self.frame.width/2
+    @IBAction func searchButtonPressed(_ sender: UIButton) {
+        NotificationCenter.default.post(name: Notification.Name("SearchPressed"), object: nil)
     }
     
 }

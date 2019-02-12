@@ -48,19 +48,33 @@ class ForecastWeatherDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
         forecastWeatherBackgroundView.addParallaxEffect()
+        prepareDataToBeDisplayed()
     }
     
-    func setupView() {
-        dataSource = forecastSummaryItem.forecast!
+    func prepareDataToBeDisplayed() {
         cityNameLabel.text = cityName
-        dayLabel.text = forecastSummaryItem.date?.dayOfTheMonth()
-        forecastWeatherDescriptionLabel.text = forecastSummaryItem.description?.capitalized
-        forecastWeatherBackgroundView.image = UIImage(named: weatherBackgroundImageName(forWeatherID: forecastSummaryItem.id!))
-        forecastAverageTemperatureLabel.text = "\(round(forecastSummaryItem.temperature!))°"
-        forecastMinimumTemperatureLabel.text = "\(round(forecastSummaryItem.temperature_max!))°"
-        forecastMaximumTemperatureLabel.text = "\(round(forecastSummaryItem.temperature_min!))°"
+        if let forecast = forecastSummaryItem.forecast {
+            dataSource = forecast
+        }
+        if let forecastDate = forecastSummaryItem.date {
+            dayLabel.text = forecastDate.shortDate()
+        }
+        if let forecastDescription = forecastSummaryItem.description {
+            forecastWeatherDescriptionLabel.text = forecastDescription.capitalized
+        }
+        if let forecastWeatherID = forecastSummaryItem.id {
+            forecastWeatherBackgroundView.image = UIImage(named: weatherBackgroundImageName(forWeatherID: forecastWeatherID))
+        }
+        if let forecastAverageTemperature = forecastSummaryItem.temperature {
+            forecastAverageTemperatureLabel.text = "\(round(forecastAverageTemperature))°"
+        }
+        if let forecastMinimumTemperature = forecastSummaryItem.temperature_min {
+            forecastMinimumTemperatureLabel.text = "\(round(forecastMinimumTemperature))°"
+        }
+        if let forecastMaximumTemperature = forecastSummaryItem.temperature_max {
+            forecastMaximumTemperatureLabel.text = "\(round(forecastMaximumTemperature))°"
+        }
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
@@ -82,8 +96,12 @@ extension ForecastWeatherDetailViewController: UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastDetailCell", for: indexPath) as! ForecastDetailCell
-        cell.configureCell(withForecastItem: dataSource[indexPath.row] as! ForecastItem)
-        return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastDetailCell", for: indexPath) as? ForecastDetailCell else { return UITableViewCell() }
+        if let forecastItem = dataSource[indexPath.row] as? ForecastItem {
+            cell.configureCell(withForecastItem: forecastItem)
+            return cell
+        } else {
+            return UITableViewCell()
+        }
     }
 }

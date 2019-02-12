@@ -25,12 +25,28 @@ import UIKit
 class SearchCityViewController: UIViewController {
 
     @IBOutlet weak var searchCityTextField: CustomTextField!
-    @IBOutlet weak var searchButton: UIButton!
+    
     var cityName: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchButton.bindToKeyboard()
+        searchCityTextField.inputAccessoryView = Bundle.main.loadNibNamed("CustomAccessoryView", owner: self, options: nil)?.first as! UIView?
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(searchButtonPressed), name: Notification.Name("SearchPressed"), object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("SearchPressed"), object: nil)
+    }
+    
+    @objc func searchButtonPressed() {
+        guard let summaryWeatherViewController = navigationController?.viewControllers.first as? SummaryWeatherViewController else { return }
+        summaryWeatherViewController.cityName = cityName
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
@@ -39,17 +55,12 @@ class SearchCityViewController: UIViewController {
     
     @IBAction func textFieldTextHasChanged(_ sender: CustomTextField) {
         guard let city = sender.text,!city.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty else {
-            searchButton.isHidden = true
+            searchCityTextField.inputAccessoryView?.isHidden = true
             return
         }
         cityName = city
-        searchButton.isHidden = false
+        searchCityTextField.inputAccessoryView?.isHidden = false
     }
-    
-    @IBAction func searchButtonPressed(_ sender: UIButton) {
-        guard let summaryWeatherViewController = navigationController?.viewControllers.first as? SummaryWeatherViewController else { return }
-        summaryWeatherViewController.cityName = cityName
-        navigationController?.popViewController(animated: true)
-    }
+
 }
 
