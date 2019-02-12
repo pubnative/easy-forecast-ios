@@ -1,5 +1,5 @@
 //
-//  Copyright © 2019 EasyNaps. All rights reserved.
+//  Copyright © 2018 EasyNaps. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,14 +22,10 @@
 
 import UIKit
 
-class InfoViewController: UIViewController {
+class CustomAccessoryView: UIView {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    @IBAction func closeButtonPressed(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+    @IBAction func searchButtonPressed(_ sender: UIButton) {
+        NotificationCenter.default.post(name: Notification.Name("SearchPressed"), object: nil)
     }
     
 }

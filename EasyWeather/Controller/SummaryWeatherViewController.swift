@@ -25,9 +25,7 @@ import CoreLocation
 
 class SummaryWeatherViewController: UIViewController {
     
-    @IBOutlet weak var infoButton: UIButton!
-    @IBOutlet weak var searchCityButton: UIButton!
-    @IBOutlet weak var useCurrentLocationButton: UIButton!
+    @IBOutlet weak var currentLocationButton: UIButton!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var currentWeatherView: UIView!
     @IBOutlet weak var bannerAdContainer: UIView!
@@ -35,11 +33,8 @@ class SummaryWeatherViewController: UIViewController {
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var currentWeatherDescriptionLabel: UILabel!
     @IBOutlet weak var currentTemperatureLabel: UILabel!
-    @IBOutlet weak var sunriseTimeLabel: UILabel!
-    @IBOutlet weak var sunsetTimeLabel: UILabel!
     @IBOutlet weak var currentWeatherBackgroundView: UIImageView!
     @IBOutlet weak var forecastWeatherTableView: UITableView!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var bannerAdContainerHeightConstraint: NSLayoutConstraint!
 
     var apiClient = ApiClient()
@@ -61,14 +56,17 @@ class SummaryWeatherViewController: UIViewController {
         apiClient.forecastDelegate = self
         forecastWeatherTableView.isHidden = true
         currentWeatherView.isHidden = true
-        setupParallaxForBackgroundImage()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+        currentWeatherBackgroundView.addParallaxEffect()
         forecastWeatherTableView.addSubview(refreshControl)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if !isInitialWeatherLoaded {
-            loadingIndicator.startAnimating()
+//            loadingIndicator.startAnimating()
         }
         if cityName != nil {
             fetchWeather(forCity: cityName)
@@ -90,6 +88,7 @@ class SummaryWeatherViewController: UIViewController {
     
     
     func fetchWeather(forCity cityName: String) {
+        self.cityName = nil
         bannerAdContainerHeightConstraint.constant = 0
         bannerAdContainer.isHidden = true
         apiClient.fetchCurrentForCity(name: cityName.lowercased())
@@ -107,20 +106,6 @@ class SummaryWeatherViewController: UIViewController {
         fetchWeatherData()
     }
     
-    func setupParallaxForBackgroundImage() {
-        let min = CGFloat(-30)
-        let max = CGFloat(30)
-        let xMotion = UIInterpolatingMotionEffect(keyPath: "layer.transform.translation.x", type: .tiltAlongHorizontalAxis)
-        xMotion.minimumRelativeValue = min
-        xMotion.maximumRelativeValue = max
-        let yMotion = UIInterpolatingMotionEffect(keyPath: "layer.transform.translation.y", type: .tiltAlongVerticalAxis)
-        yMotion.minimumRelativeValue = min
-        yMotion.maximumRelativeValue = max
-        let motionEffectGroup = UIMotionEffectGroup()
-        motionEffectGroup.motionEffects = [xMotion, yMotion]
-        currentWeatherBackgroundView.addMotionEffect(motionEffectGroup)
-    }
-    
     func updateCurrentWeatherView(item: CurrentResponse) {
         if let name = item.name {
             cityNameLabel.text = name
@@ -134,26 +119,29 @@ class SummaryWeatherViewController: UIViewController {
         if let temp = item.main?.temperature {
             currentTemperatureLabel.text = "\(round(temp))°"
         }
-        if let sunrise = item.sys?.sunrise {
-            let unixConvertedDate = Date(timeIntervalSince1970: sunrise)
-            sunriseTimeLabel.text = unixConvertedDate.timeOfTheDay()
-        }
-        if let sunset = item.sys?.sunset {
-            let unixConvertedDate = Date(timeIntervalSince1970: sunset)
-            sunsetTimeLabel.text = unixConvertedDate.timeOfTheDay()
-        }
+//        if let sunrise = item.sys?.sunrise {
+//            let unixConvertedDate = Date(timeIntervalSince1970: sunrise)
+//            sunriseTimeLabel.text = unixConvertedDate.timeOfTheDay()
+//        }
+//        if let sunset = item.sys?.sunset {
+//            let unixConvertedDate = Date(timeIntervalSince1970: sunset)
+//            sunsetTimeLabel.text = unixConvertedDate.timeOfTheDay()
+//        }
     }
 }
 
 extension SummaryWeatherViewController: CurrentUpdateDelegate {
     func requestCurrentDidSucceed(withData data: CurrentResponse) {
+        warningLabel.isHidden = true
+        bannerAdContainer.isHidden = false
+        backgroundView.isHidden = false
         updateCurrentWeatherView(item: data)
-        loadingIndicator.stopAnimating()
+//        loadingIndicator.stopAnimating()
     }
     
     func requestCurrentDidFail(withError error: Error) {
         NSLog(error.localizedDescription)
-        loadingIndicator.stopAnimating()
+//        loadingIndicator.stopAnimating()
     }
 }
 
@@ -174,13 +162,13 @@ extension SummaryWeatherViewController: ForecastUpdateDelegate {
         forecastWeatherTableView?.reloadData()
         forecastWeatherTableView.isHidden = false
         currentWeatherView.isHidden = false
-        loadingIndicator.stopAnimating()
+//        loadingIndicator.stopAnimating()
         refreshControl.endRefreshing()
     }
     
     func requestForecastDidFail(withError error: Error) {
         NSLog(error.localizedDescription)
-        loadingIndicator.stopAnimating()
+//        loadingIndicator.stopAnimating()
         refreshControl.endRefreshing()
     }
     
@@ -231,7 +219,10 @@ extension SummaryWeatherViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        guard let forecastSummaryDetailViewController = storyboard?.instantiateViewController(withIdentifier: "forecastWeatherDetailViewController") as? ForecastWeatherDetailViewController else { return }
+        guard let forecastSummaryItem = dataSource[indexPath.row] as? ForecastSummaryItem else { return }
+        forecastSummaryDetailViewController.initWith(forecastSummaryItem: forecastSummaryItem, andWithCityName: cityNameLabel.text!)
+        navigationController?.pushViewController(forecastSummaryDetailViewController, animated: false)
     }
 }
 
@@ -257,6 +248,7 @@ extension SummaryWeatherViewController: CLLocationManagerDelegate {
             break
         case .authorizedWhenInUse:
             warningLabel.isHidden = true
+            currentLocationButton.isHidden = false
             bannerAdContainer.isHidden = false
             backgroundView.isHidden = false
             manager.startUpdatingLocation()
@@ -268,8 +260,9 @@ extension SummaryWeatherViewController: CLLocationManagerDelegate {
             // restricted by e.g. parental controls. User can't enable Location Services
             break
         case .denied:
-            loadingIndicator.stopAnimating()
+//            loadingIndicator.stopAnimating()
             warningLabel.isHidden = false
+            currentLocationButton.isHidden = true
             backgroundView.isHidden = true
             forecastWeatherTableView.isHidden = true
             currentWeatherView.isHidden = true

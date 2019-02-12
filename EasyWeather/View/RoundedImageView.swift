@@ -1,5 +1,5 @@
 //
-//  Copyright © 2019 EasyNaps. All rights reserved.
+//  Copyright © 2018 EasyNaps. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,14 +22,21 @@
 
 import UIKit
 
-class InfoViewController: UIViewController {
+@IBDesignable
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+class RoundedImageView: UIImageView {
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setupView()
     }
     
-    @IBAction func closeButtonPressed(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+    override func prepareForInterfaceBuilder() {
+        setupView()
+    }
+    
+    func setupView() {
+        self.layer.cornerRadius = self.frame.width/2
     }
     
 }

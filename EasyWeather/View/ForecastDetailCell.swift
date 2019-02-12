@@ -22,34 +22,31 @@
 
 import UIKit
 
-class ForecastSummaryCell: UITableViewCell {
-    
+class ForecastDetailCell: UITableViewCell {
+
     @IBOutlet weak var weatherIcon: UIImageView!
-    @IBOutlet weak var dayLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var weatherDescriptionType: UILabel!
     @IBOutlet weak var averageTemperatureLabel: UILabel!
-    @IBOutlet weak var detailArrowImage: UIImageView!
     
-    func configureCell(withForecastSummaryItem forecastSummaryItem: ForecastSummaryItem) {
+    func configureCell(withForecastItem forecastItem: ForecastItem) {
         
-        if let weatherID = forecastSummaryItem.id {
-            let weatherIconImage = UIImage(named: weatherIconImageName(forWeatherID: weatherID))!.withRenderingMode(.alwaysTemplate)
-            weatherIcon.image = weatherIconImage
+        if let weather = forecastItem.weather?.first {
+            if let weatherID = weather.id {
+                let weatherIconImage = UIImage(named: weatherIconImageName(forWeatherID: weatherID))!.withRenderingMode(.alwaysTemplate)
+                weatherIcon.image = weatherIconImage
+            }
+            if let weatherDescription =  weather.description {
+                weatherDescriptionType.text = weatherDescription.capitalized
+            }
+        }
+        if let temperature = forecastItem.main?.temperature {
+            averageTemperatureLabel.text = "\(round(temperature))°"
         }
         
-        if let weatherDescription =  forecastSummaryItem.description {
-            weatherDescriptionType.text = weatherDescription.capitalized
+        if let date = forecastItem.date {
+            timeLabel.text = date.timeOfTheDay()
         }
-        
-        if let averageTemperature = forecastSummaryItem.temperature {
-            averageTemperatureLabel.text = "\(round(averageTemperature))°"
-        }
-        
-        if let date = forecastSummaryItem.date {
-            dayLabel.text = date.dayOfTheWeek()
-        }
-        
-        let arrowImage = UIImage(named:"next")!.withRenderingMode(.alwaysTemplate)
-        detailArrowImage.image = arrowImage
     }
+
 }
