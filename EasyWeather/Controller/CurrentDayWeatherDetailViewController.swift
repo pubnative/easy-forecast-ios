@@ -71,7 +71,7 @@ class CurrentDayWeatherDetailViewController: UIViewController {
         }
         
         if let windSpeed = currentWeatherResponse.wind?.speed {
-            windSpeedLabel.text = "\(windSpeed)m/s"
+            windSpeedLabel.text = "\(windSpeed) m/s"
         }
         if let forecast = forecastSummaryItem.forecast {
             dataSource = forecast
@@ -83,18 +83,18 @@ class CurrentDayWeatherDetailViewController: UIViewController {
             currentDayWeatherBackgroundView.image = UIImage(named: weatherBackgroundImageName(forWeatherID: forecastWeatherID))
         }
         if let forecastAverageTemperature = forecastSummaryItem.temperature {
-            currentDayAverageTemperatureLabel.text = "\(round(forecastAverageTemperature))°"
+            currentDayAverageTemperatureLabel.text = "\(Int(forecastAverageTemperature))°"
         }
         if let forecastMinimumTemperature = forecastSummaryItem.temperature_min {
-            currentDayMinimumTemperatureLabel.text = "\(round(forecastMinimumTemperature))°"
+            currentDayMinimumTemperatureLabel.text = "\(Int(forecastMinimumTemperature))°"
         }
         if let forecastMaximumTemperature = forecastSummaryItem.temperature_max {
-            currentDayMaximumTemperatureLabel.text = "\(round(forecastMaximumTemperature))°"
+            currentDayMaximumTemperatureLabel.text = "\(Int(forecastMaximumTemperature))°"
         }
     }
 
     @IBAction func backButtonPressed(_ sender: UIButton) {
-        navigationController?.popViewController(animated: false)
+        navigationController?.popViewController(animated: true)
     }
 }
 

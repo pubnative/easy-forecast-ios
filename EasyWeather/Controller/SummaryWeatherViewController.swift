@@ -108,7 +108,7 @@ class SummaryWeatherViewController: UIViewController {
         guard let currentDayWeatherDetailViewController = storyboard?.instantiateViewController(withIdentifier: "CurrentDayWeatherDetailViewController") as? CurrentDayWeatherDetailViewController else { return }
         guard let currentForecastSummaryItem = currentDayForecast, let currentWeatherDetail = currentWeatherResponse else { return }
         currentDayWeatherDetailViewController.initialize(withForecastSummaryItem: currentForecastSummaryItem, withCurrentWeatherResponse: currentWeatherDetail, andWithCityName: cityNameLabel.text!)
-        navigationController?.pushViewController(currentDayWeatherDetailViewController, animated: false)
+        navigationController?.pushViewController(currentDayWeatherDetailViewController, animated: true)
     }
     
     @IBAction func useCurrentLocationButtonPressed(_ sender: UIButton) {
@@ -127,7 +127,7 @@ class SummaryWeatherViewController: UIViewController {
             }
         }
         if let temp = item.main?.temperature {
-            currentTemperatureLabel.text = "\(round(temp))°"
+            currentTemperatureLabel.text = "\(Int(temp))°"
         }
     }
 }
@@ -224,7 +224,7 @@ extension SummaryWeatherViewController: UITableViewDelegate, UITableViewDataSour
         guard let forecastSummaryDetailViewController = storyboard?.instantiateViewController(withIdentifier: "ForecastWeatherDetailViewController") as? ForecastWeatherDetailViewController else { return }
         guard let forecastSummaryItem = dataSource[indexPath.row] as? ForecastSummaryItem else { return }
         forecastSummaryDetailViewController.initWith(forecastSummaryItem: forecastSummaryItem, andWithCityName: cityNameLabel.text!)
-        navigationController?.pushViewController(forecastSummaryDetailViewController, animated: false)
+        navigationController?.pushViewController(forecastSummaryDetailViewController, animated: true)
     }
 }
 

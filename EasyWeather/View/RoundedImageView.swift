@@ -36,7 +36,7 @@ class RoundedImageView: UIImageView {
     }
     
     func setupView() {
-        self.layer.cornerRadius = self.frame.width/2
+        self.layer.cornerRadius = self.frame.width / 2
     }
     
 }

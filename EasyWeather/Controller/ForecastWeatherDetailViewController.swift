@@ -67,18 +67,18 @@ class ForecastWeatherDetailViewController: UIViewController {
             forecastWeatherBackgroundView.image = UIImage(named: weatherBackgroundImageName(forWeatherID: forecastWeatherID))
         }
         if let forecastAverageTemperature = forecastSummaryItem.temperature {
-            forecastAverageTemperatureLabel.text = "\(round(forecastAverageTemperature))°"
+            forecastAverageTemperatureLabel.text = "\(Int(forecastAverageTemperature))°"
         }
         if let forecastMinimumTemperature = forecastSummaryItem.temperature_min {
-            forecastMinimumTemperatureLabel.text = "\(round(forecastMinimumTemperature))°"
+            forecastMinimumTemperatureLabel.text = "\(Int(forecastMinimumTemperature))°"
         }
         if let forecastMaximumTemperature = forecastSummaryItem.temperature_max {
-            forecastMaximumTemperatureLabel.text = "\(round(forecastMaximumTemperature))°"
+            forecastMaximumTemperatureLabel.text = "\(Int(forecastMaximumTemperature))°"
         }
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
-        navigationController?.popViewController(animated: false)
+        navigationController?.popViewController(animated: true)
     }
 }
 
