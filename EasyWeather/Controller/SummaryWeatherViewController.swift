@@ -42,11 +42,13 @@ class SummaryWeatherViewController: UIViewController {
     var dataSource = [Any]()
     var isInitialWeatherLoaded = false
     var cityName: String!
+    var currentWeatherResponse: CurrentResponse?
+    var currentDayForecast: ForecastSummaryItem?
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(SummaryWeatherViewController.refreshWeather), for: UIControl.Event.valueChanged)
-        refreshControl.tintColor = UIColor.white
+        refreshControl.tintColor = #colorLiteral(red: 0.4509803922, green: 0.4, blue: 0.6823529412, alpha: 1)
         return refreshControl
     }()
     
@@ -102,11 +104,19 @@ class SummaryWeatherViewController: UIViewController {
         apiClient.fetchForecastForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
     }
     
+    @IBAction func goToCurrentDayDetailButtonPressed(_ sender: UIButton) {
+        guard let currentDayWeatherDetailViewController = storyboard?.instantiateViewController(withIdentifier: "CurrentDayWeatherDetailViewController") as? CurrentDayWeatherDetailViewController else { return }
+        guard let currentForecastSummaryItem = currentDayForecast, let currentWeatherDetail = currentWeatherResponse else { return }
+        currentDayWeatherDetailViewController.initialize(withForecastSummaryItem: currentForecastSummaryItem, withCurrentWeatherResponse: currentWeatherDetail, andWithCityName: cityNameLabel.text!)
+        navigationController?.pushViewController(currentDayWeatherDetailViewController, animated: false)
+    }
+    
     @IBAction func useCurrentLocationButtonPressed(_ sender: UIButton) {
         fetchWeatherData()
     }
     
     func updateCurrentWeatherView(item: CurrentResponse) {
+        currentWeatherResponse = item
         if let name = item.name {
             cityNameLabel.text = name
         }
@@ -119,14 +129,6 @@ class SummaryWeatherViewController: UIViewController {
         if let temp = item.main?.temperature {
             currentTemperatureLabel.text = "\(round(temp))°"
         }
-//        if let sunrise = item.sys?.sunrise {
-//            let unixConvertedDate = Date(timeIntervalSince1970: sunrise)
-//            sunriseTimeLabel.text = unixConvertedDate.timeOfTheDay()
-//        }
-//        if let sunset = item.sys?.sunset {
-//            let unixConvertedDate = Date(timeIntervalSince1970: sunset)
-//            sunsetTimeLabel.text = unixConvertedDate.timeOfTheDay()
-//        }
     }
 }
 
@@ -157,7 +159,7 @@ extension SummaryWeatherViewController: ForecastUpdateDelegate {
         }
         
         var summaryArray = summarizeForecastWeather(usingForecastWeatherArray: responseForecastArray) as [Any]
-        summaryArray.removeFirst()
+        currentDayForecast = summaryArray.removeFirst() as? ForecastSummaryItem
         dataSource = summaryArray
         forecastWeatherTableView?.reloadData()
         forecastWeatherTableView.isHidden = false
@@ -219,7 +221,7 @@ extension SummaryWeatherViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let forecastSummaryDetailViewController = storyboard?.instantiateViewController(withIdentifier: "forecastWeatherDetailViewController") as? ForecastWeatherDetailViewController else { return }
+        guard let forecastSummaryDetailViewController = storyboard?.instantiateViewController(withIdentifier: "ForecastWeatherDetailViewController") as? ForecastWeatherDetailViewController else { return }
         guard let forecastSummaryItem = dataSource[indexPath.row] as? ForecastSummaryItem else { return }
         forecastSummaryDetailViewController.initWith(forecastSummaryItem: forecastSummaryItem, andWithCityName: cityNameLabel.text!)
         navigationController?.pushViewController(forecastSummaryDetailViewController, animated: false)
