@@ -159,13 +159,16 @@ extension SummaryWeatherViewController: ForecastUpdateDelegate {
         }
         
         var summaryArray = summarizeForecastWeather(usingForecastWeatherArray: responseForecastArray) as [Any]
-        currentDayForecast = summaryArray.removeFirst() as? ForecastSummaryItem
-        dataSource = summaryArray
-        forecastWeatherTableView?.reloadData()
-        forecastWeatherTableView.isHidden = false
-        currentWeatherView.isHidden = false
-//        loadingIndicator.stopAnimating()
-        refreshControl.endRefreshing()
+        if summaryArray.count > 0 {
+            currentDayForecast = summaryArray.removeFirst() as? ForecastSummaryItem
+            dataSource = summaryArray
+            forecastWeatherTableView?.reloadData()
+            forecastWeatherTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
+            forecastWeatherTableView.isHidden = false
+            currentWeatherView.isHidden = false
+            //        loadingIndicator.stopAnimating()
+            refreshControl.endRefreshing()
+        }
     }
     
     func requestForecastDidFail(withError error: Error) {

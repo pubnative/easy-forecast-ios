@@ -38,7 +38,7 @@
                                             <constraint firstAttribute="height" constant="30" id="gdY-JM-x2K"/>
                                             <constraint firstAttribute="width" constant="30" id="vag-UP-M3v"/>
                                         </constraints>
-                                        <state key="normal" image="back"/>
+                                        <state key="normal" image="close"/>
                                         <connections>
                                             <action selector="closeButtonPressed:" destination="YS3-Oc-6ex" eventType="touchUpInside" id="ssK-Ur-yMm"/>
                                         </connections>
@@ -1144,6 +1144,7 @@
     </scenes>
     <resources>
         <image name="back" width="135" height="135"/>
+        <image name="close" width="135" height="135"/>
         <image name="compass" width="43.200000762939453" height="43.200000762939453"/>
         <image name="info" width="135" height="135"/>
         <image name="light-rain-bg" width="1242" height="2688"/>
