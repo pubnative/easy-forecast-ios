@@ -27,15 +27,25 @@ class SearchCityViewController: UIViewController {
     @IBOutlet weak var searchCityTextField: CustomTextField!
     
     var cityName: String!
+    var cityID: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchCityTextField.inputAccessoryView = Bundle.main.loadNibNamed("CustomAccessoryView", owner: self, options: nil)?.first as! UIView?
+        searchCityTextField.theme.font = UIFont(name: "AvenirNext-Regular", size: 15)!
+        searchCityTextField.theme.fontColor = #colorLiteral(red: 0.4509803922, green: 0.4, blue: 0.6823529412, alpha: 1)
+        searchCityTextField.theme.borderColor = #colorLiteral(red: 0.4509803922, green: 0.4, blue: 0.6823529412, alpha: 1)
+        searchCityTextField.theme.separatorColor = #colorLiteral(red: 0.4509803922, green: 0.4, blue: 0.6823529412, alpha: 1)
+        searchCityTextField.maxNumberOfResults = 5
+        searchCityTextField.minCharactersNumberToStartFiltering = 3
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(searchButtonPressed), name: Notification.Name("SearchPressed"), object: nil)
+        DispatchQueue.main.async {
+            self.searchCityTextField.filterStrings(getCityNames())
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -44,9 +54,21 @@ class SearchCityViewController: UIViewController {
     }
     
     @objc func searchButtonPressed() {
-        guard let summaryWeatherViewController = navigationController?.viewControllers.first as? SummaryWeatherViewController else { return }
-        summaryWeatherViewController.cityName = cityName
-        navigationController?.popViewController(animated: true)
+        cityName = searchCityTextField.text
+        if let cityID = getCityID(forCityName: cityName) {
+            guard let summaryWeatherViewController = navigationController?.viewControllers.first as? SummaryWeatherViewController else { return }
+            summaryWeatherViewController.cityName = cityName
+            summaryWeatherViewController.cityID = cityID
+            navigationController?.popViewController(animated: true)
+        } else {
+            cityName = nil
+            searchCityTextField.text = nil
+            let alert = UIAlertController(title: "Oopps...", message: "We couldn't find that city in our database... 😢", preferredStyle: .alert)
+            let dismissAction = UIAlertAction(title: "Dismiss", style: .default, handler: nil)
+            alert.addAction(dismissAction)
+            present(alert, animated: true, completion: nil)
+        }
+
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
@@ -58,9 +80,6 @@ class SearchCityViewController: UIViewController {
             searchCityTextField.inputAccessoryView?.isHidden = true
             return
         }
-        cityName = city
         searchCityTextField.inputAccessoryView?.isHidden = false
     }
-
 }
-

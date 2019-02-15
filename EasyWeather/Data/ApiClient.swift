@@ -32,8 +32,8 @@ class ApiClient: NSObject {
     var currentDelegate: CurrentUpdateDelegate?
     var forecastDelegate: ForecastUpdateDelegate?
 
-    func fetchCurrentForCity(name: String) {
-        let url = "\(baseUrl)weather?APPID=\(apiKey)&q=\(name)&units=\(defaultUnitFormat)"
+    func fetchCurrentForCityID(cityID: String) {
+        let url = "\(baseUrl)weather?APPID=\(apiKey)&id=\(cityID)&units=\(defaultUnitFormat)"
         Alamofire.request(url).responseObject { (response: DataResponse<CurrentResponse>) in
             if let error = response.error {
                 self.currentDelegate?.requestCurrentDidFail(withError: error)
@@ -54,8 +54,8 @@ class ApiClient: NSObject {
         }
     }
     
-    func fetchForecastForCity(name: String) {
-        let url = "\(baseUrl)forecast?APPID=\(apiKey)&q=\(name)&units=\(defaultUnitFormat)"
+    func fetchForecastForCityID(cityID: String) {
+        let url = "\(baseUrl)forecast?APPID=\(apiKey)&id=\(cityID)&units=\(defaultUnitFormat)"
         Alamofire.request(url).responseObject { (response: DataResponse<ForecastResponse>) in
             if let error = response.error {
                 self.forecastDelegate?.requestForecastDidFail(withError: error)

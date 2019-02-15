@@ -42,6 +42,7 @@ class SummaryWeatherViewController: UIViewController {
     var dataSource = [Any]()
     var isInitialWeatherLoaded = false
     var cityName: String!
+    var cityID: String!
     var currentWeatherResponse: CurrentResponse?
     var currentDayForecast: ForecastSummaryItem?
     
@@ -70,8 +71,8 @@ class SummaryWeatherViewController: UIViewController {
         if !isInitialWeatherLoaded {
 //            loadingIndicator.startAnimating()
         }
-        if cityName != nil {
-            fetchWeather(forCity: cityName)
+        if cityID != nil {
+            fetchWeather(forCityID: cityID)
         }
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -88,13 +89,14 @@ class SummaryWeatherViewController: UIViewController {
         locationManager.startUpdatingLocation()
     }
     
-    
-    func fetchWeather(forCity cityName: String) {
+    func fetchWeather(forCityID cityID: String) {
         self.cityName = nil
+        self.cityID = nil
         bannerAdContainerHeightConstraint.constant = 0
         bannerAdContainer.isHidden = true
-        apiClient.fetchCurrentForCity(name: cityName.lowercased())
-        apiClient.fetchForecastForCity(name: cityName.lowercased())
+
+        apiClient.fetchCurrentForCityID(cityID: cityID)
+        apiClient.fetchForecastForCityID(cityID: cityID)
     }
     
     func fetchWeatherData() {

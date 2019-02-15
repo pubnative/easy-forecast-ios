@@ -24,9 +24,7 @@ import UIKit
 
 class ForecastWeatherDetailViewController: UIViewController {
     
-    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var forecastWeatherBackgroundView: UIImageView!
-    @IBOutlet weak var forecastWeatherView: UIView!
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var forecastWeatherDescriptionLabel: UILabel!

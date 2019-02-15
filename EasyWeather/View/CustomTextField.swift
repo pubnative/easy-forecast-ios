@@ -24,7 +24,7 @@ import UIKit
 
 @IBDesignable
 
-class CustomTextField: UITextField {
+class CustomTextField: SearchTextField {
     
     private var padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
     

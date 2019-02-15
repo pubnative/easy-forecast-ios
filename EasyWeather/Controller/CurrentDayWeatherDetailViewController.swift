@@ -24,10 +24,7 @@ import UIKit
 
 class CurrentDayWeatherDetailViewController: UIViewController {
     
-    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var currentDayWeatherBackgroundView: UIImageView!
-    @IBOutlet weak var currentDayWeatherView: UIView!
-    @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var currentDayWeatherDescriptionLabel: UILabel!
     @IBOutlet weak var currentDayAverageTemperatureLabel: UILabel!
@@ -59,7 +56,6 @@ class CurrentDayWeatherDetailViewController: UIViewController {
     
     func prepareDataToBeDisplayed() {
         cityNameLabel.text = cityName
-        dayLabel.text = "Today"
         
         if let sunrise = currentWeatherResponse.sys?.sunrise {
             let unixConvertedDate = Date(timeIntervalSince1970: sunrise)
