@@ -24,6 +24,7 @@ import UIKit
 import ObjectMapper
 
 class ForecastCoordinate: Mappable {
+    
     var latitude: Double?
     var longitude: Double?
     
@@ -35,4 +36,5 @@ class ForecastCoordinate: Mappable {
         latitude <- map["lat"]
         longitude <- map["lon"]
     }
+    
 }

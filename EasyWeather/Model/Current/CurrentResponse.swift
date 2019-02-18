@@ -24,6 +24,7 @@ import UIKit
 import ObjectMapper
 
 class CurrentResponse: Mappable {
+    
     var coordinates: CurrentCoordinate?
     var weather: [CurrentWeather]?
     var main: CurrentMain?
@@ -49,4 +50,5 @@ class CurrentResponse: Mappable {
         id <- map["id"]
         name <- map["name"]
     }
+    
 }

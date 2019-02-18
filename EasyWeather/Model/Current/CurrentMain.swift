@@ -23,6 +23,7 @@ import UIKit
 import ObjectMapper
 
 class CurrentMain: Mappable {
+    
     var temperature: Double?
     var temperature_min: Double?
     var temperature_max: Double?
@@ -44,4 +45,5 @@ class CurrentMain: Mappable {
         grnd_level <- map["grnd_level"]
         humidity <- map["humidity"]
     }
+    
 }

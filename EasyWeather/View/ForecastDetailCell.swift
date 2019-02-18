@@ -43,7 +43,6 @@ class ForecastDetailCell: UITableViewCell {
         if let temperature = forecastItem.main?.temperature {
             temperatureLabel.text = "\(Int(temperature))°"
         }
-        
         if let date = forecastItem.date {
             timeLabel.text = date.timeOfTheDay()
         }

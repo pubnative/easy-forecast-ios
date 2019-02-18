@@ -10,4 +10,5 @@ target 'EasyWeather' do
   pod 'AlamofireObjectMapper', '~> 5.0'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'lottie-ios'
 end

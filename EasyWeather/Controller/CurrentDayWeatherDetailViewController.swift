@@ -92,9 +92,11 @@ class CurrentDayWeatherDetailViewController: UIViewController {
     @IBAction func backButtonPressed(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
+    
 }
 
 extension CurrentDayWeatherDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -116,4 +118,5 @@ extension CurrentDayWeatherDetailViewController: UITableViewDelegate, UITableVie
             return UITableViewCell()
         }
     }
+    
 }

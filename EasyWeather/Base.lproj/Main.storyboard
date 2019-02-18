@@ -673,6 +673,14 @@
                                             <constraint firstAttribute="height" id="Ugq-uc-woJ"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dNI-d5-Ovh" userLabel="Loading View" customClass="LOTAnimationView">
+                                        <rect key="frame" x="147.66666666666666" y="309" width="80" height="80"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="TLR-OQ-lqO"/>
+                                            <constraint firstAttribute="height" constant="80" id="dL4-Pv-W4c"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -683,9 +691,11 @@
                                     <constraint firstItem="jh5-Sq-SMg" firstAttribute="leading" secondItem="e5P-Ur-EWv" secondAttribute="leading" id="Hkr-7i-Erq"/>
                                     <constraint firstItem="CIS-UH-CuR" firstAttribute="centerX" secondItem="e5P-Ur-EWv" secondAttribute="centerX" id="PSj-5Y-Gdk"/>
                                     <constraint firstItem="9bj-lk-X2e" firstAttribute="top" secondItem="jh5-Sq-SMg" secondAttribute="bottom" id="Ygb-tq-YfI"/>
+                                    <constraint firstItem="dNI-d5-Ovh" firstAttribute="centerY" secondItem="e5P-Ur-EWv" secondAttribute="centerY" id="aXn-Rg-ZZP"/>
                                     <constraint firstItem="CIS-UH-CuR" firstAttribute="leading" secondItem="e5P-Ur-EWv" secondAttribute="leading" constant="16" id="cig-7o-i0g"/>
                                     <constraint firstItem="CIS-UH-CuR" firstAttribute="centerY" secondItem="e5P-Ur-EWv" secondAttribute="centerY" id="uXX-BL-Se2"/>
                                     <constraint firstItem="9bj-lk-X2e" firstAttribute="centerX" secondItem="e5P-Ur-EWv" secondAttribute="centerX" id="wjY-oR-5sq"/>
+                                    <constraint firstItem="dNI-d5-Ovh" firstAttribute="centerX" secondItem="e5P-Ur-EWv" secondAttribute="centerX" id="z4r-5V-OzG"/>
                                     <constraint firstAttribute="bottom" secondItem="9bj-lk-X2e" secondAttribute="bottom" id="za2-CI-eZs"/>
                                     <constraint firstItem="LH4-Nh-64x" firstAttribute="leading" secondItem="e5P-Ur-EWv" secondAttribute="leading" id="zqw-4C-JKz"/>
                                 </constraints>
@@ -774,6 +784,7 @@
                         <outlet property="currentWeatherDescriptionLabel" destination="roL-AJ-TjO" id="19x-GH-Vwz"/>
                         <outlet property="currentWeatherView" destination="LH4-Nh-64x" id="xfh-er-Vfi"/>
                         <outlet property="forecastWeatherTableView" destination="jh5-Sq-SMg" id="V6i-zz-KbJ"/>
+                        <outlet property="loadingAnimationView" destination="dNI-d5-Ovh" id="8dI-Po-DVN"/>
                         <outlet property="warningLabel" destination="CIS-UH-CuR" id="o10-e9-RtK"/>
                     </connections>
                 </viewController>
@@ -1144,12 +1155,12 @@
         <image name="compass" width="43.200000762939453" height="43.200000762939453"/>
         <image name="info" width="135" height="135"/>
         <image name="josip" width="1242.239990234375" height="2688"/>
-        <image name="light-rain-bg" width="1242" height="2688"/>
+        <image name="light-rain-bg" width="1242.239990234375" height="2688"/>
         <image name="logo-without-name" width="1024" height="1024"/>
         <image name="map" width="135" height="135"/>
         <image name="sunrise" width="43.200000762939453" height="43.200000762939453"/>
         <image name="sunset" width="43.200000762939453" height="43.200000762939453"/>
-        <image name="thunderstorm-bg" width="1242" height="2688"/>
+        <image name="thunderstorm-bg" width="1242.239990234375" height="2688"/>
         <image name="wind-cone" width="43.200000762939453" height="43.200000762939453"/>
     </resources>
 </document>

@@ -52,4 +52,5 @@ class ForecastSummaryCell: UITableViewCell {
         let arrowImage = UIImage(named:"next")!.withRenderingMode(.alwaysTemplate)
         detailArrowImage.image = arrowImage
     }
+    
 }

@@ -24,6 +24,7 @@ import UIKit
 import ObjectMapper
 
 class Country: Mappable {
+    
     var name: String?
     var code: String?
     
@@ -35,4 +36,5 @@ class Country: Mappable {
         name <- map["name"]
         code <- map["code"]
     }
+    
 }

@@ -22,6 +22,7 @@
 
 import UIKit
 import CoreLocation
+import Lottie
 
 class SummaryWeatherViewController: UIViewController {
     
@@ -36,42 +37,47 @@ class SummaryWeatherViewController: UIViewController {
     @IBOutlet weak var currentWeatherBackgroundView: UIImageView!
     @IBOutlet weak var forecastWeatherTableView: UITableView!
     @IBOutlet weak var bannerAdContainerHeightConstraint: NSLayoutConstraint!
-
+    @IBOutlet weak var loadingAnimationView: LOTAnimationView!
+    
     var apiClient = ApiClient()
     var locationManager = CLLocationManager()
     var dataSource = [Any]()
     var isInitialWeatherLoaded = false
+    var isCurrentWeatherUpdateCompleted = false
     var cityName: String!
     var cityID: String!
     var currentWeatherResponse: CurrentResponse?
     var currentDayForecast: ForecastSummaryItem?
     
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(SummaryWeatherViewController.updateWeather), for: UIControl.Event.valueChanged)
-        refreshControl.tintColor = #colorLiteral(red: 0.4509803922, green: 0.4, blue: 0.6823529412, alpha: 1)
-        return refreshControl
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(SummaryWeatherViewController.updateWeather), name: UIApplication.willEnterForegroundNotification, object: nil)
         apiClient.currentDelegate = self
         apiClient.forecastDelegate = self
         forecastWeatherTableView.isHidden = true
         currentWeatherView.isHidden = true
         currentWeatherBackgroundView.addParallaxEffect()
-        forecastWeatherTableView.addSubview(refreshControl)
         checkLocationServices()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if !isInitialWeatherLoaded {
-//            loadingIndicator.startAnimating()
+
         }
-        if cityID != nil {
-            fetchWeather(forCityID: cityID)
-        }
+        updateWeather()
+    }
+    
+    func startLoadingAnimation() {
+        loadingAnimationView.setAnimation(named: "LoadingAnimation")
+        loadingAnimationView.loopAnimation = true
+        loadingAnimationView.play()
+        loadingAnimationView.isHidden = false
+    }
+    
+    func stopLoadingAnimation() {
+        loadingAnimationView.stop()
+        loadingAnimationView.isHidden = true
     }
         
     @objc func updateWeather() {
@@ -85,6 +91,7 @@ class SummaryWeatherViewController: UIViewController {
     }
     
     func fetchWeather(forCityID cityID: String) {
+        startLoadingAnimation()
         bannerAdContainerHeightConstraint.constant = 0
         bannerAdContainer.isHidden = true
         apiClient.fetchCurrent(forCityID: cityID)
@@ -92,6 +99,8 @@ class SummaryWeatherViewController: UIViewController {
     }
     
     func fetchWeatherUsingCurrentLocation() {
+        startLoadingAnimation()
+        isCurrentWeatherUpdateCompleted = false
         bannerAdContainerHeightConstraint.constant = 0
         bannerAdContainer.isHidden = true
         apiClient.fetchCurrentForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
@@ -102,7 +111,6 @@ class SummaryWeatherViewController: UIViewController {
         self.currentWeatherResponse = currentWeatherResponse
         if cityName != nil {
             cityNameLabel.text = cityName
-            cityName = nil
         } else if let name = currentWeatherResponse.name {
             cityNameLabel.text = name
         }
@@ -126,27 +134,31 @@ class SummaryWeatherViewController: UIViewController {
     
     @IBAction func useCurrentLocationButtonPressed(_ sender: UIButton) {
         cityID = nil
+        cityName = nil
         updateWeather()
     }
     
 }
 
 extension SummaryWeatherViewController: CurrentUpdateDelegate {
+    
     func requestCurrentDidSucceed(withData data: CurrentResponse) {
         warningLabel.isHidden = true
         bannerAdContainer.isHidden = false
         backgroundView.isHidden = false
+        isCurrentWeatherUpdateCompleted = true
         updateCurrentWeatherView(currentWeatherResponse: data)
-//        loadingIndicator.stopAnimating()
     }
     
     func requestCurrentDidFail(withError error: Error) {
+        isCurrentWeatherUpdateCompleted = true
         NSLog(error.localizedDescription)
-//        loadingIndicator.stopAnimating()
     }
+    
 }
 
 extension SummaryWeatherViewController: ForecastUpdateDelegate {
+    
     func requestForecastDidSucceed(withData data: ForecastResponse) {
         var responseForecastArray = [ForecastItem]()
         dataSource.removeAll()
@@ -165,15 +177,17 @@ extension SummaryWeatherViewController: ForecastUpdateDelegate {
             forecastWeatherTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
             forecastWeatherTableView.isHidden = false
             currentWeatherView.isHidden = false
-            //        loadingIndicator.stopAnimating()
-            refreshControl.endRefreshing()
+            if isCurrentWeatherUpdateCompleted {
+                stopLoadingAnimation()
+            }
         }
     }
     
     func requestForecastDidFail(withError error: Error) {
         NSLog(error.localizedDescription)
-//        loadingIndicator.stopAnimating()
-        refreshControl.endRefreshing()
+        if isCurrentWeatherUpdateCompleted {
+            stopLoadingAnimation()
+        }
     }
     
     func groupForecastWeather(usingForecastWeatherArray forecastWeatherArray: [ForecastItem]) -> [Date : [ForecastItem]] {
@@ -201,9 +215,11 @@ extension SummaryWeatherViewController: ForecastUpdateDelegate {
         }
         return forecastSummaryArray
     }
+    
 }
 
 extension SummaryWeatherViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -228,6 +244,7 @@ extension SummaryWeatherViewController: UITableViewDelegate, UITableViewDataSour
         forecastSummaryDetailViewController.initWith(forecastSummaryItem: forecastSummaryItem, andWithCityName: cityNameLabel.text!)
         navigationController?.pushViewController(forecastSummaryDetailViewController, animated: true)
     }
+    
 }
 
 extension SummaryWeatherViewController: CLLocationManagerDelegate {
@@ -296,4 +313,5 @@ extension SummaryWeatherViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus){
         checkLocationAuthorization()
     }
+    
 }

@@ -81,4 +81,5 @@ class SearchCityViewController: UIViewController {
         }
         searchCityTextField.inputAccessoryView?.isHidden = false
     }
+    
 }

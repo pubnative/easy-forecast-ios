@@ -22,7 +22,6 @@
 
 import UIKit
 
-class MRectCell: UITableViewCell
-{
+class MRectCell: UITableViewCell {
     @IBOutlet weak var mediumAdContainer: UIView!
 }

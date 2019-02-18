@@ -24,6 +24,7 @@ import UIKit
 import ObjectMapper
 
 class ForecastItem: Mappable {
+    
     var dateAsDouble: Double?
     var main: ForecastMain?
     var weather: [ForecastWeather]?
@@ -47,4 +48,5 @@ class ForecastItem: Mappable {
         dateString <- map["dt_txt"]
         date = Date.dateFrom(string: dateString!)
     }
+    
 }

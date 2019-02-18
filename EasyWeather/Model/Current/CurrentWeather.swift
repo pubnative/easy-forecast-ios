@@ -24,6 +24,7 @@ import UIKit
 import ObjectMapper
 
 class CurrentWeather: Mappable {
+    
     var id: Int?
     var main: String?
     var description: String?
@@ -39,4 +40,5 @@ class CurrentWeather: Mappable {
         description <- map["description"]
         icon <- map["icon"]
     }
+    
 }
