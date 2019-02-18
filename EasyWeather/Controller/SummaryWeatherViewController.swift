@@ -43,7 +43,6 @@ class SummaryWeatherViewController: UIViewController {
     var locationManager = CLLocationManager()
     var dataSource = [Any]()
     var isInitialWeatherLoaded = false
-    var isCurrentWeatherUpdateCompleted = false
     var cityName: String!
     var cityID: String!
     var currentWeatherResponse: CurrentResponse?
@@ -93,16 +92,13 @@ class SummaryWeatherViewController: UIViewController {
         bannerAdContainerHeightConstraint.constant = 0
         bannerAdContainer.isHidden = true
         apiClient.fetchCurrent(forCityID: cityID)
-        apiClient.fetchForecast(forCityID: cityID)
     }
     
     func fetchWeatherUsingCurrentLocation() {
         startLoadingAnimation()
-        isCurrentWeatherUpdateCompleted = false
         bannerAdContainerHeightConstraint.constant = 0
         bannerAdContainer.isHidden = true
         apiClient.fetchCurrentForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
-        apiClient.fetchForecastForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
     }
     
     func updateCurrentWeatherView(currentWeatherResponse: CurrentResponse) {
@@ -148,13 +144,21 @@ extension SummaryWeatherViewController: CurrentUpdateDelegate {
         warningLabel.isHidden = true
         bannerAdContainer.isHidden = false
         backgroundView.isHidden = false
-        isCurrentWeatherUpdateCompleted = true
         updateCurrentWeatherView(currentWeatherResponse: data)
+        continueWithForecastUpdate()
     }
     
     func requestCurrentDidFail(withError error: Error) {
-        isCurrentWeatherUpdateCompleted = true
         NSLog(error.localizedDescription)
+        continueWithForecastUpdate()
+    }
+    
+    func continueWithForecastUpdate() {
+        if cityID != nil {
+            apiClient.fetchForecast(forCityID: cityID)
+        } else {
+            apiClient.fetchForecastForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
+        }
     }
     
 }
@@ -179,17 +183,13 @@ extension SummaryWeatherViewController: ForecastUpdateDelegate {
             forecastWeatherTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
             forecastWeatherTableView.isHidden = false
             currentWeatherView.isHidden = false
-            if isCurrentWeatherUpdateCompleted {
-                stopLoadingAnimation()
-            }
+            stopLoadingAnimation()
         }
     }
     
     func requestForecastDidFail(withError error: Error) {
         NSLog(error.localizedDescription)
-        if isCurrentWeatherUpdateCompleted {
-            stopLoadingAnimation()
-        }
+        stopLoadingAnimation()
     }
     
     func groupForecastWeather(usingForecastWeatherArray forecastWeatherArray: [ForecastItem]) -> [Date : [ForecastItem]] {
