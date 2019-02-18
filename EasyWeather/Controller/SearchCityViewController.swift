@@ -59,6 +59,7 @@ class SearchCityViewController: UIViewController {
             guard let summaryWeatherViewController = navigationController?.viewControllers.first as? SummaryWeatherViewController else { return }
             summaryWeatherViewController.cityName = cityName
             summaryWeatherViewController.cityID = cityID
+            summaryWeatherViewController.fetchWeather(forCityID: cityID)
             navigationController?.popViewController(animated: true)
         } else {
             cityName = nil

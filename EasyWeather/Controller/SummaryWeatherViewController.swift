@@ -51,7 +51,6 @@ class SummaryWeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(SummaryWeatherViewController.updateWeather), name: UIApplication.willEnterForegroundNotification, object: nil)
         apiClient.currentDelegate = self
         apiClient.forecastDelegate = self
         forecastWeatherTableView.isHidden = true
@@ -123,6 +122,10 @@ class SummaryWeatherViewController: UIViewController {
         if let temp = currentWeatherResponse.main?.temperature {
             currentTemperatureLabel.text = "\(Int(temp))°"
         }
+    }
+    
+    @IBAction func refreshButtonPressed(_ sender: UIButton) {
+        updateWeather()
     }
     
     @IBAction func goToCurrentDayDetailButtonPressed(_ sender: UIButton) {

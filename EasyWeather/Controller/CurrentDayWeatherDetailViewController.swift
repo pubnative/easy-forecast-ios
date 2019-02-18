@@ -33,8 +33,6 @@ class CurrentDayWeatherDetailViewController: UIViewController {
     @IBOutlet weak var sunriseTimeLabel: UILabel!
     @IBOutlet weak var sunsetTimeLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
-    @IBOutlet weak var bannerAdContainer: UIView!
-    @IBOutlet weak var bannerAdContainerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var currentDayWeatherDetailTableView: UITableView!
 
     var forecastSummaryItem: ForecastSummaryItem!

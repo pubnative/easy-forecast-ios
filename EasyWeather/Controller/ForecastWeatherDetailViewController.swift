@@ -31,8 +31,6 @@ class ForecastWeatherDetailViewController: UIViewController {
     @IBOutlet weak var forecastAverageTemperatureLabel: UILabel!
     @IBOutlet weak var forecastMinimumTemperatureLabel: UILabel!
     @IBOutlet weak var forecastMaximumTemperatureLabel: UILabel!
-    @IBOutlet weak var bannerAdContainer: UIView!
-    @IBOutlet weak var bannerAdContainerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var forecastWeatherDetailTableView: UITableView!
 
     var forecastSummaryItem: ForecastSummaryItem!

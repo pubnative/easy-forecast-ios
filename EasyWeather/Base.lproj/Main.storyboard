@@ -10,67 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Info View Controller-->
-        <scene sceneID="Oq4-jv-1jU">
-            <objects>
-                <viewController id="YS3-Oc-6ex" customClass="InfoViewController" customModule="EasyWeather" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3jk-0z-4Uw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pIU-Rr-QGE" userLabel="Background View">
-                                <rect key="frame" x="0.0" y="80" width="375" height="698"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2UM-Zy-LZi" userLabel="Navigation Bar View">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-without-name" translatesAutoresizingMaskIntoConstraints="NO" id="KzN-Ce-EDi" userLabel="App Icon" customClass="RoundedImageView" customModule="EasyWeather" customModuleProvider="target">
-                                        <rect key="frame" x="157.66666666666666" y="42" width="60" height="60"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="PkJ-Yq-yGs"/>
-                                            <constraint firstAttribute="width" constant="60" id="yeu-Xo-LEH"/>
-                                        </constraints>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sdh-gU-pnU" userLabel="Dismiss Button">
-                                        <rect key="frame" x="16" y="41" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="gdY-JM-x2K"/>
-                                            <constraint firstAttribute="width" constant="30" id="vag-UP-M3v"/>
-                                        </constraints>
-                                        <state key="normal" image="close"/>
-                                        <connections>
-                                            <action selector="closeButtonPressed:" destination="YS3-Oc-6ex" eventType="touchUpInside" id="ssK-Ur-yMm"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.45098039220000002" green="0.40000000000000002" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="KzN-Ce-EDi" firstAttribute="centerY" secondItem="2UM-Zy-LZi" secondAttribute="centerY" constant="32" id="Sgp-0e-dGA"/>
-                                    <constraint firstAttribute="height" constant="80" id="bZp-4Z-XTi"/>
-                                    <constraint firstItem="Sdh-gU-pnU" firstAttribute="leading" secondItem="2UM-Zy-LZi" secondAttribute="leading" constant="16" id="btI-lu-cAw"/>
-                                    <constraint firstItem="Sdh-gU-pnU" firstAttribute="centerY" secondItem="2UM-Zy-LZi" secondAttribute="centerY" constant="16" id="jiX-vr-gHK"/>
-                                    <constraint firstItem="KzN-Ce-EDi" firstAttribute="centerX" secondItem="2UM-Zy-LZi" secondAttribute="centerX" id="oSr-GO-g4Y"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="0.45098039220000002" green="0.40000000000000002" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="pIU-Rr-QGE" firstAttribute="top" secondItem="2UM-Zy-LZi" secondAttribute="bottom" id="AlG-nR-1E4"/>
-                            <constraint firstItem="2UM-Zy-LZi" firstAttribute="leading" secondItem="vQ6-5E-TTV" secondAttribute="leading" id="R4X-JJ-UL1"/>
-                            <constraint firstItem="vQ6-5E-TTV" firstAttribute="trailing" secondItem="pIU-Rr-QGE" secondAttribute="trailing" id="U0p-Mi-TXJ"/>
-                            <constraint firstItem="2UM-Zy-LZi" firstAttribute="top" secondItem="3jk-0z-4Uw" secondAttribute="top" id="WAF-Ko-jLd"/>
-                            <constraint firstItem="vQ6-5E-TTV" firstAttribute="bottom" secondItem="pIU-Rr-QGE" secondAttribute="bottom" id="bO8-zG-muv"/>
-                            <constraint firstItem="2UM-Zy-LZi" firstAttribute="trailing" secondItem="vQ6-5E-TTV" secondAttribute="trailing" id="jGj-1k-PIJ"/>
-                            <constraint firstItem="pIU-Rr-QGE" firstAttribute="leading" secondItem="vQ6-5E-TTV" secondAttribute="leading" id="pQg-AE-ZWO"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="vQ6-5E-TTV"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LeR-VM-X2K" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1590" y="-220"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="LTX-fp-gZQ">
             <objects>
@@ -280,13 +219,13 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thunderstorm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="AJd-aS-V8r" userLabel="Forecast Weather Description Label">
-                                                        <rect key="frame" x="0.0" y="83.333333333333343" width="359" height="42"/>
+                                                        <rect key="frame" x="0.0" y="83.333333333333371" width="359" height="42"/>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Dfv-v6-cM5">
-                                                        <rect key="frame" x="0.0" y="125.3333333333333" width="359" height="156.66666666666663"/>
+                                                        <rect key="frame" x="0.0" y="125.33333333333326" width="359" height="156.66666666666663"/>
                                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="75"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -383,26 +322,16 @@
                                             <outlet property="delegate" destination="hLG-gW-mDE" id="cKH-oP-di6"/>
                                         </connections>
                                     </tableView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yQ3-4L-Jki">
-                                        <rect key="frame" x="27.666666666666657" y="698" width="320" height="0.0"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" id="L8W-vY-xvT"/>
-                                            <constraint firstAttribute="width" constant="320" id="u9e-hp-kL7"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="yQ3-4L-Jki" firstAttribute="centerX" secondItem="rB4-I5-n0u" secondAttribute="centerX" id="3Yb-BU-gd3"/>
-                                    <constraint firstAttribute="bottom" secondItem="yQ3-4L-Jki" secondAttribute="bottom" id="7rv-Gj-z0Y"/>
                                     <constraint firstItem="owm-00-aab" firstAttribute="top" secondItem="wEM-pR-rbW" secondAttribute="bottom" id="H3n-I4-45y"/>
-                                    <constraint firstItem="owm-00-aab" firstAttribute="bottom" secondItem="yQ3-4L-Jki" secondAttribute="top" id="cMP-jS-L6N"/>
                                     <constraint firstAttribute="trailing" secondItem="wEM-pR-rbW" secondAttribute="trailing" id="h4U-Jt-mV9"/>
                                     <constraint firstItem="wEM-pR-rbW" firstAttribute="height" secondItem="owm-00-aab" secondAttribute="height" id="j5U-C8-6nW"/>
                                     <constraint firstAttribute="trailing" secondItem="owm-00-aab" secondAttribute="trailing" id="kRU-Cy-A26"/>
                                     <constraint firstItem="wEM-pR-rbW" firstAttribute="leading" secondItem="rB4-I5-n0u" secondAttribute="leading" id="mor-wY-LKA"/>
                                     <constraint firstItem="owm-00-aab" firstAttribute="leading" secondItem="rB4-I5-n0u" secondAttribute="leading" id="s8M-ro-ZTk"/>
+                                    <constraint firstAttribute="bottom" secondItem="owm-00-aab" secondAttribute="bottom" id="xxd-FG-5Mx"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="du2-F9-ZuB" userLabel="Navigation Bar View">
@@ -452,8 +381,6 @@
                         <viewLayoutGuide key="safeArea" id="K0l-JW-SEC"/>
                     </view>
                     <connections>
-                        <outlet property="bannerAdContainer" destination="yQ3-4L-Jki" id="6z4-oa-XZY"/>
-                        <outlet property="bannerAdContainerHeightConstraint" destination="L8W-vY-xvT" id="2f6-dB-rGT"/>
                         <outlet property="cityNameLabel" destination="bua-2g-H4l" id="9yM-gQ-LeY"/>
                         <outlet property="dayLabel" destination="e1T-Sj-hZf" id="7Tc-m6-j22"/>
                         <outlet property="forecastAverageTemperatureLabel" destination="U0P-hr-s9a" id="WVE-vO-vcA"/>
@@ -710,15 +637,15 @@
                                             <constraint firstAttribute="height" constant="60" id="GL5-5y-YHm"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G4L-oT-d92" userLabel="Back Button">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G4L-oT-d92" userLabel="Refresh Button">
                                         <rect key="frame" x="16" y="41" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="fQT-fR-udg"/>
                                             <constraint firstAttribute="width" constant="30" id="xc8-US-1cD"/>
                                         </constraints>
-                                        <state key="normal" image="info"/>
+                                        <state key="normal" image="refresh"/>
                                         <connections>
-                                            <segue destination="YS3-Oc-6ex" kind="presentation" id="BNo-kJ-khO"/>
+                                            <action selector="refreshButtonPressed:" destination="VCe-mh-ID4" eventType="touchUpInside" id="xgN-mh-d2h"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJP-WN-xBw" userLabel="Search City Button">
@@ -1061,24 +988,14 @@
                                             <outlet property="delegate" destination="ipg-jo-10k" id="pDN-gX-j2p"/>
                                         </connections>
                                     </tableView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgj-A6-TnY">
-                                        <rect key="frame" x="27.666666666666657" y="698" width="320" height="0.0"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="320" id="dyv-QK-qCN"/>
-                                            <constraint firstAttribute="height" id="g0i-xm-ims"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="tgj-A6-TnY" firstAttribute="centerX" secondItem="0Zs-Vn-ygO" secondAttribute="centerX" id="4eb-2g-UyR"/>
-                                    <constraint firstItem="N7J-x4-pK8" firstAttribute="bottom" secondItem="tgj-A6-TnY" secondAttribute="top" id="53h-iu-9nt"/>
+                                    <constraint firstAttribute="bottom" secondItem="N7J-x4-pK8" secondAttribute="bottom" id="2dx-od-QpW"/>
                                     <constraint firstAttribute="trailing" secondItem="YVp-Ch-VEb" secondAttribute="trailing" id="DbS-70-Ocs"/>
                                     <constraint firstItem="N7J-x4-pK8" firstAttribute="top" secondItem="YVp-Ch-VEb" secondAttribute="bottom" id="G0U-UF-dCF"/>
                                     <constraint firstAttribute="trailing" secondItem="N7J-x4-pK8" secondAttribute="trailing" id="Tvr-ev-hGx"/>
                                     <constraint firstItem="N7J-x4-pK8" firstAttribute="leading" secondItem="0Zs-Vn-ygO" secondAttribute="leading" id="Xoc-U4-olZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="tgj-A6-TnY" secondAttribute="bottom" id="Xxh-Wi-rQS"/>
                                     <constraint firstItem="YVp-Ch-VEb" firstAttribute="leading" secondItem="0Zs-Vn-ygO" secondAttribute="leading" id="aCV-uR-HGa"/>
                                     <constraint firstItem="N7J-x4-pK8" firstAttribute="height" secondItem="YVp-Ch-VEb" secondAttribute="height" id="hAe-u5-7P4"/>
                                 </constraints>
@@ -1130,8 +1047,6 @@
                         <viewLayoutGuide key="safeArea" id="T6C-IT-1fM"/>
                     </view>
                     <connections>
-                        <outlet property="bannerAdContainer" destination="tgj-A6-TnY" id="K2b-Mw-OyZ"/>
-                        <outlet property="bannerAdContainerHeightConstraint" destination="g0i-xm-ims" id="jBS-0x-2Xf"/>
                         <outlet property="cityNameLabel" destination="Pgf-jx-LO7" id="hXO-Lx-N5M"/>
                         <outlet property="currentDayAverageTemperatureLabel" destination="vqF-Jk-HzT" id="br2-gX-6Pc"/>
                         <outlet property="currentDayMaximumTemperatureLabel" destination="fh1-Qb-fFh" id="gYx-jf-xLg"/>
@@ -1151,13 +1066,12 @@
     </scenes>
     <resources>
         <image name="back" width="135" height="135"/>
-        <image name="close" width="135" height="135"/>
         <image name="compass" width="43.200000762939453" height="43.200000762939453"/>
-        <image name="info" width="135" height="135"/>
         <image name="josip" width="1242.239990234375" height="2688"/>
         <image name="light-rain-bg" width="1242.239990234375" height="2688"/>
         <image name="logo-without-name" width="1024" height="1024"/>
         <image name="map" width="135" height="135"/>
+        <image name="refresh" width="72" height="72"/>
         <image name="sunrise" width="43.200000762939453" height="43.200000762939453"/>
         <image name="sunset" width="43.200000762939453" height="43.200000762939453"/>
         <image name="thunderstorm-bg" width="1242.239990234375" height="2688"/>
