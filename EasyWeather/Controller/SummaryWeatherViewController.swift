@@ -64,7 +64,6 @@ class SummaryWeatherViewController: UIViewController {
         if !isInitialWeatherLoaded {
 
         }
-        updateWeather()
     }
     
     func startLoadingAnimation() {
