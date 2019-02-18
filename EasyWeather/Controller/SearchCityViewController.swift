@@ -68,7 +68,6 @@ class SearchCityViewController: UIViewController {
             alert.addAction(dismissAction)
             present(alert, animated: true, completion: nil)
         }
-
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {

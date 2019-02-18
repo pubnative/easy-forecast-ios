@@ -32,7 +32,7 @@ class ApiClient: NSObject {
     var currentDelegate: CurrentUpdateDelegate?
     var forecastDelegate: ForecastUpdateDelegate?
 
-    func fetchCurrentForCityID(cityID: String) {
+    func fetchCurrent(forCityID cityID: String) {
         let url = "\(baseUrl)weather?APPID=\(apiKey)&id=\(cityID)&units=\(defaultUnitFormat)"
         Alamofire.request(url).responseObject { (response: DataResponse<CurrentResponse>) in
             if let error = response.error {
@@ -54,7 +54,7 @@ class ApiClient: NSObject {
         }
     }
     
-    func fetchForecastForCityID(cityID: String) {
+    func fetchForecast(forCityID cityID: String) {
         let url = "\(baseUrl)forecast?APPID=\(apiKey)&id=\(cityID)&units=\(defaultUnitFormat)"
         Alamofire.request(url).responseObject { (response: DataResponse<ForecastResponse>) in
             if let error = response.error {

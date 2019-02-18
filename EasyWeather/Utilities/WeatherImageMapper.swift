@@ -76,6 +76,6 @@ func weatherBackgroundImageName(forWeatherID weatherID:Int) -> String {
     case 904:
         return "sunny-bg"
     default:
-        return ""
+        return "question-mark-bg"
     }
 }
