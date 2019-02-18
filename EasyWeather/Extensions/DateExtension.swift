@@ -26,7 +26,7 @@ extension Date {
     static func dateFrom(string: String) -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.timeZone = TimeZone.current
         return dateFormatter.date(from: string) ?? Date()
     }
     
@@ -43,21 +43,21 @@ extension Date {
         let year = calendar.component(.year, from: self)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.timeZone = TimeZone.current
         return dateFormatter.date(from: "\(day)/\(month)/\(year)") ?? Date()
     }
     
     func dayOfTheWeek() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.timeZone = TimeZone.current
         return dateFormatter.string(from: self)
     }
     
     func timeOfTheDay() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.timeZone = TimeZone.current
         return dateFormatter.string(from: self)
     }
 }
