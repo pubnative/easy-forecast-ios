@@ -24,6 +24,7 @@ import UIKit
 import ObjectMapper
 
 class CurrentCoordinate: Mappable {
+    
     var latitude: Double?
     var longitude: Double?
     
@@ -35,4 +36,5 @@ class CurrentCoordinate: Mappable {
         latitude <- map["lat"]
         longitude <- map["lon"]
     }
+    
 }

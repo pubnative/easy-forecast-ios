@@ -23,6 +23,7 @@
 import Foundation
 
 class ForecastSummaryItem {
+    
     var temperature: Double?
     var temperature_min: Double?
     var temperature_max: Double?
@@ -132,6 +133,5 @@ class ForecastSummaryItem {
         }
         return mostCommonWeatherDescription
     }
+    
 }
-
-

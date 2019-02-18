@@ -24,6 +24,7 @@ import UIKit
 import ObjectMapper
 
 class CurrentClouds: Mappable {
+    
     var all: Double?
     
     required init?(map: Map) {
@@ -33,4 +34,5 @@ class CurrentClouds: Mappable {
     func mapping(map: Map) {
         all <- map["all"]
     }
+    
 }

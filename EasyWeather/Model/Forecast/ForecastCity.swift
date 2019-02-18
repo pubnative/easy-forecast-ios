@@ -24,6 +24,7 @@ import UIKit
 import ObjectMapper
 
 class ForecastCity: NSObject {
+    
     var id: Double?
     var name: String?
     var coordinate: ForecastCoordinate?
@@ -39,4 +40,5 @@ class ForecastCity: NSObject {
         coordinate <- map["coord"]
         country <- map["country"]
     }
+    
 }

@@ -22,6 +22,7 @@
 
 import UIKit
 import CoreLocation
+import Lottie
 
 class SummaryWeatherViewController: UIViewController {
     
@@ -36,116 +37,128 @@ class SummaryWeatherViewController: UIViewController {
     @IBOutlet weak var currentWeatherBackgroundView: UIImageView!
     @IBOutlet weak var forecastWeatherTableView: UITableView!
     @IBOutlet weak var bannerAdContainerHeightConstraint: NSLayoutConstraint!
-
+    @IBOutlet weak var loadingAnimationView: LOTAnimationView!
+    
     var apiClient = ApiClient()
     var locationManager = CLLocationManager()
     var dataSource = [Any]()
     var isInitialWeatherLoaded = false
+    var isCurrentWeatherUpdateCompleted = false
     var cityName: String!
-    
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(SummaryWeatherViewController.refreshWeather), for: UIControl.Event.valueChanged)
-        refreshControl.tintColor = UIColor.white
-        return refreshControl
-    }()
+    var cityID: String!
+    var currentWeatherResponse: CurrentResponse?
+    var currentDayForecast: ForecastSummaryItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(SummaryWeatherViewController.updateWeather), name: UIApplication.willEnterForegroundNotification, object: nil)
         apiClient.currentDelegate = self
         apiClient.forecastDelegate = self
         forecastWeatherTableView.isHidden = true
         currentWeatherView.isHidden = true
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
         currentWeatherBackgroundView.addParallaxEffect()
-        forecastWeatherTableView.addSubview(refreshControl)
+        checkLocationServices()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if !isInitialWeatherLoaded {
-//            loadingIndicator.startAnimating()
+
         }
-        if cityName != nil {
-            fetchWeather(forCity: cityName)
+        updateWeather()
+    }
+    
+    func startLoadingAnimation() {
+        loadingAnimationView.setAnimation(named: "LoadingAnimation")
+        loadingAnimationView.loopAnimation = true
+        loadingAnimationView.play()
+        loadingAnimationView.isHidden = false
+    }
+    
+    func stopLoadingAnimation() {
+        loadingAnimationView.stop()
+        loadingAnimationView.isHidden = true
+    }
+        
+    @objc func updateWeather() {
+        if cityID != nil {
+            fetchWeather(forCityID: cityID)
+        } else {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
         }
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        NotificationCenter.default.addObserver(self, selector: #selector(SummaryWeatherViewController.refreshWeather), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self)        
-    }
-    
-    @objc func refreshWeather() {
-        locationManager.delegate = self
-        locationManager.startUpdatingLocation()
-    }
-    
-    
-    func fetchWeather(forCity cityName: String) {
-        self.cityName = nil
+    func fetchWeather(forCityID cityID: String) {
+        startLoadingAnimation()
         bannerAdContainerHeightConstraint.constant = 0
         bannerAdContainer.isHidden = true
-        apiClient.fetchCurrentForCity(name: cityName.lowercased())
-        apiClient.fetchForecastForCity(name: cityName.lowercased())
+        apiClient.fetchCurrent(forCityID: cityID)
+        apiClient.fetchForecast(forCityID: cityID)
     }
     
-    func fetchWeatherData() {
+    func fetchWeatherUsingCurrentLocation() {
+        startLoadingAnimation()
+        isCurrentWeatherUpdateCompleted = false
         bannerAdContainerHeightConstraint.constant = 0
         bannerAdContainer.isHidden = true
         apiClient.fetchCurrentForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
         apiClient.fetchForecastForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
     }
     
-    @IBAction func useCurrentLocationButtonPressed(_ sender: UIButton) {
-        fetchWeatherData()
-    }
-    
-    func updateCurrentWeatherView(item: CurrentResponse) {
-        if let name = item.name {
+    func updateCurrentWeatherView(currentWeatherResponse: CurrentResponse) {
+        self.currentWeatherResponse = currentWeatherResponse
+        if cityName != nil {
+            cityNameLabel.text = cityName
+        } else if let name = currentWeatherResponse.name {
             cityNameLabel.text = name
         }
-        if item.weather?.count != 0 {
-            if let currentWeahter = item.weather?.first {
+        if currentWeatherResponse.weather?.count != 0 {
+            if let currentWeahter = currentWeatherResponse.weather?.first {
                 currentWeatherDescriptionLabel.text = currentWeahter.description?.capitalized
                 currentWeatherBackgroundView.image = UIImage(named: weatherBackgroundImageName(forWeatherID: currentWeahter.id!))
             }
         }
-        if let temp = item.main?.temperature {
-            currentTemperatureLabel.text = "\(round(temp))°"
+        if let temp = currentWeatherResponse.main?.temperature {
+            currentTemperatureLabel.text = "\(Int(temp))°"
         }
-//        if let sunrise = item.sys?.sunrise {
-//            let unixConvertedDate = Date(timeIntervalSince1970: sunrise)
-//            sunriseTimeLabel.text = unixConvertedDate.timeOfTheDay()
-//        }
-//        if let sunset = item.sys?.sunset {
-//            let unixConvertedDate = Date(timeIntervalSince1970: sunset)
-//            sunsetTimeLabel.text = unixConvertedDate.timeOfTheDay()
-//        }
     }
+    
+    @IBAction func goToCurrentDayDetailButtonPressed(_ sender: UIButton) {
+        guard let currentDayWeatherDetailViewController = storyboard?.instantiateViewController(withIdentifier: "CurrentDayWeatherDetailViewController") as? CurrentDayWeatherDetailViewController else { return }
+        guard let currentForecastSummaryItem = currentDayForecast, let currentWeatherDetail = currentWeatherResponse else { return }
+        currentDayWeatherDetailViewController.initialize(withForecastSummaryItem: currentForecastSummaryItem, withCurrentWeatherResponse: currentWeatherDetail, andWithCityName: cityNameLabel.text!)
+        navigationController?.pushViewController(currentDayWeatherDetailViewController, animated: true)
+    }
+    
+    @IBAction func useCurrentLocationButtonPressed(_ sender: UIButton) {
+        cityID = nil
+        cityName = nil
+        updateWeather()
+    }
+    
 }
 
 extension SummaryWeatherViewController: CurrentUpdateDelegate {
+    
     func requestCurrentDidSucceed(withData data: CurrentResponse) {
         warningLabel.isHidden = true
         bannerAdContainer.isHidden = false
         backgroundView.isHidden = false
-        updateCurrentWeatherView(item: data)
-//        loadingIndicator.stopAnimating()
+        isCurrentWeatherUpdateCompleted = true
+        updateCurrentWeatherView(currentWeatherResponse: data)
     }
     
     func requestCurrentDidFail(withError error: Error) {
+        isCurrentWeatherUpdateCompleted = true
         NSLog(error.localizedDescription)
-//        loadingIndicator.stopAnimating()
     }
+    
 }
 
 extension SummaryWeatherViewController: ForecastUpdateDelegate {
+    
     func requestForecastDidSucceed(withData data: ForecastResponse) {
         var responseForecastArray = [ForecastItem]()
         dataSource.removeAll()
@@ -157,19 +170,24 @@ extension SummaryWeatherViewController: ForecastUpdateDelegate {
         }
         
         var summaryArray = summarizeForecastWeather(usingForecastWeatherArray: responseForecastArray) as [Any]
-        summaryArray.removeFirst()
-        dataSource = summaryArray
-        forecastWeatherTableView?.reloadData()
-        forecastWeatherTableView.isHidden = false
-        currentWeatherView.isHidden = false
-//        loadingIndicator.stopAnimating()
-        refreshControl.endRefreshing()
+        if summaryArray.count > 0 {
+            currentDayForecast = summaryArray.removeFirst() as? ForecastSummaryItem
+            dataSource = summaryArray
+            forecastWeatherTableView?.reloadData()
+            forecastWeatherTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
+            forecastWeatherTableView.isHidden = false
+            currentWeatherView.isHidden = false
+            if isCurrentWeatherUpdateCompleted {
+                stopLoadingAnimation()
+            }
+        }
     }
     
     func requestForecastDidFail(withError error: Error) {
         NSLog(error.localizedDescription)
-//        loadingIndicator.stopAnimating()
-        refreshControl.endRefreshing()
+        if isCurrentWeatherUpdateCompleted {
+            stopLoadingAnimation()
+        }
     }
     
     func groupForecastWeather(usingForecastWeatherArray forecastWeatherArray: [ForecastItem]) -> [Date : [ForecastItem]] {
@@ -197,9 +215,11 @@ extension SummaryWeatherViewController: ForecastUpdateDelegate {
         }
         return forecastSummaryArray
     }
+    
 }
 
 extension SummaryWeatherViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -219,48 +239,51 @@ extension SummaryWeatherViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let forecastSummaryDetailViewController = storyboard?.instantiateViewController(withIdentifier: "forecastWeatherDetailViewController") as? ForecastWeatherDetailViewController else { return }
+        guard let forecastSummaryDetailViewController = storyboard?.instantiateViewController(withIdentifier: "ForecastWeatherDetailViewController") as? ForecastWeatherDetailViewController else { return }
         guard let forecastSummaryItem = dataSource[indexPath.row] as? ForecastSummaryItem else { return }
         forecastSummaryDetailViewController.initWith(forecastSummaryItem: forecastSummaryItem, andWithCityName: cityNameLabel.text!)
-        navigationController?.pushViewController(forecastSummaryDetailViewController, animated: false)
+        navigationController?.pushViewController(forecastSummaryDetailViewController, animated: true)
     }
+    
 }
 
 extension SummaryWeatherViewController: CLLocationManagerDelegate {
     
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        Location.sharedInstance.latitude = locations.last?.coordinate.latitude
-        Location.sharedInstance.longitude = locations.last?.coordinate.longitude
-        fetchWeatherData()
-        manager.stopUpdatingLocation()
-        manager.delegate = nil;
+    func checkLocationServices() {
+        if CLLocationManager.locationServicesEnabled() {
+            setupLocationManager()
+            checkLocationAuthorization()
+        } else {
+            warningLabel.isHidden = false
+            backgroundView.isHidden = true
+            forecastWeatherTableView.isHidden = true
+            currentWeatherView.isHidden = true
+            bannerAdContainer.isHidden = true
+        }
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error){
-        
+    func setupLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus){
-        switch status {
+    func checkLocationAuthorization() {
+        switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
-            manager.requestWhenInUseAuthorization()
+            locationManager.requestWhenInUseAuthorization()
             break
         case .authorizedWhenInUse:
             warningLabel.isHidden = true
             currentLocationButton.isHidden = false
             bannerAdContainer.isHidden = false
             backgroundView.isHidden = false
-            manager.startUpdatingLocation()
+            locationManager.startUpdatingLocation()
             break
         case .authorizedAlways:
-            // This app will only get the location when in use
             break
         case .restricted:
-            // restricted by e.g. parental controls. User can't enable Location Services
             break
         case .denied:
-//            loadingIndicator.stopAnimating()
             warningLabel.isHidden = false
             currentLocationButton.isHidden = true
             backgroundView.isHidden = true
@@ -270,4 +293,25 @@ extension SummaryWeatherViewController: CLLocationManagerDelegate {
             break
         }
     }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        Location.sharedInstance.latitude = locations.last?.coordinate.latitude
+        Location.sharedInstance.longitude = locations.last?.coordinate.longitude
+        fetchWeatherUsingCurrentLocation()
+        manager.stopUpdatingLocation()
+        manager.delegate = nil;
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        warningLabel.isHidden = false
+        backgroundView.isHidden = true
+        forecastWeatherTableView.isHidden = true
+        currentWeatherView.isHidden = true
+        bannerAdContainer.isHidden = true
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus){
+        checkLocationAuthorization()
+    }
+    
 }

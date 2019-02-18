@@ -1,5 +1,5 @@
 //
-//  Copyright © 2019 EasyNaps. All rights reserved.
+//  Copyright © 2018 EasyNaps. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,66 +22,80 @@
 
 import UIKit
 
-class ForecastWeatherDetailViewController: UIViewController {
+class CurrentDayWeatherDetailViewController: UIViewController {
     
-    @IBOutlet weak var forecastWeatherBackgroundView: UIImageView!
-    @IBOutlet weak var dayLabel: UILabel!
+    @IBOutlet weak var currentDayWeatherBackgroundView: UIImageView!
     @IBOutlet weak var cityNameLabel: UILabel!
-    @IBOutlet weak var forecastWeatherDescriptionLabel: UILabel!
-    @IBOutlet weak var forecastAverageTemperatureLabel: UILabel!
-    @IBOutlet weak var forecastMinimumTemperatureLabel: UILabel!
-    @IBOutlet weak var forecastMaximumTemperatureLabel: UILabel!
+    @IBOutlet weak var currentDayWeatherDescriptionLabel: UILabel!
+    @IBOutlet weak var currentDayAverageTemperatureLabel: UILabel!
+    @IBOutlet weak var currentDayMinimumTemperatureLabel: UILabel!
+    @IBOutlet weak var currentDayMaximumTemperatureLabel: UILabel!
+    @IBOutlet weak var sunriseTimeLabel: UILabel!
+    @IBOutlet weak var sunsetTimeLabel: UILabel!
+    @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var bannerAdContainer: UIView!
     @IBOutlet weak var bannerAdContainerHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var forecastWeatherDetailTableView: UITableView!
+    @IBOutlet weak var currentDayWeatherDetailTableView: UITableView!
 
     var forecastSummaryItem: ForecastSummaryItem!
+    var currentWeatherResponse: CurrentResponse!
     var cityName: String!
     var dataSource = [Any]()
-
-    func initWith(forecastSummaryItem: ForecastSummaryItem, andWithCityName cityName:String) {
+    
+    func initialize(withForecastSummaryItem forecastSummaryItem: ForecastSummaryItem, withCurrentWeatherResponse currentWeatherResponse: CurrentResponse, andWithCityName cityName:String) {
         self.forecastSummaryItem = forecastSummaryItem
+        self.currentWeatherResponse = currentWeatherResponse
         self.cityName = cityName
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        forecastWeatherBackgroundView.addParallaxEffect()
+        currentDayWeatherBackgroundView.addParallaxEffect()
         prepareDataToBeDisplayed()
     }
     
     func prepareDataToBeDisplayed() {
         cityNameLabel.text = cityName
+        
+        if let sunrise = currentWeatherResponse.sys?.sunrise {
+            let unixConvertedDate = Date(timeIntervalSince1970: sunrise)
+            sunriseTimeLabel.text = "\(unixConvertedDate.timeOfTheDay())"
+        }
+        if let sunset = currentWeatherResponse.sys?.sunset {
+            let unixConvertedDate = Date(timeIntervalSince1970: sunset)
+            sunsetTimeLabel.text = "\(unixConvertedDate.timeOfTheDay())"
+        }
+        
+        if let windSpeed = currentWeatherResponse.wind?.speed {
+            windSpeedLabel.text = "\(windSpeed) m/s"
+        }
         if let forecast = forecastSummaryItem.forecast {
             dataSource = forecast
         }
-        if let forecastDate = forecastSummaryItem.date {
-            dayLabel.text = forecastDate.shortDate()
-        }
         if let forecastDescription = forecastSummaryItem.description {
-            forecastWeatherDescriptionLabel.text = forecastDescription.capitalized
+            currentDayWeatherDescriptionLabel.text = forecastDescription.capitalized
         }
         if let forecastWeatherID = forecastSummaryItem.id {
-            forecastWeatherBackgroundView.image = UIImage(named: weatherBackgroundImageName(forWeatherID: forecastWeatherID))
+            currentDayWeatherBackgroundView.image = UIImage(named: weatherBackgroundImageName(forWeatherID: forecastWeatherID))
         }
         if let forecastAverageTemperature = forecastSummaryItem.temperature {
-            forecastAverageTemperatureLabel.text = "\(Int(forecastAverageTemperature))°"
+            currentDayAverageTemperatureLabel.text = "\(Int(forecastAverageTemperature))°"
         }
         if let forecastMinimumTemperature = forecastSummaryItem.temperature_min {
-            forecastMinimumTemperatureLabel.text = "\(Int(forecastMinimumTemperature))°"
+            currentDayMinimumTemperatureLabel.text = "\(Int(forecastMinimumTemperature))°"
         }
         if let forecastMaximumTemperature = forecastSummaryItem.temperature_max {
-            forecastMaximumTemperatureLabel.text = "\(Int(forecastMaximumTemperature))°"
+            currentDayMaximumTemperatureLabel.text = "\(Int(forecastMaximumTemperature))°"
         }
     }
-    
+
     @IBAction func backButtonPressed(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
     
 }
 
-extension ForecastWeatherDetailViewController: UITableViewDelegate, UITableViewDataSource {
+extension CurrentDayWeatherDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

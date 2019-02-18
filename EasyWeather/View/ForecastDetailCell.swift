@@ -27,7 +27,7 @@ class ForecastDetailCell: UITableViewCell {
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var weatherDescriptionType: UILabel!
-    @IBOutlet weak var averageTemperatureLabel: UILabel!
+    @IBOutlet weak var temperatureLabel: UILabel!
     
     func configureCell(withForecastItem forecastItem: ForecastItem) {
         
@@ -41,9 +41,8 @@ class ForecastDetailCell: UITableViewCell {
             }
         }
         if let temperature = forecastItem.main?.temperature {
-            averageTemperatureLabel.text = "\(round(temperature))°"
+            temperatureLabel.text = "\(Int(temperature))°"
         }
-        
         if let date = forecastItem.date {
             timeLabel.text = date.timeOfTheDay()
         }

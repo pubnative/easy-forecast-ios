@@ -34,6 +34,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+        saveCityListToUserDefaults()
+
+//        if(!UserDefaults.standard.bool(forKey: "EasyForecast_v:2.0_FirstLaunch")){
+//            saveCityListToUserDefaults()
+//            UserDefaults.standard.set(true, forKey: "EasyForecast_v:2.0_FirstLaunch")
+//            UserDefaults.standard.synchronize();
+//        }
+        
         FirebaseApp.configure()
         Fabric.with([Crashlytics.self])
         HyBid.initWithAppToken("3e98d63843d8437c8d35a05edab557dd") { (success) in

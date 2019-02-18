@@ -27,7 +27,7 @@ class ForecastSummaryCell: UITableViewCell {
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var weatherDescriptionType: UILabel!
-    @IBOutlet weak var averageTemperatureLabel: UILabel!
+    @IBOutlet weak var maximumTemperatureLabel: UILabel!
     @IBOutlet weak var detailArrowImage: UIImageView!
     
     func configureCell(withForecastSummaryItem forecastSummaryItem: ForecastSummaryItem) {
@@ -41,8 +41,8 @@ class ForecastSummaryCell: UITableViewCell {
             weatherDescriptionType.text = weatherDescription.capitalized
         }
         
-        if let averageTemperature = forecastSummaryItem.temperature {
-            averageTemperatureLabel.text = "\(round(averageTemperature))°"
+        if let maximumTemperature = forecastSummaryItem.temperature_max {
+            maximumTemperatureLabel.text = "\(Int(maximumTemperature))°"
         }
         
         if let date = forecastSummaryItem.date {
@@ -52,4 +52,5 @@ class ForecastSummaryCell: UITableViewCell {
         let arrowImage = UIImage(named:"next")!.withRenderingMode(.alwaysTemplate)
         detailArrowImage.image = arrowImage
     }
+    
 }

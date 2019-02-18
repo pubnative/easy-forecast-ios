@@ -24,6 +24,7 @@ import UIKit
 import ObjectMapper
 
 class CurrentWind: Mappable {
+    
     var speed: Double?
     var deg: Double?
     
@@ -35,4 +36,5 @@ class CurrentWind: Mappable {
         speed <- map["speed"]
         deg <- map["deg"]
     }
+    
 }

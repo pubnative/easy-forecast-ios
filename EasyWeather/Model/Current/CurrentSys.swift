@@ -24,6 +24,7 @@ import UIKit
 import ObjectMapper
 
 class CurrentSys: Mappable {
+    
     var country: String?
     var sunrise: Double?
     var sunset: Double?
@@ -37,4 +38,5 @@ class CurrentSys: Mappable {
         sunrise <- map["sunrise"]
         sunset <- map["sunset"]
     }
+    
 }

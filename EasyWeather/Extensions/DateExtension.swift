@@ -57,6 +57,7 @@ extension Date {
     func timeOfTheDay() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         return dateFormatter.string(from: self)
     }
 }
