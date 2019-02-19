@@ -46,7 +46,7 @@ class ForecastItem: Mappable {
         wind <- map["wind"]
         sys <- map["sys"]
         dateString <- map["dt_txt"]
-        date = Date.dateFrom(string: dateString!)
+        date = Date(timeIntervalSince1970: dateAsDouble!)
     }
     
 }

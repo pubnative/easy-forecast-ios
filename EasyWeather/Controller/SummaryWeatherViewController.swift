@@ -177,7 +177,14 @@ extension SummaryWeatherViewController: ForecastUpdateDelegate {
         
         var summaryArray = summarizeForecastWeather(usingForecastWeatherArray: responseForecastArray) as [Any]
         if summaryArray.count > 0 {
-            currentDayForecast = summaryArray.removeFirst() as? ForecastSummaryItem
+            let currentDate = Date(timeIntervalSince1970: (currentWeatherResponse?.dateAsDouble)!)
+            let currentDayForecast = summaryArray.removeFirst() as? ForecastSummaryItem
+            if currentDate.shortDate() == currentDayForecast?.date?.shortDate() {
+                self.currentDayForecast = currentDayForecast
+            } else {
+                
+            }
+
             dataSource = summaryArray
             forecastWeatherTableView?.reloadData()
             forecastWeatherTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
