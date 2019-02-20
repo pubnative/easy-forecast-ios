@@ -178,8 +178,9 @@ extension SummaryWeatherViewController: ForecastUpdateDelegate {
         var summaryArray = summarizeForecastWeather(usingForecastWeatherArray: responseForecastArray) as [Any]
         if summaryArray.count > 0 {
             let currentDate = Date(timeIntervalSince1970: (currentWeatherResponse?.dateAsDouble)!)
-            let currentDayForecast = summaryArray.removeFirst() as? ForecastSummaryItem
+            let currentDayForecast = summaryArray.first as? ForecastSummaryItem
             if currentDate.shortDate() == currentDayForecast?.date?.shortDate() {
+                summaryArray.removeFirst()
                 self.currentDayForecast = currentDayForecast
             } else {
                 
