@@ -39,6 +39,7 @@ class SummaryWeatherViewController: UIViewController {
     @IBOutlet weak var bannerAdContainerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var loadingAnimationView: LOTAnimationView!
     
+    var adPlacement = AdPlacement()
     var apiClient = ApiClient()
     var locationManager = CLLocationManager()
     var dataSource = [Any]()
@@ -56,6 +57,7 @@ class SummaryWeatherViewController: UIViewController {
         currentWeatherView.isHidden = true
         currentWeatherBackgroundView.addParallaxEffect()
         checkLocationServices()
+        loadAd()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -120,6 +122,7 @@ class SummaryWeatherViewController: UIViewController {
     }
     
     @IBAction func refreshButtonPressed(_ sender: UIButton) {
+        loadAd()
         updateWeather()
     }
     
@@ -134,6 +137,36 @@ class SummaryWeatherViewController: UIViewController {
         cityID = nil
         cityName = nil
         updateWeather()
+    }
+    
+    func loadAd() {
+        guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: BANNER_PLACEMENT) else { return }
+        guard let placement = BannerPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withAdPlacementDelegate: self) else { return }
+        adPlacement = placement
+        adPlacement.loadAd()
+    }
+    
+}
+
+extension SummaryWeatherViewController: AdPlacementDelegate {
+    
+    func adPlacementDidLoad() {
+        bannerAdContainer.addSubview(adPlacement.adView()!)
+        bannerAdContainerHeightConstraint.constant = 50
+        bannerAdContainer.isHidden = false
+    }
+    
+    func adPlacementDidFail(withError error: Error) {
+        bannerAdContainerHeightConstraint.constant = 0
+        bannerAdContainer.isHidden = true
+    }
+    
+    func adPlacementDidTrackImpression() {
+        
+    }
+    
+    func adPlacementDidTrackClick() {
+        loadAd()
     }
     
 }

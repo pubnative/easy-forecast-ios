@@ -31,7 +31,7 @@ protocol InterstitialPlacementDelegate {
     func interstitialPlacementDidTrackClick()
 }
 
-class InterstitialPlacement {
+class InterstitialPlacement: NSObject {
     
     var isReady: Bool?
     

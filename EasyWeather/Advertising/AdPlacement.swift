@@ -29,9 +29,11 @@ protocol AdPlacementDelegate {
     func adPlacementDidTrackClick()
 }
 
-class AdPlacement {
+class AdPlacement: NSObject {
     
-    var adView: UIView?
+    func adView() -> UIView? {
+        return nil
+    }
     
     func loadAd() {
         

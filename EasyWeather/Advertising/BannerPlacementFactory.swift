@@ -21,6 +21,7 @@
 //
 
 import Foundation
+import HyBid
 
 class BannerPlacementFactory {
     
@@ -52,7 +53,8 @@ class BannerPlacementFactory {
     }
     
     fileprivate func createPubNativePlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        return AdPlacement()
+        let adView = HyBidBannerAdView(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+        return PubNativeBannerController(withAdView: adView, withZoneID: "2", adPlacementDelegate: delegate)
     }
     
     fileprivate func createAppLovinPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {

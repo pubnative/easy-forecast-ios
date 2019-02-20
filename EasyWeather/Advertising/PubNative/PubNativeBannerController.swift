@@ -1,5 +1,5 @@
 //
-//  Copyright © 2019 PubNative. All rights reserved.
+//  Copyright © 2019 EasyNaps. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -20,38 +20,47 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+import UIKit
+import HyBid
 
-protocol RewardedVideoPlacementDelegate {
-    func rewardedVideoPlacementDidLoad()
-    func rewardedVideoPlacementDidFail(withError error: Error)
-    func rewardedVideoPlacementDidOpen()
-    func rewardedVideoPlacementDidClose()
-    func rewardedVideoPlacementDidStart()
-    func rewardedVideoPlacementDidFinish()
-    func rewardedVideoPlacementDidTrackImpression()
-    func rewardedVideoPlacementDidTrackClick()
-    func rewardedVideoPlacementDidReward(withReward reward: AdReward)
+class PubNativeBannerController: AdPlacement {
+    
+    var bannerAdView: HyBidBannerAdView!
+    var zoneID: String!
+    var delegate: AdPlacementDelegate!
+    
+    init(withAdView adView: HyBidBannerAdView, withZoneID zoneID: String, adPlacementDelegate delegate: AdPlacementDelegate) {
+        self.bannerAdView = adView
+        self.zoneID = zoneID
+        self.delegate = delegate
+    }
+    
+    override func adView() -> UIView? {
+        return bannerAdView
+    }
+    
+    override func loadAd() {
+        bannerAdView.load(withZoneID: zoneID, andWith: self)
+    }
+
 }
 
-class RewardedVideoPlacement: NSObject {
+extension PubNativeBannerController: HyBidAdViewDelegate {
     
-    var isReady: Bool?
-    
-    func loadAd() {
-        
+    func adViewDidLoad(_ adView: HyBidAdView!) {
+        delegate.adPlacementDidLoad()
     }
     
-    func show() {
-        
+    func adView(_ adView: HyBidAdView!, didFailWithError error: Error!) {
+        delegate.adPlacementDidFail(withError: error)
     }
     
-    func resume() {
-        
+    func adViewDidTrackImpression(_ adView: HyBidAdView!) {
+        delegate.adPlacementDidTrackImpression()
     }
     
-    func pause() {
-        
+    func adViewDidTrackClick(_ adView: HyBidAdView!) {
+        delegate.adPlacementDidTrackClick()
     }
     
 }
