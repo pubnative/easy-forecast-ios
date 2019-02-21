@@ -34,9 +34,7 @@ protocol RewardedVideoPlacementDelegate {
     func rewardedVideoPlacementDidReward(withReward reward: AdReward)
 }
 
-class RewardedVideoPlacement {
-    
-    var isReady: Bool?
+class RewardedVideoPlacement: NSObject {
     
     func loadAd() {
         
@@ -52,6 +50,10 @@ class RewardedVideoPlacement {
     
     func pause() {
         
+    }
+    
+    func isReady() -> Bool {
+        return false
     }
     
 }

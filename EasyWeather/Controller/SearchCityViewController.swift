@@ -25,9 +25,15 @@ import UIKit
 class SearchCityViewController: UIViewController {
 
     @IBOutlet weak var searchCityTextField: CustomTextField!
+    @IBOutlet weak var mRectContainerView: UIView!
     
+    var adPlacement = AdPlacement()
     var cityName: String!
     var cityID: String?
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +44,7 @@ class SearchCityViewController: UIViewController {
         searchCityTextField.theme.separatorColor = #colorLiteral(red: 0.4509803922, green: 0.4, blue: 0.6823529412, alpha: 1)
         searchCityTextField.maxNumberOfResults = 5
         searchCityTextField.minCharactersNumberToStartFiltering = 3
+        loadAd()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,6 +88,38 @@ class SearchCityViewController: UIViewController {
             return
         }
         searchCityTextField.inputAccessoryView?.isHidden = false
+    }
+    
+    func loadAd() {
+        mRectContainerView.isHidden = true
+        guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: MRECT_PLACEMENT) else { return }
+        guard let placement = MRectPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withAdPlacementDelegate: self) else { return }
+        adPlacement = placement
+        adPlacement.loadAd()
+    }
+    
+}
+
+extension SearchCityViewController: AdPlacementDelegate {
+    
+    func adPlacementDidLoad() {
+        for view in mRectContainerView.subviews {
+            view.removeFromSuperview()
+        }
+        mRectContainerView.addSubview(adPlacement.adView()!)
+        mRectContainerView.isHidden = false
+    }
+    
+    func adPlacementDidFail(withError error: Error) {
+        mRectContainerView.isHidden = true
+    }
+    
+    func adPlacementDidTrackImpression() {
+        
+    }
+    
+    func adPlacementDidTrackClick() {
+        loadAd()
     }
     
 }

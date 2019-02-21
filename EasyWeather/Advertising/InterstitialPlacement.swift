@@ -31,16 +31,18 @@ protocol InterstitialPlacementDelegate {
     func interstitialPlacementDidTrackClick()
 }
 
-class InterstitialPlacement {
-    
-    var isReady: Bool?
-    
+class InterstitialPlacement: NSObject {
+        
     func loadAd() {
         
     }
     
     func show() {
         
+    }
+    
+    func isReady() -> Bool {
+        return false
     }
     
 }

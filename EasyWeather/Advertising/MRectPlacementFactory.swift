@@ -21,6 +21,7 @@
 //
 
 import Foundation
+import HyBid
 
 class MRectPlacementFactory {
     
@@ -52,7 +53,8 @@ class MRectPlacementFactory {
     }
     
     fileprivate func createPubNativePlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        return AdPlacement()
+        let adView = HyBidMRectAdView(frame: CGRect(x: 0, y: 0, width: 300, height: 250))
+        return PubNativeMRectController(withAdView: adView, withZoneID: "3", adPlacementDelegate: delegate)
     }
     
     fileprivate func createAppLovinPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {

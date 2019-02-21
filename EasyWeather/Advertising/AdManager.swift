@@ -39,6 +39,7 @@ class AdManager {
             guard var queue = networkDictionary[placement] else { return nil }
             guard let nextAdNetwork = queue.dequeue() else { return nil }
             queue.enqueue(nextAdNetwork)
+            networkDictionary.updateValue(queue, forKey: placement)
             return nextAdNetwork
         }
     }

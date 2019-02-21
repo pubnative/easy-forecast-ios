@@ -21,6 +21,8 @@
 		5A5F778A2214214200E13EF7 /* CurrentDayWeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5F77892214214200E13EF7 /* CurrentDayWeatherDetailViewController.swift */; };
 		5A6A8C142086297700494187 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A8C132086297600494187 /* Location.swift */; };
 		5A6A8C1620862C8B00494187 /* ForecastSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A8C1520862C8B00494187 /* ForecastSummaryCell.swift */; };
+		5A9280E9221DA7FC00D43FF3 /* PubNativeMRectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9280E8221DA7FC00D43FF3 /* PubNativeMRectController.swift */; };
+		5A9280EC221EB4DE00D43FF3 /* PubNativeInterstitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9280EB221EB4DE00D43FF3 /* PubNativeInterstitialController.swift */; };
 		5AAEF8E320A1D88F006C7CD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5AAEF8E220A1D88F006C7CD4 /* GoogleService-Info.plist */; };
 		5ABCE2FB221C5192004F8882 /* AdPlacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABCE2FA221C5192004F8882 /* AdPlacement.swift */; };
 		5ABCE2FD221C53D4004F8882 /* InterstitialPlacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABCE2FC221C53D4004F8882 /* InterstitialPlacement.swift */; };
@@ -35,6 +37,7 @@
 		5ABCE30F221C6875004F8882 /* RewardedVideoPlacementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABCE30E221C6875004F8882 /* RewardedVideoPlacementFactory.swift */; };
 		5ABCE311221C6F6F004F8882 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABCE310221C6F6F004F8882 /* Queue.swift */; };
 		5ABCE313221D5934004F8882 /* AdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABCE312221D5934004F8882 /* AdManager.swift */; };
+		5ABCE316221D890B004F8882 /* PubNativeBannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABCE315221D890B004F8882 /* PubNativeBannerController.swift */; };
 		5ACDB1B02209C86100E13AAD /* WeatherImageMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACDB1AF2209C86100E13AAD /* WeatherImageMapper.swift */; };
 		5ACDB1B22209DAE700E13AAD /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACDB1B12209DAE700E13AAD /* DateExtension.swift */; };
 		5ACDB1B62209F1C600E13AAD /* ForecastSummaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACDB1B52209F1C600E13AAD /* ForecastSummaryItem.swift */; };
@@ -99,6 +102,8 @@
 		5A5F77892214214200E13EF7 /* CurrentDayWeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDayWeatherDetailViewController.swift; sourceTree = "<group>"; };
 		5A6A8C132086297600494187 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		5A6A8C1520862C8B00494187 /* ForecastSummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastSummaryCell.swift; sourceTree = "<group>"; };
+		5A9280E8221DA7FC00D43FF3 /* PubNativeMRectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubNativeMRectController.swift; sourceTree = "<group>"; };
+		5A9280EB221EB4DE00D43FF3 /* PubNativeInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubNativeInterstitialController.swift; sourceTree = "<group>"; };
 		5AAEF8E220A1D88F006C7CD4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5ABCE2FA221C5192004F8882 /* AdPlacement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdPlacement.swift; sourceTree = "<group>"; };
 		5ABCE2FC221C53D4004F8882 /* InterstitialPlacement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialPlacement.swift; sourceTree = "<group>"; };
@@ -113,6 +118,7 @@
 		5ABCE30E221C6875004F8882 /* RewardedVideoPlacementFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardedVideoPlacementFactory.swift; sourceTree = "<group>"; };
 		5ABCE310221C6F6F004F8882 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		5ABCE312221D5934004F8882 /* AdManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdManager.swift; sourceTree = "<group>"; };
+		5ABCE315221D890B004F8882 /* PubNativeBannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubNativeBannerController.swift; sourceTree = "<group>"; };
 		5ACDB1AF2209C86100E13AAD /* WeatherImageMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherImageMapper.swift; sourceTree = "<group>"; };
 		5ACDB1B12209DAE700E13AAD /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		5ACDB1B52209F1C600E13AAD /* ForecastSummaryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastSummaryItem.swift; sourceTree = "<group>"; };
@@ -196,6 +202,7 @@
 		5ABCE2F9221C4DB0004F8882 /* Advertising */ = {
 			isa = PBXGroup;
 			children = (
+				5ABCE314221D88C4004F8882 /* PubNative */,
 				5ABCE310221C6F6F004F8882 /* Queue.swift */,
 				5ABCE312221D5934004F8882 /* AdManager.swift */,
 				5ABCE306221C5D84004F8882 /* AdNetwork.swift */,
@@ -211,6 +218,16 @@
 				5ABCE30E221C6875004F8882 /* RewardedVideoPlacementFactory.swift */,
 			);
 			path = Advertising;
+			sourceTree = "<group>";
+		};
+		5ABCE314221D88C4004F8882 /* PubNative */ = {
+			isa = PBXGroup;
+			children = (
+				5ABCE315221D890B004F8882 /* PubNativeBannerController.swift */,
+				5A9280E8221DA7FC00D43FF3 /* PubNativeMRectController.swift */,
+				5A9280EB221EB4DE00D43FF3 /* PubNativeInterstitialController.swift */,
+			);
+			path = PubNative;
 			sourceTree = "<group>";
 		};
 		5ACDB1AE22099D3D00E13AAD /* View */ = {
@@ -501,6 +518,7 @@
 				E75E4692203B3E9100FF9672 /* ForecastResponse.swift in Sources */,
 				E75E4698203B3ED000FF9672 /* CurrentMain.swift in Sources */,
 				5A257F66220D8B4500FDCCDB /* CustomTextField.swift in Sources */,
+				5ABCE316221D890B004F8882 /* PubNativeBannerController.swift in Sources */,
 				5ACDB1B62209F1C600E13AAD /* ForecastSummaryItem.swift in Sources */,
 				E75E469E203B3F0100FF9672 /* CurrentClouds.swift in Sources */,
 				E75E4682203B3DB500FF9672 /* ForecastCity.swift in Sources */,
@@ -529,6 +547,7 @@
 				5ABCE30B221C6455004F8882 /* MRectPlacementFactory.swift in Sources */,
 				5A4CDA0C2211BA2600217E5F /* ParallaxEffect.swift in Sources */,
 				E75E469C203B3EF300FF9672 /* CurrentWind.swift in Sources */,
+				5A9280E9221DA7FC00D43FF3 /* PubNativeMRectController.swift in Sources */,
 				5ABCE311221C6F6F004F8882 /* Queue.swift in Sources */,
 				5ABCE30F221C6875004F8882 /* RewardedVideoPlacementFactory.swift in Sources */,
 				5AF5A01C2214859700004163 /* SearchTextField.swift in Sources */,
@@ -541,6 +560,7 @@
 				5ABCE309221C6084004F8882 /* BannerPlacementFactory.swift in Sources */,
 				5A6A8C1620862C8B00494187 /* ForecastSummaryCell.swift in Sources */,
 				E75E4686203B3DD800FF9672 /* ForecastItem.swift in Sources */,
+				5A9280EC221EB4DE00D43FF3 /* PubNativeInterstitialController.swift in Sources */,
 				E75E4694203B3EB800FF9672 /* CurrentCoordinate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
