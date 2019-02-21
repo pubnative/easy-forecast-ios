@@ -21,6 +21,8 @@
 		5A5F778A2214214200E13EF7 /* CurrentDayWeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5F77892214214200E13EF7 /* CurrentDayWeatherDetailViewController.swift */; };
 		5A6A8C142086297700494187 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A8C132086297600494187 /* Location.swift */; };
 		5A6A8C1620862C8B00494187 /* ForecastSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A8C1520862C8B00494187 /* ForecastSummaryCell.swift */; };
+		5A9280E9221DA7FC00D43FF3 /* PubNativeMRectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9280E8221DA7FC00D43FF3 /* PubNativeMRectController.swift */; };
+		5A9280EC221EB4DE00D43FF3 /* PubNativeInterstitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9280EB221EB4DE00D43FF3 /* PubNativeInterstitialController.swift */; };
 		5AAEF8E320A1D88F006C7CD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5AAEF8E220A1D88F006C7CD4 /* GoogleService-Info.plist */; };
 		5ABCE2FB221C5192004F8882 /* AdPlacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABCE2FA221C5192004F8882 /* AdPlacement.swift */; };
 		5ABCE2FD221C53D4004F8882 /* InterstitialPlacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABCE2FC221C53D4004F8882 /* InterstitialPlacement.swift */; };
@@ -100,6 +102,8 @@
 		5A5F77892214214200E13EF7 /* CurrentDayWeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDayWeatherDetailViewController.swift; sourceTree = "<group>"; };
 		5A6A8C132086297600494187 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		5A6A8C1520862C8B00494187 /* ForecastSummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastSummaryCell.swift; sourceTree = "<group>"; };
+		5A9280E8221DA7FC00D43FF3 /* PubNativeMRectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubNativeMRectController.swift; sourceTree = "<group>"; };
+		5A9280EB221EB4DE00D43FF3 /* PubNativeInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubNativeInterstitialController.swift; sourceTree = "<group>"; };
 		5AAEF8E220A1D88F006C7CD4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5ABCE2FA221C5192004F8882 /* AdPlacement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdPlacement.swift; sourceTree = "<group>"; };
 		5ABCE2FC221C53D4004F8882 /* InterstitialPlacement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialPlacement.swift; sourceTree = "<group>"; };
@@ -220,6 +224,8 @@
 			isa = PBXGroup;
 			children = (
 				5ABCE315221D890B004F8882 /* PubNativeBannerController.swift */,
+				5A9280E8221DA7FC00D43FF3 /* PubNativeMRectController.swift */,
+				5A9280EB221EB4DE00D43FF3 /* PubNativeInterstitialController.swift */,
 			);
 			path = PubNative;
 			sourceTree = "<group>";
@@ -541,6 +547,7 @@
 				5ABCE30B221C6455004F8882 /* MRectPlacementFactory.swift in Sources */,
 				5A4CDA0C2211BA2600217E5F /* ParallaxEffect.swift in Sources */,
 				E75E469C203B3EF300FF9672 /* CurrentWind.swift in Sources */,
+				5A9280E9221DA7FC00D43FF3 /* PubNativeMRectController.swift in Sources */,
 				5ABCE311221C6F6F004F8882 /* Queue.swift in Sources */,
 				5ABCE30F221C6875004F8882 /* RewardedVideoPlacementFactory.swift in Sources */,
 				5AF5A01C2214859700004163 /* SearchTextField.swift in Sources */,
@@ -553,6 +560,7 @@
 				5ABCE309221C6084004F8882 /* BannerPlacementFactory.swift in Sources */,
 				5A6A8C1620862C8B00494187 /* ForecastSummaryCell.swift in Sources */,
 				E75E4686203B3DD800FF9672 /* ForecastItem.swift in Sources */,
+				5A9280EC221EB4DE00D43FF3 /* PubNativeInterstitialController.swift in Sources */,
 				E75E4694203B3EB800FF9672 /* CurrentCoordinate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

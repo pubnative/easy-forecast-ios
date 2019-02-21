@@ -23,29 +23,28 @@
 import UIKit
 import HyBid
 
-class PubNativeBannerController: AdPlacement {
-    
-    var bannerAdView: HyBidBannerAdView!
+class PubNativeMRectController: AdPlacement {
+
+    var mRectAdView: HyBidMRectAdView!
     var zoneID: String!
     var delegate: AdPlacementDelegate?
     
-    init(withAdView adView: HyBidBannerAdView, withZoneID zoneID: String, adPlacementDelegate delegate: AdPlacementDelegate) {
-        self.bannerAdView = adView
+    init(withAdView adView: HyBidMRectAdView, withZoneID zoneID: String, adPlacementDelegate delegate: AdPlacementDelegate) {
+        self.mRectAdView = adView
         self.zoneID = zoneID
         self.delegate = delegate
     }
     
     override func adView() -> UIView? {
-        return bannerAdView
+        return mRectAdView
     }
     
     override func loadAd() {
-        bannerAdView.load(withZoneID: zoneID, andWith: self)
+        mRectAdView.load(withZoneID: zoneID, andWith: self)
     }
-
 }
 
-extension PubNativeBannerController: HyBidAdViewDelegate {
+extension PubNativeMRectController: HyBidAdViewDelegate {
     
     func adViewDidLoad(_ adView: HyBidAdView!) {
         guard let delegate = self.delegate else { return }

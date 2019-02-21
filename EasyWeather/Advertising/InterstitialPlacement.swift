@@ -32,15 +32,17 @@ protocol InterstitialPlacementDelegate {
 }
 
 class InterstitialPlacement: NSObject {
-    
-    var isReady: Bool?
-    
+        
     func loadAd() {
         
     }
     
     func show() {
         
+    }
+    
+    func isReady() -> Bool {
+        return false
     }
     
 }

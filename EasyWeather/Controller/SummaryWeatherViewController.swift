@@ -40,6 +40,7 @@ class SummaryWeatherViewController: UIViewController {
     @IBOutlet weak var loadingAnimationView: LOTAnimationView!
     
     var adPlacement = AdPlacement()
+    var interstitialPlacement = InterstitialPlacement()
     var apiClient = ApiClient()
     var locationManager = CLLocationManager()
     var dataSource = [Any]()
@@ -48,6 +49,15 @@ class SummaryWeatherViewController: UIViewController {
     var cityID: String!
     var currentWeatherResponse: CurrentResponse?
     var currentDayForecast: ForecastSummaryItem?
+    var statusBarHidden = false {
+        didSet(newValue) {
+            setNeedsStatusBarAppearanceUpdate()
+        }
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    } 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +76,7 @@ class SummaryWeatherViewController: UIViewController {
 
         }
     }
-    
+        
     func startLoadingAnimation() {
         loadingAnimationView.setAnimation(named: "LoadingAnimation")
         loadingAnimationView.loopAnimation = true
@@ -91,15 +101,11 @@ class SummaryWeatherViewController: UIViewController {
     
     func fetchWeather(forCityID cityID: String) {
         startLoadingAnimation()
-        bannerAdContainerHeightConstraint.constant = 0
-        bannerAdContainer.isHidden = true
         apiClient.fetchCurrent(forCityID: cityID)
     }
     
     func fetchWeatherUsingCurrentLocation() {
         startLoadingAnimation()
-        bannerAdContainerHeightConstraint.constant = 0
-        bannerAdContainer.isHidden = true
         apiClient.fetchCurrentForCoordinates(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
     }
     
@@ -137,13 +143,52 @@ class SummaryWeatherViewController: UIViewController {
         cityID = nil
         cityName = nil
         updateWeather()
+        loadInterstitial()
     }
     
     func loadAd() {
+        bannerAdContainer.isHidden = true
+        bannerAdContainerHeightConstraint.constant = 0
         guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: BANNER_PLACEMENT) else { return }
         guard let placement = BannerPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withAdPlacementDelegate: self) else { return }
         adPlacement = placement
         adPlacement.loadAd()
+    }
+    
+    func loadInterstitial() {
+        guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: INTERSTITIAL_PLACEMENT) else { return }
+        guard let placement = InterstitialPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withInterstitialPlacementDelegate: self) else { return }
+        interstitialPlacement = placement
+        interstitialPlacement.loadAd()
+    }
+    
+}
+
+extension SummaryWeatherViewController: InterstitialPlacementDelegate {
+    
+    func interstitialPlacementDidLoad() {
+        statusBarHidden = true
+        interstitialPlacement.show()
+    }
+    
+    func interstitialPlacementDidFail(withError error: Error) {
+        
+    }
+    
+    func interstitialPlacementDidShow() {
+        
+    }
+    
+    func interstitialPlacementDidDismissed() {
+        statusBarHidden = false
+    }
+    
+    func interstitialPlacementDidTrackImpression() {
+        
+    }
+    
+    func interstitialPlacementDidTrackClick() {
+        
     }
     
 }
@@ -151,14 +196,17 @@ class SummaryWeatherViewController: UIViewController {
 extension SummaryWeatherViewController: AdPlacementDelegate {
     
     func adPlacementDidLoad() {
+        for view in bannerAdContainer.subviews {
+            view.removeFromSuperview()
+        }
         bannerAdContainer.addSubview(adPlacement.adView()!)
         bannerAdContainerHeightConstraint.constant = 50
         bannerAdContainer.isHidden = false
     }
     
     func adPlacementDidFail(withError error: Error) {
-        bannerAdContainerHeightConstraint.constant = 0
         bannerAdContainer.isHidden = true
+        bannerAdContainerHeightConstraint.constant = 0
     }
     
     func adPlacementDidTrackImpression() {
@@ -175,7 +223,6 @@ extension SummaryWeatherViewController: CurrentUpdateDelegate {
     
     func requestCurrentDidSucceed(withData data: CurrentResponse) {
         warningLabel.isHidden = true
-        bannerAdContainer.isHidden = false
         backgroundView.isHidden = false
         updateCurrentWeatherView(currentWeatherResponse: data)
         continueWithForecastUpdate()
@@ -301,7 +348,6 @@ extension SummaryWeatherViewController: CLLocationManagerDelegate {
             backgroundView.isHidden = true
             forecastWeatherTableView.isHidden = true
             currentWeatherView.isHidden = true
-            bannerAdContainer.isHidden = true
         }
     }
     
@@ -318,7 +364,6 @@ extension SummaryWeatherViewController: CLLocationManagerDelegate {
         case .authorizedWhenInUse:
             warningLabel.isHidden = true
             currentLocationButton.isHidden = false
-            bannerAdContainer.isHidden = false
             backgroundView.isHidden = false
             locationManager.startUpdatingLocation()
             break
@@ -332,7 +377,6 @@ extension SummaryWeatherViewController: CLLocationManagerDelegate {
             backgroundView.isHidden = true
             forecastWeatherTableView.isHidden = true
             currentWeatherView.isHidden = true
-            bannerAdContainer.isHidden = true
             break
         }
     }
@@ -350,7 +394,6 @@ extension SummaryWeatherViewController: CLLocationManagerDelegate {
         backgroundView.isHidden = true
         forecastWeatherTableView.isHidden = true
         currentWeatherView.isHidden = true
-        bannerAdContainer.isHidden = true
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus){

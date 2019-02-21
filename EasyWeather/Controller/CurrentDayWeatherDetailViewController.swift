@@ -40,16 +40,20 @@ class CurrentDayWeatherDetailViewController: UIViewController {
     var cityName: String!
     var dataSource = [Any]()
     
-    func initialize(withForecastSummaryItem forecastSummaryItem: ForecastSummaryItem, withCurrentWeatherResponse currentWeatherResponse: CurrentResponse, andWithCityName cityName:String) {
-        self.forecastSummaryItem = forecastSummaryItem
-        self.currentWeatherResponse = currentWeatherResponse
-        self.cityName = cityName
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         currentDayWeatherBackgroundView.addParallaxEffect()
         prepareDataToBeDisplayed()
+    }
+    
+    func initialize(withForecastSummaryItem forecastSummaryItem: ForecastSummaryItem, withCurrentWeatherResponse currentWeatherResponse: CurrentResponse, andWithCityName cityName:String) {
+        self.forecastSummaryItem = forecastSummaryItem
+        self.currentWeatherResponse = currentWeatherResponse
+        self.cityName = cityName
     }
     
     func prepareDataToBeDisplayed() {

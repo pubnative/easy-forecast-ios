@@ -23,48 +23,56 @@
 import UIKit
 import HyBid
 
-class PubNativeBannerController: AdPlacement {
+class PubNativeInterstitialController: InterstitialPlacement {
     
-    var bannerAdView: HyBidBannerAdView!
-    var zoneID: String!
-    var delegate: AdPlacementDelegate?
+    var interstitial: HyBidInterstitialAd!
+    var delegate: InterstitialPlacementDelegate?
     
-    init(withAdView adView: HyBidBannerAdView, withZoneID zoneID: String, adPlacementDelegate delegate: AdPlacementDelegate) {
-        self.bannerAdView = adView
-        self.zoneID = zoneID
+    init(withZoneID zoneID: String, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) {
+        super.init()
+        interstitial = HyBidInterstitialAd(zoneID: zoneID, andWith: self)
         self.delegate = delegate
     }
     
-    override func adView() -> UIView? {
-        return bannerAdView
+    override func loadAd() {
+        interstitial.load()
     }
     
-    override func loadAd() {
-        bannerAdView.load(withZoneID: zoneID, andWith: self)
+    override func show() {
+        interstitial.show()
     }
-
+    
+    override func isReady() -> Bool {
+        return interstitial.isReady
+    }
+    
 }
 
-extension PubNativeBannerController: HyBidAdViewDelegate {
+extension PubNativeInterstitialController: HyBidInterstitialAdDelegate {
     
-    func adViewDidLoad(_ adView: HyBidAdView!) {
+    func interstitialDidLoad() {
         guard let delegate = self.delegate else { return }
-        delegate.adPlacementDidLoad()
+        delegate.interstitialPlacementDidLoad()
     }
     
-    func adView(_ adView: HyBidAdView!, didFailWithError error: Error!) {
+    func interstitialDidFailWithError(_ error: Error!) {
         guard let delegate = self.delegate else { return }
-        delegate.adPlacementDidFail(withError: error)
+        delegate.interstitialPlacementDidFail(withError: error)
     }
     
-    func adViewDidTrackImpression(_ adView: HyBidAdView!) {
+    func interstitialDidTrackImpression() {
         guard let delegate = self.delegate else { return }
-        delegate.adPlacementDidTrackImpression()
+        delegate.interstitialPlacementDidTrackImpression()
+        delegate.interstitialPlacementDidShow()
     }
     
-    func adViewDidTrackClick(_ adView: HyBidAdView!) {
+    func interstitialDidTrackClick() {
         guard let delegate = self.delegate else { return }
-        delegate.adPlacementDidTrackClick()
+        delegate.interstitialPlacementDidTrackClick()
     }
     
+    func interstitialDidDismiss() {
+        guard let delegate = self.delegate else { return }
+        delegate.interstitialPlacementDidDismissed()
+    }
 }

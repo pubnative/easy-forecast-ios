@@ -52,7 +52,7 @@ class InterstitialPlacementFactory {
     }
     
     fileprivate func createPubNativePlacement(withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {
-        return InterstitialPlacement()
+        return PubNativeInterstitialController.init(withZoneID: "1", withInterstitialPlacementDelegate: delegate)
     }
     
     fileprivate func createAppLovinPlacement(withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {
