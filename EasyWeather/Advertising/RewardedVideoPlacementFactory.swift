@@ -21,10 +21,11 @@
 //
 
 import Foundation
+import MoPub
 
 class RewardedVideoPlacementFactory {
     
-    func createAdPlacement(withAdNetwork adNetwork: AdNetwork, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement? {
+    func createAdPlacement(withAdNetwork adNetwork: AdNetwork, withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement? {
         switch adNetwork {
         case .pubnative:
             return createPubNativePlacement(withRewardedVideoPlacementDelegate: delegate)
@@ -37,7 +38,7 @@ class RewardedVideoPlacementFactory {
         case .facebook:
             return createFacebookPlacement(withRewardedVideoPlacementDelegate: delegate)
         case .moPub:
-            return createMoPubPlacement(withRewardedVideoPlacementDelegate: delegate)
+            return createMoPubPlacement(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
         case .googleAdsManager:
             return createGoogleAdsManagerPlacement(withRewardedVideoPlacementDelegate: delegate)
         case .admob:
@@ -71,8 +72,8 @@ class RewardedVideoPlacementFactory {
         return RewardedVideoPlacement()
     }
     
-    fileprivate func createMoPubPlacement(withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {
-        return RewardedVideoPlacement()
+    fileprivate func createMoPubPlacement(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {
+        return MoPubRewardedVideoController(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
     }
     
     fileprivate func createGoogleAdsManagerPlacement(withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {

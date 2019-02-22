@@ -11,4 +11,5 @@ target 'EasyWeather' do
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'lottie-ios'
+  pod 'mopub-ios-sdk'
 end

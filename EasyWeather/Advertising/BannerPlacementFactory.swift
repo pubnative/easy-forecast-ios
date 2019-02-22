@@ -22,10 +22,11 @@
 
 import Foundation
 import HyBid
+import MoPub
 
 class BannerPlacementFactory {
     
-    func createAdPlacement(withAdNetwork adNetwork: AdNetwork, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement? {
+    func createAdPlacement(withAdNetwork adNetwork: AdNetwork, withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement? {
         switch adNetwork {
         case .pubnative:
             return createPubNativePlacement(withAdPlacementDelegate: delegate)
@@ -38,7 +39,7 @@ class BannerPlacementFactory {
         case .facebook:
             return createFacebookPlacement(withAdPlacementDelegate: delegate)
         case .moPub:
-            return createMoPubPlacement(withAdPlacementDelegate: delegate)
+            return createMoPubPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .googleAdsManager:
             return createGoogleAdsManagerPlacement(withAdPlacementDelegate: delegate)
         case .admob:
@@ -54,7 +55,7 @@ class BannerPlacementFactory {
     
     fileprivate func createPubNativePlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
         let adView = HyBidBannerAdView(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
-        return PubNativeBannerController(withAdView: adView, withZoneID: "2", adPlacementDelegate: delegate)
+        return PubNativeBannerController(withAdView: adView, withZoneID: PUBNATIVE_BANNER_ZONE_ID, adPlacementDelegate: delegate)
     }
     
     fileprivate func createAppLovinPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
@@ -73,8 +74,9 @@ class BannerPlacementFactory {
         return AdPlacement()
     }
     
-    fileprivate func createMoPubPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        return AdPlacement()
+    fileprivate func createMoPubPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement? {
+        guard let adView = MPAdView(adUnitId: MOPUB_BANNER_AD_UNIT_ID, size: MOPUB_BANNER_SIZE) else { return nil }
+        return MoPubBannerController(withAdView: adView, withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
     fileprivate func createGoogleAdsManagerPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {

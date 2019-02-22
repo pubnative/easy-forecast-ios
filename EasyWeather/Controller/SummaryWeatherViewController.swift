@@ -150,16 +150,32 @@ class SummaryWeatherViewController: UIViewController {
         bannerAdContainer.isHidden = true
         bannerAdContainerHeightConstraint.constant = 0
         guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: BANNER_PLACEMENT) else { return }
-        guard let placement = BannerPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withAdPlacementDelegate: self) else { return }
+        guard let placement = BannerPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withViewController: self, withAdPlacementDelegate: self) else { return }
         adPlacement = placement
         adPlacement.loadAd()
     }
     
     func loadInterstitial() {
         guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: INTERSTITIAL_PLACEMENT) else { return }
-        guard let placement = InterstitialPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withInterstitialPlacementDelegate: self) else { return }
+        guard let placement = InterstitialPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withViewController: self, withInterstitialPlacementDelegate: self) else { return }
         interstitialPlacement = placement
         interstitialPlacement.loadAd()
+    }
+    
+    func removeAllSubviews(from view: UIView) {
+        for subview in view.subviews {
+            subview.removeFromSuperview()
+        }
+    }
+    
+    func presentBannerContainer() {
+        bannerAdContainerHeightConstraint.constant = 50
+        bannerAdContainer.isHidden = false
+    }
+    
+    func hideBannerContainer() {
+        bannerAdContainer.isHidden = true
+        bannerAdContainerHeightConstraint.constant = 0
     }
     
 }
@@ -196,17 +212,14 @@ extension SummaryWeatherViewController: InterstitialPlacementDelegate {
 extension SummaryWeatherViewController: AdPlacementDelegate {
     
     func adPlacementDidLoad() {
-        for view in bannerAdContainer.subviews {
-            view.removeFromSuperview()
-        }
-        bannerAdContainer.addSubview(adPlacement.adView()!)
-        bannerAdContainerHeightConstraint.constant = 50
-        bannerAdContainer.isHidden = false
+        removeAllSubviews(from: bannerAdContainer)
+        guard let adView = adPlacement.adView() else { return }
+        bannerAdContainer.addSubview(adView)
+        presentBannerContainer()
     }
     
     func adPlacementDidFail(withError error: Error) {
-        bannerAdContainer.isHidden = true
-        bannerAdContainerHeightConstraint.constant = 0
+        hideBannerContainer()
     }
     
     func adPlacementDidTrackImpression() {
@@ -214,7 +227,8 @@ extension SummaryWeatherViewController: AdPlacementDelegate {
     }
     
     func adPlacementDidTrackClick() {
-        loadAd()
+        removeAllSubviews(from: bannerAdContainer)
+        hideBannerContainer()
     }
     
 }

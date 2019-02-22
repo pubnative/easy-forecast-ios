@@ -21,10 +21,11 @@
 //
 
 import Foundation
+import MoPub
 
 class InterstitialPlacementFactory {
     
-    func createAdPlacement(withAdNetwork adNetwork: AdNetwork, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement? {
+    func createAdPlacement(withAdNetwork adNetwork: AdNetwork, withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement? {
         switch adNetwork {
         case .pubnative:
             return createPubNativePlacement(withInterstitialPlacementDelegate: delegate)
@@ -37,7 +38,7 @@ class InterstitialPlacementFactory {
         case .facebook:
             return createFacebookPlacement(withInterstitialPlacementDelegate: delegate)
         case .moPub:
-            return createMoPubPlacement(withInterstitialPlacementDelegate: delegate)
+            return createMoPubPlacement(withViewController: viewController, withInterstitialPlacementDelegate: delegate)
         case .googleAdsManager:
             return createGoogleAdsManagerPlacement(withInterstitialPlacementDelegate: delegate)
         case .admob:
@@ -52,7 +53,7 @@ class InterstitialPlacementFactory {
     }
     
     fileprivate func createPubNativePlacement(withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {
-        return PubNativeInterstitialController.init(withZoneID: "1", withInterstitialPlacementDelegate: delegate)
+        return PubNativeInterstitialController.init(withZoneID: PUBNATIVE_INTERSTITIAL_ZONE_ID, withInterstitialPlacementDelegate: delegate)
     }
     
     fileprivate func createAppLovinPlacement(withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {
@@ -71,8 +72,9 @@ class InterstitialPlacementFactory {
         return InterstitialPlacement()
     }
     
-    fileprivate func createMoPubPlacement(withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {
-        return InterstitialPlacement()
+    fileprivate func createMoPubPlacement(withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement? {
+        guard let interstitial = MPInterstitialAdController(forAdUnitId: MOPUB_INTERSTITIAL_AD_UNIT_ID) else { return nil }
+        return MoPubInterstitialController(withInterstitial: interstitial, withViewController: viewController, withInterstitialPlacementDelegate: delegate)
     }
     
     fileprivate func createGoogleAdsManagerPlacement(withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {

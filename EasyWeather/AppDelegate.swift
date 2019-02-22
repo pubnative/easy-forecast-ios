@@ -26,6 +26,7 @@ import Firebase
 import Fabric
 import Crashlytics
 import HyBid
+import MoPub
 import AdSupport.ASIdentifierManager
 
 @UIApplicationMain
@@ -51,6 +52,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         HyBid.setCoppa(false)
         HyBid.setTestMode(false)
+        
+        let moPubSDKConfig = MPMoPubConfiguration(adUnitIdForAppInitialization: MOPUB_BANNER_AD_UNIT_ID)
+        MoPub.sharedInstance().initializeSdk(with: moPubSDKConfig, completion: nil)
+        
         return true
     }
     
