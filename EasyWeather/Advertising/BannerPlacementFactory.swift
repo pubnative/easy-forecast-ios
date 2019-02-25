@@ -23,6 +23,7 @@
 import Foundation
 import HyBid
 import MoPub
+import GoogleMobileAds
 
 class BannerPlacementFactory {
     
@@ -43,7 +44,7 @@ class BannerPlacementFactory {
         case .googleAdsManager:
             return createGoogleAdsManagerPlacement(withAdPlacementDelegate: delegate)
         case .admob:
-            return createAdmobPlacement(withAdPlacementDelegate: delegate)
+            return createAdmobPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .startApp:
             return createStartAppPlacement(withAdPlacementDelegate: delegate)
         case .unity:
@@ -83,8 +84,9 @@ class BannerPlacementFactory {
         return AdPlacement()
     }
     
-    fileprivate func createAdmobPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        return AdPlacement()
+    fileprivate func createAdmobPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
+        let adView = GADBannerView(adSize: kGADAdSizeBanner)
+        return AdMobBannerController(withAdView: adView, withAdUnitID: ADMOB_BANNER_AD_UNIT_ID, withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
     fileprivate func createStartAppPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
