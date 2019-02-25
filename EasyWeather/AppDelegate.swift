@@ -27,6 +27,7 @@ import Fabric
 import Crashlytics
 import HyBid
 import MoPub
+import GoogleMobileAds
 import AdSupport.ASIdentifierManager
 
 @UIApplicationMain
@@ -46,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         Fabric.with([Crashlytics.self])
-        HyBid.initWithAppToken("3e98d63843d8437c8d35a05edab557dd") { (success) in
+        HyBid.initWithAppToken("543027b8e954474cbcd9a98481622a3b") { (success) in
             print("HyBid Successfully Initialized")
             self.askForConsent()
         }
@@ -55,6 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let moPubSDKConfig = MPMoPubConfiguration(adUnitIdForAppInitialization: MOPUB_BANNER_AD_UNIT_ID)
         MoPub.sharedInstance().initializeSdk(with: moPubSDKConfig, completion: nil)
+        
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-3940256099942544~1458002511")
         
         return true
     }

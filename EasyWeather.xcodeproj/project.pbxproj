@@ -47,6 +47,10 @@
 		5ACDB1B62209F1C600E13AAD /* ForecastSummaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACDB1B52209F1C600E13AAD /* ForecastSummaryItem.swift */; };
 		5AD9A6CD2215895900129944 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD9A6CC2215895900129944 /* City.swift */; };
 		5ADB0CD522170AFC0060C6E6 /* CityList.json in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB0CD422170AFC0060C6E6 /* CityList.json */; };
+		5AE362C02224042B002D7CB9 /* AdMobBannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE362BF2224042B002D7CB9 /* AdMobBannerController.swift */; };
+		5AE362C222240ACE002D7CB9 /* AdMobMRectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE362C122240ACE002D7CB9 /* AdMobMRectController.swift */; };
+		5AE362C422241A18002D7CB9 /* AdMobInterstitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE362C322241A18002D7CB9 /* AdMobInterstitialController.swift */; };
+		5AE362C6222421CB002D7CB9 /* AdMobRewardedVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE362C5222421CB002D7CB9 /* AdMobRewardedVideoController.swift */; };
 		5AF5A01C2214859700004163 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF5A01B2214859700004163 /* SearchTextField.swift */; };
 		5AFFD3BD221AEBD0004EC91F /* LoadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AFFD3BC221AEBD0004EC91F /* LoadingAnimation.json */; };
 		E7566C36203C3A8C00487557 /* ForecastUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7566C35203C3A8C00487557 /* ForecastUpdateDelegate.swift */; };
@@ -132,6 +136,10 @@
 		5ACDB1B52209F1C600E13AAD /* ForecastSummaryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastSummaryItem.swift; sourceTree = "<group>"; };
 		5AD9A6CC2215895900129944 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		5ADB0CD422170AFC0060C6E6 /* CityList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CityList.json; sourceTree = "<group>"; };
+		5AE362BF2224042B002D7CB9 /* AdMobBannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobBannerController.swift; sourceTree = "<group>"; };
+		5AE362C122240ACE002D7CB9 /* AdMobMRectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobMRectController.swift; sourceTree = "<group>"; };
+		5AE362C322241A18002D7CB9 /* AdMobInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobInterstitialController.swift; sourceTree = "<group>"; };
+		5AE362C5222421CB002D7CB9 /* AdMobRewardedVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobRewardedVideoController.swift; sourceTree = "<group>"; };
 		5AF5A01B2214859700004163 /* SearchTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		5AFFD3BC221AEBD0004EC91F /* LoadingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingAnimation.json; sourceTree = "<group>"; };
 		E7566C35203C3A8C00487557 /* ForecastUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastUpdateDelegate.swift; sourceTree = "<group>"; };
@@ -223,6 +231,7 @@
 			children = (
 				5ABCE314221D88C4004F8882 /* PubNative */,
 				5A6E239B221EF8A00021BADE /* MoPub */,
+				5AE362BE222403EA002D7CB9 /* AdMob */,
 				5ABCE310221C6F6F004F8882 /* Queue.swift */,
 				5ABCE312221D5934004F8882 /* AdManager.swift */,
 				5ABCE306221C5D84004F8882 /* AdNetwork.swift */,
@@ -279,6 +288,17 @@
 				5A4CDA0B2211BA2600217E5F /* ParallaxEffect.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5AE362BE222403EA002D7CB9 /* AdMob */ = {
+			isa = PBXGroup;
+			children = (
+				5AE362BF2224042B002D7CB9 /* AdMobBannerController.swift */,
+				5AE362C122240ACE002D7CB9 /* AdMobMRectController.swift */,
+				5AE362C322241A18002D7CB9 /* AdMobInterstitialController.swift */,
+				5AE362C5222421CB002D7CB9 /* AdMobRewardedVideoController.swift */,
+			);
+			path = AdMob;
 			sourceTree = "<group>";
 		};
 		74C92EB397DF789A89B40109 /* Frameworks */ = {
@@ -537,6 +557,7 @@
 				5A5F778A2214214200E13EF7 /* CurrentDayWeatherDetailViewController.swift in Sources */,
 				E75E4688203B3DF100FF9672 /* ForecastMain.swift in Sources */,
 				5A4CDA0A2211998200217E5F /* ForecastDetailCell.swift in Sources */,
+				5AE362C222240ACE002D7CB9 /* AdMobMRectController.swift in Sources */,
 				E75E4692203B3E9100FF9672 /* ForecastResponse.swift in Sources */,
 				E75E4698203B3ED000FF9672 /* CurrentMain.swift in Sources */,
 				5A257F66220D8B4500FDCCDB /* CustomTextField.swift in Sources */,
@@ -559,11 +580,14 @@
 				5A6A8C142086297700494187 /* Location.swift in Sources */,
 				E75E469A203B3EDF00FF9672 /* CurrentWeather.swift in Sources */,
 				5ABCE2FF221C5639004F8882 /* RewardedVideoPlacement.swift in Sources */,
+				5AE362C422241A18002D7CB9 /* AdMobInterstitialController.swift in Sources */,
 				E75E4690203B3E8500FF9672 /* ForecastSys.swift in Sources */,
 				5ABCE303221C5A47004F8882 /* AdConstants.swift in Sources */,
+				5AE362C6222421CB002D7CB9 /* AdMobRewardedVideoController.swift in Sources */,
 				5A6E23A1222009D30021BADE /* MoPubMRectController.swift in Sources */,
 				E776E9A8203B1D0200101093 /* Country.swift in Sources */,
 				5A4CDA0E2211D9C500217E5F /* RoundedImageView.swift in Sources */,
+				5AE362C02224042B002D7CB9 /* AdMobBannerController.swift in Sources */,
 				5ACDB1B02209C86100E13AAD /* WeatherImageMapper.swift in Sources */,
 				E75E4696203B3EC100FF9672 /* CurrentSys.swift in Sources */,
 				E75E46A3203B468600FF9672 /* ApiClient.swift in Sources */,

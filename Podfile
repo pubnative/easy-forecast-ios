@@ -12,4 +12,5 @@ target 'EasyWeather' do
   pod 'Crashlytics'
   pod 'lottie-ios'
   pod 'mopub-ios-sdk'
+  pod 'Google-Mobile-Ads-SDK'
 end

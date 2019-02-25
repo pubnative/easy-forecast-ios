@@ -42,7 +42,7 @@ class RewardedVideoPlacementFactory {
         case .googleAdsManager:
             return createGoogleAdsManagerPlacement(withRewardedVideoPlacementDelegate: delegate)
         case .admob:
-            return createAdmobPlacement(withRewardedVideoPlacementDelegate: delegate)
+            return createAdmobPlacement(ithViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
         case .startApp:
             return createStartAppPlacement(withRewardedVideoPlacementDelegate: delegate)
         case .unity:
@@ -80,8 +80,8 @@ class RewardedVideoPlacementFactory {
         return RewardedVideoPlacement()
     }
     
-    fileprivate func createAdmobPlacement(withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {
-        return RewardedVideoPlacement()
+    fileprivate func createAdmobPlacement(ithViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {
+        return AdMobRewardedVideoController(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
     }
     
     fileprivate func createStartAppPlacement(withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {
