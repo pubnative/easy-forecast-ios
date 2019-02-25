@@ -93,9 +93,15 @@ class SearchCityViewController: UIViewController {
     func loadAd() {
         mRectContainerView.isHidden = true
         guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: MRECT_PLACEMENT) else { return }
-        guard let placement = MRectPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withAdPlacementDelegate: self) else { return }
+        guard let placement = MRectPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withViewController: self, withAdPlacementDelegate: self) else { return }
         adPlacement = placement
         adPlacement.loadAd()
+    }
+    
+    func removeAllSubviews(from view: UIView) {
+        for subview in view.subviews {
+            subview.removeFromSuperview()
+        }
     }
     
 }
@@ -103,10 +109,9 @@ class SearchCityViewController: UIViewController {
 extension SearchCityViewController: AdPlacementDelegate {
     
     func adPlacementDidLoad() {
-        for view in mRectContainerView.subviews {
-            view.removeFromSuperview()
-        }
-        mRectContainerView.addSubview(adPlacement.adView()!)
+        removeAllSubviews(from: mRectContainerView)
+        guard let adView = adPlacement.adView() else { return }
+        mRectContainerView.addSubview(adView)
         mRectContainerView.isHidden = false
     }
     
@@ -119,7 +124,8 @@ extension SearchCityViewController: AdPlacementDelegate {
     }
     
     func adPlacementDidTrackClick() {
-        loadAd()
+        removeAllSubviews(from: mRectContainerView)
+        mRectContainerView.isHidden = true
     }
     
 }

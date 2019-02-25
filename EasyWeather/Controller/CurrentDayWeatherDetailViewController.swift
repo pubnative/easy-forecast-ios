@@ -35,6 +35,7 @@ class CurrentDayWeatherDetailViewController: UIViewController {
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var currentDayWeatherDetailTableView: UITableView!
 
+    var rewardedVideoPlacement = RewardedVideoPlacement()
     var forecastSummaryItem: ForecastSummaryItem!
     var currentWeatherResponse: CurrentResponse!
     var cityName: String!
@@ -48,6 +49,7 @@ class CurrentDayWeatherDetailViewController: UIViewController {
         super.viewDidLoad()
         currentDayWeatherBackgroundView.addParallaxEffect()
         prepareDataToBeDisplayed()
+        loadRewardedVideo()
     }
     
     func initialize(withForecastSummaryItem forecastSummaryItem: ForecastSummaryItem, withCurrentWeatherResponse currentWeatherResponse: CurrentResponse, andWithCityName cityName:String) {
@@ -95,6 +97,13 @@ class CurrentDayWeatherDetailViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    func loadRewardedVideo() {
+        guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: REWARDED_VIDEO_PLACEMENT) else { return }
+        guard let placement = RewardedVideoPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withViewController: self, withRewardedVideoPlacementDelegate: self) else { return }
+        rewardedVideoPlacement = placement
+        rewardedVideoPlacement.loadAd()
+    }
+    
 }
 
 extension CurrentDayWeatherDetailViewController: UITableViewDelegate, UITableViewDataSource {
@@ -120,5 +129,46 @@ extension CurrentDayWeatherDetailViewController: UITableViewDelegate, UITableVie
             return UITableViewCell()
         }
     }
+    
+}
+
+extension CurrentDayWeatherDetailViewController: RewardedVideoPlacementDelegate {
+    
+    func rewardedVideoPlacementDidLoad() {
+        rewardedVideoPlacement.show()
+    }
+    
+    func rewardedVideoPlacementDidFail(withError error: Error) {
+        
+    }
+    
+    func rewardedVideoPlacementDidOpen() {
+        
+    }
+    
+    func rewardedVideoPlacementDidClose() {
+        
+    }
+    
+    func rewardedVideoPlacementDidStart() {
+        
+    }
+    
+    func rewardedVideoPlacementDidFinish() {
+        
+    }
+    
+    func rewardedVideoPlacementDidTrackImpression() {
+        
+    }
+    
+    func rewardedVideoPlacementDidTrackClick() {
+        
+    }
+    
+    func rewardedVideoPlacementDidReward(withReward reward: AdReward) {
+        
+    }
+    
     
 }
