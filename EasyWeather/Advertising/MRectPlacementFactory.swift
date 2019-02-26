@@ -24,6 +24,7 @@ import Foundation
 import HyBid
 import MoPub
 import GoogleMobileAds
+import FBAudienceNetwork
 
 class MRectPlacementFactory {
     
@@ -38,7 +39,7 @@ class MRectPlacementFactory {
         case .fyber:
             return createFyberPlacement(withAdPlacementDelegate: delegate)
         case .facebook:
-            return createFacebookPlacement(withAdPlacementDelegate: delegate)
+            return createFacebookPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .moPub:
             return createMoPubPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .googleAdsManager:
@@ -71,8 +72,10 @@ class MRectPlacementFactory {
         return AdPlacement()
     }
     
-    fileprivate func createFacebookPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        return AdPlacement()
+    fileprivate func createFacebookPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
+        let adView = FBAdView(placementID: FACEBOOK_MRECT_AD_UNIT_ID, adSize: kFBAdSizeHeight250Rectangle, rootViewController: viewController)
+        adView.frame = CGRect(x: 0, y: 0, width: 300, height: 250)
+        return FacebookMRectController(withAdView: adView, withAdPlacementDelegate: delegate)
     }
     
     fileprivate func createMoPubPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement? {
