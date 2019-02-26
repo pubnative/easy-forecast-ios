@@ -41,7 +41,7 @@ class InterstitialPlacementFactory {
         case .moPub:
             return createMoPubPlacement(withViewController: viewController, withInterstitialPlacementDelegate: delegate)
         case .googleAdsManager:
-            return createGoogleAdsManagerPlacement(withInterstitialPlacementDelegate: delegate)
+            return createGoogleAdsManagerPlacement(withViewController: viewController, withInterstitialPlacementDelegate: delegate)
         case .admob:
             return createAdmobPlacement(withViewController: viewController, withInterstitialPlacementDelegate: delegate)
         case .startApp:
@@ -78,8 +78,9 @@ class InterstitialPlacementFactory {
         return MoPubInterstitialController(withInterstitial: interstitial, withViewController: viewController, withInterstitialPlacementDelegate: delegate)
     }
     
-    fileprivate func createGoogleAdsManagerPlacement(withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {
-        return InterstitialPlacement()
+    fileprivate func createGoogleAdsManagerPlacement(withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {
+        let interstitial = DFPInterstitial(adUnitID: GOOGLE_ADS_MANAGER_INTERSTITIAL_AD_UNIT_ID)
+        return GoogleAdsManagerInterstitialController(withInterstitial: interstitial, withViewController: viewController, withInterstitialPlacementDelegate: delegate)
     }
     
     fileprivate func createAdmobPlacement(withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {

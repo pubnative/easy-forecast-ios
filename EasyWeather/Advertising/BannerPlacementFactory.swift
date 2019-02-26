@@ -42,7 +42,7 @@ class BannerPlacementFactory {
         case .moPub:
             return createMoPubPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .googleAdsManager:
-            return createGoogleAdsManagerPlacement(withAdPlacementDelegate: delegate)
+            return createGoogleAdsManagerPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .admob:
             return createAdmobPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .startApp:
@@ -80,8 +80,9 @@ class BannerPlacementFactory {
         return MoPubBannerController(withAdView: adView, withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
-    fileprivate func createGoogleAdsManagerPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        return AdPlacement()
+    fileprivate func createGoogleAdsManagerPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
+        let adView = DFPBannerView(adSize: kGADAdSizeBanner)
+        return GoogleAdsManagerBannerController(withAdView: adView, withAdUnitID: GOOGLE_ADS_MANAGER_BANNER_AD_UNIT_ID, withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
     fileprivate func createAdmobPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
