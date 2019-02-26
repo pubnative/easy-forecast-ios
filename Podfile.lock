@@ -6,6 +6,7 @@ PODS:
   - Crashlytics (3.10.9):
     - Fabric (~> 1.7.13)
   - Fabric (1.7.13)
+  - FBAudienceNetwork (5.1.0)
   - Firebase/Core (5.10.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.2.0)
@@ -75,6 +76,7 @@ DEPENDENCIES:
   - AlamofireObjectMapper (~> 5.0)
   - Crashlytics
   - Fabric
+  - FBAudienceNetwork
   - Firebase/Core
   - Google-Mobile-Ads-SDK
   - lottie-ios
@@ -86,6 +88,7 @@ SPEC REPOS:
     - AlamofireObjectMapper
     - Crashlytics
     - Fabric
+    - FBAudienceNetwork
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -103,6 +106,7 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
   Crashlytics: 55e24fc23989680285a21cb1146578d9d18e432c
   Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
+  FBAudienceNetwork: 95efd4f20dc44f97254dbd3dfe5a4d19164092a8
   Firebase: 6691d47562a780c26281ce8464518faafc90c610
   FirebaseAnalytics: 831f1f127f4a75698e9875a87bf7e2668730d953
   FirebaseCore: c6079de64c1a87000e52e9b408dddcadc901177f
@@ -115,6 +119,6 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
 
-PODFILE CHECKSUM: ae2b46b8b4434d27044660bc6a7c78ec9ddd01de
+PODFILE CHECKSUM: 914db3f9e627ded37fa54c5c83e57e5d501af1cc
 
 COCOAPODS: 1.5.2

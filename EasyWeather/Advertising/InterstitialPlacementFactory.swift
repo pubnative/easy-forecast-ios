@@ -23,6 +23,7 @@
 import Foundation
 import MoPub
 import GoogleMobileAds
+import FBAudienceNetwork
 
 class InterstitialPlacementFactory {
     
@@ -37,7 +38,7 @@ class InterstitialPlacementFactory {
         case .fyber:
             return createFyberPlacement(withInterstitialPlacementDelegate: delegate)
         case .facebook:
-            return createFacebookPlacement(withInterstitialPlacementDelegate: delegate)
+            return createFacebookPlacement(withViewController: viewController, withInterstitialPlacementDelegate: delegate)
         case .moPub:
             return createMoPubPlacement(withViewController: viewController, withInterstitialPlacementDelegate: delegate)
         case .googleAdsManager:
@@ -69,8 +70,9 @@ class InterstitialPlacementFactory {
         return InterstitialPlacement()
     }
     
-    fileprivate func createFacebookPlacement(withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {
-        return InterstitialPlacement()
+    fileprivate func createFacebookPlacement(withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {
+        let interstitial = FBInterstitialAd(placementID: FACEBOOK_INTERSTITIAL_AD_UNIT_ID)
+        return FacebookInterstitialController(withInterstitial: interstitial, withViewController: viewController, withInterstitialPlacementDelegate: delegate)
     }
     
     fileprivate func createMoPubPlacement(withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement? {

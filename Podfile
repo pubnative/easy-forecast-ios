@@ -13,4 +13,5 @@ target 'EasyWeather' do
   pod 'lottie-ios'
   pod 'mopub-ios-sdk'
   pod 'Google-Mobile-Ads-SDK'
+  pod 'FBAudienceNetwork'
 end
