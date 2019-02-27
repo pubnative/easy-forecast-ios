@@ -21,6 +21,7 @@
 		5A5F778A2214214200E13EF7 /* CurrentDayWeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5F77892214214200E13EF7 /* CurrentDayWeatherDetailViewController.swift */; };
 		5A6A8C142086297700494187 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A8C132086297600494187 /* Location.swift */; };
 		5A6A8C1620862C8B00494187 /* ForecastSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A8C1520862C8B00494187 /* ForecastSummaryCell.swift */; };
+		5A6C89A622258C0000DA43C5 /* UnityBannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C89A522258C0000DA43C5 /* UnityBannerController.swift */; };
 		5A6E239D221EFA6F0021BADE /* MoPubBannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6E239C221EFA6F0021BADE /* MoPubBannerController.swift */; };
 		5A6E23A1222009D30021BADE /* MoPubMRectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6E23A0222009D30021BADE /* MoPubMRectController.swift */; };
 		5A6E23A322200E9A0021BADE /* MoPubInterstitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6E23A222200E9A0021BADE /* MoPubInterstitialController.swift */; };
@@ -45,6 +46,8 @@
 		5ACDB1B02209C86100E13AAD /* WeatherImageMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACDB1AF2209C86100E13AAD /* WeatherImageMapper.swift */; };
 		5ACDB1B22209DAE700E13AAD /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACDB1B12209DAE700E13AAD /* DateExtension.swift */; };
 		5ACDB1B62209F1C600E13AAD /* ForecastSummaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACDB1B52209F1C600E13AAD /* ForecastSummaryItem.swift */; };
+		5AD53C862226C8B500370B75 /* UnityRewardedVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD53C852226C8B500370B75 /* UnityRewardedVideoController.swift */; };
+		5AD53C882226D5E200370B75 /* UnityAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD53C872226D5E200370B75 /* UnityAds.framework */; };
 		5AD9A6CD2215895900129944 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD9A6CC2215895900129944 /* City.swift */; };
 		5ADB0CD522170AFC0060C6E6 /* CityList.json in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB0CD422170AFC0060C6E6 /* CityList.json */; };
 		5AE362C02224042B002D7CB9 /* AdMobBannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE362BF2224042B002D7CB9 /* AdMobBannerController.swift */; };
@@ -59,6 +62,7 @@
 		5AF3A1A9222559220010ED34 /* FacebookMRectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF3A1A8222559220010ED34 /* FacebookMRectController.swift */; };
 		5AF3A1AB22256B6E0010ED34 /* FacebookInterstitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF3A1AA22256B6E0010ED34 /* FacebookInterstitialController.swift */; };
 		5AF5A01C2214859700004163 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF5A01B2214859700004163 /* SearchTextField.swift */; };
+		5AFA79C622259FE800ABBDFE /* UnityInterstitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA79C522259FE800ABBDFE /* UnityInterstitialController.swift */; };
 		5AFFD3BD221AEBD0004EC91F /* LoadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AFFD3BC221AEBD0004EC91F /* LoadingAnimation.json */; };
 		E7566C36203C3A8C00487557 /* ForecastUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7566C35203C3A8C00487557 /* ForecastUpdateDelegate.swift */; };
 		E7566C38203C3B1F00487557 /* CurrentUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7566C37203C3B1F00487557 /* CurrentUpdateDelegate.swift */; };
@@ -117,6 +121,7 @@
 		5A5F77892214214200E13EF7 /* CurrentDayWeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDayWeatherDetailViewController.swift; sourceTree = "<group>"; };
 		5A6A8C132086297600494187 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		5A6A8C1520862C8B00494187 /* ForecastSummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastSummaryCell.swift; sourceTree = "<group>"; };
+		5A6C89A522258C0000DA43C5 /* UnityBannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnityBannerController.swift; sourceTree = "<group>"; };
 		5A6E239C221EFA6F0021BADE /* MoPubBannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoPubBannerController.swift; sourceTree = "<group>"; };
 		5A6E23A0222009D30021BADE /* MoPubMRectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoPubMRectController.swift; sourceTree = "<group>"; };
 		5A6E23A222200E9A0021BADE /* MoPubInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoPubInterstitialController.swift; sourceTree = "<group>"; };
@@ -141,6 +146,8 @@
 		5ACDB1AF2209C86100E13AAD /* WeatherImageMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherImageMapper.swift; sourceTree = "<group>"; };
 		5ACDB1B12209DAE700E13AAD /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		5ACDB1B52209F1C600E13AAD /* ForecastSummaryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastSummaryItem.swift; sourceTree = "<group>"; };
+		5AD53C852226C8B500370B75 /* UnityRewardedVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnityRewardedVideoController.swift; sourceTree = "<group>"; };
+		5AD53C872226D5E200370B75 /* UnityAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UnityAds.framework; sourceTree = "<group>"; };
 		5AD9A6CC2215895900129944 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		5ADB0CD422170AFC0060C6E6 /* CityList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CityList.json; sourceTree = "<group>"; };
 		5AE362BF2224042B002D7CB9 /* AdMobBannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobBannerController.swift; sourceTree = "<group>"; };
@@ -155,6 +162,7 @@
 		5AF3A1A8222559220010ED34 /* FacebookMRectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookMRectController.swift; sourceTree = "<group>"; };
 		5AF3A1AA22256B6E0010ED34 /* FacebookInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookInterstitialController.swift; sourceTree = "<group>"; };
 		5AF5A01B2214859700004163 /* SearchTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
+		5AFA79C522259FE800ABBDFE /* UnityInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnityInterstitialController.swift; sourceTree = "<group>"; };
 		5AFFD3BC221AEBD0004EC91F /* LoadingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingAnimation.json; sourceTree = "<group>"; };
 		E7566C35203C3A8C00487557 /* ForecastUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastUpdateDelegate.swift; sourceTree = "<group>"; };
 		E7566C37203C3B1F00487557 /* CurrentUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUpdateDelegate.swift; sourceTree = "<group>"; };
@@ -192,6 +200,7 @@
 			files = (
 				2E1289B11BE255C43CB298A3 /* Pods_EasyWeather.framework in Frameworks */,
 				5A068FB721F8C119009F8A19 /* HyBid.framework in Frameworks */,
+				5AD53C882226D5E200370B75 /* UnityAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,6 +238,16 @@
 			path = Current;
 			sourceTree = "<group>";
 		};
+		5A6C89A42225876400DA43C5 /* Unity */ = {
+			isa = PBXGroup;
+			children = (
+				5A6C89A522258C0000DA43C5 /* UnityBannerController.swift */,
+				5AFA79C522259FE800ABBDFE /* UnityInterstitialController.swift */,
+				5AD53C852226C8B500370B75 /* UnityRewardedVideoController.swift */,
+			);
+			path = Unity;
+			sourceTree = "<group>";
+		};
 		5A6E239B221EF8A00021BADE /* MoPub */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +267,7 @@
 				5AE362BE222403EA002D7CB9 /* AdMob */,
 				5AE362C722242D76002D7CB9 /* Google Ads Manager */,
 				5AF3A1A52225467F0010ED34 /* Facebook */,
+				5A6C89A42225876400DA43C5 /* Unity */,
 				5ABCE310221C6F6F004F8882 /* Queue.swift */,
 				5ABCE312221D5934004F8882 /* AdManager.swift */,
 				5ABCE306221C5D84004F8882 /* AdNetwork.swift */,
@@ -392,6 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				5A068FB621F8C118009F8A19 /* HyBid.framework */,
+				5AD53C872226D5E200370B75 /* UnityAds.framework */,
 				E7CC276A203AF265006A95B9 /* EasyWeather */,
 				E7CC2769203AF265006A95B9 /* Products */,
 				9CE1A5FC539F853B68140ACE /* Pods */,
@@ -591,6 +612,7 @@
 				5ABCE2FD221C53D4004F8882 /* InterstitialPlacement.swift in Sources */,
 				5AF3A1AB22256B6E0010ED34 /* FacebookInterstitialController.swift in Sources */,
 				E75E468A203B3E0700FF9672 /* ForecastWeather.swift in Sources */,
+				5A6C89A622258C0000DA43C5 /* UnityBannerController.swift in Sources */,
 				E75E4684203B3DC600FF9672 /* ForecastCoordinate.swift in Sources */,
 				5A5F778A2214214200E13EF7 /* CurrentDayWeatherDetailViewController.swift in Sources */,
 				E75E4688203B3DF100FF9672 /* ForecastMain.swift in Sources */,
@@ -606,6 +628,7 @@
 				5AD9A6CD2215895900129944 /* City.swift in Sources */,
 				5ABCE2FB221C5192004F8882 /* AdPlacement.swift in Sources */,
 				5ABCE30D221C64B8004F8882 /* InterstitialPlacementFactory.swift in Sources */,
+				5AFA79C622259FE800ABBDFE /* UnityInterstitialController.swift in Sources */,
 				E7566C38203C3B1F00487557 /* CurrentUpdateDelegate.swift in Sources */,
 				5A6E239D221EFA6F0021BADE /* MoPubBannerController.swift in Sources */,
 				5ABCE313221D5934004F8882 /* AdManager.swift in Sources */,
@@ -618,6 +641,7 @@
 				5AF3A1A9222559220010ED34 /* FacebookMRectController.swift in Sources */,
 				E75E468E203B3E7100FF9672 /* ForecastWind.swift in Sources */,
 				5A496A7B2212DD2700031B1A /* CustomAccessoryView.swift in Sources */,
+				5AD53C862226C8B500370B75 /* UnityRewardedVideoController.swift in Sources */,
 				5A6A8C142086297700494187 /* Location.swift in Sources */,
 				E75E469A203B3EDF00FF9672 /* CurrentWeather.swift in Sources */,
 				5ABCE2FF221C5639004F8882 /* RewardedVideoPlacement.swift in Sources */,

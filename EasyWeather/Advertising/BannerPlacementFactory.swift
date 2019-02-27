@@ -98,7 +98,7 @@ class BannerPlacementFactory {
     }
     
     fileprivate func createUnityPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        return AdPlacement()
+        return UnityBannerController(withAdPlacementDelegate: delegate)
     }
     
 }

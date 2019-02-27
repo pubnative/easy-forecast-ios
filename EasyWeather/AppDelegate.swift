@@ -29,6 +29,7 @@ import HyBid
 import MoPub
 import GoogleMobileAds
 import AdSupport.ASIdentifierManager
+import UnityAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -58,6 +59,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MoPub.sharedInstance().initializeSdk(with: moPubSDKConfig, completion: nil)
         
         GADMobileAds.configure(withApplicationID: "ca-app-pub-3940256099942544~1458002511")
+
+        UnityAds.initialize(UNITY_GAME_ID, delegate: nil, testMode: true)
         
         return true
     }

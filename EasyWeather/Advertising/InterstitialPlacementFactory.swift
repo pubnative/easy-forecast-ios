@@ -24,6 +24,7 @@ import Foundation
 import MoPub
 import GoogleMobileAds
 import FBAudienceNetwork
+import UnityAds
 
 class InterstitialPlacementFactory {
     
@@ -48,7 +49,7 @@ class InterstitialPlacementFactory {
         case .startApp:
             return createStartAppPlacement(withInterstitialPlacementDelegate: delegate)
         case .unity:
-            return createUnityPlacement(withInterstitialPlacementDelegate: delegate)
+            return createUnityPlacement(withViewController: viewController, withInterstitialPlacementDelegate: delegate)
         default:
             return nil
         }
@@ -94,8 +95,8 @@ class InterstitialPlacementFactory {
         return InterstitialPlacement()
     }
     
-    fileprivate func createUnityPlacement(withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {
-        return InterstitialPlacement()
+    fileprivate func createUnityPlacement(withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {
+        return UnityInterstitialController(withViewController: viewController, withInterstitialPlacementDelegate: delegate)
     }
     
 }
