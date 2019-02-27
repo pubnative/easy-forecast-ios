@@ -42,11 +42,11 @@ class RewardedVideoPlacementFactory {
         case .googleAdsManager:
             return createGoogleAdsManagerPlacement(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
         case .admob:
-            return createAdmobPlacement(ithViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
+            return createAdmobPlacement(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
         case .startApp:
             return createStartAppPlacement(withRewardedVideoPlacementDelegate: delegate)
         case .unity:
-            return createUnityPlacement(withRewardedVideoPlacementDelegate: delegate)
+            return createUnityPlacement(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
         default:
             return nil
         }
@@ -80,7 +80,7 @@ class RewardedVideoPlacementFactory {
         return GoogleAdsManagerRewardedVideoController(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
     }
     
-    fileprivate func createAdmobPlacement(ithViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {
+    fileprivate func createAdmobPlacement(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {
         return AdMobRewardedVideoController(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
     }
     
@@ -88,8 +88,8 @@ class RewardedVideoPlacementFactory {
         return RewardedVideoPlacement()
     }
     
-    fileprivate func createUnityPlacement(withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {
-        return RewardedVideoPlacement()
+    fileprivate func createUnityPlacement(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {
+        return UnityRewardedVideoController(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
     }
     
 }
