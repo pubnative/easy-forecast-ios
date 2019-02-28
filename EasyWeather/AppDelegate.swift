@@ -62,6 +62,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UnityAds.initialize(UNITY_GAME_ID, delegate: nil, testMode: true)
         
+        IronSource.initWithAppKey(IRONSOURCE_APPKEY)
+        
         return true
     }
     

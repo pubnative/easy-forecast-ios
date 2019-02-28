@@ -14,4 +14,5 @@ target 'EasyWeather' do
   pod 'mopub-ios-sdk'
   pod 'Google-Mobile-Ads-SDK'
   pod 'FBAudienceNetwork'
+  pod 'IronSourceSDK'
 end
