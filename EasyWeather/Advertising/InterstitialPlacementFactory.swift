@@ -35,7 +35,7 @@ class InterstitialPlacementFactory {
         case .appLovin:
             return createAppLovinPlacement(withInterstitialPlacementDelegate: delegate)
         case .ironSource:
-            return createIronSourcePlacement(withInterstitialPlacementDelegate: delegate)
+            return createIronSourcePlacement(withViewController: viewController, withInterstitialPlacementDelegate: delegate)
         case .fyber:
             return createFyberPlacement(withInterstitialPlacementDelegate: delegate)
         case .facebook:
@@ -63,8 +63,8 @@ class InterstitialPlacementFactory {
         return InterstitialPlacement()
     }
     
-    fileprivate func createIronSourcePlacement(withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {
-        return InterstitialPlacement()
+    fileprivate func createIronSourcePlacement(withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {
+        return IronSourceInterstitialController(withViewController: viewController, withInterstitialPlacementDelegate: delegate)
     }
     
     fileprivate func createFyberPlacement(withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {

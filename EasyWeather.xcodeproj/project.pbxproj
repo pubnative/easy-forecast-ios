@@ -48,6 +48,10 @@
 		5ACDB1B62209F1C600E13AAD /* ForecastSummaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACDB1B52209F1C600E13AAD /* ForecastSummaryItem.swift */; };
 		5AD53C862226C8B500370B75 /* UnityRewardedVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD53C852226C8B500370B75 /* UnityRewardedVideoController.swift */; };
 		5AD53C882226D5E200370B75 /* UnityAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD53C872226D5E200370B75 /* UnityAds.framework */; };
+		5AD53C8D2226EE5900370B75 /* IronSourceBannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD53C8C2226EE5900370B75 /* IronSourceBannerController.swift */; };
+		5AD53C8F2226F5BD00370B75 /* IronSourceInterstitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD53C8E2226F5BD00370B75 /* IronSourceInterstitialController.swift */; };
+		5AD53C912227F31400370B75 /* IronSourceRewardedVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD53C902227F31400370B75 /* IronSourceRewardedVideoController.swift */; };
+		5AD53C932227F58400370B75 /* IronSourceMRectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD53C922227F58400370B75 /* IronSourceMRectController.swift */; };
 		5AD9A6CD2215895900129944 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD9A6CC2215895900129944 /* City.swift */; };
 		5ADB0CD522170AFC0060C6E6 /* CityList.json in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB0CD422170AFC0060C6E6 /* CityList.json */; };
 		5AE362C02224042B002D7CB9 /* AdMobBannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE362BF2224042B002D7CB9 /* AdMobBannerController.swift */; };
@@ -148,6 +152,10 @@
 		5ACDB1B52209F1C600E13AAD /* ForecastSummaryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastSummaryItem.swift; sourceTree = "<group>"; };
 		5AD53C852226C8B500370B75 /* UnityRewardedVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnityRewardedVideoController.swift; sourceTree = "<group>"; };
 		5AD53C872226D5E200370B75 /* UnityAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UnityAds.framework; sourceTree = "<group>"; };
+		5AD53C8C2226EE5900370B75 /* IronSourceBannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IronSourceBannerController.swift; sourceTree = "<group>"; };
+		5AD53C8E2226F5BD00370B75 /* IronSourceInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IronSourceInterstitialController.swift; sourceTree = "<group>"; };
+		5AD53C902227F31400370B75 /* IronSourceRewardedVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IronSourceRewardedVideoController.swift; sourceTree = "<group>"; };
+		5AD53C922227F58400370B75 /* IronSourceMRectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IronSourceMRectController.swift; sourceTree = "<group>"; };
 		5AD9A6CC2215895900129944 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		5ADB0CD422170AFC0060C6E6 /* CityList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CityList.json; sourceTree = "<group>"; };
 		5AE362BF2224042B002D7CB9 /* AdMobBannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobBannerController.swift; sourceTree = "<group>"; };
@@ -268,6 +276,7 @@
 				5AE362C722242D76002D7CB9 /* Google Ads Manager */,
 				5AF3A1A52225467F0010ED34 /* Facebook */,
 				5A6C89A42225876400DA43C5 /* Unity */,
+				5AD53C8B2226EE2000370B75 /* IronSource */,
 				5ABCE310221C6F6F004F8882 /* Queue.swift */,
 				5ABCE312221D5934004F8882 /* AdManager.swift */,
 				5ABCE306221C5D84004F8882 /* AdNetwork.swift */,
@@ -324,6 +333,17 @@
 				5A4CDA0B2211BA2600217E5F /* ParallaxEffect.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5AD53C8B2226EE2000370B75 /* IronSource */ = {
+			isa = PBXGroup;
+			children = (
+				5AD53C8C2226EE5900370B75 /* IronSourceBannerController.swift */,
+				5AD53C922227F58400370B75 /* IronSourceMRectController.swift */,
+				5AD53C8E2226F5BD00370B75 /* IronSourceInterstitialController.swift */,
+				5AD53C902227F31400370B75 /* IronSourceRewardedVideoController.swift */,
+			);
+			path = IronSource;
 			sourceTree = "<group>";
 		};
 		5AE362BE222403EA002D7CB9 /* AdMob */ = {
@@ -613,6 +633,7 @@
 				5AF3A1AB22256B6E0010ED34 /* FacebookInterstitialController.swift in Sources */,
 				E75E468A203B3E0700FF9672 /* ForecastWeather.swift in Sources */,
 				5A6C89A622258C0000DA43C5 /* UnityBannerController.swift in Sources */,
+				5AD53C8D2226EE5900370B75 /* IronSourceBannerController.swift in Sources */,
 				E75E4684203B3DC600FF9672 /* ForecastCoordinate.swift in Sources */,
 				5A5F778A2214214200E13EF7 /* CurrentDayWeatherDetailViewController.swift in Sources */,
 				E75E4688203B3DF100FF9672 /* ForecastMain.swift in Sources */,
@@ -622,6 +643,7 @@
 				E75E4698203B3ED000FF9672 /* CurrentMain.swift in Sources */,
 				5A257F66220D8B4500FDCCDB /* CustomTextField.swift in Sources */,
 				5ABCE316221D890B004F8882 /* PubNativeBannerController.swift in Sources */,
+				5AD53C932227F58400370B75 /* IronSourceMRectController.swift in Sources */,
 				5ACDB1B62209F1C600E13AAD /* ForecastSummaryItem.swift in Sources */,
 				E75E469E203B3F0100FF9672 /* CurrentClouds.swift in Sources */,
 				E75E4682203B3DB500FF9672 /* ForecastCity.swift in Sources */,
@@ -648,6 +670,7 @@
 				5AE362CF22244519002D7CB9 /* GoogleAdsManagerRewardedVideoController.swift in Sources */,
 				5AE362CB222432DB002D7CB9 /* GoogleAdsManagerMRectController.swift in Sources */,
 				5AE362C422241A18002D7CB9 /* AdMobInterstitialController.swift in Sources */,
+				5AD53C912227F31400370B75 /* IronSourceRewardedVideoController.swift in Sources */,
 				E75E4690203B3E8500FF9672 /* ForecastSys.swift in Sources */,
 				5ABCE303221C5A47004F8882 /* AdConstants.swift in Sources */,
 				5AE362C6222421CB002D7CB9 /* AdMobRewardedVideoController.swift in Sources */,
@@ -670,6 +693,7 @@
 				5AF5A01C2214859700004163 /* SearchTextField.swift in Sources */,
 				5ABCE305221C5CA8004F8882 /* AdType.swift in Sources */,
 				E7CC276E203AF265006A95B9 /* SummaryWeatherViewController.swift in Sources */,
+				5AD53C8F2226F5BD00370B75 /* IronSourceInterstitialController.swift in Sources */,
 				5ABCE307221C5D84004F8882 /* AdNetwork.swift in Sources */,
 				E7566C36203C3A8C00487557 /* ForecastUpdateDelegate.swift in Sources */,
 				5ACDB1B22209DAE700E13AAD /* DateExtension.swift in Sources */,
@@ -838,7 +862,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.easynaps.EasyForecast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = Pods/IronSourceSDK/IronSource/IronSource.framework/Versions/A/Headers/IronSource.h;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -864,7 +888,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.easynaps.EasyForecast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = Pods/IronSourceSDK/IronSource/IronSource.framework/Versions/A/Headers/IronSource.h;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
