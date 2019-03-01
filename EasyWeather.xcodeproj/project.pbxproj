@@ -10,6 +10,9 @@
 		2E1289B11BE255C43CB298A3 /* Pods_EasyWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA2170FD41C850FF622A68E /* Pods_EasyWeather.framework */; };
 		5A068FB721F8C119009F8A19 /* HyBid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A068FB621F8C118009F8A19 /* HyBid.framework */; };
 		5A068FB821F8C119009F8A19 /* HyBid.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5A068FB621F8C118009F8A19 /* HyBid.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5A1C83EC2229386F00A3C8A3 /* StartAppMRectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C83EB2229386F00A3C8A3 /* StartAppMRectController.swift */; };
+		5A1C83EE2229457900A3C8A3 /* StartAppInterstitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C83ED2229457900A3C8A3 /* StartAppInterstitialController.swift */; };
+		5A1C83F02229540B00A3C8A3 /* StartAppRewardedVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C83EF2229540B00A3C8A3 /* StartAppRewardedVideoController.swift */; };
 		5A257F66220D8B4500FDCCDB /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A257F65220D8B4500FDCCDB /* CustomTextField.swift */; };
 		5A257F68220D8B7B00FDCCDB /* SearchCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A257F67220D8B7B00FDCCDB /* SearchCityViewController.swift */; };
 		5A496A7B2212DD2700031B1A /* CustomAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A496A7A2212DD2700031B1A /* CustomAccessoryView.swift */; };
@@ -52,6 +55,7 @@
 		5AD53C8F2226F5BD00370B75 /* IronSourceInterstitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD53C8E2226F5BD00370B75 /* IronSourceInterstitialController.swift */; };
 		5AD53C912227F31400370B75 /* IronSourceRewardedVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD53C902227F31400370B75 /* IronSourceRewardedVideoController.swift */; };
 		5AD53C932227F58400370B75 /* IronSourceMRectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD53C922227F58400370B75 /* IronSourceMRectController.swift */; };
+		5AD53C972228452100370B75 /* StartAppBannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD53C962228452100370B75 /* StartAppBannerController.swift */; };
 		5AD9A6CD2215895900129944 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD9A6CC2215895900129944 /* City.swift */; };
 		5ADB0CD522170AFC0060C6E6 /* CityList.json in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB0CD422170AFC0060C6E6 /* CityList.json */; };
 		5AE362C02224042B002D7CB9 /* AdMobBannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE362BF2224042B002D7CB9 /* AdMobBannerController.swift */; };
@@ -114,6 +118,9 @@
 		3EA2170FD41C850FF622A68E /* Pods_EasyWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		468D9A763598D44D9B0194E8 /* Pods-EasyWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyWeather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyWeather/Pods-EasyWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		5A068FB621F8C118009F8A19 /* HyBid.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HyBid.framework; sourceTree = "<group>"; };
+		5A1C83EB2229386F00A3C8A3 /* StartAppMRectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppMRectController.swift; sourceTree = "<group>"; };
+		5A1C83ED2229457900A3C8A3 /* StartAppInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppInterstitialController.swift; sourceTree = "<group>"; };
+		5A1C83EF2229540B00A3C8A3 /* StartAppRewardedVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppRewardedVideoController.swift; sourceTree = "<group>"; };
 		5A257F65220D8B4500FDCCDB /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		5A257F67220D8B7B00FDCCDB /* SearchCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityViewController.swift; sourceTree = "<group>"; };
 		5A496A7A2212DD2700031B1A /* CustomAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAccessoryView.swift; sourceTree = "<group>"; };
@@ -156,6 +163,8 @@
 		5AD53C8E2226F5BD00370B75 /* IronSourceInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IronSourceInterstitialController.swift; sourceTree = "<group>"; };
 		5AD53C902227F31400370B75 /* IronSourceRewardedVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IronSourceRewardedVideoController.swift; sourceTree = "<group>"; };
 		5AD53C922227F58400370B75 /* IronSourceMRectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IronSourceMRectController.swift; sourceTree = "<group>"; };
+		5AD53C942228333D00370B75 /* EasyWeather-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EasyWeather-Bridging-Header.h"; sourceTree = "<group>"; };
+		5AD53C962228452100370B75 /* StartAppBannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppBannerController.swift; sourceTree = "<group>"; };
 		5AD9A6CC2215895900129944 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		5ADB0CD422170AFC0060C6E6 /* CityList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CityList.json; sourceTree = "<group>"; };
 		5AE362BF2224042B002D7CB9 /* AdMobBannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobBannerController.swift; sourceTree = "<group>"; };
@@ -277,6 +286,7 @@
 				5AF3A1A52225467F0010ED34 /* Facebook */,
 				5A6C89A42225876400DA43C5 /* Unity */,
 				5AD53C8B2226EE2000370B75 /* IronSource */,
+				5AD53C952228400300370B75 /* StartApp */,
 				5ABCE310221C6F6F004F8882 /* Queue.swift */,
 				5ABCE312221D5934004F8882 /* AdManager.swift */,
 				5ABCE306221C5D84004F8882 /* AdNetwork.swift */,
@@ -344,6 +354,17 @@
 				5AD53C902227F31400370B75 /* IronSourceRewardedVideoController.swift */,
 			);
 			path = IronSource;
+			sourceTree = "<group>";
+		};
+		5AD53C952228400300370B75 /* StartApp */ = {
+			isa = PBXGroup;
+			children = (
+				5AD53C962228452100370B75 /* StartAppBannerController.swift */,
+				5A1C83EB2229386F00A3C8A3 /* StartAppMRectController.swift */,
+				5A1C83ED2229457900A3C8A3 /* StartAppInterstitialController.swift */,
+				5A1C83EF2229540B00A3C8A3 /* StartAppRewardedVideoController.swift */,
+			);
+			path = StartApp;
 			sourceTree = "<group>";
 		};
 		5AE362BE222403EA002D7CB9 /* AdMob */ = {
@@ -431,6 +452,7 @@
 		E7CC275F203AF265006A95B9 = {
 			isa = PBXGroup;
 			children = (
+				5AD53C942228333D00370B75 /* EasyWeather-Bridging-Header.h */,
 				5A068FB621F8C118009F8A19 /* HyBid.framework */,
 				5AD53C872226D5E200370B75 /* UnityAds.framework */,
 				E7CC276A203AF265006A95B9 /* EasyWeather */,
@@ -485,6 +507,7 @@
 				5AD944E52087386600DD7E8C /* ShellScript */,
 				5AD944E92087829600DD7E8C /* Embed Frameworks */,
 				5AD944EA208782A600DD7E8C /* ShellScript */,
+				A0C161A32C9CE184A77F2E5F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -622,6 +645,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A0C161A32C9CE184A77F2E5F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-EasyWeather/Pods-EasyWeather-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/StartAppSDK/StartAppSDK.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/StartAppSDK.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EasyWeather/Pods-EasyWeather-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -650,6 +691,7 @@
 				5AD9A6CD2215895900129944 /* City.swift in Sources */,
 				5ABCE2FB221C5192004F8882 /* AdPlacement.swift in Sources */,
 				5ABCE30D221C64B8004F8882 /* InterstitialPlacementFactory.swift in Sources */,
+				5A1C83EC2229386F00A3C8A3 /* StartAppMRectController.swift in Sources */,
 				5AFA79C622259FE800ABBDFE /* UnityInterstitialController.swift in Sources */,
 				E7566C38203C3B1F00487557 /* CurrentUpdateDelegate.swift in Sources */,
 				5A6E239D221EFA6F0021BADE /* MoPubBannerController.swift in Sources */,
@@ -688,6 +730,7 @@
 				E75E469C203B3EF300FF9672 /* CurrentWind.swift in Sources */,
 				5A9280E9221DA7FC00D43FF3 /* PubNativeMRectController.swift in Sources */,
 				5ABCE311221C6F6F004F8882 /* Queue.swift in Sources */,
+				5A1C83EE2229457900A3C8A3 /* StartAppInterstitialController.swift in Sources */,
 				5AE362C922242EE1002D7CB9 /* GoogleAdsManagerBannerController.swift in Sources */,
 				5ABCE30F221C6875004F8882 /* RewardedVideoPlacementFactory.swift in Sources */,
 				5AF5A01C2214859700004163 /* SearchTextField.swift in Sources */,
@@ -701,8 +744,10 @@
 				5ABCE309221C6084004F8882 /* BannerPlacementFactory.swift in Sources */,
 				5A6A8C1620862C8B00494187 /* ForecastSummaryCell.swift in Sources */,
 				E75E4686203B3DD800FF9672 /* ForecastItem.swift in Sources */,
+				5A1C83F02229540B00A3C8A3 /* StartAppRewardedVideoController.swift in Sources */,
 				5A6E23A322200E9A0021BADE /* MoPubInterstitialController.swift in Sources */,
 				5A9280EC221EB4DE00D43FF3 /* PubNativeInterstitialController.swift in Sources */,
+				5AD53C972228452100370B75 /* StartAppBannerController.swift in Sources */,
 				E75E4694203B3EB800FF9672 /* CurrentCoordinate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -862,7 +907,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.easynaps.EasyForecast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = Pods/IronSourceSDK/IronSource/IronSource.framework/Versions/A/Headers/IronSource.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "EasyWeather-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -888,7 +933,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.easynaps.EasyForecast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = Pods/IronSourceSDK/IronSource/IronSource.framework/Versions/A/Headers/IronSource.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "EasyWeather-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

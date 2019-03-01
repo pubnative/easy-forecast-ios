@@ -71,6 +71,7 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - ObjectMapper (3.3.0)
+  - StartAppSDK (3.10.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.6)
@@ -83,6 +84,7 @@ DEPENDENCIES:
   - IronSourceSDK
   - lottie-ios
   - mopub-ios-sdk
+  - StartAppSDK
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -103,6 +105,7 @@ SPEC REPOS:
     - mopub-ios-sdk
     - nanopb
     - ObjectMapper
+    - StartAppSDK
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
@@ -122,7 +125,8 @@ SPEC CHECKSUMS:
   mopub-ios-sdk: 320de49dd0a352ac58d33104a23853e749a84a78
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
+  StartAppSDK: 3fb176fc63dcf8cfad09796f2f2a1299224736d5
 
-PODFILE CHECKSUM: 3668542b6a87f479dfc4c7c97f72513727808d08
+PODFILE CHECKSUM: 7aabcd6dc8ca6df5017c8b0383093e11eb037175
 
 COCOAPODS: 1.5.2

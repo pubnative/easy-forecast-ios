@@ -92,7 +92,7 @@ class InterstitialPlacementFactory {
     }
     
     fileprivate func createStartAppPlacement(withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {
-        return InterstitialPlacement()
+        return StartAppInterstitialController(withInterstitialPlacementDelegate: delegate)
     }
     
     fileprivate func createUnityPlacement(withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {
