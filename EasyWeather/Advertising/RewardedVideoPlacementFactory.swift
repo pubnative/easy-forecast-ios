@@ -85,7 +85,7 @@ class RewardedVideoPlacementFactory {
     }
     
     fileprivate func createStartAppPlacement(withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {
-        return RewardedVideoPlacement()
+        return StartAppRewardedVideoController(withRewardedVideoPlacementDelegate: delegate)
     }
     
     fileprivate func createUnityPlacement(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {

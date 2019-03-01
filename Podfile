@@ -15,4 +15,5 @@ target 'EasyWeather' do
   pod 'Google-Mobile-Ads-SDK'
   pod 'FBAudienceNetwork'
   pod 'IronSourceSDK'
+  pod 'StartAppSDK'
 end

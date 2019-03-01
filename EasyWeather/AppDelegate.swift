@@ -64,6 +64,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         IronSource.initWithAppKey(IRONSOURCE_APPKEY)
         
+        if let startAppSDK = STAStartAppSDK.sharedInstance() {
+            startAppSDK.appID = STARTAPP_APP_ID
+        }
+        
         return true
     }
     

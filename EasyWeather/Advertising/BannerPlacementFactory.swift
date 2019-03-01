@@ -47,7 +47,7 @@ class BannerPlacementFactory {
         case .admob:
             return createAdmobPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .startApp:
-            return createStartAppPlacement(withAdPlacementDelegate: delegate)
+            return createStartAppPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .unity:
             return createUnityPlacement(withAdPlacementDelegate: delegate)
         default:
@@ -93,8 +93,8 @@ class BannerPlacementFactory {
         return AdMobBannerController(withAdView: adView, withAdUnitID: ADMOB_BANNER_AD_UNIT_ID, withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
-    fileprivate func createStartAppPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        return AdPlacement()
+    fileprivate func createStartAppPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
+        return StartAppBannerController(withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
     fileprivate func createUnityPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
