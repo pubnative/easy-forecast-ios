@@ -47,6 +47,10 @@ class GoogleAdsManagerRewardedVideoController: RewardedVideoPlacement {
         return GADRewardBasedVideoAd.sharedInstance().isReady
     }
     
+    override func cleanUp() {
+        delegate = nil
+    }
+    
 }
 
 extension GoogleAdsManagerRewardedVideoController: GADRewardBasedVideoAdDelegate {

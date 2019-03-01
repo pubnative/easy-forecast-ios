@@ -45,6 +45,10 @@ class StartAppInterstitialController: InterstitialPlacement {
         return interstitial.isReady()
     }
     
+    override func cleanUp() {
+        delegate = nil
+    }
+    
 }
 
 extension StartAppInterstitialController: STADelegateProtocol {

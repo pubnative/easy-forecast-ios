@@ -51,6 +51,10 @@ class UnityRewardedVideoController: RewardedVideoPlacement {
          return placementContent.isReady
     }
     
+    override func cleanUp() {
+        delegate = nil
+    }
+    
 }
 
 extension UnityRewardedVideoController: UnityMonetizationDelegate {

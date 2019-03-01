@@ -47,6 +47,10 @@ class MoPubRewardedVideoController: RewardedVideoPlacement {
         return MPRewardedVideo.hasAdAvailable(forAdUnitID: MOPUB_REWARDED_VIDEO_AD_UNIT_ID)
     }
     
+    override func cleanUp() {
+        delegate = nil
+    }
+    
 }
 
 extension MoPubRewardedVideoController: MPRewardedVideoDelegate {

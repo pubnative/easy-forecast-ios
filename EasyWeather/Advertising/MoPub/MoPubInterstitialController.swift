@@ -48,6 +48,10 @@ class MoPubInterstitialController: InterstitialPlacement {
     override func isReady() -> Bool {
         return interstitial.ready
     }
+    
+    override func cleanUp() {
+        delegate = nil
+    }
 }
 
 extension MoPubInterstitialController: MPInterstitialAdControllerDelegate {

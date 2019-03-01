@@ -48,6 +48,10 @@ class IronSourceRewardedVideoController: RewardedVideoPlacement {
     override func isReady() -> Bool {
         return IronSource.hasRewardedVideo()
     }
+    
+    override func cleanUp() {
+        delegate = nil
+    }
 
 }
 

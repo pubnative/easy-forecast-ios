@@ -51,6 +51,10 @@ class UnityInterstitialController: InterstitialPlacement {
         return placementContent.isReady
     }
     
+    override func cleanUp() {
+        delegate = nil
+    }
+    
 }
 
 extension UnityInterstitialController: UnityMonetizationDelegate {

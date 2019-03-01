@@ -48,6 +48,10 @@ class FacebookInterstitialController: InterstitialPlacement {
     override func isReady() -> Bool {
         return interstitial.isAdValid
     }
+    
+    override func cleanUp() {
+        delegate = nil
+    }
 }
 
 extension FacebookInterstitialController: FBInterstitialAdDelegate {

@@ -45,4 +45,8 @@ class InterstitialPlacement: NSObject {
         return false
     }
     
+    func cleanUp() {
+        
+    }
+    
 }

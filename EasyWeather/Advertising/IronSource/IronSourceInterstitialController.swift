@@ -46,6 +46,10 @@ class IronSourceInterstitialController: InterstitialPlacement {
     override func isReady() -> Bool {
         return IronSource.hasInterstitial()
     }
+    
+    override func cleanUp() {
+        delegate = nil
+    }
 }
 
 extension IronSourceInterstitialController: ISInterstitialDelegate {

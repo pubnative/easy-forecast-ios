@@ -56,4 +56,8 @@ class RewardedVideoPlacement: NSObject {
         return false
     }
     
+    func cleanUp() {
+        
+    }
+    
 }

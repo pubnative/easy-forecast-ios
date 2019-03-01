@@ -48,6 +48,10 @@ class AdMobInterstitialController: InterstitialPlacement {
     override func isReady() -> Bool {
         return interstitial.isReady
     }
+    
+    override func cleanUp() {
+        delegate = nil
+    }
 }
 
 extension AdMobInterstitialController: GADInterstitialDelegate {

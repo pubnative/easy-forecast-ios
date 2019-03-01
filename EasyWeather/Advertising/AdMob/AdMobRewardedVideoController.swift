@@ -47,6 +47,10 @@ class AdMobRewardedVideoController: RewardedVideoPlacement {
         return GADRewardBasedVideoAd.sharedInstance().isReady
     }
     
+    override func cleanUp() {
+        delegate = nil
+    }
+    
 }
 
 extension AdMobRewardedVideoController: GADRewardBasedVideoAdDelegate {

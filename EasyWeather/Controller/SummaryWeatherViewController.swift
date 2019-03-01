@@ -156,6 +156,7 @@ class SummaryWeatherViewController: UIViewController {
     }
     
     func loadInterstitial() {
+        interstitialPlacement.cleanUp()
         guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: INTERSTITIAL_PLACEMENT) else { return }
         guard let placement = InterstitialPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withViewController: self, withInterstitialPlacementDelegate: self) else { return }
         interstitialPlacement = placement

@@ -45,6 +45,10 @@ class StartAppRewardedVideoController: RewardedVideoPlacement {
         return rewardedVideo.isReady()
     }
     
+    override func cleanUp() {
+        delegate = nil
+    }
+    
 }
 
 
