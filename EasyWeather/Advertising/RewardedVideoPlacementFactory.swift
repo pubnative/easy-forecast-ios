@@ -34,7 +34,7 @@ class RewardedVideoPlacementFactory {
         case .ironSource:
             return createIronSourcePlacement(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
         case .fyber:
-            return createFyberPlacement(withRewardedVideoPlacementDelegate: delegate)
+            return createFyberPlacement(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
         case .facebook:
             return createFacebookPlacement(withRewardedVideoPlacementDelegate: delegate)
         case .moPub:
@@ -64,8 +64,8 @@ class RewardedVideoPlacementFactory {
         return IronSourceRewardedVideoController(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
     }
     
-    fileprivate func createFyberPlacement(withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {
-        return RewardedVideoPlacement()
+    fileprivate func createFyberPlacement(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {
+        return FyberRewardedVideoController(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
     }
     
     fileprivate func createFacebookPlacement(withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {

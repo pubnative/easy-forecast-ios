@@ -37,7 +37,7 @@ class BannerPlacementFactory {
         case .ironSource:
             return createIronSourcePlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .fyber:
-            return createFyberPlacement(withAdPlacementDelegate: delegate)
+            return createFyberPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .facebook:
             return createFacebookPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .moPub:
@@ -68,8 +68,8 @@ class BannerPlacementFactory {
         return IronSourceBannerController(withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
-    fileprivate func createFyberPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        return AdPlacement()
+    fileprivate func createFyberPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
+        return FyberBannerController(withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
     fileprivate func createFacebookPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {

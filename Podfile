@@ -16,4 +16,5 @@ target 'EasyWeather' do
   pod 'FBAudienceNetwork'
   pod 'IronSourceSDK'
   pod 'StartAppSDK'
+  pod 'Heyzap'
 end
