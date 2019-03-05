@@ -68,6 +68,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             startAppSDK.appID = STARTAPP_APP_ID
         }
         
+        HeyzapAds.start(withPublisherID: FYBER_PUBLISHER_ID)
+        
         return true
     }
     

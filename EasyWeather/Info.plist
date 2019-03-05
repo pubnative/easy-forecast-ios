@@ -47,6 +47,8 @@
 	<string>We need your current location in order to show you weather information.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need your current location in order to show you weather information.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Advertisement would like to store a photo.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Advertisement would like to store a photo.</string>
 	<key>UILaunchStoryboardName</key>

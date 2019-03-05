@@ -52,6 +52,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (5.3.3):
     - GoogleUtilities/Logger
+  - Heyzap (9.51.0)
   - IronSourceSDK (6.8.0.0)
   - lottie-ios (2.5.2)
   - mopub-ios-sdk (5.4.1):
@@ -81,6 +82,7 @@ DEPENDENCIES:
   - FBAudienceNetwork
   - Firebase/Core
   - Google-Mobile-Ads-SDK
+  - Heyzap
   - IronSourceSDK
   - lottie-ios
   - mopub-ios-sdk
@@ -100,6 +102,7 @@ SPEC REPOS:
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleUtilities
+    - Heyzap
     - IronSourceSDK
     - lottie-ios
     - mopub-ios-sdk
@@ -120,6 +123,7 @@ SPEC CHECKSUMS:
   Google-Mobile-Ads-SDK: d028682d7450749a1955679da050eaf70d997b3e
   GoogleAppMeasurement: 2b3a023a61239c8d002e6e4fcf4abce8eddce0e0
   GoogleUtilities: 8208aee3e97a1ae93d44c57e96c476a5a3b03f0a
+  Heyzap: 0f3a429823c53a4b837f8bd9ea724272e75304f8
   IronSourceSDK: 1eef343a0d2468889f1befb8506cc9560a10e8af
   lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
   mopub-ios-sdk: 320de49dd0a352ac58d33104a23853e749a84a78
@@ -127,6 +131,6 @@ SPEC CHECKSUMS:
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   StartAppSDK: 3fb176fc63dcf8cfad09796f2f2a1299224736d5
 
-PODFILE CHECKSUM: 7aabcd6dc8ca6df5017c8b0383093e11eb037175
+PODFILE CHECKSUM: 899f8ef58e5bd57ac57a08028287a3461e5e1549
 
 COCOAPODS: 1.5.2

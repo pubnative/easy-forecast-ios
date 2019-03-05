@@ -29,6 +29,9 @@
 		5A6E23A1222009D30021BADE /* MoPubMRectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6E23A0222009D30021BADE /* MoPubMRectController.swift */; };
 		5A6E23A322200E9A0021BADE /* MoPubInterstitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6E23A222200E9A0021BADE /* MoPubInterstitialController.swift */; };
 		5A6E23A6222017ED0021BADE /* MoPubRewardedVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6E23A5222017ED0021BADE /* MoPubRewardedVideoController.swift */; };
+		5A85B5DD222E815500A9D014 /* FyberBannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85B5DC222E815500A9D014 /* FyberBannerController.swift */; };
+		5A85B5DF222E903700A9D014 /* FyberInterstitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85B5DE222E903700A9D014 /* FyberInterstitialController.swift */; };
+		5A85B5E1222EAA5E00A9D014 /* FyberRewardedVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85B5E0222EAA5E00A9D014 /* FyberRewardedVideoController.swift */; };
 		5A9280E9221DA7FC00D43FF3 /* PubNativeMRectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9280E8221DA7FC00D43FF3 /* PubNativeMRectController.swift */; };
 		5A9280EC221EB4DE00D43FF3 /* PubNativeInterstitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9280EB221EB4DE00D43FF3 /* PubNativeInterstitialController.swift */; };
 		5AAEF8E320A1D88F006C7CD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5AAEF8E220A1D88F006C7CD4 /* GoogleService-Info.plist */; };
@@ -137,6 +140,9 @@
 		5A6E23A0222009D30021BADE /* MoPubMRectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoPubMRectController.swift; sourceTree = "<group>"; };
 		5A6E23A222200E9A0021BADE /* MoPubInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoPubInterstitialController.swift; sourceTree = "<group>"; };
 		5A6E23A5222017ED0021BADE /* MoPubRewardedVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoPubRewardedVideoController.swift; sourceTree = "<group>"; };
+		5A85B5DC222E815500A9D014 /* FyberBannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FyberBannerController.swift; sourceTree = "<group>"; };
+		5A85B5DE222E903700A9D014 /* FyberInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FyberInterstitialController.swift; sourceTree = "<group>"; };
+		5A85B5E0222EAA5E00A9D014 /* FyberRewardedVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FyberRewardedVideoController.swift; sourceTree = "<group>"; };
 		5A9280E8221DA7FC00D43FF3 /* PubNativeMRectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubNativeMRectController.swift; sourceTree = "<group>"; };
 		5A9280EB221EB4DE00D43FF3 /* PubNativeInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubNativeInterstitialController.swift; sourceTree = "<group>"; };
 		5AAEF8E220A1D88F006C7CD4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -276,17 +282,28 @@
 			path = MoPub;
 			sourceTree = "<group>";
 		};
+		5A85B5DB222E7F8000A9D014 /* Fyber */ = {
+			isa = PBXGroup;
+			children = (
+				5A85B5DC222E815500A9D014 /* FyberBannerController.swift */,
+				5A85B5DE222E903700A9D014 /* FyberInterstitialController.swift */,
+				5A85B5E0222EAA5E00A9D014 /* FyberRewardedVideoController.swift */,
+			);
+			path = Fyber;
+			sourceTree = "<group>";
+		};
 		5ABCE2F9221C4DB0004F8882 /* Advertising */ = {
 			isa = PBXGroup;
 			children = (
 				5ABCE314221D88C4004F8882 /* PubNative */,
-				5A6E239B221EF8A00021BADE /* MoPub */,
-				5AE362BE222403EA002D7CB9 /* AdMob */,
-				5AE362C722242D76002D7CB9 /* Google Ads Manager */,
-				5AF3A1A52225467F0010ED34 /* Facebook */,
-				5A6C89A42225876400DA43C5 /* Unity */,
+				5A85B5DB222E7F8000A9D014 /* Fyber */,
 				5AD53C8B2226EE2000370B75 /* IronSource */,
+				5AF3A1A52225467F0010ED34 /* Facebook */,
+				5A6E239B221EF8A00021BADE /* MoPub */,
+				5AE362C722242D76002D7CB9 /* Google Ads Manager */,
+				5AE362BE222403EA002D7CB9 /* AdMob */,
 				5AD53C952228400300370B75 /* StartApp */,
+				5A6C89A42225876400DA43C5 /* Unity */,
 				5ABCE310221C6F6F004F8882 /* Queue.swift */,
 				5ABCE312221D5934004F8882 /* AdManager.swift */,
 				5ABCE306221C5D84004F8882 /* AdNetwork.swift */,
@@ -652,10 +669,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-EasyWeather/Pods-EasyWeather-resources.sh",
+				"${PODS_ROOT}/Heyzap/heyzap-ads-sdk-9.51.0/ios-sdk/IASDKResources.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/StartAppSDK/StartAppSDK.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IASDKResources.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/StartAppSDK.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -683,8 +702,10 @@
 				E75E4692203B3E9100FF9672 /* ForecastResponse.swift in Sources */,
 				E75E4698203B3ED000FF9672 /* CurrentMain.swift in Sources */,
 				5A257F66220D8B4500FDCCDB /* CustomTextField.swift in Sources */,
+				5A85B5DF222E903700A9D014 /* FyberInterstitialController.swift in Sources */,
 				5ABCE316221D890B004F8882 /* PubNativeBannerController.swift in Sources */,
 				5AD53C932227F58400370B75 /* IronSourceMRectController.swift in Sources */,
+				5A85B5E1222EAA5E00A9D014 /* FyberRewardedVideoController.swift in Sources */,
 				5ACDB1B62209F1C600E13AAD /* ForecastSummaryItem.swift in Sources */,
 				E75E469E203B3F0100FF9672 /* CurrentClouds.swift in Sources */,
 				E75E4682203B3DB500FF9672 /* ForecastCity.swift in Sources */,
@@ -694,6 +715,7 @@
 				5A1C83EC2229386F00A3C8A3 /* StartAppMRectController.swift in Sources */,
 				5AFA79C622259FE800ABBDFE /* UnityInterstitialController.swift in Sources */,
 				E7566C38203C3B1F00487557 /* CurrentUpdateDelegate.swift in Sources */,
+				5A85B5DD222E815500A9D014 /* FyberBannerController.swift in Sources */,
 				5A6E239D221EFA6F0021BADE /* MoPubBannerController.swift in Sources */,
 				5ABCE313221D5934004F8882 /* AdManager.swift in Sources */,
 				5A4CDA0822118ECF00217E5F /* ForecastWeatherDetailViewController.swift in Sources */,

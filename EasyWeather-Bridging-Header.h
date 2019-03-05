@@ -22,3 +22,4 @@
 
 #import <StartApp/StartApp.h>
 #import <IronSource/IronSource.h>
+#import <HeyzapAds/HeyzapAds.h>
