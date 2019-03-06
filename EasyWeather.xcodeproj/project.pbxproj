@@ -38,12 +38,16 @@
 		5A898110222EDC1600F1CE62 /* AppLovinRewardedVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A89810F222EDC1600F1CE62 /* AppLovinRewardedVideoController.swift */; };
 		5A9280E9221DA7FC00D43FF3 /* PubNativeMRectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9280E8221DA7FC00D43FF3 /* PubNativeMRectController.swift */; };
 		5A9280EC221EB4DE00D43FF3 /* PubNativeInterstitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9280EB221EB4DE00D43FF3 /* PubNativeInterstitialController.swift */; };
+		5AA496B2222FD9BD00537126 /* AdEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA496B1222FD9BD00537126 /* AdEvent.swift */; };
+		5AA496B4222FDEE700537126 /* AdEventConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA496B3222FDEE700537126 /* AdEventConstants.swift */; };
+		5AA496B6222FE24500537126 /* AdAnalyticsSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA496B5222FE24500537126 /* AdAnalyticsSession.swift */; };
+		5AA496B8222FE27D00537126 /* AdAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA496B7222FE27D00537126 /* AdAnalytics.swift */; };
 		5AAEF8E320A1D88F006C7CD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5AAEF8E220A1D88F006C7CD4 /* GoogleService-Info.plist */; };
 		5ABCE2FB221C5192004F8882 /* AdPlacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABCE2FA221C5192004F8882 /* AdPlacement.swift */; };
 		5ABCE2FD221C53D4004F8882 /* InterstitialPlacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABCE2FC221C53D4004F8882 /* InterstitialPlacement.swift */; };
 		5ABCE2FF221C5639004F8882 /* RewardedVideoPlacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABCE2FE221C5639004F8882 /* RewardedVideoPlacement.swift */; };
 		5ABCE301221C58BD004F8882 /* AdReward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABCE300221C58BD004F8882 /* AdReward.swift */; };
-		5ABCE303221C5A47004F8882 /* AdConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABCE302221C5A47004F8882 /* AdConstants.swift */; };
+		5ABCE303221C5A47004F8882 /* AdNetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABCE302221C5A47004F8882 /* AdNetworkConstants.swift */; };
 		5ABCE305221C5CA8004F8882 /* AdType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABCE304221C5CA8004F8882 /* AdType.swift */; };
 		5ABCE307221C5D84004F8882 /* AdNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABCE306221C5D84004F8882 /* AdNetwork.swift */; };
 		5ABCE309221C6084004F8882 /* BannerPlacementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABCE308221C6084004F8882 /* BannerPlacementFactory.swift */; };
@@ -153,12 +157,16 @@
 		5A89810F222EDC1600F1CE62 /* AppLovinRewardedVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLovinRewardedVideoController.swift; sourceTree = "<group>"; };
 		5A9280E8221DA7FC00D43FF3 /* PubNativeMRectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubNativeMRectController.swift; sourceTree = "<group>"; };
 		5A9280EB221EB4DE00D43FF3 /* PubNativeInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubNativeInterstitialController.swift; sourceTree = "<group>"; };
+		5AA496B1222FD9BD00537126 /* AdEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdEvent.swift; sourceTree = "<group>"; };
+		5AA496B3222FDEE700537126 /* AdEventConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdEventConstants.swift; sourceTree = "<group>"; };
+		5AA496B5222FE24500537126 /* AdAnalyticsSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdAnalyticsSession.swift; sourceTree = "<group>"; };
+		5AA496B7222FE27D00537126 /* AdAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdAnalytics.swift; sourceTree = "<group>"; };
 		5AAEF8E220A1D88F006C7CD4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5ABCE2FA221C5192004F8882 /* AdPlacement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdPlacement.swift; sourceTree = "<group>"; };
 		5ABCE2FC221C53D4004F8882 /* InterstitialPlacement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialPlacement.swift; sourceTree = "<group>"; };
 		5ABCE2FE221C5639004F8882 /* RewardedVideoPlacement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardedVideoPlacement.swift; sourceTree = "<group>"; };
 		5ABCE300221C58BD004F8882 /* AdReward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdReward.swift; sourceTree = "<group>"; };
-		5ABCE302221C5A47004F8882 /* AdConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdConstants.swift; sourceTree = "<group>"; };
+		5ABCE302221C5A47004F8882 /* AdNetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdNetworkConstants.swift; sourceTree = "<group>"; };
 		5ABCE304221C5CA8004F8882 /* AdType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdType.swift; sourceTree = "<group>"; };
 		5ABCE306221C5D84004F8882 /* AdNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdNetwork.swift; sourceTree = "<group>"; };
 		5ABCE308221C6084004F8882 /* BannerPlacementFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerPlacementFactory.swift; sourceTree = "<group>"; };
@@ -311,9 +319,21 @@
 			path = AppLovin;
 			sourceTree = "<group>";
 		};
+		5AA496B0222FD95A00537126 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				5AA496B3222FDEE700537126 /* AdEventConstants.swift */,
+				5AA496B1222FD9BD00537126 /* AdEvent.swift */,
+				5AA496B7222FE27D00537126 /* AdAnalytics.swift */,
+				5AA496B5222FE24500537126 /* AdAnalyticsSession.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
 		5ABCE2F9221C4DB0004F8882 /* Advertising */ = {
 			isa = PBXGroup;
 			children = (
+				5AA496B0222FD95A00537126 /* Analytics */,
 				5ABCE314221D88C4004F8882 /* PubNative */,
 				5A898108222EC6B300F1CE62 /* AppLovin */,
 				5A85B5DB222E7F8000A9D014 /* Fyber */,
@@ -329,7 +349,7 @@
 				5ABCE306221C5D84004F8882 /* AdNetwork.swift */,
 				5ABCE300221C58BD004F8882 /* AdReward.swift */,
 				5ABCE304221C5CA8004F8882 /* AdType.swift */,
-				5ABCE302221C5A47004F8882 /* AdConstants.swift */,
+				5ABCE302221C5A47004F8882 /* AdNetworkConstants.swift */,
 				5ABCE2FA221C5192004F8882 /* AdPlacement.swift */,
 				5ABCE308221C6084004F8882 /* BannerPlacementFactory.swift */,
 				5ABCE30A221C6455004F8882 /* MRectPlacementFactory.swift */,
@@ -754,12 +774,14 @@
 				5ABCE2FF221C5639004F8882 /* RewardedVideoPlacement.swift in Sources */,
 				5AE362CF22244519002D7CB9 /* GoogleAdsManagerRewardedVideoController.swift in Sources */,
 				5AE362CB222432DB002D7CB9 /* GoogleAdsManagerMRectController.swift in Sources */,
+				5AA496B4222FDEE700537126 /* AdEventConstants.swift in Sources */,
 				5A89810C222ECED500F1CE62 /* AppLovinMRectController.swift in Sources */,
 				5AE362C422241A18002D7CB9 /* AdMobInterstitialController.swift in Sources */,
 				5AD53C912227F31400370B75 /* IronSourceRewardedVideoController.swift in Sources */,
 				5A89810A222ECA5500F1CE62 /* AppLovinBannerController.swift in Sources */,
 				E75E4690203B3E8500FF9672 /* ForecastSys.swift in Sources */,
-				5ABCE303221C5A47004F8882 /* AdConstants.swift in Sources */,
+				5ABCE303221C5A47004F8882 /* AdNetworkConstants.swift in Sources */,
+				5AA496B6222FE24500537126 /* AdAnalyticsSession.swift in Sources */,
 				5AE362C6222421CB002D7CB9 /* AdMobRewardedVideoController.swift in Sources */,
 				5A6E23A1222009D30021BADE /* MoPubMRectController.swift in Sources */,
 				E776E9A8203B1D0200101093 /* Country.swift in Sources */,
@@ -792,7 +814,9 @@
 				E75E4686203B3DD800FF9672 /* ForecastItem.swift in Sources */,
 				5A1C83F02229540B00A3C8A3 /* StartAppRewardedVideoController.swift in Sources */,
 				5A6E23A322200E9A0021BADE /* MoPubInterstitialController.swift in Sources */,
+				5AA496B2222FD9BD00537126 /* AdEvent.swift in Sources */,
 				5A9280EC221EB4DE00D43FF3 /* PubNativeInterstitialController.swift in Sources */,
+				5AA496B8222FE27D00537126 /* AdAnalytics.swift in Sources */,
 				5AD53C972228452100370B75 /* StartAppBannerController.swift in Sources */,
 				E75E4694203B3EB800FF9672 /* CurrentCoordinate.swift in Sources */,
 			);
