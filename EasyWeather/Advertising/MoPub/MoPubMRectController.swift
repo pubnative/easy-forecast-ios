@@ -28,7 +28,8 @@ class MoPubMRectController: AdPlacement {
     var mRectAdView: MPAdView!
     var viewController: UIViewController!
     var delegate: AdPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withAdView adView: MPAdView, withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         self.viewController = viewController
@@ -36,6 +37,7 @@ class MoPubMRectController: AdPlacement {
         mRectAdView.delegate = self
         mRectAdView.stopAutomaticallyRefreshingContents()
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .mRect, withAdNetwork: .moPub)
     }
     
     override func adView() -> UIView? {

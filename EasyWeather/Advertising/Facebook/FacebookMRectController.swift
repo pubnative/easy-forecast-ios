@@ -27,12 +27,14 @@ class FacebookMRectController: AdPlacement {
     
     var mRectAdView: FBAdView!
     var delegate: AdPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withAdView adView: FBAdView, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         mRectAdView = adView
         mRectAdView.delegate = self
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .mRect, withAdNetwork: .facebook)
     }
     
     override func adView() -> UIView? {

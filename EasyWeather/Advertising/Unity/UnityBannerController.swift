@@ -27,13 +27,15 @@ class UnityBannerController: AdPlacement {
 
     var bannerAdView: UIView!
     var delegate: AdPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         UnityAdsBanner.destroy()
         UnityAdsBanner.setDelegate(self)
         UnityAdsBanner.setBannerPosition(.center)
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .banner, withAdNetwork: .unity)
     }
     
     override func adView() -> UIView? {

@@ -28,13 +28,15 @@ class FacebookInterstitialController: InterstitialPlacement {
     var interstitial: FBInterstitialAd!
     var viewController: UIViewController!
     var delegate: InterstitialPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withInterstitial interstitial: FBInterstitialAd, withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) {
         super.init()
         self.interstitial = interstitial
         self.interstitial.delegate = self
         self.viewController = viewController
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .interstitial, withAdNetwork: .facebook)
     }
     
     override func loadAd() {

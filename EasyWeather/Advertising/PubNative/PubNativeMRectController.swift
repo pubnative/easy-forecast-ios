@@ -28,11 +28,13 @@ class PubNativeMRectController: AdPlacement {
     var mRectAdView: HyBidMRectAdView!
     var zoneID: String!
     var delegate: AdPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withAdView adView: HyBidMRectAdView, withZoneID zoneID: String, adPlacementDelegate delegate: AdPlacementDelegate) {
         self.mRectAdView = adView
         self.zoneID = zoneID
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .mRect, withAdNetwork: .pubnative)
     }
     
     override func adView() -> UIView? {

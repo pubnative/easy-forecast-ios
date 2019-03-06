@@ -27,10 +27,12 @@ class AppLovinInterstitialController: InterstitialPlacement {
 
     var ad: ALAd?
     var delegate: InterstitialPlacementDelegate?
+    var adAnalyticsSession: AdAnalyticsSession!
 
     init(withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) {
         super.init()
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .interstitial, withAdNetwork: .appLovin)
     }
     
     override func loadAd() {

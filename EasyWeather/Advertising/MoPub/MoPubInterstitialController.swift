@@ -28,6 +28,7 @@ class MoPubInterstitialController: InterstitialPlacement {
     var interstitial: MPInterstitialAdController!
     var viewController: UIViewController!
     var delegate: InterstitialPlacementDelegate?
+    var adAnalyticsSession: AdAnalyticsSession!
 
     init(withInterstitial interstitial: MPInterstitialAdController, withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) {
         super.init()
@@ -35,6 +36,7 @@ class MoPubInterstitialController: InterstitialPlacement {
         self.interstitial.delegate = self
         self.viewController = viewController
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .interstitial, withAdNetwork: .moPub)
     }
     
     override func loadAd() {

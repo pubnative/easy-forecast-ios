@@ -27,12 +27,14 @@ class IronSourceRewardedVideoController: RewardedVideoPlacement {
 
     var viewController: UIViewController!
     var delegate: RewardedVideoPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) {
         super.init()
         IronSource.setRewardedVideoDelegate(self)
         self.viewController = viewController
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .rewardedVideo, withAdNetwork: .ironSource)
     }
     
     override func loadAd() {

@@ -27,12 +27,14 @@ class IronSourceMRectController: AdPlacement {
     var mRectAdView: ISBannerView!
     var viewController: UIViewController!
     var delegate: AdPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         self.viewController = viewController
         self.delegate = delegate
         IronSource.setBannerDelegate(self)
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .mRect, withAdNetwork: .ironSource)
     }
     
     override func adView() -> UIView? {

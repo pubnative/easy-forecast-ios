@@ -28,11 +28,13 @@ class PubNativeBannerController: AdPlacement {
     var bannerAdView: HyBidBannerAdView!
     var zoneID: String!
     var delegate: AdPlacementDelegate?
+    var adAnalyticsSession: AdAnalyticsSession!
     
     init(withAdView adView: HyBidBannerAdView, withZoneID zoneID: String, adPlacementDelegate delegate: AdPlacementDelegate) {
         self.bannerAdView = adView
         self.zoneID = zoneID
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .banner, withAdNetwork: .pubnative)
     }
     
     override func adView() -> UIView? {

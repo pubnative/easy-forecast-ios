@@ -27,7 +27,8 @@ class AdMobMRectController: AdPlacement {
 
     var mRectAdView: GADBannerView!
     var delegate: AdPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withAdView adView: GADBannerView, withAdUnitID adUnitID: String, withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         mRectAdView = adView
@@ -35,6 +36,7 @@ class AdMobMRectController: AdPlacement {
         mRectAdView.delegate = self
         mRectAdView.rootViewController = viewController
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .mRect, withAdNetwork: .admob)
     }
     
     override func adView() -> UIView? {

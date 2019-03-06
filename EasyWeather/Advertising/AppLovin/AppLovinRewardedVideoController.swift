@@ -26,10 +26,12 @@ import AppLovinSDK
 class AppLovinRewardedVideoController: RewardedVideoPlacement {
 
     var delegate: RewardedVideoPlacementDelegate?
+    var adAnalyticsSession: AdAnalyticsSession!
     
     init(withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) {
         super.init()
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .rewardedVideo, withAdNetwork: .appLovin)
     }
     
     override func loadAd() {

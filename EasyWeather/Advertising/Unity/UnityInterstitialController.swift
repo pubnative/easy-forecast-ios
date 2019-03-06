@@ -29,11 +29,13 @@ class UnityInterstitialController: InterstitialPlacement {
     var placementContent: UMONPlacementContent!
     var viewController: UIViewController!
     var delegate: InterstitialPlacementDelegate?
+    var adAnalyticsSession: AdAnalyticsSession!
     
     init(withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) {
         super.init()
         self.viewController = viewController
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .interstitial, withAdNetwork: .unity)
     }
     
     override func loadAd() {

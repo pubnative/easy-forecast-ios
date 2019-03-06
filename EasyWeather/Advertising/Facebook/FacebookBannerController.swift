@@ -27,12 +27,14 @@ class FacebookBannerController: AdPlacement {
 
     var bannerAdView: FBAdView!
     var delegate: AdPlacementDelegate?
+    var adAnalyticsSession: AdAnalyticsSession!
     
     init(withAdView adView: FBAdView, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         bannerAdView = adView
         bannerAdView.delegate = self
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .banner, withAdNetwork: .facebook)
     }
     
     override func adView() -> UIView? {

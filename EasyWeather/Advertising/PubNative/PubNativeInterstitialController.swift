@@ -27,11 +27,13 @@ class PubNativeInterstitialController: InterstitialPlacement {
     
     var interstitial: HyBidInterstitialAd!
     var delegate: InterstitialPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withZoneID zoneID: String, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) {
         super.init()
         interstitial = HyBidInterstitialAd(zoneID: zoneID, andWith: self)
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .interstitial, withAdNetwork: .pubnative)
     }
     
     override func loadAd() {

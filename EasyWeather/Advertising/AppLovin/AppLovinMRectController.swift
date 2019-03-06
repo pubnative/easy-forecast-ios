@@ -27,13 +27,15 @@ class AppLovinMRectController: AdPlacement {
 
     var mRectAdView: ALAdView!
     var delegate: AdPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withAdView adView: ALAdView, adPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         mRectAdView = adView
         mRectAdView.adLoadDelegate = self
         mRectAdView.adDisplayDelegate = self
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .mRect, withAdNetwork: .appLovin)
     }
     
     override func adView() -> UIView? {

@@ -27,6 +27,7 @@ class GoogleAdsManagerBannerController: AdPlacement {
 
     var bannerAdView: DFPBannerView!
     var delegate: AdPlacementDelegate?
+    var adAnalyticsSession: AdAnalyticsSession!
     
     init(withAdView adView: DFPBannerView, withAdUnitID adUnitID: String, withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
@@ -35,6 +36,8 @@ class GoogleAdsManagerBannerController: AdPlacement {
         bannerAdView.delegate = self
         bannerAdView.rootViewController = viewController
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .banner, withAdNetwork: .googleAdsManager)
+
     }
     
     override func adView() -> UIView? {

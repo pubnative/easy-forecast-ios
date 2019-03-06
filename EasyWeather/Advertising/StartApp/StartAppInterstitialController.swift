@@ -26,11 +26,13 @@ class StartAppInterstitialController: InterstitialPlacement {
 
     var interstitial: STAStartAppAd!
     var delegate: InterstitialPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) {
         super.init()
         interstitial = STAStartAppAd()
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .interstitial, withAdNetwork: .startApp)
     }
     
     override func loadAd() {

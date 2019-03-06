@@ -28,7 +28,8 @@ class MoPubBannerController: AdPlacement {
     var bannerAdView: MPAdView!
     var viewController: UIViewController!
     var delegate: AdPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withAdView adView: MPAdView, withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         self.viewController = viewController
@@ -36,6 +37,7 @@ class MoPubBannerController: AdPlacement {
         bannerAdView.delegate = self
         bannerAdView.stopAutomaticallyRefreshingContents()
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .banner, withAdNetwork: .moPub)
     }
     
     override func adView() -> UIView? {

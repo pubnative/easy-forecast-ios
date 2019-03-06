@@ -27,12 +27,14 @@ class GoogleAdsManagerRewardedVideoController: RewardedVideoPlacement {
     
     var viewController: UIViewController!
     var delegate: RewardedVideoPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) {
         super.init()
         GADRewardBasedVideoAd.sharedInstance().delegate = self
         self.viewController = viewController
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .rewardedVideo, withAdNetwork: .googleAdsManager)
     }
     
     override func loadAd() {

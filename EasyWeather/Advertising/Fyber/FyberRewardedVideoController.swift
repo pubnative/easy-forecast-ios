@@ -26,11 +26,13 @@ class FyberRewardedVideoController: RewardedVideoPlacement {
 
     var viewController: UIViewController!
     var delegate: RewardedVideoPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) {
         super.init()
         self.viewController = viewController
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .rewardedVideo, withAdNetwork: .fyber)
     }
     
     override func loadAd() {

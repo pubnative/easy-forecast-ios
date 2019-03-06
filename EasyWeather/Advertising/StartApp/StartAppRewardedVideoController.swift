@@ -26,11 +26,13 @@ class StartAppRewardedVideoController: RewardedVideoPlacement {
 
     var rewardedVideo: STAStartAppAd!
     var delegate: RewardedVideoPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) {
         super.init()
         rewardedVideo = STAStartAppAd()
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .rewardedVideo, withAdNetwork: .startApp)
     }
     
     override func loadAd() {

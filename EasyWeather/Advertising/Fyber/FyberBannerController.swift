@@ -27,11 +27,13 @@ class FyberBannerController: AdPlacement {
     var bannerAdView: HZBannerAd!
     var viewController: UIViewController!
     var delegate: AdPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         self.viewController = viewController
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .banner, withAdNetwork: .fyber)
     }
     
     override func adView() -> UIView? {

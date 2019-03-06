@@ -27,12 +27,14 @@ class IronSourceInterstitialController: InterstitialPlacement {
 
     var viewController: UIViewController!
     var delegate: InterstitialPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) {
         super.init()
         IronSource.setInterstitialDelegate(self)
         self.viewController = viewController
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .interstitial, withAdNetwork: .ironSource)
     }
 
     override func loadAd() {

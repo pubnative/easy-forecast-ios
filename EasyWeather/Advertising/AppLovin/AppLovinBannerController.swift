@@ -27,6 +27,7 @@ class AppLovinBannerController: AdPlacement {
 
     var bannerAdView: ALAdView!
     var delegate: AdPlacementDelegate?
+    var adAnalyticsSession: AdAnalyticsSession!
     
     init(withAdView adView: ALAdView, adPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
@@ -34,6 +35,7 @@ class AppLovinBannerController: AdPlacement {
         bannerAdView.adLoadDelegate = self
         bannerAdView.adDisplayDelegate = self
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .banner, withAdNetwork: .appLovin)
     }
     
     override func adView() -> UIView? {

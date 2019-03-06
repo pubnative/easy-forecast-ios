@@ -28,13 +28,15 @@ class AdMobInterstitialController: InterstitialPlacement {
     var interstitial: GADInterstitial!
     var viewController: UIViewController!
     var delegate: InterstitialPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withInterstitial interstitial: GADInterstitial, withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) {
         super.init()
         self.interstitial = interstitial
         self.interstitial.delegate = self
         self.viewController = viewController
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .interstitial, withAdNetwork: .admob)
     }
     
     override func loadAd() {

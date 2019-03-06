@@ -27,12 +27,14 @@ class MoPubRewardedVideoController: RewardedVideoPlacement {
 
     var viewController: UIViewController!
     var delegate: RewardedVideoPlacementDelegate?
+    var adAnalyticsSession: AdAnalyticsSession!
 
     init(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) {
         super.init()
         MPRewardedVideo.setDelegate(self, forAdUnitId: MOPUB_REWARDED_VIDEO_AD_UNIT_ID)
         self.viewController = viewController
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .rewardedVideo, withAdNetwork: .moPub)
     }
     
     override func loadAd() {
