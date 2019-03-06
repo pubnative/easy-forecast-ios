@@ -39,6 +39,7 @@ class UnityInterstitialController: InterstitialPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         UnityMonetization.initialize(UNITY_GAME_ID, delegate: self, testMode: true)
     }
     

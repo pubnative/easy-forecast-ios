@@ -40,6 +40,7 @@ class MoPubInterstitialController: InterstitialPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         interstitial.loadAd()
     }
     

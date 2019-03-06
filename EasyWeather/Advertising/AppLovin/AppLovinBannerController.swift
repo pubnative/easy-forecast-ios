@@ -43,6 +43,7 @@ class AppLovinBannerController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         bannerAdView.loadNextAd()
     }
 }

@@ -42,6 +42,7 @@ class PubNativeBannerController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         bannerAdView.load(withZoneID: zoneID, andWith: self)
     }
 

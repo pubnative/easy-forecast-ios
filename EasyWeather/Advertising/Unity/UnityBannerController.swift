@@ -43,6 +43,7 @@ class UnityBannerController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         if (UnityAds.isReady(UNITY_BANNER_AD_UNIT_ID)) {
             UnityAdsBanner.load(UNITY_BANNER_AD_UNIT_ID)
         }

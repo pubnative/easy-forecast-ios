@@ -45,6 +45,7 @@ class GoogleAdsManagerBannerController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         bannerAdView.load(DFPRequest())
     }
 }

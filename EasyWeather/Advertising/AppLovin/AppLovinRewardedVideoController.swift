@@ -35,6 +35,7 @@ class AppLovinRewardedVideoController: RewardedVideoPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         ALIncentivizedInterstitialAd.preloadAndNotify(self)
     }
     

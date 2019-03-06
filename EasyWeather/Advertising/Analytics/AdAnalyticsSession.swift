@@ -26,7 +26,7 @@ class AdAnalyticsSession {
     public private (set) var adAnalytics: AdAnalytics
     public private (set) var adType: AdType
     public private (set) var adNetwork: AdNetwork
-    public private (set) var initialTime : Float = 0
+    public private (set) var initialTime : Int = 0
     
     init(withAdType adType: AdType, withAdNetwork adNetwork: AdNetwork) {
         adAnalytics = AdAnalytics.sharedInstance
@@ -35,7 +35,7 @@ class AdAnalyticsSession {
     }
     
     func start() {
-        initialTime = Float(Date().timeIntervalSince1970 * 1000)
+        initialTime = Int(Date().timeIntervalSince1970 * 1000)
         adAnalytics.sendEvent(event: AdEvent(withName: EVENT_START_LOADING, withType: adType, withAdNetworkName: adNetwork, withElapsedTimeInMilliseconds: 0))
     }
 
@@ -127,8 +127,8 @@ class AdAnalyticsSession {
         adAnalytics.sendEvent(event: AdEvent(withName: EVENT_VALIDATION_REQUEST_FAILED, withType: adType, withAdNetworkName: adNetwork, withElapsedTimeInMilliseconds: getElapsedTime()))
     }
     
-    func getElapsedTime() -> Float {
-        return Float(Date().timeIntervalSince1970 * 1000) - initialTime
+    func getElapsedTime() -> Int {
+        return Int(Date().timeIntervalSince1970 * 1000) - initialTime
     }
 
 }

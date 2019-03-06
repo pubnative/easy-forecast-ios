@@ -37,6 +37,7 @@ class PubNativeInterstitialController: InterstitialPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         interstitial.load()
     }
     

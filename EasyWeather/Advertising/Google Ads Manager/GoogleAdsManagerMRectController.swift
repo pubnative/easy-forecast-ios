@@ -44,6 +44,7 @@ class GoogleAdsManagerMRectController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         mRectAdView.load(DFPRequest())
     }
 

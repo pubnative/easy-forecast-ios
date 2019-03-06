@@ -40,6 +40,7 @@ class FacebookInterstitialController: InterstitialPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         interstitial.load()
     }
     

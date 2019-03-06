@@ -43,6 +43,7 @@ class AppLovinMRectController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         mRectAdView.loadNextAd()
     }
 }

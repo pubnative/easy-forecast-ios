@@ -36,6 +36,7 @@ class FyberInterstitialController: InterstitialPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         HZInterstitialAd.fetch { (success, error) in
             if success {
                 HZInterstitialAd.setDelegate(self)

@@ -42,6 +42,7 @@ class IronSourceMRectController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         IronSource.loadBanner(with: viewController, size: ISBannerSize(width: 300, andHeight: 250),  placement: IRONSOURCE_MRECT_AD_UNIT_ID)
     }
 }

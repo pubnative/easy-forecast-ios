@@ -38,6 +38,7 @@ class IronSourceRewardedVideoController: RewardedVideoPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         if isReady() {
             show()
         }

@@ -36,6 +36,7 @@ class AppLovinInterstitialController: InterstitialPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         ad = nil
         guard let sharedInstance = ALSdk.shared() else { return }
         sharedInstance.adService.loadNextAd(ALAdSize.sizeInterstitial(), andNotify: self)

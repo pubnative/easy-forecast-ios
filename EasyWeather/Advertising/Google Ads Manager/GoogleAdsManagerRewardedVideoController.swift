@@ -38,6 +38,7 @@ class GoogleAdsManagerRewardedVideoController: RewardedVideoPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         GADRewardBasedVideoAd.sharedInstance().load(DFPRequest(), withAdUnitID: GOOGLE_ADS_MANAGER_REWARDED_VIDEO_AD_UNIT_ID)
     }
     

@@ -41,6 +41,7 @@ class StartAppBannerController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         
     }
     

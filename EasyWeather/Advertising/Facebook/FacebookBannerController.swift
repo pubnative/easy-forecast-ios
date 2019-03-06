@@ -42,6 +42,7 @@ class FacebookBannerController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         bannerAdView.loadAd()
     }
 }

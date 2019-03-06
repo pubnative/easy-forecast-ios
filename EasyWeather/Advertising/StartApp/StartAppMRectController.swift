@@ -40,6 +40,7 @@ class StartAppMRectController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         
     }
 }

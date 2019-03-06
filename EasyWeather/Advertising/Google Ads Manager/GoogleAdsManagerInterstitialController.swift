@@ -40,6 +40,7 @@ class GoogleAdsManagerInterstitialController: InterstitialPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         interstitial.load(DFPRequest())
     }
     

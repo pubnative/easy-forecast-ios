@@ -45,6 +45,7 @@ class MoPubBannerController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         bannerAdView.loadAd()
     }
 }

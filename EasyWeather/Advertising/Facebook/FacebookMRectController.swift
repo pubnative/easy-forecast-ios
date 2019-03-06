@@ -42,6 +42,7 @@ class FacebookMRectController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         mRectAdView.loadAd()
     }
 }

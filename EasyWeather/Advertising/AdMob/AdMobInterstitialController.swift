@@ -40,6 +40,7 @@ class AdMobInterstitialController: InterstitialPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         interstitial.load(GADRequest())
     }
     

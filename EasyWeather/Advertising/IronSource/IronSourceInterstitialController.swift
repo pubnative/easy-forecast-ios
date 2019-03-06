@@ -38,6 +38,7 @@ class IronSourceInterstitialController: InterstitialPlacement {
     }
 
     override func loadAd() {
+        adAnalyticsSession.start()
         IronSource.loadInterstitial()
     }
     

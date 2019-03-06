@@ -27,9 +27,9 @@ class AdEvent {
      public private (set) var name: String
      public private (set) var type: String
      public private (set) var adNetworkName: String
-     public private (set) var elapsedTimeInMilliseconds : Float
+     public private (set) var elapsedTimeInMilliseconds : Int
     
-    init(withName name: String, withType type: AdType, withAdNetworkName adNetworkName: AdNetwork, withElapsedTimeInMilliseconds elapsedTimeInMilliseconds: Float) {
+    init(withName name: String, withType type: AdType, withAdNetworkName adNetworkName: AdNetwork, withElapsedTimeInMilliseconds elapsedTimeInMilliseconds: Int) {
         self.name = name
         self.type = type.rawValue
         self.adNetworkName = adNetworkName.rawValue

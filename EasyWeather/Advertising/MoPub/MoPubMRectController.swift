@@ -45,6 +45,7 @@ class MoPubMRectController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         mRectAdView.loadAd()
     }
 }

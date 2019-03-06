@@ -36,6 +36,7 @@ class StartAppRewardedVideoController: RewardedVideoPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         rewardedVideo.loadRewardedVideoAd(withDelegate: self)
     }
     

@@ -41,6 +41,7 @@ class FyberBannerController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         let bannerOptions = HZBannerAdOptions()
         bannerOptions.presentingViewController = viewController
         HZBannerAd.requestBanner(with: bannerOptions, success: { (bannerAdView) in

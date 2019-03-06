@@ -42,6 +42,7 @@ class PubNativeMRectController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         mRectAdView.load(withZoneID: zoneID, andWith: self)
     }
 }

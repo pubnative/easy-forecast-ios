@@ -38,6 +38,7 @@ class MoPubRewardedVideoController: RewardedVideoPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         MPRewardedVideo.loadAd(withAdUnitID: MOPUB_REWARDED_VIDEO_AD_UNIT_ID, withMediationSettings: nil)
     }
     

@@ -36,6 +36,7 @@ class StartAppInterstitialController: InterstitialPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         interstitial.load(withDelegate: self)
     }
     

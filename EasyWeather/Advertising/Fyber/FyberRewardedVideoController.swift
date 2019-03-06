@@ -36,6 +36,7 @@ class FyberRewardedVideoController: RewardedVideoPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         HZIncentivizedAd.fetch { (success, error) in
             if success {
                 HZIncentivizedAd.setDelegate(self)

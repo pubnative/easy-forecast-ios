@@ -38,6 +38,7 @@ class AdMobRewardedVideoController: RewardedVideoPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         GADRewardBasedVideoAd.sharedInstance().load(GADRequest(), withAdUnitID: ADMOB_REWARDED_VIDEO_AD_UNIT_ID)
     }
     

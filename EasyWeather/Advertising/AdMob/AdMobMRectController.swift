@@ -44,6 +44,7 @@ class AdMobMRectController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         mRectAdView.load(GADRequest())
     }
 }

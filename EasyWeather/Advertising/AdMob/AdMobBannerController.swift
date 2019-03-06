@@ -44,6 +44,7 @@ class AdMobBannerController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         bannerAdView.load(GADRequest())
     }
 }
