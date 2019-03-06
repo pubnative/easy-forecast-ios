@@ -60,7 +60,7 @@ class InterstitialPlacementFactory {
     }
     
     fileprivate func createAppLovinPlacement(withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {
-        return InterstitialPlacement()
+        return AppLovinInterstitialController(withInterstitialPlacementDelegate: delegate)
     }
     
     fileprivate func createIronSourcePlacement(withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {

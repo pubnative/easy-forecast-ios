@@ -19,6 +19,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //
+
 import UIKit
 
 class FyberRewardedVideoController: RewardedVideoPlacement {
@@ -81,7 +82,8 @@ extension FyberRewardedVideoController: HZIncentivizedAdDelegate {
     
     func didClickAd(withTag tag: String!) {
         guard let delegate = self.delegate else { return }
-        delegate.rewardedVideoPlacementDidTrackClick()    }
+        delegate.rewardedVideoPlacementDidTrackClick()
+    }
     
     func didHideAd(withTag tag: String!) {
         guard let delegate = self.delegate else { return }
