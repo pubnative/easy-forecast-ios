@@ -32,6 +32,10 @@
 		5A85B5DD222E815500A9D014 /* FyberBannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85B5DC222E815500A9D014 /* FyberBannerController.swift */; };
 		5A85B5DF222E903700A9D014 /* FyberInterstitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85B5DE222E903700A9D014 /* FyberInterstitialController.swift */; };
 		5A85B5E1222EAA5E00A9D014 /* FyberRewardedVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85B5E0222EAA5E00A9D014 /* FyberRewardedVideoController.swift */; };
+		5A89810A222ECA5500F1CE62 /* AppLovinBannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A898109222ECA5500F1CE62 /* AppLovinBannerController.swift */; };
+		5A89810C222ECED500F1CE62 /* AppLovinMRectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A89810B222ECED500F1CE62 /* AppLovinMRectController.swift */; };
+		5A89810E222ED29B00F1CE62 /* AppLovinInterstitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A89810D222ED29B00F1CE62 /* AppLovinInterstitialController.swift */; };
+		5A898110222EDC1600F1CE62 /* AppLovinRewardedVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A89810F222EDC1600F1CE62 /* AppLovinRewardedVideoController.swift */; };
 		5A9280E9221DA7FC00D43FF3 /* PubNativeMRectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9280E8221DA7FC00D43FF3 /* PubNativeMRectController.swift */; };
 		5A9280EC221EB4DE00D43FF3 /* PubNativeInterstitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9280EB221EB4DE00D43FF3 /* PubNativeInterstitialController.swift */; };
 		5AAEF8E320A1D88F006C7CD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5AAEF8E220A1D88F006C7CD4 /* GoogleService-Info.plist */; };
@@ -143,6 +147,10 @@
 		5A85B5DC222E815500A9D014 /* FyberBannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FyberBannerController.swift; sourceTree = "<group>"; };
 		5A85B5DE222E903700A9D014 /* FyberInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FyberInterstitialController.swift; sourceTree = "<group>"; };
 		5A85B5E0222EAA5E00A9D014 /* FyberRewardedVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FyberRewardedVideoController.swift; sourceTree = "<group>"; };
+		5A898109222ECA5500F1CE62 /* AppLovinBannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLovinBannerController.swift; sourceTree = "<group>"; };
+		5A89810B222ECED500F1CE62 /* AppLovinMRectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLovinMRectController.swift; sourceTree = "<group>"; };
+		5A89810D222ED29B00F1CE62 /* AppLovinInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLovinInterstitialController.swift; sourceTree = "<group>"; };
+		5A89810F222EDC1600F1CE62 /* AppLovinRewardedVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLovinRewardedVideoController.swift; sourceTree = "<group>"; };
 		5A9280E8221DA7FC00D43FF3 /* PubNativeMRectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubNativeMRectController.swift; sourceTree = "<group>"; };
 		5A9280EB221EB4DE00D43FF3 /* PubNativeInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubNativeInterstitialController.swift; sourceTree = "<group>"; };
 		5AAEF8E220A1D88F006C7CD4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -292,10 +300,22 @@
 			path = Fyber;
 			sourceTree = "<group>";
 		};
+		5A898108222EC6B300F1CE62 /* AppLovin */ = {
+			isa = PBXGroup;
+			children = (
+				5A898109222ECA5500F1CE62 /* AppLovinBannerController.swift */,
+				5A89810B222ECED500F1CE62 /* AppLovinMRectController.swift */,
+				5A89810D222ED29B00F1CE62 /* AppLovinInterstitialController.swift */,
+				5A89810F222EDC1600F1CE62 /* AppLovinRewardedVideoController.swift */,
+			);
+			path = AppLovin;
+			sourceTree = "<group>";
+		};
 		5ABCE2F9221C4DB0004F8882 /* Advertising */ = {
 			isa = PBXGroup;
 			children = (
 				5ABCE314221D88C4004F8882 /* PubNative */,
+				5A898108222EC6B300F1CE62 /* AppLovin */,
 				5A85B5DB222E7F8000A9D014 /* Fyber */,
 				5AD53C8B2226EE2000370B75 /* IronSource */,
 				5AF3A1A52225467F0010ED34 /* Facebook */,
@@ -695,6 +715,7 @@
 				5A6C89A622258C0000DA43C5 /* UnityBannerController.swift in Sources */,
 				5AD53C8D2226EE5900370B75 /* IronSourceBannerController.swift in Sources */,
 				E75E4684203B3DC600FF9672 /* ForecastCoordinate.swift in Sources */,
+				5A898110222EDC1600F1CE62 /* AppLovinRewardedVideoController.swift in Sources */,
 				5A5F778A2214214200E13EF7 /* CurrentDayWeatherDetailViewController.swift in Sources */,
 				E75E4688203B3DF100FF9672 /* ForecastMain.swift in Sources */,
 				5A4CDA0A2211998200217E5F /* ForecastDetailCell.swift in Sources */,
@@ -733,8 +754,10 @@
 				5ABCE2FF221C5639004F8882 /* RewardedVideoPlacement.swift in Sources */,
 				5AE362CF22244519002D7CB9 /* GoogleAdsManagerRewardedVideoController.swift in Sources */,
 				5AE362CB222432DB002D7CB9 /* GoogleAdsManagerMRectController.swift in Sources */,
+				5A89810C222ECED500F1CE62 /* AppLovinMRectController.swift in Sources */,
 				5AE362C422241A18002D7CB9 /* AdMobInterstitialController.swift in Sources */,
 				5AD53C912227F31400370B75 /* IronSourceRewardedVideoController.swift in Sources */,
+				5A89810A222ECA5500F1CE62 /* AppLovinBannerController.swift in Sources */,
 				E75E4690203B3E8500FF9672 /* ForecastSys.swift in Sources */,
 				5ABCE303221C5A47004F8882 /* AdConstants.swift in Sources */,
 				5AE362C6222421CB002D7CB9 /* AdMobRewardedVideoController.swift in Sources */,
@@ -761,6 +784,7 @@
 				5AD53C8F2226F5BD00370B75 /* IronSourceInterstitialController.swift in Sources */,
 				5ABCE307221C5D84004F8882 /* AdNetwork.swift in Sources */,
 				E7566C36203C3A8C00487557 /* ForecastUpdateDelegate.swift in Sources */,
+				5A89810E222ED29B00F1CE62 /* AppLovinInterstitialController.swift in Sources */,
 				5ACDB1B22209DAE700E13AAD /* DateExtension.swift in Sources */,
 				E7CC276C203AF265006A95B9 /* AppDelegate.swift in Sources */,
 				5ABCE309221C6084004F8882 /* BannerPlacementFactory.swift in Sources */,

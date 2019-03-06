@@ -17,4 +17,5 @@ target 'EasyWeather' do
   pod 'IronSourceSDK'
   pod 'StartAppSDK'
   pod 'Heyzap'
+  pod 'AppLovinSDK'
 end

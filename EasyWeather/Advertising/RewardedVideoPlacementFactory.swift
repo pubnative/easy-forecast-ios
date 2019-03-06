@@ -22,6 +22,7 @@
 
 import Foundation
 import MoPub
+import AppLovinSDK
 
 class RewardedVideoPlacementFactory {
     
@@ -57,7 +58,7 @@ class RewardedVideoPlacementFactory {
     }
     
     fileprivate func createAppLovinPlacement(withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {
-        return RewardedVideoPlacement()
+        return AppLovinRewardedVideoController(withRewardedVideoPlacementDelegate: delegate)
     }
     
     fileprivate func createIronSourcePlacement(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {

@@ -30,6 +30,7 @@ import MoPub
 import GoogleMobileAds
 import AdSupport.ASIdentifierManager
 import UnityAds
+import AppLovinSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -69,6 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         HeyzapAds.start(withPublisherID: FYBER_PUBLISHER_ID)
+        ALSdk.initializeSdk()
         
         return true
     }

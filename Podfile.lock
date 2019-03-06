@@ -3,6 +3,7 @@ PODS:
   - AlamofireObjectMapper (5.1.0):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 3.3)
+  - AppLovinSDK (6.1.4)
   - Crashlytics (3.10.9):
     - Fabric (~> 1.7.13)
   - Fabric (1.7.13)
@@ -77,6 +78,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.6)
   - AlamofireObjectMapper (~> 5.0)
+  - AppLovinSDK
   - Crashlytics
   - Fabric
   - FBAudienceNetwork
@@ -92,6 +94,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireObjectMapper
+    - AppLovinSDK
     - Crashlytics
     - Fabric
     - FBAudienceNetwork
@@ -113,6 +116,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
+  AppLovinSDK: 04a13a974acfcf68244e801d40a9c00ce0783fcd
   Crashlytics: 55e24fc23989680285a21cb1146578d9d18e432c
   Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
   FBAudienceNetwork: 95efd4f20dc44f97254dbd3dfe5a4d19164092a8
@@ -131,6 +135,6 @@ SPEC CHECKSUMS:
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   StartAppSDK: 3fb176fc63dcf8cfad09796f2f2a1299224736d5
 
-PODFILE CHECKSUM: 899f8ef58e5bd57ac57a08028287a3461e5e1549
+PODFILE CHECKSUM: 5316043b2a08019f010cbfa5a5b68e2ab0b2abc5
 
 COCOAPODS: 1.5.2
