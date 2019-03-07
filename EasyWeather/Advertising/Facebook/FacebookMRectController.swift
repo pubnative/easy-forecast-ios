@@ -50,16 +50,19 @@ class FacebookMRectController: AdPlacement {
 extension FacebookMRectController: FBAdViewDelegate {
     
     func adViewDidLoad(_ adView: FBAdView) {
+        adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidLoad()
     }
     
     func adView(_ adView: FBAdView, didFailWithError error: Error) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidFail(withError: error)
     }
     
     func adViewDidClick(_ adView: FBAdView) {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackClick()
     }
@@ -69,6 +72,7 @@ extension FacebookMRectController: FBAdViewDelegate {
     }
     
     func adViewWillLogImpression(_ adView: FBAdView) {
+        adAnalyticsSession.confirmImpression()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackImpression()
     }
