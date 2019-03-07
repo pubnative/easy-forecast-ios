@@ -45,6 +45,7 @@ class MoPubInterstitialController: InterstitialPlacement {
     }
     
     override func show() {
+        adAnalyticsSession.confirmInterstitialShow()
         interstitial.show(from: viewController)
     }
     
@@ -60,29 +61,35 @@ class MoPubInterstitialController: InterstitialPlacement {
 extension MoPubInterstitialController: MPInterstitialAdControllerDelegate {
     
     func interstitialDidLoadAd(_ interstitial: MPInterstitialAdController!) {
+        adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidLoad()
     }
     
     func interstitialDidFail(toLoadAd interstitial: MPInterstitialAdController!, withError error: Error!) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidFail(withError: error)
 
     }
     
     func interstitialDidAppear(_ interstitial: MPInterstitialAdController!) {
+        adAnalyticsSession.confirmImpression()
+        adAnalyticsSession.confirmInterstitialShown()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidTrackImpression()
         delegate.interstitialPlacementDidShow()
     }
     
     func interstitialDidDisappear(_ interstitial: MPInterstitialAdController!) {
+        adAnalyticsSession.confirmInterstitialDismissed()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidDismissed()
 
     }
     
     func interstitialDidReceiveTapEvent(_ interstitial: MPInterstitialAdController!) {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidTrackClick()
     }
