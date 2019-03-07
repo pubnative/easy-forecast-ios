@@ -50,31 +50,34 @@ class IronSourceMRectController: AdPlacement {
 extension IronSourceMRectController: ISBannerDelegate {
     
     func bannerDidLoad(_ bannerView: ISBannerView!) {
+        adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         mRectAdView = bannerView
         delegate.adPlacementDidLoad()
     }
     
     func bannerDidFailToLoadWithError(_ error: Error!) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidFail(withError: error)
     }
     
     func didClickBanner() {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackClick()
     }
     
     func bannerWillPresentScreen() {
-        
+        adAnalyticsSession.confirmOpened()
     }
     
     func bannerDidDismissScreen() {
-        
+        adAnalyticsSession.confirmClosed()
     }
     
     func bannerWillLeaveApplication() {
-        
+        adAnalyticsSession.confirmLeftApplication()
     }
     
 }

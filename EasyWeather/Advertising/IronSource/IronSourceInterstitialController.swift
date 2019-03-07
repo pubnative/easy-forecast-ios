@@ -43,6 +43,7 @@ class IronSourceInterstitialController: InterstitialPlacement {
     }
     
     override func show() {
+        adAnalyticsSession.confirmInterstitialShow()
         IronSource.showInterstitial(with: viewController, placement: IRONSOURCE_INTERSTITIAL_AD_UNIT_ID)
     }
     
@@ -58,36 +59,43 @@ class IronSourceInterstitialController: InterstitialPlacement {
 extension IronSourceInterstitialController: ISInterstitialDelegate {
     
     func interstitialDidLoad() {
+        adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidLoad()
     }
     
     func interstitialDidFailToLoadWithError(_ error: Error!) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidFail(withError: error)
     }
     
     func interstitialDidOpen() {
-        
+        adAnalyticsSession.confirmOpened()
     }
     
     func interstitialDidClose() {
+        adAnalyticsSession.confirmInterstitialDismissed()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidDismissed()
     }
     
     func interstitialDidShow() {
+        adAnalyticsSession.confirmImpression()
+        adAnalyticsSession.confirmInterstitialShown()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidTrackImpression()
         delegate.interstitialPlacementDidShow()
     }
     
     func interstitialDidFailToShowWithError(_ error: Error!) {
+        adAnalyticsSession.confirmInterstitialShowError()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidFail(withError: error)
     }
     
     func didClickInterstitial() {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidTrackClick()
     }
