@@ -48,18 +48,21 @@ class StartAppMRectController: AdPlacement {
 extension StartAppMRectController: STABannerDelegateProtocol {
     
     func didDisplayBannerAd(_ banner: STABannerView!) {
-        // Loads new ad when user clicks every time
+        adAnalyticsSession.confirmLoaded()
+        adAnalyticsSession.confirmImpression()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidLoad()
         delegate.adPlacementDidTrackImpression()
     }
     
     func failedLoadBannerAd(_ banner: STABannerView!, withError error: Error!) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidFail(withError: error)
     }
     
     func didClickBannerAd(_ banner: STABannerView!) {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackClick()
     }

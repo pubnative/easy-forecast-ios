@@ -50,17 +50,21 @@ class StartAppBannerController: AdPlacement {
 extension StartAppBannerController: STABannerDelegateProtocol {
     
     func didDisplayBannerAd(_ banner: STABannerView!) {
+        adAnalyticsSession.confirmLoaded()
+        adAnalyticsSession.confirmImpression()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidLoad()
         delegate.adPlacementDidTrackImpression()
     }
     
     func failedLoadBannerAd(_ banner: STABannerView!, withError error: Error!) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidFail(withError: error)
     }
     
     func didClickBannerAd(_ banner: STABannerView!) {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackClick()
     }
