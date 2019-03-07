@@ -42,6 +42,7 @@ class PubNativeInterstitialController: InterstitialPlacement {
     }
     
     override func show() {
+        adAnalyticsSession.confirmInterstitialShow()
         interstitial.show()
     }
     
@@ -58,27 +59,33 @@ class PubNativeInterstitialController: InterstitialPlacement {
 extension PubNativeInterstitialController: HyBidInterstitialAdDelegate {
     
     func interstitialDidLoad() {
+        adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidLoad()
     }
     
     func interstitialDidFailWithError(_ error: Error!) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidFail(withError: error)
     }
     
     func interstitialDidTrackImpression() {
+        adAnalyticsSession.confirmImpression()
+        adAnalyticsSession.confirmInterstitialShown()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidTrackImpression()
         delegate.interstitialPlacementDidShow()
     }
     
     func interstitialDidTrackClick() {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidTrackClick()
     }
     
     func interstitialDidDismiss() {
+        adAnalyticsSession.confirmInterstitialDismissed()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidDismissed()
     }
