@@ -43,6 +43,7 @@ class AdMobRewardedVideoController: RewardedVideoPlacement {
     }
     
     override func show() {
+        adAnalyticsSession.confirmInterstitialShow()
         GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: viewController)
     }
     
@@ -59,41 +60,51 @@ class AdMobRewardedVideoController: RewardedVideoPlacement {
 extension AdMobRewardedVideoController: GADRewardBasedVideoAdDelegate {
     
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
+        adAnalyticsSession.confirmReward()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidReward(withReward: AdReward(withName: reward.type, withAmount: reward.amount as! Int))
     }
     
     func rewardBasedVideoAdDidReceive(_ rewardBasedVideoAd:GADRewardBasedVideoAd) {
+        adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidLoad()
     }
     
     func rewardBasedVideoAdDidOpen(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        adAnalyticsSession.confirmImpression()
+        adAnalyticsSession.confirmInterstitialShown()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidOpen()
     }
     
     func rewardBasedVideoAdDidStartPlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        adAnalyticsSession.confirmVideoStarted()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidStart()
     }
     
     func rewardBasedVideoAdDidCompletePlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        adAnalyticsSession.confirmVideoFinished()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidFinish()
     }
     
     func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        adAnalyticsSession.confirmInterstitialDismissed()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidClose()
     }
     
     func rewardBasedVideoAdWillLeaveApplication(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        adAnalyticsSession.confirmClick()
+        adAnalyticsSession.confirmLeftApplication()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidTrackClick()
     }
     
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didFailToLoadWithError error: Error) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidFail(withError: error)
     }
