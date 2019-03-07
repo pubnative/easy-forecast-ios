@@ -26,6 +26,7 @@ class StartAppMRectController: AdPlacement {
     var mRectAdView: STABannerView!
     var delegate: AdPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
+    var isShown = false
 
     init(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
@@ -48,11 +49,17 @@ class StartAppMRectController: AdPlacement {
 extension StartAppMRectController: STABannerDelegateProtocol {
     
     func didDisplayBannerAd(_ banner: STABannerView!) {
-        adAnalyticsSession.confirmLoaded()
-        adAnalyticsSession.confirmImpression()
-        guard let delegate = self.delegate else { return }
-        delegate.adPlacementDidLoad()
-        delegate.adPlacementDidTrackImpression()
+        if isShown {
+            guard let delegate = self.delegate else { return }
+            delegate.adPlacementDidTrackClick()
+        } else {
+            isShown = true
+            adAnalyticsSession.confirmLoaded()
+            adAnalyticsSession.confirmImpression()
+            guard let delegate = self.delegate else { return }
+            delegate.adPlacementDidLoad()
+            delegate.adPlacementDidTrackImpression()
+        }
     }
     
     func failedLoadBannerAd(_ banner: STABannerView!, withError error: Error!) {
