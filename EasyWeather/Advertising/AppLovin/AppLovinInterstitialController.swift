@@ -43,6 +43,7 @@ class AppLovinInterstitialController: InterstitialPlacement {
     }
     
     override func show() {
+        adAnalyticsSession.confirmInterstitialShow()
         guard let ad = ad else { return }
         ALInterstitialAd.shared().adDisplayDelegate = self
         ALInterstitialAd.shared().adVideoPlaybackDelegate = self
@@ -71,29 +72,35 @@ extension AppLovinInterstitialController: ALAdLoadDelegate, ALAdDisplayDelegate,
     
     
     func adService(_ adService: ALAdService, didLoad ad: ALAd) {
+        adAnalyticsSession.confirmLoaded()
         self.ad = ad
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidLoad()
     }
     
     func adService(_ adService: ALAdService, didFailToLoadAdWithError code: Int32) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         let error = NSError(domain: "EasyForecast", code: 0, userInfo: [NSLocalizedDescriptionKey : "AppLovin Interstitial did fail to load"])
         delegate.interstitialPlacementDidFail(withError: error)
     }
     
     func ad(_ ad: ALAd, wasDisplayedIn view: UIView) {
+        adAnalyticsSession.confirmImpression()
+        adAnalyticsSession.confirmInterstitialShown()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidShow()
         delegate.interstitialPlacementDidTrackImpression()
     }
     
     func ad(_ ad: ALAd, wasHiddenIn view: UIView) {
+        adAnalyticsSession.confirmInterstitialDismissed()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidDismissed()
     }
     
     func ad(_ ad: ALAd, wasClickedIn view: UIView) {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidTrackClick()
     }

@@ -51,6 +51,7 @@ class AppLovinMRectController: AdPlacement {
 extension AppLovinMRectController: ALAdLoadDelegate, ALAdDisplayDelegate {
     
     func ad(_ ad: ALAd, wasDisplayedIn view: UIView) {
+        adAnalyticsSession.confirmImpression()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackImpression()
     }
@@ -60,17 +61,20 @@ extension AppLovinMRectController: ALAdLoadDelegate, ALAdDisplayDelegate {
     }
     
     func ad(_ ad: ALAd, wasClickedIn view: UIView) {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackClick()
     }
     
     
     func adService(_ adService: ALAdService, didLoad ad: ALAd) {
+        adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidLoad()
     }
     
     func adService(_ adService: ALAdService, didFailToLoadAdWithError code: Int32) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         let error = NSError(domain: "EasyForecast", code: 0, userInfo: [NSLocalizedDescriptionKey : "AppLovin MRect did fail to load"])
         delegate.adPlacementDidFail(withError: error)
