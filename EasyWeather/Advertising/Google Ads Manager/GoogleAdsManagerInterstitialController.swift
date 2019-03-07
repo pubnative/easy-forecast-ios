@@ -45,6 +45,7 @@ class GoogleAdsManagerInterstitialController: InterstitialPlacement {
     }
     
     override func show() {
+        adAnalyticsSession.confirmInterstitialShow()
         interstitial.present(fromRootViewController: viewController)
     }
     
@@ -60,16 +61,20 @@ class GoogleAdsManagerInterstitialController: InterstitialPlacement {
 extension GoogleAdsManagerInterstitialController: GADInterstitialDelegate {
     
     func interstitialDidReceiveAd(_ ad: GADInterstitial) {
+        adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidLoad()
     }
     
     func interstitial(_ ad: GADInterstitial, didFailToReceiveAdWithError error: GADRequestError) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidFail(withError: error)
     }
     
     func interstitialWillPresentScreen(_ ad: GADInterstitial) {
+        adAnalyticsSession.confirmImpression()
+        adAnalyticsSession.confirmInterstitialShown()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidTrackImpression()
         delegate.interstitialPlacementDidShow()
@@ -80,11 +85,14 @@ extension GoogleAdsManagerInterstitialController: GADInterstitialDelegate {
     }
     
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+        adAnalyticsSession.confirmInterstitialDismissed()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidDismissed()
     }
     
     func interstitialWillLeaveApplication(_ ad: GADInterstitial) {
+        adAnalyticsSession.confirmClick()
+        adAnalyticsSession.confirmLeftApplication()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidTrackClick()
     }
