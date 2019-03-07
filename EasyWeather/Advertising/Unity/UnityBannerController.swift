@@ -53,12 +53,14 @@ class UnityBannerController: AdPlacement {
 extension UnityBannerController: UnityAdsBannerDelegate {
     
     func unityAdsBannerDidLoad(_ placementId: String, view: UIView) {
+        adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         bannerAdView = view
         delegate.adPlacementDidLoad()
     }
     
     func unityAdsBannerDidError(_ message: String) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         let error = NSError(domain: "EasyForecast", code: 0, userInfo: [NSLocalizedDescriptionKey : message])
         delegate.adPlacementDidFail(withError: error)
@@ -70,6 +72,7 @@ extension UnityBannerController: UnityAdsBannerDelegate {
     
     func unityAdsBannerDidShow(_ placementId: String) {
         //Called everytime?
+        adAnalyticsSession.confirmImpression()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackImpression()
     }
@@ -78,6 +81,7 @@ extension UnityBannerController: UnityAdsBannerDelegate {
     }
     
     func unityAdsBannerDidClick(_ placementId: String) {
+        adAnalyticsSession.confirmClick()
         UnityAdsBanner.destroy()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackClick()

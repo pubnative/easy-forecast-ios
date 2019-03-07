@@ -45,6 +45,7 @@ class UnityInterstitialController: InterstitialPlacement {
     
     override func show() {
         if (placementContent.type == "SHOW_AD") {
+            adAnalyticsSession.confirmInterstitialShow()
             let showAdPlacementContent = placementContent as! UMONShowAdPlacementContent
             showAdPlacementContent.show(viewController, with: self)
         }
@@ -65,6 +66,7 @@ extension UnityInterstitialController: UnityMonetizationDelegate {
     func placementContentReady(_ placementId: String, placementContent decision: UMONPlacementContent) {
         guard let delegate = self.delegate else { return }
         if (placementId == UNITY_INTERSTITIAL_AD_UNIT_ID) {
+            adAnalyticsSession.confirmLoaded()
             placementContent = decision
             delegate.interstitialPlacementDidLoad()
         }
@@ -77,6 +79,7 @@ extension UnityInterstitialController: UnityMonetizationDelegate {
     }
     
     func unityServicesDidError(_ error: UnityServicesError, withMessage message: String) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         let error = NSError(domain: "EasyForecast", code: 0, userInfo: [NSLocalizedDescriptionKey : message])
         delegate.interstitialPlacementDidFail(withError: error)
@@ -87,12 +90,15 @@ extension UnityInterstitialController: UnityMonetizationDelegate {
 extension UnityInterstitialController: UMONShowAdDelegate {
     
     func unityAdsDidStart(_ placementId: String!) {
+        adAnalyticsSession.confirmImpression()
+        adAnalyticsSession.confirmInterstitialShown()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidTrackImpression()
         delegate.interstitialPlacementDidShow()
     }
     
     func unityAdsDidFinish(_ placementId: String!, with finishState: UnityAdsFinishState) {
+        adAnalyticsSession.confirmInterstitialDismissed()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidDismissed()
     }
