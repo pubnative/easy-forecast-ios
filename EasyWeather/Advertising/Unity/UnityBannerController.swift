@@ -28,6 +28,7 @@ class UnityBannerController: AdPlacement {
     var bannerAdView: UIView!
     var delegate: AdPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
+    var isShown = false
 
     init(withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
@@ -71,13 +72,16 @@ extension UnityBannerController: UnityAdsBannerDelegate {
     }
     
     func unityAdsBannerDidShow(_ placementId: String) {
-        //Called everytime?
-        adAnalyticsSession.confirmImpression()
-        guard let delegate = self.delegate else { return }
-        delegate.adPlacementDidTrackImpression()
+        if !isShown {
+            isShown = true
+            adAnalyticsSession.confirmImpression()
+            guard let delegate = self.delegate else { return }
+            delegate.adPlacementDidTrackImpression()
+        }
     }
     
     func unityAdsBannerDidHide(_ placementId: String) {
+        
     }
     
     func unityAdsBannerDidClick(_ placementId: String) {

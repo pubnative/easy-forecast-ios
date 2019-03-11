@@ -26,13 +26,14 @@ import UnityAds
 
 class UnityInterstitialController: InterstitialPlacement {
     
-    var placementContent: UMONPlacementContent!
     var viewController: UIViewController!
     var delegate: InterstitialPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
-    
+    var isShown = false
+
     init(withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) {
         super.init()
+        UnityAds.setDelegate(self)
         self.viewController = viewController
         self.delegate = delegate
         adAnalyticsSession = AdAnalyticsSession(withAdType: .interstitial, withAdNetwork: .unity)
@@ -40,19 +41,20 @@ class UnityInterstitialController: InterstitialPlacement {
     
     override func loadAd() {
         adAnalyticsSession.start()
-        UnityMonetization.initialize(UNITY_GAME_ID, delegate: self, testMode: true)
-    }
-    
-    override func show() {
-        if (placementContent.type == "SHOW_AD") {
-            adAnalyticsSession.confirmInterstitialShow()
-            let showAdPlacementContent = placementContent as! UMONShowAdPlacementContent
-            showAdPlacementContent.show(viewController, with: self)
+        if (UnityAds.isReady(UNITY_INTERSTITIAL_AD_UNIT_ID)) {
+            unityAdsReady(UNITY_INTERSTITIAL_AD_UNIT_ID)
+        } else {
+            unityAdsDidError(UnityAdsError(rawValue: 0)!, withMessage: "Error when loading the ad")
         }
     }
     
+    override func show() {
+        adAnalyticsSession.confirmInterstitialShow()
+        UnityAds.show(viewController, placementId: UNITY_INTERSTITIAL_AD_UNIT_ID)
+    }
+    
     override func isReady() -> Bool {
-        return placementContent.isReady
+        return UnityAds.isReady(UNITY_INTERSTITIAL_AD_UNIT_ID)
     }
     
     override func cleanUp() {
@@ -61,35 +63,27 @@ class UnityInterstitialController: InterstitialPlacement {
     
 }
 
-extension UnityInterstitialController: UnityMonetizationDelegate {
+extension UnityInterstitialController: UnityAdsDelegate {
     
-    func placementContentReady(_ placementId: String, placementContent decision: UMONPlacementContent) {
-        guard let delegate = self.delegate else { return }
-        if (placementId == UNITY_INTERSTITIAL_AD_UNIT_ID) {
-            adAnalyticsSession.confirmLoaded()
-            placementContent = decision
-            delegate.interstitialPlacementDidLoad()
+    func unityAdsReady(_ placementId: String) {
+        if !isShown {
+            isShown = true
+            guard let delegate = self.delegate else { return }
+            if (placementId == UNITY_INTERSTITIAL_AD_UNIT_ID) {
+                adAnalyticsSession.confirmLoaded()
+                delegate.interstitialPlacementDidLoad()
+            }
         }
     }
     
-    func placementContentStateDidChange(_ placementId: String, placementContent: UMONPlacementContent, previousState: UnityMonetizationPlacementContentState, newState: UnityMonetizationPlacementContentState) {
-        if (newState != .placementContentStateReady) {
-            // Disable showing ads because content isn’t ready anymore
-        }
-    }
-    
-    func unityServicesDidError(_ error: UnityServicesError, withMessage message: String) {
+    func unityAdsDidError(_ error: UnityAdsError, withMessage message: String) {
         adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         let error = NSError(domain: "EasyForecast", code: 0, userInfo: [NSLocalizedDescriptionKey : message])
         delegate.interstitialPlacementDidFail(withError: error)
     }
     
-}
-
-extension UnityInterstitialController: UMONShowAdDelegate {
-    
-    func unityAdsDidStart(_ placementId: String!) {
+    func unityAdsDidStart(_ placementId: String) {
         adAnalyticsSession.confirmImpression()
         adAnalyticsSession.confirmInterstitialShown()
         guard let delegate = self.delegate else { return }
@@ -97,7 +91,7 @@ extension UnityInterstitialController: UMONShowAdDelegate {
         delegate.interstitialPlacementDidShow()
     }
     
-    func unityAdsDidFinish(_ placementId: String!, with finishState: UnityAdsFinishState) {
+    func unityAdsDidFinish(_ placementId: String, with state: UnityAdsFinishState) {
         adAnalyticsSession.confirmInterstitialDismissed()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidDismissed()
