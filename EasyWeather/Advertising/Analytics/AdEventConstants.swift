@@ -23,9 +23,9 @@
 import Foundation
 
 let EVENT_START_LOADING = "ad_start_loading";
-let EVENT_LOADED = "ad_start_loading";
-let EVENT_LOAD_ERROR = "ad_start_loading";
-let EVENT_IMPRESSION = "ad_start_loading";
+let EVENT_LOADED = "ad_loaded";
+let EVENT_LOAD_ERROR = "ad_load_error";
+let EVENT_IMPRESSION = "ad_impression";
 let EVENT_CLICK = "ad_click";
 let EVENT_OPENED = "ad_opened";
 let EVENT_CLOSED = "ad_closed";
