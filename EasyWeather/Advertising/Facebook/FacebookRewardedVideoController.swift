@@ -20,39 +20,38 @@
 //  THE SOFTWARE.
 //
 
+
 import UIKit
-import AppLovinSDK
+import FBAudienceNetwork
 
-class AppLovinInterstitialController: InterstitialPlacement {
+class FacebookRewardedVideoController: RewardedVideoPlacement {
 
-    var ad: ALAd?
-    var delegate: InterstitialPlacementDelegate?
+    var rewardedVideo: FBRewardedVideoAd!
+    var viewController: UIViewController!
+    var delegate: RewardedVideoPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
-
-    init(withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) {
+    
+    init(withRewardedVideo rewardedVideo: FBRewardedVideoAd, withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) {
         super.init()
+        self.rewardedVideo = rewardedVideo
+        self.rewardedVideo.delegate = self
+        self.viewController = viewController
         self.delegate = delegate
-        adAnalyticsSession = AdAnalyticsSession(withAdType: .interstitial, withAdNetwork: .appLovin)
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .rewardedVideo, withAdNetwork: .facebook)
     }
     
     override func loadAd() {
         adAnalyticsSession.start()
-        ad = nil
-        guard let sharedInstance = ALSdk.shared() else { return }
-        sharedInstance.adService.loadNextAd(ALAdSize.sizeInterstitial(), andNotify: self)
+        rewardedVideo.load()
     }
     
     override func show() {
         adAnalyticsSession.confirmInterstitialShow()
-        guard let ad = ad else { return }
-        ALInterstitialAd.shared().adDisplayDelegate = self
-        ALInterstitialAd.shared().adVideoPlaybackDelegate = self
-        ALInterstitialAd.shared().showOver(UIApplication.shared.keyWindow!, andRender: ad)
+        rewardedVideo.show(fromRootViewController: viewController)
     }
     
     override func isReady() -> Bool {
-        guard ad != nil else { return false}
-        return true
+        return rewardedVideo.isAdValid
     }
     
     override func cleanUp() {
@@ -60,49 +59,47 @@ class AppLovinInterstitialController: InterstitialPlacement {
     }
 }
 
-extension AppLovinInterstitialController: ALAdLoadDelegate, ALAdDisplayDelegate, ALAdVideoPlaybackDelegate {
+extension FacebookRewardedVideoController: FBRewardedVideoAdDelegate {
     
-    func videoPlaybackBegan(in ad: ALAd) {
-        
-    }
-    
-    func videoPlaybackEnded(in ad: ALAd, atPlaybackPercent percentPlayed: NSNumber, fullyWatched wasFullyWatched: Bool) {
-        
-    }
-    
-    
-    func adService(_ adService: ALAdService, didLoad ad: ALAd) {
+    func rewardedVideoAdDidLoad(_ rewardedVideoAd: FBRewardedVideoAd) {
         adAnalyticsSession.confirmLoaded()
-        self.ad = ad
         guard let delegate = self.delegate else { return }
-        delegate.interstitialPlacementDidLoad()
+        delegate.rewardedVideoPlacementDidLoad()
     }
     
-    func adService(_ adService: ALAdService, didFailToLoadAdWithError code: Int32) {
+    func rewardedVideoAd(_ rewardedVideoAd: FBRewardedVideoAd, didFailWithError error: Error) {
         adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
-        let error = NSError(domain: "EasyForecast", code: 0, userInfo: [NSLocalizedDescriptionKey : "AppLovin Interstitial did fail to load"])
-        delegate.interstitialPlacementDidFail(withError: error)
+        delegate.rewardedVideoPlacementDidFail(withError: error)
     }
     
-    func ad(_ ad: ALAd, wasDisplayedIn view: UIView) {
-        adAnalyticsSession.confirmImpression()
-        adAnalyticsSession.confirmInterstitialShown()
-        guard let delegate = self.delegate else { return }
-        delegate.interstitialPlacementDidShow()
-        delegate.interstitialPlacementDidTrackImpression()
-    }
-    
-    func ad(_ ad: ALAd, wasHiddenIn view: UIView) {
-        adAnalyticsSession.confirmInterstitialDismissed()
-        guard let delegate = self.delegate else { return }
-        delegate.interstitialPlacementDidDismissed()
-    }
-    
-    func ad(_ ad: ALAd, wasClickedIn view: UIView) {
+    func rewardedVideoAdDidClick(_ rewardedVideoAd: FBRewardedVideoAd) {
         adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
-        delegate.interstitialPlacementDidTrackClick()
+        delegate.rewardedVideoPlacementDidTrackClick()
     }
+    
+    func rewardedVideoAdWillLogImpression(_ rewardedVideoAd: FBRewardedVideoAd) {
+        adAnalyticsSession.confirmImpression()
+        adAnalyticsSession.confirmInterstitialShown()
+        adAnalyticsSession.confirmVideoStarted()
+        guard let delegate = self.delegate else { return }
+        delegate.rewardedVideoPlacementDidStart()
+    }
+    
+    func rewardedVideoAdVideoComplete(_ rewardedVideoAd: FBRewardedVideoAd) {
+        adAnalyticsSession.confirmReward()
+        guard let delegate = self.delegate else { return }
+        delegate.rewardedVideoPlacementDidReward(withReward: AdReward(withName: "", withAmount: 0))
+    }
+    
+    func rewardedVideoAdDidClose(_ rewardedVideoAd: FBRewardedVideoAd) {
+        adAnalyticsSession.confirmVideoFinished()
+        adAnalyticsSession.confirmInterstitialDismissed()
+        guard let delegate = self.delegate else { return }
+        delegate.rewardedVideoPlacementDidFinish()
+        delegate.rewardedVideoPlacementDidClose()
+    }
+    
     
 }

@@ -72,13 +72,13 @@ class AdManager {
         queue.enqueue(.pubnative)
         queue.enqueue(.appLovin)
         queue.enqueue(.ironSource)
-        queue.enqueue(.fyber)
+//        queue.enqueue(.fyber)
         queue.enqueue(.facebook)
         queue.enqueue(.moPub)
         queue.enqueue(.googleAdsManager)
         queue.enqueue(.admob)
         queue.enqueue(.startApp)
-        queue.enqueue(.unity)
+//        queue.enqueue(.unity)
         
         networkDictionary.updateValue(queue, forKey: MRECT_PLACEMENT)
     }
@@ -101,7 +101,7 @@ class AdManager {
     
     fileprivate func setupRewardedVideoQueue() {
         var queue = Queue<AdNetwork>()
-        queue.enqueue(.pubnative)
+//        queue.enqueue(.pubnative)
         queue.enqueue(.appLovin)
         queue.enqueue(.ironSource)
         queue.enqueue(.fyber)

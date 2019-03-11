@@ -28,20 +28,24 @@ class FacebookInterstitialController: InterstitialPlacement {
     var interstitial: FBInterstitialAd!
     var viewController: UIViewController!
     var delegate: InterstitialPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withInterstitial interstitial: FBInterstitialAd, withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) {
         super.init()
         self.interstitial = interstitial
         self.interstitial.delegate = self
         self.viewController = viewController
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .interstitial, withAdNetwork: .facebook)
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         interstitial.load()
     }
     
     override func show() {
+        adAnalyticsSession.confirmInterstitialShow()
         interstitial.show(fromRootViewController: viewController)
     }
     
@@ -57,22 +61,27 @@ class FacebookInterstitialController: InterstitialPlacement {
 extension FacebookInterstitialController: FBInterstitialAdDelegate {
     
     func interstitialAdDidLoad(_ interstitialAd: FBInterstitialAd) {
+        adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidLoad()
     }
     
     func interstitialAd(_ interstitialAd: FBInterstitialAd, didFailWithError error: Error) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidFail(withError: error)
     }
     
     func interstitialAdWillLogImpression(_ interstitialAd: FBInterstitialAd) {
+        adAnalyticsSession.confirmImpression()
+        adAnalyticsSession.confirmInterstitialShown()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidTrackImpression()
         delegate.interstitialPlacementDidShow()
     }
     
     func interstitialAdDidClick(_ interstitialAd: FBInterstitialAd) {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidTrackClick()
     }
@@ -82,6 +91,7 @@ extension FacebookInterstitialController: FBInterstitialAdDelegate {
     }
     
     func interstitialAdDidClose(_ interstitialAd: FBInterstitialAd) {
+        adAnalyticsSession.confirmInterstitialDismissed()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidDismissed()
     }

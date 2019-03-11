@@ -27,6 +27,7 @@ class AppLovinBannerController: AdPlacement {
 
     var bannerAdView: ALAdView!
     var delegate: AdPlacementDelegate?
+    var adAnalyticsSession: AdAnalyticsSession!
     
     init(withAdView adView: ALAdView, adPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
@@ -34,6 +35,7 @@ class AppLovinBannerController: AdPlacement {
         bannerAdView.adLoadDelegate = self
         bannerAdView.adDisplayDelegate = self
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .banner, withAdNetwork: .appLovin)
     }
     
     override func adView() -> UIView? {
@@ -41,6 +43,7 @@ class AppLovinBannerController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         bannerAdView.loadNextAd()
     }
 }
@@ -48,6 +51,7 @@ class AppLovinBannerController: AdPlacement {
 extension AppLovinBannerController: ALAdLoadDelegate, ALAdDisplayDelegate {
     
     func ad(_ ad: ALAd, wasDisplayedIn view: UIView) {
+        adAnalyticsSession.confirmImpression()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackImpression()
     }
@@ -57,17 +61,20 @@ extension AppLovinBannerController: ALAdLoadDelegate, ALAdDisplayDelegate {
     }
     
     func ad(_ ad: ALAd, wasClickedIn view: UIView) {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackClick()
     }
     
     
     func adService(_ adService: ALAdService, didLoad ad: ALAd) {
+        adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidLoad()
     }
     
     func adService(_ adService: ALAdService, didFailToLoadAdWithError code: Int32) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         let error = NSError(domain: "EasyForecast", code: 0, userInfo: [NSLocalizedDescriptionKey : "Applovin Banner did fail to load"])
         delegate.adPlacementDidFail(withError: error)

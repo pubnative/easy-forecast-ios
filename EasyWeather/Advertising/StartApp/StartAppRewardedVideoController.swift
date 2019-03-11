@@ -26,18 +26,22 @@ class StartAppRewardedVideoController: RewardedVideoPlacement {
 
     var rewardedVideo: STAStartAppAd!
     var delegate: RewardedVideoPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) {
         super.init()
         rewardedVideo = STAStartAppAd()
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .rewardedVideo, withAdNetwork: .startApp)
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         rewardedVideo.loadRewardedVideoAd(withDelegate: self)
     }
     
     override func show() {
+    adAnalyticsSession.confirmInterstitialShow()
        rewardedVideo.show()
     }
     
@@ -55,30 +59,36 @@ class StartAppRewardedVideoController: RewardedVideoPlacement {
 extension StartAppRewardedVideoController: STADelegateProtocol {
     
     func didLoad(_ ad: STAAbstractAd!) {
+        adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidLoad()
     }
     
     func failedLoad(_ ad: STAAbstractAd!, withError error: Error!) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidFail(withError: error)
     }
     
     func didShow(_ ad: STAAbstractAd!) {
-        
+        adAnalyticsSession.confirmImpression()
+        adAnalyticsSession.confirmInterstitialShown()
     }
     
     func failedShow(_ ad: STAAbstractAd!, withError error: Error!) {
+        adAnalyticsSession.confirmInterstitialShowError()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidFail(withError: error)
     }
     
     func didClose(_ ad: STAAbstractAd!) {
+        adAnalyticsSession.confirmInterstitialDismissed()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidClose()
     }
     
     func didClick(_ ad: STAAbstractAd!) {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidTrackClick()
     }
@@ -89,6 +99,8 @@ extension StartAppRewardedVideoController: STADelegateProtocol {
     }
     
     func didCompleteVideo(_ ad: STAAbstractAd!) {
+        adAnalyticsSession.confirmVideoFinished()
+        adAnalyticsSession.confirmReward()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidReward(withReward: AdReward(withName: "", withAmount: 0))
     }

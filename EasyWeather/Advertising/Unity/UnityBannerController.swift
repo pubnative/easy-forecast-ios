@@ -27,13 +27,16 @@ class UnityBannerController: AdPlacement {
 
     var bannerAdView: UIView!
     var delegate: AdPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+    var isShown = false
+
     init(withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         UnityAdsBanner.destroy()
         UnityAdsBanner.setDelegate(self)
         UnityAdsBanner.setBannerPosition(.center)
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .banner, withAdNetwork: .unity)
     }
     
     override func adView() -> UIView? {
@@ -41,6 +44,7 @@ class UnityBannerController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         if (UnityAds.isReady(UNITY_BANNER_AD_UNIT_ID)) {
             UnityAdsBanner.load(UNITY_BANNER_AD_UNIT_ID)
         }
@@ -50,12 +54,14 @@ class UnityBannerController: AdPlacement {
 extension UnityBannerController: UnityAdsBannerDelegate {
     
     func unityAdsBannerDidLoad(_ placementId: String, view: UIView) {
+        adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         bannerAdView = view
         delegate.adPlacementDidLoad()
     }
     
     func unityAdsBannerDidError(_ message: String) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         let error = NSError(domain: "EasyForecast", code: 0, userInfo: [NSLocalizedDescriptionKey : message])
         delegate.adPlacementDidFail(withError: error)
@@ -66,20 +72,22 @@ extension UnityBannerController: UnityAdsBannerDelegate {
     }
     
     func unityAdsBannerDidShow(_ placementId: String) {
-        //Called everytime?
-        guard let delegate = self.delegate else { return }
-        delegate.adPlacementDidTrackImpression()
+        if !isShown {
+            isShown = true
+            adAnalyticsSession.confirmImpression()
+            guard let delegate = self.delegate else { return }
+            delegate.adPlacementDidTrackImpression()
+        }
     }
     
     func unityAdsBannerDidHide(_ placementId: String) {
+        
     }
     
     func unityAdsBannerDidClick(_ placementId: String) {
+        adAnalyticsSession.confirmClick()
         UnityAdsBanner.destroy()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackClick()
     }
-    
-    
-    
 }

@@ -26,12 +26,15 @@ class StartAppBannerController: AdPlacement {
 
     var bannerAdView: STABannerView!
     var delegate: AdPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+    var isShown = false
+
     init(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         self.delegate = delegate
         let summaryViewController = viewController as! SummaryWeatherViewController
         bannerAdView = STABannerView(size: STA_PortraitAdSize_320x50, autoOrigin: STAAdOrigin_Top, with: summaryViewController.bannerAdContainer, withDelegate: self)
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .banner, withAdNetwork: .startApp)
     }
     
     override func adView() -> UIView? {
@@ -39,26 +42,37 @@ class StartAppBannerController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         
     }
-    
     
 }
 
 extension StartAppBannerController: STABannerDelegateProtocol {
     
     func didDisplayBannerAd(_ banner: STABannerView!) {
-        guard let delegate = self.delegate else { return }
-        delegate.adPlacementDidLoad()
-        delegate.adPlacementDidTrackImpression()
+        
+        if isShown {
+            guard let delegate = self.delegate else { return }
+            delegate.adPlacementDidTrackClick()
+        } else {
+            isShown = true
+            adAnalyticsSession.confirmLoaded()
+            adAnalyticsSession.confirmImpression()
+            guard let delegate = self.delegate else { return }
+            delegate.adPlacementDidLoad()
+            delegate.adPlacementDidTrackImpression()
+        }
     }
     
     func failedLoadBannerAd(_ banner: STABannerView!, withError error: Error!) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidFail(withError: error)
     }
     
     func didClickBannerAd(_ banner: STABannerView!) {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackClick()
     }

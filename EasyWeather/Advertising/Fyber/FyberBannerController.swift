@@ -27,11 +27,13 @@ class FyberBannerController: AdPlacement {
     var bannerAdView: HZBannerAd!
     var viewController: UIViewController!
     var delegate: AdPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         self.viewController = viewController
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .banner, withAdNetwork: .fyber)
     }
     
     override func adView() -> UIView? {
@@ -39,14 +41,17 @@ class FyberBannerController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         let bannerOptions = HZBannerAdOptions()
         bannerOptions.presentingViewController = viewController
         HZBannerAd.requestBanner(with: bannerOptions, success: { (bannerAdView) in
             self.bannerAdView = bannerAdView
             self.bannerAdView.delegate = self
+            self.adAnalyticsSession.confirmLoaded()
             guard let delegate = self.delegate else { return }
             delegate.adPlacementDidLoad()
         }) { (error) in
+            self.adAnalyticsSession.confirmError()
             guard let delegate = self.delegate else { return }
             let defaultError = NSError(domain: "EasyForecast", code: 0, userInfo: [NSLocalizedDescriptionKey : "Fyber Banner did fail to load"])
             delegate.adPlacementDidFail(withError: error ?? defaultError)
@@ -58,29 +63,32 @@ class FyberBannerController: AdPlacement {
 extension FyberBannerController: HZBannerAdDelegate {
     
     func bannerDidReceive(_ banner: HZBannerAd!) {
+        adAnalyticsSession.confirmImpression()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackImpression()
     }
     
     func bannerDidFail(toReceive banner: HZBannerAd!, error: Error!) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidFail(withError: error)
     }
     
     func bannerWasClicked(_ banner: HZBannerAd!) {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackClick()
     }
     
     func bannerWillPresentModalView(_ banner: HZBannerAd!) {
-        
+        adAnalyticsSession.confirmOpened()
     }
     
     func bannerDidDismissModalView(_ banner: HZBannerAd!) {
-        
+        adAnalyticsSession.confirmClosed()
     }
     
     func bannerWillLeaveApplication(_ banner: HZBannerAd!) {
-        
+        adAnalyticsSession.confirmLeftApplication()
     }
 }

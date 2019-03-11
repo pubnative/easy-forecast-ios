@@ -26,20 +26,25 @@ class FyberRewardedVideoController: RewardedVideoPlacement {
 
     var viewController: UIViewController!
     var delegate: RewardedVideoPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) {
         super.init()
         self.viewController = viewController
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .rewardedVideo, withAdNetwork: .fyber)
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         HZIncentivizedAd.fetch { (success, error) in
             if success {
+                self.adAnalyticsSession.confirmLoaded()
                 HZIncentivizedAd.setDelegate(self)
                 guard let delegate = self.delegate else { return }
                 delegate.rewardedVideoPlacementDidLoad()
             } else {
+                self.adAnalyticsSession.confirmError()
                 guard let delegate = self.delegate else { return }
                 let defaultError = NSError(domain: "EasyForecast", code: 0, userInfo: [NSLocalizedDescriptionKey : "Fyber Rewarded Video did fail to load"])
                 delegate.rewardedVideoPlacementDidFail(withError: error ?? defaultError)
@@ -48,6 +53,7 @@ class FyberRewardedVideoController: RewardedVideoPlacement {
     }
     
     override func show() {
+        adAnalyticsSession.confirmInterstitialShow()
         let showOptions = HZShowOptions()
         showOptions.viewController = viewController
         HZIncentivizedAd.show(with: showOptions)
@@ -65,38 +71,46 @@ class FyberRewardedVideoController: RewardedVideoPlacement {
 extension FyberRewardedVideoController: HZIncentivizedAdDelegate {
     
     func didShowAd(withTag tag: String!) {
+        adAnalyticsSession.confirmInterstitialShown()
         guard let delegate = self.delegate else { return }
     
     }
     
     func didFailToReceiveAd(withTag tag: String!) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         let error = NSError(domain: "EasyForecast", code: 0, userInfo: [NSLocalizedDescriptionKey : "Fyber Rewarded Video did fail to load"])
         delegate.rewardedVideoPlacementDidFail(withError: error)
     }
     
     func didFailToShowAd(withTag tag: String!, andError error: Error!) {
+        adAnalyticsSession.confirmVideoError()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidFail(withError: error)
     }
     
     func didClickAd(withTag tag: String!) {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidTrackClick()
     }
     
     func didHideAd(withTag tag: String!) {
+        adAnalyticsSession.confirmInterstitialDismissed()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidClose()
     }
     
     func didCompleteAd(withTag tag: String!) {
+        adAnalyticsSession.confirmVideoFinished()
+        adAnalyticsSession.confirmReward()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidFinish()
         delegate.rewardedVideoPlacementDidReward(withReward: AdReward(withName: "", withAmount: 0))
     }
     
     func didFailToCompleteAd(withTag tag: String!) {
+        adAnalyticsSession.confirmVideoFinished()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidFinish()
     }

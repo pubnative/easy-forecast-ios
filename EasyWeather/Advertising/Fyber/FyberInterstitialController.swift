@@ -26,20 +26,25 @@ class FyberInterstitialController: InterstitialPlacement {
 
     var viewController: UIViewController!
     var delegate: InterstitialPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) {
         super.init()
         self.viewController = viewController
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .interstitial, withAdNetwork: .fyber)
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         HZInterstitialAd.fetch { (success, error) in
             if success {
                 HZInterstitialAd.setDelegate(self)
+                self.adAnalyticsSession.confirmLoaded()
                 guard let delegate = self.delegate else { return }
                 delegate.interstitialPlacementDidLoad()
             } else {
+                self.adAnalyticsSession.confirmError()
                 guard let delegate = self.delegate else { return }
                 let defaultError = NSError(domain: "EasyForecast", code: 0, userInfo: [NSLocalizedDescriptionKey : "Fyber Interstitial did fail to load"])
                 delegate.interstitialPlacementDidFail(withError: error ?? defaultError)
@@ -48,6 +53,7 @@ class FyberInterstitialController: InterstitialPlacement {
     }
     
     override func show() {
+        adAnalyticsSession.confirmInterstitialShow()
         let showOptions = HZShowOptions()
         showOptions.viewController = viewController
         HZInterstitialAd.show(with: showOptions)
@@ -65,12 +71,15 @@ class FyberInterstitialController: InterstitialPlacement {
 extension FyberInterstitialController: HZAdsDelegate {
     
     func didShowAd(withTag tag: String!) {
+        adAnalyticsSession.confirmImpression()
+        adAnalyticsSession.confirmInterstitialShown()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidTrackImpression()
         delegate.interstitialPlacementDidShow()
     }
     
     func didFailToReceiveAd(withTag tag: String!) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         let error = NSError(domain: "EasyForecast", code: 0, userInfo: [NSLocalizedDescriptionKey : "Fyber Interstitial did fail to load"])
         delegate.interstitialPlacementDidFail(withError: error)
@@ -78,17 +87,20 @@ extension FyberInterstitialController: HZAdsDelegate {
     }
     
     func didFailToShowAd(withTag tag: String!, andError error: Error!) {
+        adAnalyticsSession.confirmInterstitialShowError()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidFail(withError: error)
 
     }
     
     func didClickAd(withTag tag: String!) {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidTrackClick()
     }
     
     func didHideAd(withTag tag: String!) {
+        adAnalyticsSession.confirmInterstitialDismissed()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidDismissed()
     }

@@ -26,18 +26,22 @@ class StartAppInterstitialController: InterstitialPlacement {
 
     var interstitial: STAStartAppAd!
     var delegate: InterstitialPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) {
         super.init()
         interstitial = STAStartAppAd()
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .interstitial, withAdNetwork: .startApp)
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         interstitial.load(withDelegate: self)
     }
     
     override func show() {
+        adAnalyticsSession.confirmInterstitialShow()
         interstitial.show()
     }
     
@@ -54,32 +58,39 @@ class StartAppInterstitialController: InterstitialPlacement {
 extension StartAppInterstitialController: STADelegateProtocol {
     
     func didLoad(_ ad: STAAbstractAd!) {
+        adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidLoad()
     }
     
     func failedLoad(_ ad: STAAbstractAd!, withError error: Error!) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidFail(withError: error)
     }
     
     func didShow(_ ad: STAAbstractAd!) {
+        adAnalyticsSession.confirmImpression()
+        adAnalyticsSession.confirmInterstitialShown()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidTrackImpression()
         delegate.interstitialPlacementDidShow()
     }
     
     func failedShow(_ ad: STAAbstractAd!, withError error: Error!) {
+        adAnalyticsSession.confirmInterstitialShowError()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidFail(withError: error)
     }
     
     func didClose(_ ad: STAAbstractAd!) {
+        adAnalyticsSession.confirmInterstitialDismissed()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidDismissed()
     }
     
     func didClick(_ ad: STAAbstractAd!) {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidTrackClick()
     }

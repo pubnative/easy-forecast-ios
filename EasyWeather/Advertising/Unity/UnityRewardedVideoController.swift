@@ -26,72 +26,77 @@ import UnityAds
 
 class UnityRewardedVideoController: RewardedVideoPlacement {
 
-    var placementContent: UMONPlacementContent!
     var viewController: UIViewController!
     var delegate: RewardedVideoPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+    var isShown = false
+
     init(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) {
         super.init()
+        UnityAds.setDelegate(self)
         self.viewController = viewController
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .rewardedVideo, withAdNetwork: .unity)
     }
     
     override func loadAd() {
-        UnityMonetization.initialize(UNITY_GAME_ID, delegate: self, testMode: true)
-    }
-    
-    override func show() {
-        if (placementContent.type == "SHOW_AD") {
-            let showAdPlacementContent = placementContent as! UMONShowAdPlacementContent
-            showAdPlacementContent.show(viewController, with: self)
+        adAnalyticsSession.start()
+        if (UnityAds.isReady(UNITY_REWARDED_VIDEO_AD_UNIT_ID)) {
+            unityAdsReady(UNITY_REWARDED_VIDEO_AD_UNIT_ID)
+        } else {
+            unityAdsDidError(UnityAdsError(rawValue: 0)!, withMessage: "Error when loading the ad")
         }
     }
     
+    override func show() {
+        adAnalyticsSession.confirmInterstitialShow()
+        UnityAds.show(viewController, placementId: UNITY_REWARDED_VIDEO_AD_UNIT_ID)
+    }
+    
     override func isReady() -> Bool {
-         return placementContent.isReady
+        return UnityAds.isReady(UNITY_REWARDED_VIDEO_AD_UNIT_ID)
     }
     
     override func cleanUp() {
         delegate = nil
     }
-    
 }
 
-extension UnityRewardedVideoController: UnityMonetizationDelegate {
+extension UnityRewardedVideoController: UnityAdsDelegate {
     
-    func placementContentReady(_ placementId: String, placementContent decision: UMONPlacementContent) {
-        guard let delegate = self.delegate else { return }
-        if (placementId == UNITY_REWARDED_VIDEO_AD_UNIT_ID) {
-            placementContent = decision
-            delegate.rewardedVideoPlacementDidLoad()
+    func unityAdsReady(_ placementId: String) {
+        if !isShown {
+            isShown = true
+            guard let delegate = self.delegate else { return }
+            if (placementId == UNITY_REWARDED_VIDEO_AD_UNIT_ID) {
+                adAnalyticsSession.confirmLoaded()
+                delegate.rewardedVideoPlacementDidLoad()
+            }
         }
     }
     
-    func placementContentStateDidChange(_ placementId: String, placementContent: UMONPlacementContent, previousState: UnityMonetizationPlacementContentState, newState: UnityMonetizationPlacementContentState) {
-        if (newState != .placementContentStateReady) {
-            // Disable showing ads because content isn’t ready anymore
-        }
-    }
-    
-    func unityServicesDidError(_ error: UnityServicesError, withMessage message: String) {
+    func unityAdsDidError(_ error: UnityAdsError, withMessage message: String) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         let error = NSError(domain: "EasyForecast", code: 0, userInfo: [NSLocalizedDescriptionKey : message])
         delegate.rewardedVideoPlacementDidFail(withError: error)
     }
     
-}
-
-extension UnityRewardedVideoController: UMONShowAdDelegate {
-    
-    func unityAdsDidStart(_ placementId: String!) {
+    func unityAdsDidStart(_ placementId: String) {
+        adAnalyticsSession.confirmImpression()
+        adAnalyticsSession.confirmInterstitialShown()
+        adAnalyticsSession.confirmVideoStarted()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidTrackImpression()
         delegate.rewardedVideoPlacementDidStart()
+
     }
     
-    func unityAdsDidFinish(_ placementId: String!, with finishState: UnityAdsFinishState) {
+    func unityAdsDidFinish(_ placementId: String, with state: UnityAdsFinishState) {
+        adAnalyticsSession.confirmVideoFinished()
         guard let delegate = self.delegate else { return }
-        if (finishState != .skipped && placementId == UNITY_REWARDED_VIDEO_AD_UNIT_ID) {
+        if (state != .skipped && placementId == UNITY_REWARDED_VIDEO_AD_UNIT_ID) {
+            adAnalyticsSession.confirmReward()
             delegate.rewardedVideoPlacementDidReward(withReward: AdReward(withName: "", withAmount: 0))
         }
         delegate.rewardedVideoPlacementDidFinish()

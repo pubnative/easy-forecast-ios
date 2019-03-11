@@ -27,12 +27,14 @@ class IronSourceBannerController: AdPlacement {
     var bannerAdView: ISBannerView!
     var viewController: UIViewController!
     var delegate: AdPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         self.viewController = viewController
         self.delegate = delegate
         IronSource.setBannerDelegate(self)
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .banner, withAdNetwork: .ironSource)
     }
     
     override func adView() -> UIView? {
@@ -40,6 +42,7 @@ class IronSourceBannerController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         IronSource.loadBanner(with: viewController, size: ISBannerSize(width: 320, andHeight: 50),  placement: IRONSOURCE_BANNER_AD_UNIT_ID)
     }
     
@@ -48,31 +51,34 @@ class IronSourceBannerController: AdPlacement {
 extension IronSourceBannerController: ISBannerDelegate {
     
     func bannerDidLoad(_ bannerView: ISBannerView!) {
+        adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         bannerAdView = bannerView
         delegate.adPlacementDidLoad()
     }
     
     func bannerDidFailToLoadWithError(_ error: Error!) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidFail(withError: error)
     }
     
     func didClickBanner() {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackClick()
     }
     
     func bannerWillPresentScreen() {
-        
+        adAnalyticsSession.confirmOpened()
     }
     
     func bannerDidDismissScreen() {
-        
+        adAnalyticsSession.confirmClosed()
     }
     
     func bannerWillLeaveApplication() {
-        
+        adAnalyticsSession.confirmLeftApplication()
     }
     
 }

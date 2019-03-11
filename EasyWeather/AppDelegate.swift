@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         GADMobileAds.configure(withApplicationID: "ca-app-pub-3940256099942544~1458002511")
 
-        UnityAds.initialize(UNITY_GAME_ID, delegate: nil, testMode: true)
+        UnityAds.initialize(UNITY_GAME_ID, delegate: nil, testMode: false)
         
         IronSource.initWithAppKey(IRONSOURCE_APPKEY)
         

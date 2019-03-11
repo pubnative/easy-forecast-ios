@@ -27,18 +27,22 @@ class PubNativeInterstitialController: InterstitialPlacement {
     
     var interstitial: HyBidInterstitialAd!
     var delegate: InterstitialPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withZoneID zoneID: String, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) {
         super.init()
         interstitial = HyBidInterstitialAd(zoneID: zoneID, andWith: self)
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .interstitial, withAdNetwork: .pubnative)
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         interstitial.load()
     }
     
     override func show() {
+        adAnalyticsSession.confirmInterstitialShow()
         interstitial.show()
     }
     
@@ -55,27 +59,33 @@ class PubNativeInterstitialController: InterstitialPlacement {
 extension PubNativeInterstitialController: HyBidInterstitialAdDelegate {
     
     func interstitialDidLoad() {
+        adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidLoad()
     }
     
     func interstitialDidFailWithError(_ error: Error!) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidFail(withError: error)
     }
     
     func interstitialDidTrackImpression() {
+        adAnalyticsSession.confirmImpression()
+        adAnalyticsSession.confirmInterstitialShown()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidTrackImpression()
         delegate.interstitialPlacementDidShow()
     }
     
     func interstitialDidTrackClick() {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidTrackClick()
     }
     
     func interstitialDidDismiss() {
+        adAnalyticsSession.confirmInterstitialDismissed()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidDismissed()
     }

@@ -27,19 +27,23 @@ class MoPubRewardedVideoController: RewardedVideoPlacement {
 
     var viewController: UIViewController!
     var delegate: RewardedVideoPlacementDelegate?
+    var adAnalyticsSession: AdAnalyticsSession!
 
     init(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) {
         super.init()
         MPRewardedVideo.setDelegate(self, forAdUnitId: MOPUB_REWARDED_VIDEO_AD_UNIT_ID)
         self.viewController = viewController
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .rewardedVideo, withAdNetwork: .moPub)
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         MPRewardedVideo.loadAd(withAdUnitID: MOPUB_REWARDED_VIDEO_AD_UNIT_ID, withMediationSettings: nil)
     }
     
     override func show() {
+        adAnalyticsSession.confirmInterstitialShown()
         MPRewardedVideo.presentAd(forAdUnitID: MOPUB_REWARDED_VIDEO_AD_UNIT_ID, from: viewController, with:MPRewardedVideo.selectedReward(forAdUnitID: MOPUB_REWARDED_VIDEO_AD_UNIT_ID))
     }
     
@@ -56,37 +60,47 @@ class MoPubRewardedVideoController: RewardedVideoPlacement {
 extension MoPubRewardedVideoController: MPRewardedVideoDelegate {
     
     func rewardedVideoAdDidLoad(forAdUnitID adUnitID: String!) {
+        adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidLoad()
     }
     
     func rewardedVideoAdDidFailToLoad(forAdUnitID adUnitID: String!, error: Error!) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidFail(withError: error)
     }
     
     func rewardedVideoAdDidFailToPlay(forAdUnitID adUnitID: String!, error: Error!) {
+        adAnalyticsSession.confirmVideoError()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidFail(withError: error)
     }
     
     func rewardedVideoAdWillAppear(forAdUnitID adUnitID: String!) {
+        adAnalyticsSession.confirmImpression()
+        adAnalyticsSession.confirmInterstitialShown()
+        adAnalyticsSession.confirmVideoStarted()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidStart()
     }
     
     func rewardedVideoAdDidDisappear(forAdUnitID adUnitID: String!) {
+        adAnalyticsSession.confirmVideoFinished()
+        adAnalyticsSession.confirmInterstitialDismissed()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidFinish()
         delegate.rewardedVideoPlacementDidClose()
     }
     
     func rewardedVideoAdDidReceiveTapEvent(forAdUnitID adUnitID: String!) {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidTrackClick()
     }
     
     func rewardedVideoAdShouldReward(forAdUnitID adUnitID: String!, reward: MPRewardedVideoReward!) {
+        adAnalyticsSession.confirmReward()
         guard let delegate = self.delegate else { return }
         guard let reward = reward else { return }
         delegate.rewardedVideoPlacementDidReward(withReward: AdReward(withName: reward.currencyType, withAmount: reward.amount as! Int))

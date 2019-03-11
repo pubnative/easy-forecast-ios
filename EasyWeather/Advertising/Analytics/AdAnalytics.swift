@@ -21,15 +21,19 @@
 //
 
 import Foundation
+import Firebase
 
-class AdReward {
+class AdAnalytics {
     
-    public private (set) var name: String
-    public private (set) var amount: Int
+    static let sharedInstance = AdAnalytics()
     
-    init(withName name: String, withAmount amount: Int) {
-        self.name = name
-        self.amount = amount
+    func sendEvent(event: AdEvent) {
+        
+        var parameters : [String : Any] = [KEY_CATEGORY:CATEGORY_ADVERTISING, KEY_AD_TYPE:event.type, KEY_SDK_NAME:event.adNetworkName]
+        if event.elapsedTimeInMilliseconds > 0 {
+            parameters[KEY_TIME_ELAPSED] = event.elapsedTimeInMilliseconds
+        }
+        
+        Analytics.logEvent(event.name, parameters: parameters)
     }
-
 }

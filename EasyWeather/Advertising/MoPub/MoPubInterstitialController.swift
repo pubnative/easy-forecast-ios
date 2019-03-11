@@ -28,6 +28,7 @@ class MoPubInterstitialController: InterstitialPlacement {
     var interstitial: MPInterstitialAdController!
     var viewController: UIViewController!
     var delegate: InterstitialPlacementDelegate?
+    var adAnalyticsSession: AdAnalyticsSession!
 
     init(withInterstitial interstitial: MPInterstitialAdController, withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) {
         super.init()
@@ -35,13 +36,16 @@ class MoPubInterstitialController: InterstitialPlacement {
         self.interstitial.delegate = self
         self.viewController = viewController
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .interstitial, withAdNetwork: .moPub)
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         interstitial.loadAd()
     }
     
     override func show() {
+        adAnalyticsSession.confirmInterstitialShow()
         interstitial.show(from: viewController)
     }
     
@@ -57,29 +61,35 @@ class MoPubInterstitialController: InterstitialPlacement {
 extension MoPubInterstitialController: MPInterstitialAdControllerDelegate {
     
     func interstitialDidLoadAd(_ interstitial: MPInterstitialAdController!) {
+        adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidLoad()
     }
     
     func interstitialDidFail(toLoadAd interstitial: MPInterstitialAdController!, withError error: Error!) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidFail(withError: error)
 
     }
     
     func interstitialDidAppear(_ interstitial: MPInterstitialAdController!) {
+        adAnalyticsSession.confirmImpression()
+        adAnalyticsSession.confirmInterstitialShown()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidTrackImpression()
         delegate.interstitialPlacementDidShow()
     }
     
     func interstitialDidDisappear(_ interstitial: MPInterstitialAdController!) {
+        adAnalyticsSession.confirmInterstitialDismissed()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidDismissed()
 
     }
     
     func interstitialDidReceiveTapEvent(_ interstitial: MPInterstitialAdController!) {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidTrackClick()
     }

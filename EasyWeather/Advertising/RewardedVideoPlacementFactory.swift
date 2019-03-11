@@ -23,6 +23,7 @@
 import Foundation
 import MoPub
 import AppLovinSDK
+import FBAudienceNetwork
 
 class RewardedVideoPlacementFactory {
     
@@ -37,7 +38,7 @@ class RewardedVideoPlacementFactory {
         case .fyber:
             return createFyberPlacement(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
         case .facebook:
-            return createFacebookPlacement(withRewardedVideoPlacementDelegate: delegate)
+            return createFacebookPlacement(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
         case .moPub:
             return createMoPubPlacement(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
         case .googleAdsManager:
@@ -69,8 +70,9 @@ class RewardedVideoPlacementFactory {
         return FyberRewardedVideoController(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
     }
     
-    fileprivate func createFacebookPlacement(withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {
-        return RewardedVideoPlacement()
+    fileprivate func createFacebookPlacement(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {
+        let rewardedVideo = FBRewardedVideoAd(placementID: FACEBOOK_REWARDED_VIDEO_AD_UNIT_ID)
+        return FacebookRewardedVideoController(withRewardedVideo: rewardedVideo, withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
     }
     
     fileprivate func createMoPubPlacement(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {

@@ -26,17 +26,21 @@ import AppLovinSDK
 class AppLovinRewardedVideoController: RewardedVideoPlacement {
 
     var delegate: RewardedVideoPlacementDelegate?
+    var adAnalyticsSession: AdAnalyticsSession!
     
     init(withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) {
         super.init()
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .rewardedVideo, withAdNetwork: .appLovin)
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         ALIncentivizedInterstitialAd.preloadAndNotify(self)
     }
     
     override func show() {
+        adAnalyticsSession.confirmInterstitialShow()
         ALIncentivizedInterstitialAd.shared().adDisplayDelegate = self
         ALIncentivizedInterstitialAd.shared().adVideoPlaybackDelegate = self
         ALIncentivizedInterstitialAd.showAndNotify(self)
@@ -54,33 +58,40 @@ class AppLovinRewardedVideoController: RewardedVideoPlacement {
 extension AppLovinRewardedVideoController: ALAdLoadDelegate, ALAdDisplayDelegate, ALAdRewardDelegate, ALAdVideoPlaybackDelegate {
     
     func adService(_ adService: ALAdService, didLoad ad: ALAd) {
+        adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidLoad()
     }
     
     func adService(_ adService: ALAdService, didFailToLoadAdWithError code: Int32) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         let error = NSError(domain: "EasyForecast", code: 0, userInfo: [NSLocalizedDescriptionKey : "AppLovin Rewarded Video did fail to load"])
         delegate.rewardedVideoPlacementDidFail(withError: error)
     }
     
     func ad(_ ad: ALAd, wasDisplayedIn view: UIView) {
+        adAnalyticsSession.confirmImpression()
+        adAnalyticsSession.confirmInterstitialShown()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidOpen()
         delegate.rewardedVideoPlacementDidTrackImpression()
     }
     
     func ad(_ ad: ALAd, wasHiddenIn view: UIView) {
+        adAnalyticsSession.confirmInterstitialDismissed()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidClose()
     }
     
     func ad(_ ad: ALAd, wasClickedIn view: UIView) {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidTrackClick()
     }
     
     func rewardValidationRequest(for ad: ALAd, didSucceedWithResponse response: [AnyHashable : Any]) {
+        adAnalyticsSession.confirmReward()
         guard let delegate = self.delegate else { return }
         let currencyName = response["currency"] as! String
         let amountGiven = response["amount"] as! String
@@ -88,23 +99,25 @@ extension AppLovinRewardedVideoController: ALAdLoadDelegate, ALAdDisplayDelegate
     }
     
     func rewardValidationRequest(for ad: ALAd, didExceedQuotaWithResponse response: [AnyHashable : Any]) {
-        
+        adAnalyticsSession.confirmUserOverQuota()
     }
     
     func rewardValidationRequest(for ad: ALAd, wasRejectedWithResponse response: [AnyHashable : Any]) {
-        
+        adAnalyticsSession.confirmRewardRejected()
     }
     
     func rewardValidationRequest(for ad: ALAd, didFailWithError responseCode: Int) {
-        
+        adAnalyticsSession.confirmValidationRequestFailed()
     }
     
     func videoPlaybackBegan(in ad: ALAd) {
+        adAnalyticsSession.confirmVideoStarted()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidStart()
     }
     
     func videoPlaybackEnded(in ad: ALAd, atPlaybackPercent percentPlayed: NSNumber, fullyWatched wasFullyWatched: Bool) {
+        adAnalyticsSession.confirmVideoFinished()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidFinish()
         if wasFullyWatched {

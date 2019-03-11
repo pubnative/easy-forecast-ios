@@ -27,7 +27,8 @@ class AdMobBannerController: AdPlacement {
 
     var bannerAdView: GADBannerView!
     var delegate: AdPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withAdView adView: GADBannerView, withAdUnitID adUnitID: String, withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         bannerAdView = adView
@@ -35,6 +36,7 @@ class AdMobBannerController: AdPlacement {
         bannerAdView.delegate = self
         bannerAdView.rootViewController = viewController
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .banner, withAdNetwork: .admob)
     }
     
     override func adView() -> UIView? {
@@ -42,6 +44,7 @@ class AdMobBannerController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         bannerAdView.load(GADRequest())
     }
 }
@@ -49,16 +52,19 @@ class AdMobBannerController: AdPlacement {
 extension AdMobBannerController: GADBannerViewDelegate {
     
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidLoad()
     }
     
     func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidFail(withError: error)
     }
     
     func adViewWillPresentScreen(_ bannerView: GADBannerView) {
+        adAnalyticsSession.confirmOpened()
         print("adViewWillPresentScreen")
     }
     
@@ -67,10 +73,13 @@ extension AdMobBannerController: GADBannerViewDelegate {
     }
     
     func adViewDidDismissScreen(_ bannerView: GADBannerView) {
+        adAnalyticsSession.confirmClosed()
         print("adViewDidDismissScreen")
     }
     
     func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+        adAnalyticsSession.confirmClick()
+        adAnalyticsSession.confirmLeftApplication()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackClick()
     }

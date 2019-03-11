@@ -27,21 +27,27 @@ class IronSourceRewardedVideoController: RewardedVideoPlacement {
 
     var viewController: UIViewController!
     var delegate: RewardedVideoPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) {
         super.init()
         IronSource.setRewardedVideoDelegate(self)
         self.viewController = viewController
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .rewardedVideo, withAdNetwork: .ironSource)
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         if isReady() {
-            show()
+            adAnalyticsSession.confirmLoaded()
+            guard let delegate = self.delegate else { return }
+            delegate.rewardedVideoPlacementDidLoad()
         }
     }
     
     override func show() {
+        adAnalyticsSession.confirmInterstitialShown()
         IronSource.showRewardedVideo(with: viewController, placement: IRONSOURCE_REWARDED_VIDEO_AD_UNIT_ID)
     }
     
@@ -58,43 +64,48 @@ class IronSourceRewardedVideoController: RewardedVideoPlacement {
 extension IronSourceRewardedVideoController: ISRewardedVideoDelegate {
     
     func rewardedVideoHasChangedAvailability(_ available: Bool) {
-        if available {
-//            guard let delegate = self.delegate else { return }
-//            delegate.rewardedVideoPlacementDidLoad()
-        }
+        
     }
     
     func didReceiveReward(forPlacement placementInfo: ISPlacementInfo!) {
+        adAnalyticsSession.confirmReward()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidReward(withReward: AdReward(withName: placementInfo.rewardName, withAmount: placementInfo.rewardAmount as! Int))
     }
     
     func rewardedVideoDidFailToShowWithError(_ error: Error!) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidFail(withError: error)
     }
     
     func rewardedVideoDidOpen() {
+        adAnalyticsSession.confirmImpression()
+        adAnalyticsSession.confirmInterstitialShown()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidOpen()
     }
     
     func rewardedVideoDidClose() {
+        adAnalyticsSession.confirmInterstitialDismissed()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidClose()
     }
     
     func rewardedVideoDidStart() {
+        adAnalyticsSession.confirmVideoStarted()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidStart()
     }
     
     func rewardedVideoDidEnd() {
+        adAnalyticsSession.confirmVideoFinished()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidFinish()
     }
     
     func didClickRewardedVideo(_ placementInfo: ISPlacementInfo!) {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidTrackClick()
     }

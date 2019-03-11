@@ -28,7 +28,8 @@ class MoPubBannerController: AdPlacement {
     var bannerAdView: MPAdView!
     var viewController: UIViewController!
     var delegate: AdPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withAdView adView: MPAdView, withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         self.viewController = viewController
@@ -36,6 +37,7 @@ class MoPubBannerController: AdPlacement {
         bannerAdView.delegate = self
         bannerAdView.stopAutomaticallyRefreshingContents()
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .banner, withAdNetwork: .moPub)
     }
     
     override func adView() -> UIView? {
@@ -43,6 +45,7 @@ class MoPubBannerController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         bannerAdView.loadAd()
     }
 }
@@ -50,19 +53,27 @@ class MoPubBannerController: AdPlacement {
 extension MoPubBannerController: MPAdViewDelegate {
     
     func adViewDidLoadAd(_ view: MPAdView!) {
+        adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidLoad()
     }
     
     func adViewDidFail(toLoadAd view: MPAdView!) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         let error = NSError(domain: "EasyForecast", code: 0, userInfo: [NSLocalizedDescriptionKey : "MoPub Banner did fail to load"])
         delegate.adPlacementDidFail(withError: error)
     }
     
     func willPresentModalView(forAd view: MPAdView!) {
+        adAnalyticsSession.confirmClick()
+        adAnalyticsSession.confirmOpened()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackClick()
+    }
+    
+    func didDismissModalView(forAd view: MPAdView!) {
+        adAnalyticsSession.confirmClosed()
     }
     
     func viewControllerForPresentingModalView() -> UIViewController! {

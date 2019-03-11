@@ -27,12 +27,14 @@ class IronSourceMRectController: AdPlacement {
     var mRectAdView: ISBannerView!
     var viewController: UIViewController!
     var delegate: AdPlacementDelegate?
-    
+    var adAnalyticsSession: AdAnalyticsSession!
+
     init(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         self.viewController = viewController
         self.delegate = delegate
         IronSource.setBannerDelegate(self)
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .mRect, withAdNetwork: .ironSource)
     }
     
     override func adView() -> UIView? {
@@ -40,6 +42,7 @@ class IronSourceMRectController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         IronSource.loadBanner(with: viewController, size: ISBannerSize(width: 300, andHeight: 250),  placement: IRONSOURCE_MRECT_AD_UNIT_ID)
     }
 }
@@ -47,31 +50,34 @@ class IronSourceMRectController: AdPlacement {
 extension IronSourceMRectController: ISBannerDelegate {
     
     func bannerDidLoad(_ bannerView: ISBannerView!) {
+        adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         mRectAdView = bannerView
         delegate.adPlacementDidLoad()
     }
     
     func bannerDidFailToLoadWithError(_ error: Error!) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidFail(withError: error)
     }
     
     func didClickBanner() {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackClick()
     }
     
     func bannerWillPresentScreen() {
-        
+        adAnalyticsSession.confirmOpened()
     }
     
     func bannerDidDismissScreen() {
-        
+        adAnalyticsSession.confirmClosed()
     }
     
     func bannerWillLeaveApplication() {
-        
+        adAnalyticsSession.confirmLeftApplication()
     }
     
 }

@@ -27,12 +27,14 @@ class FacebookBannerController: AdPlacement {
 
     var bannerAdView: FBAdView!
     var delegate: AdPlacementDelegate?
+    var adAnalyticsSession: AdAnalyticsSession!
     
     init(withAdView adView: FBAdView, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         bannerAdView = adView
         bannerAdView.delegate = self
         self.delegate = delegate
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .banner, withAdNetwork: .facebook)
     }
     
     override func adView() -> UIView? {
@@ -40,6 +42,7 @@ class FacebookBannerController: AdPlacement {
     }
     
     override func loadAd() {
+        adAnalyticsSession.start()
         bannerAdView.loadAd()
     }
 }
@@ -47,16 +50,19 @@ class FacebookBannerController: AdPlacement {
 extension FacebookBannerController: FBAdViewDelegate {
     
     func adViewDidLoad(_ adView: FBAdView) {
+        adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidLoad()
     }
     
     func adView(_ adView: FBAdView, didFailWithError error: Error) {
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidFail(withError: error)
     }
     
     func adViewDidClick(_ adView: FBAdView) {
+        adAnalyticsSession.confirmClick()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackClick()
     }
@@ -66,6 +72,7 @@ extension FacebookBannerController: FBAdViewDelegate {
     }
     
     func adViewWillLogImpression(_ adView: FBAdView) {
+        adAnalyticsSession.confirmImpression()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackImpression()
     }
