@@ -90,7 +90,4 @@ extension UnityBannerController: UnityAdsBannerDelegate {
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackClick()
     }
-    
-    
-    
 }

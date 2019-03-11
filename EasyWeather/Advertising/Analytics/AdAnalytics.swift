@@ -34,6 +34,6 @@ class AdAnalytics {
             parameters[KEY_TIME_ELAPSED] = event.elapsedTimeInMilliseconds
         }
         
-//        Analytics.logEvent(event.name, parameters: parameters)
+        Analytics.logEvent(event.name, parameters: parameters)
     }
 }

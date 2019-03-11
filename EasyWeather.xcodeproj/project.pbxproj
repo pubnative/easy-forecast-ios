@@ -22,6 +22,7 @@
 		5A4CDA0C2211BA2600217E5F /* ParallaxEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CDA0B2211BA2600217E5F /* ParallaxEffect.swift */; };
 		5A4CDA0E2211D9C500217E5F /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CDA0D2211D9C500217E5F /* RoundedImageView.swift */; };
 		5A5F778A2214214200E13EF7 /* CurrentDayWeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5F77892214214200E13EF7 /* CurrentDayWeatherDetailViewController.swift */; };
+		5A682E022236B2D20072CD31 /* FacebookRewardedVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A682E012236B2D20072CD31 /* FacebookRewardedVideoController.swift */; };
 		5A6A8C142086297700494187 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A8C132086297600494187 /* Location.swift */; };
 		5A6A8C1620862C8B00494187 /* ForecastSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A8C1520862C8B00494187 /* ForecastSummaryCell.swift */; };
 		5A6C89A622258C0000DA43C5 /* UnityBannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6C89A522258C0000DA43C5 /* UnityBannerController.swift */; };
@@ -141,6 +142,7 @@
 		5A4CDA0B2211BA2600217E5F /* ParallaxEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallaxEffect.swift; sourceTree = "<group>"; };
 		5A4CDA0D2211D9C500217E5F /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		5A5F77892214214200E13EF7 /* CurrentDayWeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDayWeatherDetailViewController.swift; sourceTree = "<group>"; };
+		5A682E012236B2D20072CD31 /* FacebookRewardedVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookRewardedVideoController.swift; sourceTree = "<group>"; };
 		5A6A8C132086297600494187 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		5A6A8C1520862C8B00494187 /* ForecastSummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastSummaryCell.swift; sourceTree = "<group>"; };
 		5A6C89A522258C0000DA43C5 /* UnityBannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnityBannerController.swift; sourceTree = "<group>"; };
@@ -336,8 +338,8 @@
 				5AA496B0222FD95A00537126 /* Analytics */,
 				5ABCE314221D88C4004F8882 /* PubNative */,
 				5A898108222EC6B300F1CE62 /* AppLovin */,
-				5A85B5DB222E7F8000A9D014 /* Fyber */,
 				5AD53C8B2226EE2000370B75 /* IronSource */,
+				5A85B5DB222E7F8000A9D014 /* Fyber */,
 				5AF3A1A52225467F0010ED34 /* Facebook */,
 				5A6E239B221EF8A00021BADE /* MoPub */,
 				5AE362C722242D76002D7CB9 /* Google Ads Manager */,
@@ -452,6 +454,7 @@
 				5AF3A1A6222546ED0010ED34 /* FacebookBannerController.swift */,
 				5AF3A1A8222559220010ED34 /* FacebookMRectController.swift */,
 				5AF3A1AA22256B6E0010ED34 /* FacebookInterstitialController.swift */,
+				5A682E012236B2D20072CD31 /* FacebookRewardedVideoController.swift */,
 			);
 			path = Facebook;
 			sourceTree = "<group>";
@@ -781,6 +784,7 @@
 				5A89810A222ECA5500F1CE62 /* AppLovinBannerController.swift in Sources */,
 				E75E4690203B3E8500FF9672 /* ForecastSys.swift in Sources */,
 				5ABCE303221C5A47004F8882 /* AdNetworkConstants.swift in Sources */,
+				5A682E022236B2D20072CD31 /* FacebookRewardedVideoController.swift in Sources */,
 				5AA496B6222FE24500537126 /* AdAnalyticsSession.swift in Sources */,
 				5AE362C6222421CB002D7CB9 /* AdMobRewardedVideoController.swift in Sources */,
 				5A6E23A1222009D30021BADE /* MoPubMRectController.swift in Sources */,
