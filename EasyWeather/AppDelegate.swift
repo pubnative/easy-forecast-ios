@@ -40,16 +40,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         saveCityListToUserDefaults()
-
-//        if(!UserDefaults.standard.bool(forKey: "EasyForecast_v:2.0_FirstLaunch")){
-//            saveCityListToUserDefaults()
-//            UserDefaults.standard.set(true, forKey: "EasyForecast_v:2.0_FirstLaunch")
-//            UserDefaults.standard.synchronize();
-//        }
         
         FirebaseApp.configure()
         Fabric.with([Crashlytics.self])
-        HyBid.initWithAppToken("543027b8e954474cbcd9a98481622a3b") { (success) in
+        HyBid.initWithAppToken(PUBNATIVE_APP_TOKEN) { (success) in
             print("HyBid Successfully Initialized")
             self.askForConsent()
         }
@@ -59,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let moPubSDKConfig = MPMoPubConfiguration(adUnitIdForAppInitialization: MOPUB_BANNER_AD_UNIT_ID)
         MoPub.sharedInstance().initializeSdk(with: moPubSDKConfig, completion: nil)
         
-        GADMobileAds.configure(withApplicationID: "ca-app-pub-3940256099942544~1458002511")
+        GADMobileAds.configure(withApplicationID: ADMOB_APP_ID)
 
         UnityAds.initialize(UNITY_GAME_ID, delegate: nil, testMode: false)
         
