@@ -40,6 +40,7 @@ class CurrentDayWeatherDetailViewController: UIViewController {
     var currentWeatherResponse: CurrentResponse!
     var cityName: String!
     var dataSource = [Any]()
+    var adRequestFinished: Bool = true
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -98,13 +99,15 @@ class CurrentDayWeatherDetailViewController: UIViewController {
     }
     
     func loadRewardedVideo() {
-        rewardedVideoPlacement.cleanUp()
-        guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: REWARDED_VIDEO_PLACEMENT) else { return }
-        guard let placement = RewardedVideoPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withViewController: self, withRewardedVideoPlacementDelegate: self) else { return }
-        rewardedVideoPlacement = placement
-        rewardedVideoPlacement.loadAd()
+        if adRequestFinished {
+            rewardedVideoPlacement.cleanUp()
+            guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: REWARDED_VIDEO_PLACEMENT) else { return }
+            guard let placement = RewardedVideoPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withViewController: self, withRewardedVideoPlacementDelegate: self) else { return }
+            rewardedVideoPlacement = placement
+            rewardedVideoPlacement.loadAd()
+            adRequestFinished = false
+        }
     }
-    
 }
 
 extension CurrentDayWeatherDetailViewController: UITableViewDelegate, UITableViewDataSource {
@@ -136,11 +139,12 @@ extension CurrentDayWeatherDetailViewController: UITableViewDelegate, UITableVie
 extension CurrentDayWeatherDetailViewController: RewardedVideoPlacementDelegate {
     
     func rewardedVideoPlacementDidLoad() {
+        adRequestFinished = true
         rewardedVideoPlacement.show()
     }
     
     func rewardedVideoPlacementDidFail(withError error: Error) {
-        
+        adRequestFinished = true
     }
     
     func rewardedVideoPlacementDidOpen() {

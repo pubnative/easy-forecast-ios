@@ -30,6 +30,7 @@ class SearchCityViewController: UIViewController {
     var adPlacement = AdPlacement()
     var cityName: String!
     var cityID: String?
+    var adRequestFinished: Bool = true
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -91,11 +92,14 @@ class SearchCityViewController: UIViewController {
     }
     
     func loadAd() {
-        mRectContainerView.isHidden = true
-        guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: MRECT_PLACEMENT) else { return }
-        guard let placement = MRectPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withViewController: self, withAdPlacementDelegate: self) else { return }
-        adPlacement = placement
-        adPlacement.loadAd()
+        if adRequestFinished {
+            mRectContainerView.isHidden = true
+            guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: MRECT_PLACEMENT) else { return }
+            guard let placement = MRectPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withViewController: self, withAdPlacementDelegate: self) else { return }
+            adPlacement = placement
+            adPlacement.loadAd()
+            adRequestFinished = false
+        }
     }
     
     func removeAllSubviews(from view: UIView) {
@@ -109,6 +113,7 @@ class SearchCityViewController: UIViewController {
 extension SearchCityViewController: AdPlacementDelegate {
     
     func adPlacementDidLoad() {
+        adRequestFinished = true
         removeAllSubviews(from: mRectContainerView)
         guard let adView = adPlacement.adView() else { return }
         mRectContainerView.addSubview(adView)
@@ -116,6 +121,7 @@ extension SearchCityViewController: AdPlacementDelegate {
     }
     
     func adPlacementDidFail(withError error: Error) {
+        adRequestFinished = true
         mRectContainerView.isHidden = true
     }
     

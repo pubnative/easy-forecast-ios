@@ -54,6 +54,8 @@ class SummaryWeatherViewController: UIViewController {
             setNeedsStatusBarAppearanceUpdate()
         }
     }
+    var adRequestFinished: Bool = true
+    var interstitialAdRequestFinished: Bool = true
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -147,20 +149,26 @@ class SummaryWeatherViewController: UIViewController {
     }
     
     func loadAd() {
-        bannerAdContainer.isHidden = true
-        bannerAdContainerHeightConstraint.constant = 0
-        guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: BANNER_PLACEMENT) else { return }
-        guard let placement = BannerPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withViewController: self, withAdPlacementDelegate: self) else { return }
-        adPlacement = placement
-        adPlacement.loadAd()
+        if adRequestFinished {
+            bannerAdContainer.isHidden = true
+            bannerAdContainerHeightConstraint.constant = 0
+            guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: BANNER_PLACEMENT) else { return }
+            guard let placement = BannerPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withViewController: self, withAdPlacementDelegate: self) else { return }
+            adPlacement = placement
+            adPlacement.loadAd()
+            adRequestFinished = false
+        }
     }
     
     func loadInterstitial() {
-        interstitialPlacement.cleanUp()
-        guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: INTERSTITIAL_PLACEMENT) else { return }
-        guard let placement = InterstitialPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withViewController: self, withInterstitialPlacementDelegate: self) else { return }
-        interstitialPlacement = placement
-        interstitialPlacement.loadAd()
+        if interstitialAdRequestFinished {
+            interstitialPlacement.cleanUp()
+            guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: INTERSTITIAL_PLACEMENT) else { return }
+            guard let placement = InterstitialPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withViewController: self, withInterstitialPlacementDelegate: self) else { return }
+            interstitialPlacement = placement
+            interstitialPlacement.loadAd()
+            interstitialAdRequestFinished = false
+        }
     }
     
     func removeAllSubviews(from view: UIView) {
@@ -189,11 +197,11 @@ extension SummaryWeatherViewController: InterstitialPlacementDelegate {
     }
     
     func interstitialPlacementDidFail(withError error: Error) {
-        
+        interstitialAdRequestFinished = true
     }
     
     func interstitialPlacementDidShow() {
-        
+        interstitialAdRequestFinished = true
     }
     
     func interstitialPlacementDidDismissed() {
@@ -213,6 +221,7 @@ extension SummaryWeatherViewController: InterstitialPlacementDelegate {
 extension SummaryWeatherViewController: AdPlacementDelegate {
     
     func adPlacementDidLoad() {
+        adRequestFinished = true
         removeAllSubviews(from: bannerAdContainer)
         guard let adView = adPlacement.adView() else { return }
         bannerAdContainer.addSubview(adView)
@@ -220,6 +229,7 @@ extension SummaryWeatherViewController: AdPlacementDelegate {
     }
     
     func adPlacementDidFail(withError error: Error) {
+        adRequestFinished = true
         hideBannerContainer()
     }
     
