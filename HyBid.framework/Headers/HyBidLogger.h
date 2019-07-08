@@ -20,29 +20,27 @@
 //  THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-@class HyBidBrowser;
+typedef enum {
+    HyBidLogLevelNone,
+    HyBidLogLevelError,
+    HyBidLogLevelWarning,
+    HyBidLogLevelInfo,
+    HyBidLogLevelDebug,
+} HyBidLogLevel;
 
-@protocol HyBidBrowserControlsViewDelegate <NSObject>
+// A simple logger enable you to see different levels of logging.
+// Use logLevel as a filter to see the messages for the specific level.
+//
+@interface HyBidLogger : NSObject
 
-@required
+// Method to filter logging with the level passed as the paramter
++ (void)setLogLevel:(HyBidLogLevel)logLevel;
 
-- (void)back;
-- (void)forward;
-- (void)refresh;
-- (void)launchSafari;
-- (void)dismiss;
-
-@end
-
-@interface HyBidBrowserControlsView : UIView
-
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *backButton;
-@property (nonatomic, retain) IBOutlet UIToolbar *controlsToolbar;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *forwardButton;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *loadingIndicator;
-
-- (id)initWithPubnativeBrowser:(HyBidBrowser *)p_pnBrowser;
++ (void)errorLogFromClass:(NSString *)className fromMethod:(NSString *)methodName withMessage:(NSString *)message;
++ (void)warningLogFromClass:(NSString *)className fromMethod:(NSString *)methodName withMessage:(NSString *)message;
++ (void)infoLogFromClass:(NSString *)className fromMethod:(NSString *)methodName withMessage:(NSString *)message;
++ (void)debugLogFromClass:(NSString *)className fromMethod:(NSString *)methodName withMessage:(NSString *)message;
 
 @end

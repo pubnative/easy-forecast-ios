@@ -1,5 +1,5 @@
 //
-//  Copyright © 2018 PubNative. All rights reserved.
+//  Copyright © 2019 PubNative. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -20,16 +20,20 @@
 //  THE SOFTWARE.
 //
 
-#import "HyBidBrowserControlsView.h"
+@class OMIDPubnativenetPartner;
 
-DEPRECATED_MSG_ATTRIBUTE("Use HyBidBrowserControlsViewDelegate instead.")
+#import <Foundation/Foundation.h>
 
-@protocol PNLiteBrowserControlsViewDelegate <HyBidBrowserControlsViewDelegate>
+NS_ASSUME_NONNULL_BEGIN
+
+@interface HyBidViewabilityManager : NSObject
+
+@property (nonatomic, readonly) BOOL isViewabilityMeasurementActivated;
+@property (nonatomic, assign) BOOL viewabilityMeasurementEnabled;
+@property (nonatomic, strong) OMIDPubnativenetPartner *partner;
+
++ (instancetype)sharedInstance;
 
 @end
 
-DEPRECATED_MSG_ATTRIBUTE("Use HyBidBrowserControlsView instead.")
-
-@interface PNLiteBrowserControlsView : HyBidBrowserControlsView
-
-@end
+NS_ASSUME_NONNULL_END

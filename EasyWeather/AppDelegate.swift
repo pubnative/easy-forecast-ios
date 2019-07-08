@@ -44,8 +44,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         Fabric.with([Crashlytics.self])
         HyBid.initWithAppToken(PUBNATIVE_APP_TOKEN) { (success) in
-            print("HyBid Successfully Initialized")
-            self.askForConsent()
+            if (success) {
+                HyBidLogger.setLogLevel(HyBidLogLevelDebug)
+                print("HyBid Successfully Initialized")
+                self.askForConsent()
+            }
         }
         HyBid.setCoppa(false)
         HyBid.setTestMode(false)
