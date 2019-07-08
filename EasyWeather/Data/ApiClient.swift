@@ -32,13 +32,8 @@ class ApiClient: NSObject {
     var currentDelegate: CurrentUpdateDelegate?
     var forecastDelegate: ForecastUpdateDelegate?
 
-    func fetchCurrentForCity(name: String, code: String) {
-        var query = name
-        if (code.count != 0) {
-            query = "\(query),\(code)"
-        }
-        let url = "\(baseUrl)weather?APPID=\(apiKey)&q=\(query)&units=\(defaultUnitFormat)"
-        
+    func fetchCurrent(forCityID cityID: String) {
+        let url = "\(baseUrl)weather?APPID=\(apiKey)&id=\(cityID)&units=\(defaultUnitFormat)"
         Alamofire.request(url).responseObject { (response: DataResponse<CurrentResponse>) in
             if let error = response.error {
                 self.currentDelegate?.requestCurrentDidFail(withError: error)
@@ -50,7 +45,6 @@ class ApiClient: NSObject {
     
     func fetchCurrentForCoordinates(latitude: Double, longitude: Double) {
         let url = "\(baseUrl)weather?APPID=\(apiKey)&lat=\(latitude)&lon=\(longitude)&units=\(defaultUnitFormat)"
-        
         Alamofire.request(url).responseObject { (response: DataResponse<CurrentResponse>) in
             if let error = response.error {
                 self.currentDelegate?.requestCurrentDidFail(withError: error)
@@ -60,13 +54,8 @@ class ApiClient: NSObject {
         }
     }
     
-    func fetchForecastForCity(name: String, code: String) {
-        var query = name
-        if (code.count != 0) {
-            query = "\(query),\(code)"
-        }
-        let url = "\(baseUrl)forecast?APPID=\(apiKey)&q=\(query)&units=\(defaultUnitFormat)"
-        
+    func fetchForecast(forCityID cityID: String) {
+        let url = "\(baseUrl)forecast?APPID=\(apiKey)&id=\(cityID)&units=\(defaultUnitFormat)"
         Alamofire.request(url).responseObject { (response: DataResponse<ForecastResponse>) in
             if let error = response.error {
                 self.forecastDelegate?.requestForecastDidFail(withError: error)
@@ -78,7 +67,6 @@ class ApiClient: NSObject {
     
     func fetchForecastForCoordinates(latitude: Double, longitude: Double) {
         let url = "\(baseUrl)forecast?APPID=\(apiKey)&lat=\(latitude)&lon=\(longitude)&units=\(defaultUnitFormat)"
-        
         Alamofire.request(url).responseObject { (response: DataResponse<ForecastResponse>) in
             if let error = response.error {
                 self.forecastDelegate?.requestForecastDidFail(withError: error)

@@ -33,8 +33,6 @@ FOUNDATION_EXPORT const unsigned char HyBidVersionString[];
 #import <HyBid/PNLiteRequestParameter.h>
 #import <HyBid/PNLiteTargetingModel.h>
 #import <HyBid/PNLiteAdRequest.h>
-#import <HyBid/PNLiteBrowser.h>
-#import <HyBid/PNLiteBrowserControlsView.h>
 #import <HyBid/PNLiteMRAIDServiceProvider.h>
 #import <HyBid/PNLiteMRAIDView.h>
 #import <HyBid/PNLiteMRAIDServiceDelegate.h>
@@ -66,8 +64,6 @@ FOUNDATION_EXPORT const unsigned char HyBidVersionString[];
 #import <HyBid/HyBidRequestParameter.h>
 #import <HyBid/HyBidTargetingModel.h>
 #import <HyBid/HyBidAdRequest.h>
-#import <HyBid/HyBidBrowser.h>
-#import <HyBid/HyBidBrowserControlsView.h>
 #import <HyBid/HyBidMRAIDServiceProvider.h>
 #import <HyBid/HyBidMRAIDView.h>
 #import <HyBid/HyBidMRAIDServiceDelegate.h>
@@ -100,6 +96,8 @@ FOUNDATION_EXPORT const unsigned char HyBidVersionString[];
 #import <HyBid/HyBidSettings.h>
 #import <HyBid/HyBidStarRatingView.h>
 #import <HyBid/HyBidNativeAdRenderer.h>
+#import <HyBid/HyBidViewabilityManager.h>
+#import <HyBid/HyBidLogger.h>
 
 typedef void (^HyBidCompletionBlock)(BOOL);
 
