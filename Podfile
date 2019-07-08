@@ -11,4 +11,11 @@ target 'EasyWeather' do
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'lottie-ios'
+  pod 'mopub-ios-sdk'
+  pod 'Google-Mobile-Ads-SDK'
+  pod 'FBAudienceNetwork'
+  pod 'IronSourceSDK'
+  pod 'StartAppSDK'
+  pod 'Heyzap'
+  pod 'AppLovinSDK'
 end

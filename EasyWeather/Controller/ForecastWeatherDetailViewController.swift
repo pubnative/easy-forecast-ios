@@ -36,16 +36,20 @@ class ForecastWeatherDetailViewController: UIViewController {
     var forecastSummaryItem: ForecastSummaryItem!
     var cityName: String!
     var dataSource = [Any]()
-
-    func initWith(forecastSummaryItem: ForecastSummaryItem, andWithCityName cityName:String) {
-        self.forecastSummaryItem = forecastSummaryItem
-        self.cityName = cityName
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         forecastWeatherBackgroundView.addParallaxEffect()
         prepareDataToBeDisplayed()
+    }
+    
+    func initWith(forecastSummaryItem: ForecastSummaryItem, andWithCityName cityName:String) {
+        self.forecastSummaryItem = forecastSummaryItem
+        self.cityName = cityName
     }
     
     func prepareDataToBeDisplayed() {
