@@ -23,6 +23,6 @@
 import UIKit
 
 protocol ForecastUpdateDelegate {
-    mutating func requestForecastDidSucceed(withData: ForecastResponse)
-    mutating func requestForecastDidFail(withError: Error)
+    mutating func requestForecastDidSucceed(withData data: ForecastResponse)
+    mutating func requestForecastDidFail(withError error: Error)
 }

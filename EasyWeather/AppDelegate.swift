@@ -26,7 +26,11 @@ import Firebase
 import Fabric
 import Crashlytics
 import HyBid
+import MoPub
+import GoogleMobileAds
 import AdSupport.ASIdentifierManager
+import UnityAds
+import AppLovinSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -34,14 +38,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+        saveCityListToUserDefaults()
+        
         FirebaseApp.configure()
         Fabric.with([Crashlytics.self])
-        HyBid.initWithAppToken("3e98d63843d8437c8d35a05edab557dd") { (success) in
-            print("HyBid Successfully Initialized")
-            self.askForConsent()
+        HyBid.initWithAppToken(PUBNATIVE_APP_TOKEN) { (success) in
+            if (success) {
+                HyBidLogger.setLogLevel(HyBidLogLevelDebug)
+                print("HyBid Successfully Initialized")
+                self.askForConsent()
+            }
         }
         HyBid.setCoppa(false)
         HyBid.setTestMode(false)
+        
+        let moPubSDKConfig = MPMoPubConfiguration(adUnitIdForAppInitialization: MOPUB_BANNER_AD_UNIT_ID)
+        MoPub.sharedInstance().initializeSdk(with: moPubSDKConfig, completion: nil)
+        
+        GADMobileAds.configure(withApplicationID: ADMOB_APP_ID)
+
+        UnityAds.initialize(UNITY_GAME_ID, delegate: nil, testMode: false)
+        
+        IronSource.initWithAppKey(IRONSOURCE_APPKEY)
+        
+        if let startAppSDK = STAStartAppSDK.sharedInstance() {
+            startAppSDK.appID = STARTAPP_APP_ID
+        }
+        
+        HeyzapAds.start(withPublisherID: FYBER_PUBLISHER_ID)
+        ALSdk.initializeSdk()
+        
         return true
     }
     
