@@ -33,16 +33,12 @@ FOUNDATION_EXPORT const unsigned char HyBidVersionString[];
 #import <HyBid/PNLiteRequestParameter.h>
 #import <HyBid/PNLiteTargetingModel.h>
 #import <HyBid/PNLiteAdRequest.h>
-#import <HyBid/PNLiteBrowser.h>
-#import <HyBid/PNLiteBrowserControlsView.h>
 #import <HyBid/PNLiteMRAIDServiceProvider.h>
 #import <HyBid/PNLiteMRAIDView.h>
 #import <HyBid/PNLiteMRAIDServiceDelegate.h>
 #import <HyBid/PNLiteBannerAdRequest.h>
 #import <HyBid/PNLiteMRectAdRequest.h>
 #import <HyBid/PNLiteInterstitialAdRequest.h>
-#import <HyBid/PNLiteBannerPresenter.h>
-#import <HyBid/PNLiteMRectPresenter.h>
 #import <HyBid/PNLiteInterstitialPresenter.h>
 #import <HyBid/PNLiteNativeAdLoader.h>
 #import <HyBid/PNLiteBannerPresenterFactory.h>
@@ -68,18 +64,18 @@ FOUNDATION_EXPORT const unsigned char HyBidVersionString[];
 #import <HyBid/HyBidRequestParameter.h>
 #import <HyBid/HyBidTargetingModel.h>
 #import <HyBid/HyBidAdRequest.h>
-#import <HyBid/HyBidBrowser.h>
-#import <HyBid/HyBidBrowserControlsView.h>
 #import <HyBid/HyBidMRAIDServiceProvider.h>
 #import <HyBid/HyBidMRAIDView.h>
 #import <HyBid/HyBidMRAIDServiceDelegate.h>
+#import <HyBid/HyBidLeaderboardAdRequest.h>
 #import <HyBid/HyBidBannerAdRequest.h>
 #import <HyBid/HyBidMRectAdRequest.h>
 #import <HyBid/HyBidInterstitialAdRequest.h>
-#import <HyBid/HyBidBannerPresenter.h>
-#import <HyBid/HyBidMRectPresenter.h>
+#import <HyBid/HyBidAdPresenter.h>
 #import <HyBid/HyBidInterstitialPresenter.h>
 #import <HyBid/HyBidNativeAdLoader.h>
+#import <HyBid/HyBidAdPresenterFactory.h>
+#import <HyBid/HyBidLeaderboardPresenterFactory.h>
 #import <HyBid/HyBidBannerPresenterFactory.h>
 #import <HyBid/HyBidMRectPresenterFactory.h>
 #import <HyBid/HyBidInterstitialPresenterFactory.h>
@@ -93,12 +89,15 @@ FOUNDATION_EXPORT const unsigned char HyBidVersionString[];
 #import <HyBid/HyBidAd.h>
 #import <HyBid/HyBidNativeAd.h>
 #import <HyBid/HyBidAdView.h>
+#import <HyBid/HyBidLeaderboardAdView.h>
 #import <HyBid/HyBidBannerAdView.h>
 #import <HyBid/HyBidMRectAdView.h>
 #import <HyBid/HyBidInterstitialAd.h>
 #import <HyBid/HyBidSettings.h>
 #import <HyBid/HyBidStarRatingView.h>
 #import <HyBid/HyBidNativeAdRenderer.h>
+#import <HyBid/HyBidViewabilityManager.h>
+#import <HyBid/HyBidLogger.h>
 
 typedef void (^HyBidCompletionBlock)(BOOL);
 
