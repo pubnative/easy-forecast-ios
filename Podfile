@@ -18,4 +18,5 @@ target 'EasyWeather' do
   pod 'StartAppSDK'
   pod 'Heyzap'
   pod 'AppLovinSDK'
+  pod 'HyBid', :podspec => '/Users/cansoykarafakili/Documents/Pubnative Projects/iOS HyBid/pubnative-hybid-ios-sdk/HyBid.podspec'
 end
