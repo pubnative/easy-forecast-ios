@@ -54,7 +54,7 @@ PODS:
   - GoogleUtilities/UserDefaults (5.3.3):
     - GoogleUtilities/Logger
   - Heyzap (9.51.0)
-  - HyBid (1.3.4)
+  - HyBid (1.3.5)
   - IronSourceSDK (6.8.0.0)
   - lottie-ios (2.5.2)
   - mopub-ios-sdk (5.4.1):
@@ -131,7 +131,7 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 2b3a023a61239c8d002e6e4fcf4abce8eddce0e0
   GoogleUtilities: 8208aee3e97a1ae93d44c57e96c476a5a3b03f0a
   Heyzap: 0f3a429823c53a4b837f8bd9ea724272e75304f8
-  HyBid: fa7685b65e7c72649006f6cb80defa754898c8be
+  HyBid: 6e7a993a9e158c74f60a22a81584cad9226b9d84
   IronSourceSDK: 1eef343a0d2468889f1befb8506cc9560a10e8af
   lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
   mopub-ios-sdk: 320de49dd0a352ac58d33104a23853e749a84a78
