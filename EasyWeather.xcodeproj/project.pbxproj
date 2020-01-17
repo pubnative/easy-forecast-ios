@@ -558,7 +558,6 @@
 				E7CC2765203AF265006A95B9 /* Frameworks */,
 				E7CC2766203AF265006A95B9 /* Resources */,
 				34391B0DFF60A3D6A7F0CFE1 /* [CP] Embed Pods Frameworks */,
-				5AD944E52087386600DD7E8C /* ShellScript */,
 				5AD944E92087829600DD7E8C /* Embed Frameworks */,
 				5AD944EA208782A600DD7E8C /* ShellScript */,
 				A0C161A32C9CE184A77F2E5F /* [CP] Copy Pods Resources */,
@@ -656,19 +655,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EasyWeather/Pods-EasyWeather-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		5AD944E52087386600DD7E8C /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" f61a9f30a8156746aae4b1cc84856189a3bf8575 537c5f9f76b46d7a1d200e942627095296d712b141ae62d982d273c1ef1bd9ee\n";
 		};
 		5AD944EA208782A600DD7E8C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

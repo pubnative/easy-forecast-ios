@@ -8,8 +8,6 @@ target 'EasyWeather' do
   pod 'Alamofire', '~> 4.6'
   pod 'Firebase/Core'
   pod 'AlamofireObjectMapper', '~> 5.0'
-  pod 'Fabric'
-  pod 'Crashlytics'
   pod 'lottie-ios'
   pod 'mopub-ios-sdk'
   pod 'Google-Mobile-Ads-SDK'
@@ -19,4 +17,5 @@ target 'EasyWeather' do
   pod 'Heyzap'
   pod 'AppLovinSDK'
   pod 'HyBid'
+  pod 'Firebase/Analytics'
 end
