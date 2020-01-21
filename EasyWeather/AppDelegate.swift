@@ -23,8 +23,6 @@
 import UIKit
 import CoreData
 import Firebase
-import Fabric
-import Crashlytics
 import HyBid
 import MoPub
 import GoogleMobileAds
@@ -42,7 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveCityListToUserDefaults()
         
         FirebaseApp.configure()
-        Fabric.with([Crashlytics.self])
         HyBid.initWithAppToken(PUBNATIVE_APP_TOKEN) { (success) in
             if (success) {
                 HyBidLogger.setLogLevel(HyBidLogLevelDebug)
