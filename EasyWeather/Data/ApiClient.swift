@@ -34,10 +34,10 @@ class ApiClient: NSObject {
 
     func fetchCurrent(forCityID cityID: String) {
         let url = "\(baseUrl)weather?APPID=\(apiKey)&id=\(cityID)&units=\(defaultUnitFormat)"
-        Alamofire.request(url).responseObject { (response: DataResponse<CurrentResponse>) in
+        AF.request(url).responseObject { (response: DataResponse<CurrentResponse, AFError>) in
             if let error = response.error {
                 self.currentDelegate?.requestCurrentDidFail(withError: error)
-            } else if let currentResponse = response.result.value {
+            } else if let currentResponse = response.value {
                 self.currentDelegate?.requestCurrentDidSucceed(withData: currentResponse)
             }
         }
@@ -45,10 +45,10 @@ class ApiClient: NSObject {
     
     func fetchCurrentForCoordinates(latitude: Double, longitude: Double) {
         let url = "\(baseUrl)weather?APPID=\(apiKey)&lat=\(latitude)&lon=\(longitude)&units=\(defaultUnitFormat)"
-        Alamofire.request(url).responseObject { (response: DataResponse<CurrentResponse>) in
+        AF.request(url).responseObject { (response: DataResponse<CurrentResponse, AFError>) in
             if let error = response.error {
                 self.currentDelegate?.requestCurrentDidFail(withError: error)
-            } else if let currentResponse = response.result.value {
+            } else if let currentResponse = response.value {
                 self.currentDelegate?.requestCurrentDidSucceed(withData: currentResponse)
             }
         }
@@ -56,10 +56,10 @@ class ApiClient: NSObject {
     
     func fetchForecast(forCityID cityID: String) {
         let url = "\(baseUrl)forecast?APPID=\(apiKey)&id=\(cityID)&units=\(defaultUnitFormat)"
-        Alamofire.request(url).responseObject { (response: DataResponse<ForecastResponse>) in
+        AF.request(url).responseObject { (response: DataResponse<ForecastResponse, AFError>) in
             if let error = response.error {
                 self.forecastDelegate?.requestForecastDidFail(withError: error)
-            } else if let forecastResponse = response.result.value {
+            } else if let forecastResponse = response.value {
                 self.forecastDelegate?.requestForecastDidSucceed(withData: forecastResponse)
             }
         }
@@ -67,12 +67,13 @@ class ApiClient: NSObject {
     
     func fetchForecastForCoordinates(latitude: Double, longitude: Double) {
         let url = "\(baseUrl)forecast?APPID=\(apiKey)&lat=\(latitude)&lon=\(longitude)&units=\(defaultUnitFormat)"
-        Alamofire.request(url).responseObject { (response: DataResponse<ForecastResponse>) in
+        AF.request(url).responseObject { (response: DataResponse<ForecastResponse, AFError>) in
             if let error = response.error {
                 self.forecastDelegate?.requestForecastDidFail(withError: error)
-            } else if let forecastResponse = response.result.value {
+            } else if let forecastResponse = response.value {
                 self.forecastDelegate?.requestForecastDidSucceed(withData: forecastResponse)
             }
         }
+
     }
 }

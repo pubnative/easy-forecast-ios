@@ -23,14 +23,13 @@
 import UIKit
 import CoreData
 import Firebase
-import Fabric
-import Crashlytics
 import HyBid
 import MoPub
 import GoogleMobileAds
 import AdSupport.ASIdentifierManager
 import UnityAds
 import AppLovinSDK
+import StoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -39,10 +38,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+        if #available(iOS 11.3, *) {
+            SKAdNetwork.registerAppForAdNetworkAttribution()
+        }
+        
         saveCityListToUserDefaults()
         
         FirebaseApp.configure()
-        Fabric.with([Crashlytics.self])
+        
         HyBid.initWithAppToken(PUBNATIVE_APP_TOKEN) { (success) in
             if (success) {
                 HyBidLogger.setLogLevel(HyBidLogLevelDebug)
@@ -66,7 +69,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             startAppSDK.appID = STARTAPP_APP_ID
         }
         
-        HeyzapAds.start(withPublisherID: FYBER_PUBLISHER_ID)
         ALSdk.initializeSdk()
         
         return true

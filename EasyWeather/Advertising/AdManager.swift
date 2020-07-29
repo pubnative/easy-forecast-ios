@@ -104,7 +104,7 @@ class AdManager {
 //        queue.enqueue(.pubnative)
         queue.enqueue(.appLovin)
 //        queue.enqueue(.ironSource)
-        queue.enqueue(.fyber)
+//        queue.enqueue(.fyber)
 //        queue.enqueue(.facebook)
 //        queue.enqueue(.moPub)
 //        queue.enqueue(.googleAdsManager)
