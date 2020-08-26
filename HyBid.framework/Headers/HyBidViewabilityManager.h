@@ -28,11 +28,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HyBidViewabilityManager : NSObject
 
-@property (nonatomic, readonly) BOOL isViewabilityMeasurementActivated;
 @property (nonatomic, assign) BOOL viewabilityMeasurementEnabled;
+@property (nonatomic, assign) BOOL isViewabilityMeasurementActivated;
 @property (nonatomic, strong) OMIDPubnativenetPartner *partner;
 
 + (instancetype)sharedInstance;
+- (NSString *)getOMIDJS;
 
 @end
 
