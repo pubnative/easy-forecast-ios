@@ -24,7 +24,6 @@ import UIKit
 import CoreData
 import Firebase
 import HyBid
-import MoPub
 import GoogleMobileAds
 import AdSupport.ASIdentifierManager
 import UnityAds
@@ -55,9 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         HyBid.setCoppa(false)
         HyBid.setTestMode(false)
-        
-        let moPubSDKConfig = MPMoPubConfiguration(adUnitIdForAppInitialization: MOPUB_BANNER_AD_UNIT_ID)
-        MoPub.sharedInstance().initializeSdk(with: moPubSDKConfig, completion: nil)
         
         GADMobileAds.configure(withApplicationID: ADMOB_APP_ID)
 

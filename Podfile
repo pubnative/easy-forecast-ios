@@ -9,7 +9,6 @@ target 'EasyWeather' do
   pod 'Firebase/Core'
   pod 'AlamofireObjectMapper', '~> 6.2'
   pod 'lottie-ios'
-  pod 'mopub-ios-sdk'
   pod 'Google-Mobile-Ads-SDK'
   pod 'FBAudienceNetwork'
   pod 'IronSourceSDK'
