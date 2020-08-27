@@ -52,17 +52,6 @@ PODS:
     - GoogleUtilities/Logger
   - IronSourceSDK (6.8.0.0)
   - lottie-ios (2.5.2)
-  - mopub-ios-sdk (5.4.1):
-    - mopub-ios-sdk/MoPubSDK (= 5.4.1)
-  - mopub-ios-sdk/Avid (5.4.1):
-    - mopub-ios-sdk/Core
-  - mopub-ios-sdk/Core (5.4.1)
-  - mopub-ios-sdk/Moat (5.4.1):
-    - mopub-ios-sdk/Core
-  - mopub-ios-sdk/MoPubSDK (5.4.1):
-    - mopub-ios-sdk/Avid
-    - mopub-ios-sdk/Core
-    - mopub-ios-sdk/Moat
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
@@ -80,7 +69,6 @@ DEPENDENCIES:
   - Google-Mobile-Ads-SDK
   - IronSourceSDK
   - lottie-ios
-  - mopub-ios-sdk
   - StartAppSDK
 
 SPEC REPOS:
@@ -96,7 +84,6 @@ SPEC REPOS:
     - GoogleUtilities
     - IronSourceSDK
     - lottie-ios
-    - mopub-ios-sdk
     - nanopb
     - StartAppSDK
   trunk:
@@ -118,11 +105,10 @@ SPEC CHECKSUMS:
   GoogleUtilities: 8208aee3e97a1ae93d44c57e96c476a5a3b03f0a
   IronSourceSDK: 1eef343a0d2468889f1befb8506cc9560a10e8af
   lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
-  mopub-ios-sdk: 320de49dd0a352ac58d33104a23853e749a84a78
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
   StartAppSDK: 3fb176fc63dcf8cfad09796f2f2a1299224736d5
 
-PODFILE CHECKSUM: a87f54ae2aab8172fc19b01dd2dce4eb123214f6
+PODFILE CHECKSUM: 7cd14353265d173a85c6a5f25c49b3ad523ee6fc
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.3

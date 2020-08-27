@@ -22,7 +22,6 @@
 
 import Foundation
 import HyBid
-import MoPub
 import GoogleMobileAds
 import FBAudienceNetwork
 import AppLovinSDK
@@ -39,8 +38,6 @@ class BannerPlacementFactory {
             return createIronSourcePlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .facebook:
             return createFacebookPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
-        case .moPub:
-            return createMoPubPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .googleAdsManager:
             return createGoogleAdsManagerPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .admob:
@@ -73,11 +70,6 @@ class BannerPlacementFactory {
         let adView = FBAdView(placementID: FACEBOOK_BANNER_AD_UNIT_ID, adSize: kFBAdSizeHeight50Banner, rootViewController: viewController)
         adView.frame = CGRect(x: 0, y: 0, width: 320, height: 50)
         return FacebookBannerController(withAdView: adView, withAdPlacementDelegate: delegate)
-    }
-    
-    fileprivate func createMoPubPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement? {
-        guard let adView = MPAdView(adUnitId: MOPUB_BANNER_AD_UNIT_ID, size: MOPUB_BANNER_SIZE) else { return nil }
-        return MoPubBannerController(withAdView: adView, withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
     fileprivate func createGoogleAdsManagerPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
