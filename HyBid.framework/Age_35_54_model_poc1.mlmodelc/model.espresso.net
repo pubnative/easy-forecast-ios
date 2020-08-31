@@ -1,0 +1,145 @@
+{
+  "storage" : "model.espresso.weights",
+  "properties" : {
+
+  },
+  "format_version" : 200,
+  "layers" : [
+    {
+      "k" : 1,
+      "bottom" : "",
+      "n" : 1,
+      "weights" : {
+
+      },
+      "h" : 1,
+      "nd_rank" : 1,
+      "constant_blob" : 1,
+      "top" : "sequential\/batch_normalization\/batchnorm\/mul",
+      "w" : 43,
+      "type" : "load_constant",
+      "name" : "sequential\/batch_normalization\/batchnorm\/mul"
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "batch_normalization_input,sequential\/batch_normalization\/batchnorm\/mul",
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "nd_mode" : true,
+      "top" : "sequential\/batch_normalization\/batchnorm\/mul_1",
+      "type" : "elementwise",
+      "name" : "sequential\/batch_normalization\/batchnorm\/mul_1",
+      "beta" : 0
+    },
+    {
+      "k" : 1,
+      "bottom" : "",
+      "n" : 1,
+      "weights" : {
+
+      },
+      "h" : 1,
+      "nd_rank" : 1,
+      "constant_blob" : 3,
+      "top" : "sequential\/batch_normalization\/batchnorm\/sub",
+      "w" : 43,
+      "type" : "load_constant",
+      "name" : "sequential\/batch_normalization\/batchnorm\/sub"
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "sequential\/batch_normalization\/batchnorm\/mul_1,sequential\/batch_normalization\/batchnorm\/sub",
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "nd_mode" : true,
+      "top" : "sequential\/batch_normalization\/batchnorm\/add_1",
+      "type" : "elementwise",
+      "name" : "sequential\/batch_normalization\/batchnorm\/add_1",
+      "beta" : 0
+    },
+    {
+      "nB" : 43,
+      "top" : "sequential\/dense\/Relu",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 256,
+      "blob_weights" : 7,
+      "type" : "inner_product",
+      "has_relu" : 1,
+      "bottom" : "sequential\/batch_normalization\/batchnorm\/add_1",
+      "blob_biases" : 5,
+      "has_tanh" : 0,
+      "name" : "sequential\/dense\/BiasAdd",
+      "has_prelu" : 0
+    },
+    {
+      "nB" : 256,
+      "top" : "sequential\/dense_1\/Relu",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 256,
+      "blob_weights" : 11,
+      "type" : "inner_product",
+      "has_relu" : 1,
+      "bottom" : "sequential\/dense\/Relu",
+      "blob_biases" : 9,
+      "has_tanh" : 0,
+      "name" : "sequential\/dense_1\/BiasAdd",
+      "has_prelu" : 0
+    },
+    {
+      "nB" : 256,
+      "top" : "sequential\/dense_2\/Relu",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 256,
+      "blob_weights" : 15,
+      "type" : "inner_product",
+      "has_relu" : 1,
+      "bottom" : "sequential\/dense_1\/Relu",
+      "blob_biases" : 13,
+      "has_tanh" : 0,
+      "name" : "sequential\/dense_2\/BiasAdd",
+      "has_prelu" : 0
+    },
+    {
+      "nB" : 256,
+      "top" : "sequential\/dense_3\/BiasAdd",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 1,
+      "blob_weights" : 19,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "sequential\/dense_2\/Relu",
+      "blob_biases" : 17,
+      "has_tanh" : 0,
+      "name" : "sequential\/dense_3\/BiasAdd",
+      "has_prelu" : 0
+    },
+    {
+      "mode" : 3,
+      "weights" : {
+
+      },
+      "top" : "Identity",
+      "type" : "activation",
+      "name" : "sequential\/dense_3\/Sigmoid",
+      "bottom" : "sequential\/dense_3\/BiasAdd"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "layer_shapes" : {
+    "sequential_4\/batch_normalization_4\/batchnorm\/add_1" : {
+      "k" : 1,
+      "w" : 64,
+      "n" : 1,
+      "_rank" : 2,
+      "h" : 1
+    },
+    "sequential_4\/batch_normalization_4\/batchnorm\/sub" : {
+      "k" : 1,
+      "w" : 64,
+      "n" : 1,
+      "_rank" : 1,
+      "h" : 1
+    },
+    "sequential_4\/dense_12\/Relu" : {
+      "k" : 1,
+      "w" : 256,
+      "n" : 1,
+      "_rank" : 2,
+      "h" : 1
+    },
+    "sequential_4\/batch_normalization_4\/batchnorm\/mul_1" : {
+      "k" : 1,
+      "w" : 64,
+      "n" : 1,
+      "_rank" : 2,
+      "h" : 1
+    },
+    "Identity" : {
+      "k" : 1,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 2,
+      "h" : 1
+    },
+    "batch_normalization_4_input" : {
+      "k" : 1,
+      "w" : 64,
+      "n" : 1,
+      "_rank" : 2,
+      "h" : 1
+    },
+    "sequential_4\/dense_14\/BiasAdd" : {
+      "k" : 1,
+      "w" : 1,
+      "n" : 1,
+      "_rank" : 2,
+      "h" : 1
+    },
+    "sequential_4\/batch_normalization_4\/batchnorm\/mul" : {
+      "k" : 1,
+      "w" : 64,
+      "n" : 1,
+      "_rank" : 1,
+      "h" : 1
+    },
+    "sequential_4\/dense_13\/Relu" : {
+      "k" : 1,
+      "w" : 256,
+      "n" : 1,
+      "_rank" : 2,
+      "h" : 1
+    }
+  }
+}
