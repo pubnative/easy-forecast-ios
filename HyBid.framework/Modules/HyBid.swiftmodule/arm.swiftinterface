@@ -30,6 +30,11 @@ import UIKit
   @objc override dynamic public init()
   @objc deinit
 }
+@objc public class DayPercentage : ObjectiveC.NSObject {
+  @objc public func calculateDayPercentage(days: [Swift.Int], durations: [Swift.Double]) -> [Swift.Double]
+  @objc override dynamic public init()
+  @objc deinit
+}
 @objc public class UniqueDays : ObjectiveC.NSObject {
   @objc public func calculateUniqueDays(dates: [Swift.String]) -> Swift.Int
   @objc override dynamic public init()

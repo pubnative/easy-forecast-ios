@@ -202,6 +202,13 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 
+SWIFT_CLASS("_TtC5HyBid13DayPercentage")
+@interface DayPercentage : NSObject
+- (NSArray<NSNumber *> * _Nonnull)calculateDayPercentageWithDays:(NSArray<NSNumber *> * _Nonnull)days durations:(NSArray<NSNumber *> * _Nonnull)durations SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 SWIFT_CLASS("_TtC5HyBid10DeviceName")
 @interface DeviceName : NSObject
 - (NSString * _Nonnull)processDeviceWithName:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT;
@@ -458,6 +465,13 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma clang attribute push(__attribute__((external_source_symbol(language="Swift", defined_in="HyBid",generated_declaration))), apply_to=any(function,enum,objc_interface,objc_category,objc_protocol))
 # pragma pop_macro("any")
 #endif
+
+
+SWIFT_CLASS("_TtC5HyBid13DayPercentage")
+@interface DayPercentage : NSObject
+- (NSArray<NSNumber *> * _Nonnull)calculateDayPercentageWithDays:(NSArray<NSNumber *> * _Nonnull)days durations:(NSArray<NSNumber *> * _Nonnull)durations SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
 
 
 SWIFT_CLASS("_TtC5HyBid10DeviceName")
