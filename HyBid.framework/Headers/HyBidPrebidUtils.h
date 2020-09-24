@@ -20,22 +20,19 @@
 //  THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import "HyBidHeaderBiddingUtils.h"
 #import "HyBidAd.h"
 
-typedef enum {
-    TWO_DECIMAL_PLACES,
-    THREE_DECIMAL_PLACES,
-} HyBidKeywordMode;
+DEPRECATED_MSG_ATTRIBUTE("Use HyBidHeaderBiddingUtils instead.")
 
-@interface HyBidPrebidUtils : NSObject
+@interface HyBidPrebidUtils : HyBidHeaderBiddingUtils
 
-+ (NSString *)createPrebidKeywordsStringWithAd:(HyBidAd *)ad;
-+ (NSString *)createPrebidKeywordsStringWithAd:(HyBidAd *)ad withZoneID:(NSString *)zoneID;
-+ (NSString *)createPrebidKeywordsStringWithAd:(HyBidAd *)ad withKeywordMode:(HyBidKeywordMode)keywordMode;
++ (NSString *)createPrebidKeywordsStringWithAd:(HyBidAd *)ad DEPRECATED_MSG_ATTRIBUTE("Use createHeaderBiddingKeywordsStringWithAd: method instead.");
++ (NSString *)createPrebidKeywordsStringWithAd:(HyBidAd *)ad withZoneID:(NSString *)zoneID DEPRECATED_MSG_ATTRIBUTE("Use createHeaderBiddingKeywordsStringWithAd: withZoneID: method instead.");
++ (NSString *)createPrebidKeywordsStringWithAd:(HyBidAd *)ad withKeywordMode:(HyBidKeywordMode)keywordMode DEPRECATED_MSG_ATTRIBUTE("Use createHeaderBiddingKeywordsStringWithAd: withKeywordMode: method instead.");
 
-+ (NSMutableDictionary *)createPrebidKeywordsDictionaryWithAd:(HyBidAd *)ad;
-+ (NSMutableDictionary *)createPrebidKeywordsDictionaryWithAd:(HyBidAd *)ad withZoneID:(NSString *)zoneID;
-+ (NSMutableDictionary *)createPrebidKeywordsDictionaryWithAd:(HyBidAd *)ad withKeywordMode:(HyBidKeywordMode)keywordMode;
++ (NSMutableDictionary *)createPrebidKeywordsDictionaryWithAd:(HyBidAd *)ad DEPRECATED_MSG_ATTRIBUTE("Use createHeaderBiddingKeywordsDictionaryWithAd: method instead.");
++ (NSMutableDictionary *)createPrebidKeywordsDictionaryWithAd:(HyBidAd *)ad withZoneID:(NSString *)zoneID DEPRECATED_MSG_ATTRIBUTE("Use createHeaderBiddingKeywordsDictionaryWithAd: withZoneID: method instead.");
++ (NSMutableDictionary *)createPrebidKeywordsDictionaryWithAd:(HyBidAd *)ad withKeywordMode:(HyBidKeywordMode)keywordMode DEPRECATED_MSG_ATTRIBUTE("Use createHeaderBiddingKeywordsDictionaryWithAd: withKeywordMode: method instead.");
 
 @end

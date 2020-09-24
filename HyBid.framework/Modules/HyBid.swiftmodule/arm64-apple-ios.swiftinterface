@@ -1,47 +1,47 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.1.2 (swiftlang-1100.0.278 clang-1100.0.33.9)
-// swift-module-flags: -target arm64-apple-ios10.3 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name HyBid
+// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name HyBid
 import Foundation
 @_exported import HyBid
 import Swift
 import UIKit
-@objc public class TimeFromWake : ObjectiveC.NSObject {
-  @objc public func calculateAverageTimeFromWake(userDay: [Swift.String], startHour: [Swift.Int]) -> Swift.Double
-  @objc override dynamic public init()
-  @objc deinit
-}
-@objc public class TimeToSleep : ObjectiveC.NSObject {
-  @objc public func calculateAverageTimeToSleep(userDay: [Swift.String], startHour: [Swift.Int]) -> Swift.Double
-  @objc override dynamic public init()
-  @objc deinit
-}
-@objc public class DeviceName : ObjectiveC.NSObject {
-  @objc public func processDevice(name: Swift.String) -> Swift.String
-  @objc override dynamic public init()
-  @objc deinit
-}
-@objc public class DurationPercentage : ObjectiveC.NSObject {
-  @objc public func calculateDurationPercentage(hours: [Swift.Int], durations: [Swift.Double]) -> [Swift.Double]
-  @objc override dynamic public init()
-  @objc deinit
-}
-@objc public class WeekendPercentage : ObjectiveC.NSObject {
-  @objc public func calculateWeekendPercentage(daysOfWeek: [Swift.String]) -> Swift.Double
-  @objc override dynamic public init()
-  @objc deinit
-}
-@objc public class DayPercentage : ObjectiveC.NSObject {
-  @objc public func calculateDayPercentage(days: [Swift.Int], durations: [Swift.Double]) -> [Swift.Double]
-  @objc override dynamic public init()
-  @objc deinit
-}
-@objc public class UniqueDays : ObjectiveC.NSObject {
+@objc @_inheritsConvenienceInitializers public class UniqueDays : ObjectiveC.NSObject {
   @objc public func calculateUniqueDays(dates: [Swift.String]) -> Swift.Int
+  @objc deinit
   @objc override dynamic public init()
+}
+@objc @_inheritsConvenienceInitializers public class TimeToSleep : ObjectiveC.NSObject {
+  @objc public func calculateAverageTimeToSleep(userDay: [Swift.String], startHour: [Swift.Int]) -> Swift.Double
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc @_inheritsConvenienceInitializers public class DurationPercentage : ObjectiveC.NSObject {
+  @objc public func calculateDurationPercentage(hours: [Swift.Int], durations: [Swift.Double]) -> [Swift.Double]
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc @_inheritsConvenienceInitializers public class DayPercentage : ObjectiveC.NSObject {
+  @objc public func calculateDayPercentage(days: [Swift.Int], durations: [Swift.Double]) -> [Swift.Double]
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc @_inheritsConvenienceInitializers public class SessionCalculator : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc public func calculate(session: HyBid.HyBidUserSession, locations: [HyBid.HyBidUserLocation])
   @objc deinit
 }
-@objc public class SessionCalculator : ObjectiveC.NSObject {
-  @objc override dynamic public init()
-  @objc public func calculate(session: HyBidUserSession, locations: [HyBidUserLocation])
+@objc @_inheritsConvenienceInitializers public class DeviceName : ObjectiveC.NSObject {
+  @objc public func processDevice(name: Swift.String) -> Swift.String
   @objc deinit
+  @objc override dynamic public init()
+}
+@objc @_inheritsConvenienceInitializers public class WeekendPercentage : ObjectiveC.NSObject {
+  @objc public func calculateWeekendPercentage(daysOfWeek: [Swift.String]) -> Swift.Double
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc @_inheritsConvenienceInitializers public class TimeFromWake : ObjectiveC.NSObject {
+  @objc public func calculateAverageTimeFromWake(userDay: [Swift.String], startHour: [Swift.Int]) -> Swift.Double
+  @objc deinit
+  @objc override dynamic public init()
 }

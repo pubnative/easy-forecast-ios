@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let hyBidTargeting = HyBidTargetingModel()
         let interests = [String]()
         hyBidTargeting.interests = interests
-        hyBidTargeting.interests.append("easyforecast:2.6")
+        hyBidTargeting.interests.append("easyforecast:2.8")
         HyBid.setTargeting(hyBidTargeting)
         
         let moPubSDKConfig = MPMoPubConfiguration(adUnitIdForAppInitialization: MOPUB_BANNER_AD_UNIT_ID)
