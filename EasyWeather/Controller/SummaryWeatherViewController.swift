@@ -56,6 +56,7 @@ class SummaryWeatherViewController: UIViewController {
     }
     var adRequestFinished: Bool = true
     var interstitialAdRequestFinished: Bool = true
+    var refreshAdTimer: Timer?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -63,6 +64,11 @@ class SummaryWeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(appCameToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
         apiClient.currentDelegate = self
         apiClient.forecastDelegate = self
         forecastWeatherTableView.isHidden = true
@@ -77,6 +83,14 @@ class SummaryWeatherViewController: UIViewController {
         if !isInitialWeatherLoaded {
 
         }
+    }
+    
+    @objc func appMovedToBackground() {
+        refreshAdTimer?.invalidate()
+    }
+    
+    @objc func appCameToForeground() {
+        loadAd()
     }
         
     func startLoadingAnimation() {
@@ -148,7 +162,7 @@ class SummaryWeatherViewController: UIViewController {
         loadInterstitial()
     }
     
-    func loadAd() {
+    @objc func loadAd() {
         if adRequestFinished {
             bannerAdContainer.isHidden = true
             bannerAdContainerHeightConstraint.constant = 0
@@ -157,6 +171,8 @@ class SummaryWeatherViewController: UIViewController {
             adPlacement = placement
             adPlacement.loadAd()
             adRequestFinished = false
+            refreshAdTimer?.invalidate()
+            refreshAdTimer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(SummaryWeatherViewController.loadAd), userInfo: nil, repeats: false)
         }
     }
     
