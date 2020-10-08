@@ -55,11 +55,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         HyBid.setCoppa(false)
         HyBid.setTestMode(false)
+        HyBid.setAppStoreAppID("1382171002")
         
         let hyBidTargeting = HyBidTargetingModel()
         let interests = [String]()
         hyBidTargeting.interests = interests
-        hyBidTargeting.interests.append("easyforecast:2.10")
+        hyBidTargeting.interests.append("easyforecast:2.11")
         HyBid.setTargeting(hyBidTargeting)
         
         let moPubSDKConfig = MPMoPubConfiguration(adUnitIdForAppInitialization: MOPUB_BANNER_AD_UNIT_ID)

@@ -55,7 +55,7 @@ class BannerPlacementFactory {
     }
     
     fileprivate func createPubNativePlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        let adView = HyBidBannerAdView(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+        let adView = HyBidAdView(size: HyBidAdSize.size_320x50)!
         return PubNativeBannerController(withAdView: adView, withZoneID: PUBNATIVE_BANNER_ZONE_ID, adPlacementDelegate: delegate)
     }
     

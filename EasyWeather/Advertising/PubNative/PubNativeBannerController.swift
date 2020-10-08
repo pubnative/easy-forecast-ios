@@ -25,12 +25,12 @@ import HyBid
 
 class PubNativeBannerController: AdPlacement {
     
-    var bannerAdView: HyBidBannerAdView!
+    var bannerAdView: HyBidAdView!
     var zoneID: String!
     var delegate: AdPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
     
-    init(withAdView adView: HyBidBannerAdView, withZoneID zoneID: String, adPlacementDelegate delegate: AdPlacementDelegate) {
+    init(withAdView adView: HyBidAdView, withZoneID zoneID: String, adPlacementDelegate delegate: AdPlacementDelegate) {
         self.bannerAdView = adView
         self.zoneID = zoneID
         self.delegate = delegate
