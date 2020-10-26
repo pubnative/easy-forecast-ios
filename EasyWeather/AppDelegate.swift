@@ -30,6 +30,9 @@ import AdSupport.ASIdentifierManager
 import UnityAds
 import AppLovinSDK
 import StoreKit
+import NumberEight
+import Insights
+import Audiences
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -40,6 +43,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if #available(iOS 11.3, *) {
             SKAdNetwork.registerAppForAdNetworkAttribution()
+        }
+        
+        let token = NumberEight.start(withApiKey: "T954C5VJTIAXAGMUVPDU0TZMGEV2", launchOptions: launchOptions, completion: nil)
+        
+        if let token = token {
+            Insights.startRecording(apiToken: token)
+            Audiences.startRecording(apiToken: token)
         }
         
         saveCityListToUserDefaults()
@@ -60,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let hyBidTargeting = HyBidTargetingModel()
         let interests = [String]()
         hyBidTargeting.interests = interests
-        hyBidTargeting.interests.append("easyforecast:2.11")
+        hyBidTargeting.interests.append("easyforecast:2.12")
         HyBid.setTargeting(hyBidTargeting)
         
         let moPubSDKConfig = MPMoPubConfiguration(adUnitIdForAppInitialization: MOPUB_BANNER_AD_UNIT_ID)

@@ -22,6 +22,7 @@
 
 import UIKit
 import HyBid
+import Audiences
 
 class PubNativeBannerController: AdPlacement {
     
@@ -42,6 +43,16 @@ class PubNativeBannerController: AdPlacement {
     }
     
     override func loadAd() {
+        let hyBidTargeting = HyBidTargetingModel()
+        let interests = [String]()
+        hyBidTargeting.interests = interests
+        hyBidTargeting.interests.append("easyforecast:2.12")
+
+        let audiences = Audiences.currentMemberships
+        hyBidTargeting.interests.append(audiences.joined(separator: ","))
+        
+        HyBid.setTargeting(hyBidTargeting)
+        
         adAnalyticsSession.start()
         bannerAdView.load(withZoneID: zoneID, andWith: self)
     }

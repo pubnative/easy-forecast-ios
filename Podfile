@@ -1,3 +1,5 @@
+source 'https://github.com/CocoaPods/Specs'
+source 'https://gitlab.com/NumberEight/CocoaPods'
 # Uncomment the next line to define a global platform for your project
 platform :ios, '11.0'
 
@@ -15,4 +17,7 @@ target 'EasyWeather' do
   pod 'IronSourceSDK'
   pod 'StartAppSDK'
   pod 'AppLovinSDK'
+  pod 'NumberEight'
+  pod 'NumberEight/Insights'
+  pod 'NumberEight/Audiences'
 end
