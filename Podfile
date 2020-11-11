@@ -7,9 +7,9 @@ target 'EasyWeather' do
   use_frameworks!
 
   # Pods for EasyWeather
-  pod 'Alamofire', '~> 5.0.0-rc.2'
+  pod 'Alamofire', '~> 5.0.0-rc.2Ah perfect thThe '
   pod 'Firebase/Core'
-  pod 'AlamofireObjectMapper', '~> 6.2'
+  pod 'AlamofireObjectMapper', '~> 6.2.0'
   pod 'lottie-ios'
   pod 'mopub-ios-sdk'
   pod 'Google-Mobile-Ads-SDK'
@@ -18,6 +18,5 @@ target 'EasyWeather' do
   pod 'StartAppSDK'
   pod 'AppLovinSDK'
   pod 'NumberEight'
-  pod 'NumberEight/Insights'
   pod 'NumberEight/Audiences'
 end

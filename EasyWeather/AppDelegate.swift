@@ -30,8 +30,6 @@ import AdSupport.ASIdentifierManager
 import UnityAds
 import AppLovinSDK
 import StoreKit
-import NumberEight
-import Insights
 import Audiences
 
 @UIApplicationMain
@@ -45,12 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             SKAdNetwork.registerAppForAdNetworkAttribution()
         }
         
-        let token = NumberEight.start(withApiKey: "T954C5VJTIAXAGMUVPDU0TZMGEV2", launchOptions: launchOptions, completion: nil)
+        let token = NumberEight.start(withApiKey: "T954C5VJTIAXAGMUVPDU0TZMGEV2", launchOptions: launchOptions, consentOptions: ConsentOptions.withConsentToAll(), completion: nil)
         
-        if let token = token {
-            Insights.startRecording(apiToken: token)
-            Audiences.startRecording(apiToken: token)
-        }
+        Audiences.startRecording(apiToken: token)
         
         saveCityListToUserDefaults()
         
