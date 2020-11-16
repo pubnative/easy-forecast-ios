@@ -7,7 +7,7 @@ target 'EasyWeather' do
   use_frameworks!
 
   # Pods for EasyWeather
-  pod 'Alamofire', '~> 5.0.0-rc.2Ah perfect thThe '
+  pod 'Alamofire', '~> 5.0.0-rc.2'
   pod 'Firebase/Core'
   pod 'AlamofireObjectMapper', '~> 6.2.0'
   pod 'lottie-ios'
