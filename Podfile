@@ -19,4 +19,5 @@ target 'EasyWeather' do
   pod 'AppLovinSDK'
   pod 'NumberEight'
   pod 'NumberEight/Audiences'
+  pod 'HyBid'
 end

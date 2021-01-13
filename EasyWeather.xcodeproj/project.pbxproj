@@ -98,8 +98,6 @@
 		E75E469E203B3F0100FF9672 /* CurrentClouds.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75E469D203B3F0100FF9672 /* CurrentClouds.swift */; };
 		E75E46A0203B3F0C00FF9672 /* CurrentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75E469F203B3F0C00FF9672 /* CurrentResponse.swift */; };
 		E75E46A3203B468600FF9672 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75E46A2203B468600FF9672 /* ApiClient.swift */; };
-		E76F05A22530C5670028369F /* HyBid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E76F05A02530C5630028369F /* HyBid.framework */; };
-		E76F05A32530C5670028369F /* HyBid.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E76F05A02530C5630028369F /* HyBid.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E776E9A8203B1D0200101093 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = E776E9A7203B1D0200101093 /* Country.swift */; };
 		E7CC276C203AF265006A95B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CC276B203AF265006A95B9 /* AppDelegate.swift */; };
 		E7CC276E203AF265006A95B9 /* SummaryWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CC276D203AF265006A95B9 /* SummaryWeatherViewController.swift */; };
@@ -115,7 +113,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E76F05A32530C5670028369F /* HyBid.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,7 +214,6 @@
 		E75E469D203B3F0100FF9672 /* CurrentClouds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentClouds.swift; sourceTree = "<group>"; };
 		E75E469F203B3F0C00FF9672 /* CurrentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentResponse.swift; sourceTree = "<group>"; };
 		E75E46A2203B468600FF9672 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
-		E76F05A02530C5630028369F /* HyBid.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HyBid.framework; sourceTree = "<group>"; };
 		E776E9A7203B1D0200101093 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		E7CC2768203AF265006A95B9 /* EasyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7CC276B203AF265006A95B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -233,7 +229,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E76F05A22530C5670028369F /* HyBid.framework in Frameworks */,
 				2E1289B11BE255C43CB298A3 /* Pods_EasyWeather.framework in Frameworks */,
 				5AD53C882226D5E200370B75 /* UnityAds.framework in Frameworks */,
 			);
@@ -495,7 +490,6 @@
 		E7CC275F203AF265006A95B9 = {
 			isa = PBXGroup;
 			children = (
-				E76F05A02530C5630028369F /* HyBid.framework */,
 				5AD53C942228333D00370B75 /* EasyWeather-Bridging-Header.h */,
 				5AD53C872226D5E200370B75 /* UnityAds.framework */,
 				E7CC276A203AF265006A95B9 /* EasyWeather */,
@@ -625,6 +619,7 @@
 				"${BUILT_PRODUCTS_DIR}/Audiences/Audiences.framework",
 				"${BUILT_PRODUCTS_DIR}/Codability/Codability.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${PODS_ROOT}/HyBid/HyBid.framework",
 				"${BUILT_PRODUCTS_DIR}/Insights/Insights.framework",
 				"${PODS_ROOT}/NumberEightCore/NumberEightCompiled.framework",
 				"${BUILT_PRODUCTS_DIR}/NumberEightCore/NumberEight.framework",
@@ -641,6 +636,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Audiences.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Codability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HyBid.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Insights.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NumberEightCompiled.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NumberEight.framework",
@@ -955,7 +951,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 2.13;
+				MARKETING_VERSION = 2.14;
 				PRODUCT_BUNDLE_IDENTIFIER = net.easynaps.EasyForecast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -983,7 +979,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 2.13;
+				MARKETING_VERSION = 2.14;
 				PRODUCT_BUNDLE_IDENTIFIER = net.easynaps.EasyForecast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
