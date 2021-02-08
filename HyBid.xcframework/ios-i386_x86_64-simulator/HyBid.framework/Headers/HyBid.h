@@ -116,7 +116,6 @@ FOUNDATION_EXPORT const unsigned char HyBidVersionString[];
 #import <HyBid/HyBidReportingManager.h>
 #import <HyBid/HyBidReporting.h>
 #import <HyBid/HyBidReportingEvent.h>
-#import <HyBid/HyBidSessionManager.h>
 
 typedef void (^HyBidCompletionBlock)(BOOL);
 
@@ -125,7 +124,6 @@ typedef void (^HyBidCompletionBlock)(BOOL);
 + (void)setCoppa:(BOOL)enabled;
 + (void)setTargeting:(HyBidTargetingModel *)targeting;
 + (void)setTestMode:(BOOL)enabled;
-+ (void)setSessionTestMode:(BOOL)enabled;
 + (void)initWithAppToken:(NSString *)appToken completion:(HyBidCompletionBlock)completion;
 + (void)setLocationUpdates:(BOOL)enabled;
 + (void)setLocationTracking:(BOOL)enabled;

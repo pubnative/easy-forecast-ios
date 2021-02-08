@@ -4,49 +4,9 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>HA_model_poc_20200910.mlmodelc/analytics/coremldata.bin</key>
-		<data>
-		N6/m83gP3ckKGCS0t8qt07Beodw=
-		</data>
-		<key>HA_model_poc_20200910.mlmodelc/coremldata.bin</key>
-		<data>
-		7UNQlQ2L+73IitTkQApRTsspT2c=
-		</data>
-		<key>HA_model_poc_20200910.mlmodelc/metadata.json</key>
-		<data>
-		aoqlNYMJdqZyYK3fifv8N1q84t8=
-		</data>
-		<key>HA_model_poc_20200910.mlmodelc/model.espresso.net</key>
-		<data>
-		1MMSXsGLL8j1zmop7DZ5nIuWwSo=
-		</data>
-		<key>HA_model_poc_20200910.mlmodelc/model.espresso.shape</key>
-		<data>
-		v2J7pYKcdrJgbWv7Cp5E179vrwU=
-		</data>
-		<key>HA_model_poc_20200910.mlmodelc/model.espresso.weights</key>
-		<data>
-		g9dVwfKdFr/0JCzIFGJPrqEKHLs=
-		</data>
-		<key>HA_model_poc_20200910.mlmodelc/model.rank.info.json</key>
-		<data>
-		G9jOKPMHXIaZBopGKOvWZJFbSho=
-		</data>
-		<key>HA_model_poc_20200910.mlmodelc/model/coremldata.bin</key>
-		<data>
-		yNfQ7w7t+oLS6hqlkoRbmm1LArc=
-		</data>
-		<key>HA_model_poc_20200910.mlmodelc/neural_network_optionals/coremldata.bin</key>
-		<data>
-		tkgF5pxT7RlO+9uypQti9obolyA=
-		</data>
-		<key>Headers/HyBid-Swift.h</key>
-		<data>
-		BZKgphea/nvKRMZ4L1phVrdTbpw=
-		</data>
 		<key>Headers/HyBid.h</key>
 		<data>
-		WFqmZlsvL8U4iFzU3Kfbc0p3mQE=
+		06gypaP7BFWbJsqjKY4AyA21moY=
 		</data>
 		<key>Headers/HyBidAd.h</key>
 		<data>
@@ -78,7 +38,7 @@
 		</data>
 		<key>Headers/HyBidAdView.h</key>
 		<data>
-		chMn85pRoxcMxXimclFsDo+EIjw=
+		X80WDKfDsXn0zFqEu8TKOfHCRG8=
 		</data>
 		<key>Headers/HyBidBannerAdRequest.h</key>
 		<data>
@@ -206,19 +166,15 @@
 		</data>
 		<key>Headers/HyBidRequestParameter.h</key>
 		<data>
-		yD8KAQOhv53WJwhNsG5UmNlgrj8=
+		0DdELvg7uOZPnO6C0sJ2BKpLLsY=
 		</data>
 		<key>Headers/HyBidRewardedAd.h</key>
 		<data>
 		9MFuBZ4H9d2h3OqY1TM/werihsQ=
 		</data>
-		<key>Headers/HyBidSessionManager.h</key>
-		<data>
-		SgqJQuCS31wYONnzZrVVgiw8xW4=
-		</data>
 		<key>Headers/HyBidSettings.h</key>
 		<data>
-		BbeRv6zI8iH7eUxMVOvTlaDrzAA=
+		4nkx9tVFIUv2CgMZi7qNez6KHxo=
 		</data>
 		<key>Headers/HyBidSignalDataProcessor.h</key>
 		<data>
@@ -246,75 +202,11 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		iuNeaYYO2l1VbPh94Qhxda0quOY=
-		</data>
-		<key>Modules/HyBid.swiftmodule/Project/i386-apple-ios-simulator.swiftsourceinfo</key>
-		<data>
-		0Q77ZISPVRh++pfHqKR1o/8b1g0=
-		</data>
-		<key>Modules/HyBid.swiftmodule/Project/i386.swiftsourceinfo</key>
-		<data>
-		0Q77ZISPVRh++pfHqKR1o/8b1g0=
-		</data>
-		<key>Modules/HyBid.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
-		<data>
-		vAyqTZhvO+1ajlf+Qqf2wjQivAU=
-		</data>
-		<key>Modules/HyBid.swiftmodule/Project/x86_64.swiftsourceinfo</key>
-		<data>
-		vAyqTZhvO+1ajlf+Qqf2wjQivAU=
-		</data>
-		<key>Modules/HyBid.swiftmodule/i386-apple-ios-simulator.swiftdoc</key>
-		<data>
-		35OVSHg8zAjhwSb36KNxAV3+Os8=
-		</data>
-		<key>Modules/HyBid.swiftmodule/i386-apple-ios-simulator.swiftinterface</key>
-		<data>
-		lK5dLi2EfKxFpGPlwU4aFRrGyNQ=
-		</data>
-		<key>Modules/HyBid.swiftmodule/i386-apple-ios-simulator.swiftmodule</key>
-		<data>
-		UZLV99vCFt2gdLZv1Si8s5sOXEU=
-		</data>
-		<key>Modules/HyBid.swiftmodule/i386.swiftdoc</key>
-		<data>
-		35OVSHg8zAjhwSb36KNxAV3+Os8=
-		</data>
-		<key>Modules/HyBid.swiftmodule/i386.swiftinterface</key>
-		<data>
-		lK5dLi2EfKxFpGPlwU4aFRrGyNQ=
-		</data>
-		<key>Modules/HyBid.swiftmodule/i386.swiftmodule</key>
-		<data>
-		UZLV99vCFt2gdLZv1Si8s5sOXEU=
-		</data>
-		<key>Modules/HyBid.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
-		<data>
-		ihWnoNzTEZgwYsjrppZDRwBezt0=
-		</data>
-		<key>Modules/HyBid.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
-		<data>
-		sQA4DwRrzgVDEkf61GA1Sr3OKWE=
-		</data>
-		<key>Modules/HyBid.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
-		<data>
-		+wvFUAY1qBIOkS6jOEhFkp64w/Q=
-		</data>
-		<key>Modules/HyBid.swiftmodule/x86_64.swiftdoc</key>
-		<data>
-		ihWnoNzTEZgwYsjrppZDRwBezt0=
-		</data>
-		<key>Modules/HyBid.swiftmodule/x86_64.swiftinterface</key>
-		<data>
-		sQA4DwRrzgVDEkf61GA1Sr3OKWE=
-		</data>
-		<key>Modules/HyBid.swiftmodule/x86_64.swiftmodule</key>
-		<data>
-		+wvFUAY1qBIOkS6jOEhFkp64w/Q=
+		5eoEV0q1yVi12EiZOjv67+yJKl0=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		GuVp+qolMBMKUxQNbVgofVDAn8s=
+		oEr10jPKYBVScTRLl0d1aixGUvM=
 		</data>
 		<key>PNLiteClose.png</key>
 		<data>
@@ -374,107 +266,31 @@
 		</data>
 		<key>PNLiteVASTPlayerFullScreenViewController.nib/objects-11.0+.nib</key>
 		<data>
-		95PrXTGXx+PduZ49rJWpTfHiVXo=
+		A32R2DWmDWvCe28yJ469t2zHDf0=
 		</data>
 		<key>PNLiteVASTPlayerFullScreenViewController.nib/runtime.nib</key>
 		<data>
-		9H3IJnEjuBhHjDM1p4OCVDVFXf8=
+		Oaiv4EM7vOr9fOnkGziwk7tRRFw=
 		</data>
 		<key>PNLiteVASTPlayerInterstitialViewController.nib</key>
 		<data>
-		/upyvfzoqrsvGZHSClupKXBJWgA=
+		WbpCRbEwHJ3+wB0Vp10+HEmP90w=
 		</data>
 		<key>PNLiteVASTPlayerRewardedViewController.nib/objects-11.0+.nib</key>
 		<data>
-		3L0OJBLt5weI4lFcOKz0yBm8MEE=
+		Y5efn9OLMTSGFlnA7XeZ8CUp+uc=
 		</data>
 		<key>PNLiteVASTPlayerRewardedViewController.nib/runtime.nib</key>
 		<data>
-		t5vpetqn9hWx+b+rulyoQzJTjEI=
+		uYPF7iD9r1j8msCHvRFPE6yR+4U=
 		</data>
 		<key>PNLiteVASTPlayerViewController.nib/objects-11.0+.nib</key>
 		<data>
-		dA3IA0jO/kYzEVZuXq51sWXmvdg=
+		kTyjgK3W7HiPxnnTjRH7JJy3FZY=
 		</data>
 		<key>PNLiteVASTPlayerViewController.nib/runtime.nib</key>
 		<data>
-		uA6fECuDb5tjq4UFrpRjyfNC71s=
-		</data>
-		<key>age.mlmodelc/analytics/coremldata.bin</key>
-		<data>
-		ln5x1Y/L2zqdPZ4KZL2EV++GTdg=
-		</data>
-		<key>age.mlmodelc/coremldata.bin</key>
-		<data>
-		/oI+zWcmqAcrx7/gj9xCksmdhmU=
-		</data>
-		<key>age.mlmodelc/metadata.json</key>
-		<data>
-		c0MQCs9FVDeIbmxvGD/YRFWNqmo=
-		</data>
-		<key>age.mlmodelc/model.espresso.net</key>
-		<data>
-		M8rgTayaEzdRpfDhr+hda5vH4OE=
-		</data>
-		<key>age.mlmodelc/model.espresso.shape</key>
-		<data>
-		uZPa4B/C9auc8QYKNI5VWWcijEo=
-		</data>
-		<key>age.mlmodelc/model.espresso.weights</key>
-		<data>
-		itlhltkuDoix520rLNkZS+ca3AY=
-		</data>
-		<key>age.mlmodelc/model.rank.info.json</key>
-		<data>
-		G9jOKPMHXIaZBopGKOvWZJFbSho=
-		</data>
-		<key>age.mlmodelc/model/coremldata.bin</key>
-		<data>
-		yNfQ7w7t+oLS6hqlkoRbmm1LArc=
-		</data>
-		<key>age.mlmodelc/neural_network_optionals/coremldata.bin</key>
-		<data>
-		F4eV5mXReQYVzJ6dkMJcS5UbxSA=
-		</data>
-		<key>gender_model_january_update_single_output_male.mlmodelc/analytics/coremldata.bin</key>
-		<data>
-		3IdbYJtDoIHefRUofE8jWZSitR8=
-		</data>
-		<key>gender_model_january_update_single_output_male.mlmodelc/coremldata.bin</key>
-		<data>
-		eNadvfkUKo7VhjmqKtELwQsV6/M=
-		</data>
-		<key>gender_model_january_update_single_output_male.mlmodelc/metadata.json</key>
-		<data>
-		UnR1rVFmkpBOx+kHPuB1VKW038M=
-		</data>
-		<key>gender_model_january_update_single_output_male.mlmodelc/model.espresso.net</key>
-		<data>
-		E25JYYa45VKu/Hh6xOsAnrvGVOo=
-		</data>
-		<key>gender_model_january_update_single_output_male.mlmodelc/model.espresso.shape</key>
-		<data>
-		sAjzfzCE0Q16/YBJsVV/Q/MosMo=
-		</data>
-		<key>gender_model_january_update_single_output_male.mlmodelc/model.espresso.weights</key>
-		<data>
-		zTIo911x+ubhwaxC9kjL/3tyUEI=
-		</data>
-		<key>gender_model_january_update_single_output_male.mlmodelc/model.rank.info.json</key>
-		<data>
-		G9jOKPMHXIaZBopGKOvWZJFbSho=
-		</data>
-		<key>gender_model_january_update_single_output_male.mlmodelc/model/coremldata.bin</key>
-		<data>
-		yNfQ7w7t+oLS6hqlkoRbmm1LArc=
-		</data>
-		<key>gender_model_january_update_single_output_male.mlmodelc/neural_network_optionals/coremldata.bin</key>
-		<data>
-		tkgF5pxT7RlO+9uypQti9obolyA=
-		</data>
-		<key>hybid_metadata.db</key>
-		<data>
-		bIZG2IV4np4nqLaAkubGf/WbCM8=
+		clOlzy7eNQm6oU5bvfaYJIlyjno=
 		</data>
 		<key>hybidmraidscaling.js</key>
 		<data>
@@ -484,10 +300,6 @@
 		<data>
 		izIvB0pwe0IlCElIU0UL7o4PEek=
 		</data>
-		<key>merged_sessions.csv</key>
-		<data>
-		TPHOw1FWDNuGNOIsnldxrUVSnX0=
-		</data>
 		<key>omsdk.js</key>
 		<data>
 		VBhnPxV62WtlG5odVIWZbVaiwOc=
@@ -495,125 +307,15 @@
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>HA_model_poc_20200910.mlmodelc/analytics/coremldata.bin</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			N6/m83gP3ckKGCS0t8qt07Beodw=
-			</data>
-			<key>hash2</key>
-			<data>
-			FadVfX0nKhFH4LVCpdHLzGQCOL1nrDkVnVGX/+idXaU=
-			</data>
-		</dict>
-		<key>HA_model_poc_20200910.mlmodelc/coremldata.bin</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			7UNQlQ2L+73IitTkQApRTsspT2c=
-			</data>
-			<key>hash2</key>
-			<data>
-			T0EariZH262lecLKSEgv4p2thOWfSUdxe4qGaLNnd9U=
-			</data>
-		</dict>
-		<key>HA_model_poc_20200910.mlmodelc/metadata.json</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			aoqlNYMJdqZyYK3fifv8N1q84t8=
-			</data>
-			<key>hash2</key>
-			<data>
-			cfdRzFTQpPZD+XzO9vbrs92OlR/yqCl/p0N7bRcc6kA=
-			</data>
-		</dict>
-		<key>HA_model_poc_20200910.mlmodelc/model.espresso.net</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			1MMSXsGLL8j1zmop7DZ5nIuWwSo=
-			</data>
-			<key>hash2</key>
-			<data>
-			xeaYRUpRDvKMpH8ukd+qQBf/QQ0RH1NxEmMevAxYL0c=
-			</data>
-		</dict>
-		<key>HA_model_poc_20200910.mlmodelc/model.espresso.shape</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			v2J7pYKcdrJgbWv7Cp5E179vrwU=
-			</data>
-			<key>hash2</key>
-			<data>
-			SozfAhoSX9CrFxhWuw5M5mh5HzS0Yj+xLNUFc6Hjvb4=
-			</data>
-		</dict>
-		<key>HA_model_poc_20200910.mlmodelc/model.espresso.weights</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			g9dVwfKdFr/0JCzIFGJPrqEKHLs=
-			</data>
-			<key>hash2</key>
-			<data>
-			X3ruJVYqmETZDAx8iM40Cn01dOfqsbjB/SrxVDv6B2E=
-			</data>
-		</dict>
-		<key>HA_model_poc_20200910.mlmodelc/model.rank.info.json</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			G9jOKPMHXIaZBopGKOvWZJFbSho=
-			</data>
-			<key>hash2</key>
-			<data>
-			+KWibjBW62+wbe6z28z9iK50kAIAyYxwtZZru37J1N4=
-			</data>
-		</dict>
-		<key>HA_model_poc_20200910.mlmodelc/model/coremldata.bin</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			yNfQ7w7t+oLS6hqlkoRbmm1LArc=
-			</data>
-			<key>hash2</key>
-			<data>
-			9aX9QtFqIDAnmO9u0wmXm0MAPSMg2fDo6pgxqSdZ+0s=
-			</data>
-		</dict>
-		<key>HA_model_poc_20200910.mlmodelc/neural_network_optionals/coremldata.bin</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			tkgF5pxT7RlO+9uypQti9obolyA=
-			</data>
-			<key>hash2</key>
-			<data>
-			WTG9U2xFUClKISxvyNPBvuddqBeYC6C2cchgPa+zYjg=
-			</data>
-		</dict>
-		<key>Headers/HyBid-Swift.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			BZKgphea/nvKRMZ4L1phVrdTbpw=
-			</data>
-			<key>hash2</key>
-			<data>
-			X4sDqruPKAx2MbCsFV11z4EqYh0QJXL7pQyzbUuYjts=
-			</data>
-		</dict>
 		<key>Headers/HyBid.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			WFqmZlsvL8U4iFzU3Kfbc0p3mQE=
+			06gypaP7BFWbJsqjKY4AyA21moY=
 			</data>
 			<key>hash2</key>
 			<data>
-			zXE3qOzWBASzdatwb59SE/+KbHYT6pvO4mcTsGxsYAE=
+			BGI/cn3DY9I4+IIQrea4nR650BfmcqVgs0ch7kZ7UxY=
 			</data>
 		</dict>
 		<key>Headers/HyBidAd.h</key>
@@ -697,11 +399,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			chMn85pRoxcMxXimclFsDo+EIjw=
+			X80WDKfDsXn0zFqEu8TKOfHCRG8=
 			</data>
 			<key>hash2</key>
 			<data>
-			Blaan9zeNc6PEXi+NSSKZVirv8AACkHrL/ojJGXzW5k=
+			JRjYe12CPh5gtPwmPWemvP/DJuULXytVQI6hPsC4n1s=
 			</data>
 		</dict>
 		<key>Headers/HyBidBannerAdRequest.h</key>
@@ -1049,11 +751,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			yD8KAQOhv53WJwhNsG5UmNlgrj8=
+			0DdELvg7uOZPnO6C0sJ2BKpLLsY=
 			</data>
 			<key>hash2</key>
 			<data>
-			nk5wg3s0vqnyNi4UX0dPF1/whL6lMr+XgqqL8fvEoQ4=
+			zB+iUgj8lK0lxaIPdS4OhNiv/NvmYog7Pc7zInghYYQ=
 			</data>
 		</dict>
 		<key>Headers/HyBidRewardedAd.h</key>
@@ -1067,26 +769,15 @@
 			pUHem8wzKb6XPUS5h5dqXi12IHG6lACikqBKQUWTZuc=
 			</data>
 		</dict>
-		<key>Headers/HyBidSessionManager.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			SgqJQuCS31wYONnzZrVVgiw8xW4=
-			</data>
-			<key>hash2</key>
-			<data>
-			BxCpPrG9WA2lB1FizHu9JBwU5kdDNHIKwbzswuToXsg=
-			</data>
-		</dict>
 		<key>Headers/HyBidSettings.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			BbeRv6zI8iH7eUxMVOvTlaDrzAA=
+			4nkx9tVFIUv2CgMZi7qNez6KHxo=
 			</data>
 			<key>hash2</key>
 			<data>
-			5fm7BqmI6ZgkC0N+CkfpL4kPKCC/r6LH0xioGaTh3Oo=
+			ZnTapAiJXtJIFR40QWrhU1naBPRtk6GpJZRF3qMxgR0=
 			</data>
 		</dict>
 		<key>Headers/HyBidSignalDataProcessor.h</key>
@@ -1155,191 +846,15 @@
 			tjZF9t42xboU4Tnzgdt2syRPj5aqUlAaFnZMS8Ju9U0=
 			</data>
 		</dict>
-		<key>Modules/HyBid.swiftmodule/Project/i386-apple-ios-simulator.swiftsourceinfo</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			0Q77ZISPVRh++pfHqKR1o/8b1g0=
-			</data>
-			<key>hash2</key>
-			<data>
-			+VkD0LO8WWlxAyIESM/ppM+VG5gzQimMl0U91mGVuQc=
-			</data>
-		</dict>
-		<key>Modules/HyBid.swiftmodule/Project/i386.swiftsourceinfo</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			0Q77ZISPVRh++pfHqKR1o/8b1g0=
-			</data>
-			<key>hash2</key>
-			<data>
-			+VkD0LO8WWlxAyIESM/ppM+VG5gzQimMl0U91mGVuQc=
-			</data>
-		</dict>
-		<key>Modules/HyBid.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			vAyqTZhvO+1ajlf+Qqf2wjQivAU=
-			</data>
-			<key>hash2</key>
-			<data>
-			fAlvrw+J6rFb18yIs2AD7Yk8mux2ICItIgbadkc7a2k=
-			</data>
-		</dict>
-		<key>Modules/HyBid.swiftmodule/Project/x86_64.swiftsourceinfo</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			vAyqTZhvO+1ajlf+Qqf2wjQivAU=
-			</data>
-			<key>hash2</key>
-			<data>
-			fAlvrw+J6rFb18yIs2AD7Yk8mux2ICItIgbadkc7a2k=
-			</data>
-		</dict>
-		<key>Modules/HyBid.swiftmodule/i386-apple-ios-simulator.swiftdoc</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			35OVSHg8zAjhwSb36KNxAV3+Os8=
-			</data>
-			<key>hash2</key>
-			<data>
-			m0kFXAWLtBu5v2kkCcbuZV6+E/7Y8056IxjTEGVzeJo=
-			</data>
-		</dict>
-		<key>Modules/HyBid.swiftmodule/i386-apple-ios-simulator.swiftinterface</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			lK5dLi2EfKxFpGPlwU4aFRrGyNQ=
-			</data>
-			<key>hash2</key>
-			<data>
-			M1lVq/+v/xmMQj7qiREiKNUi4Wjz29uDMZqOF/xfff0=
-			</data>
-		</dict>
-		<key>Modules/HyBid.swiftmodule/i386-apple-ios-simulator.swiftmodule</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			UZLV99vCFt2gdLZv1Si8s5sOXEU=
-			</data>
-			<key>hash2</key>
-			<data>
-			Q0aQJL89kfUlCqAbALD7YT6b2mfD8n8vf5RPvnppKW8=
-			</data>
-		</dict>
-		<key>Modules/HyBid.swiftmodule/i386.swiftdoc</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			35OVSHg8zAjhwSb36KNxAV3+Os8=
-			</data>
-			<key>hash2</key>
-			<data>
-			m0kFXAWLtBu5v2kkCcbuZV6+E/7Y8056IxjTEGVzeJo=
-			</data>
-		</dict>
-		<key>Modules/HyBid.swiftmodule/i386.swiftinterface</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			lK5dLi2EfKxFpGPlwU4aFRrGyNQ=
-			</data>
-			<key>hash2</key>
-			<data>
-			M1lVq/+v/xmMQj7qiREiKNUi4Wjz29uDMZqOF/xfff0=
-			</data>
-		</dict>
-		<key>Modules/HyBid.swiftmodule/i386.swiftmodule</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			UZLV99vCFt2gdLZv1Si8s5sOXEU=
-			</data>
-			<key>hash2</key>
-			<data>
-			Q0aQJL89kfUlCqAbALD7YT6b2mfD8n8vf5RPvnppKW8=
-			</data>
-		</dict>
-		<key>Modules/HyBid.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			ihWnoNzTEZgwYsjrppZDRwBezt0=
-			</data>
-			<key>hash2</key>
-			<data>
-			qQVeGo+f5buY9sEa0HOuEb7/hQ2Us0ULNV6y3AnX9Ys=
-			</data>
-		</dict>
-		<key>Modules/HyBid.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			sQA4DwRrzgVDEkf61GA1Sr3OKWE=
-			</data>
-			<key>hash2</key>
-			<data>
-			0Yo19w3Qv3OPKJUqk9J2Fax3tdAR0hsGlZeL/BRnznY=
-			</data>
-		</dict>
-		<key>Modules/HyBid.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			+wvFUAY1qBIOkS6jOEhFkp64w/Q=
-			</data>
-			<key>hash2</key>
-			<data>
-			ZXERXHQs1KDBE2d9wdJWCTsOKUESIT8sjza+LUMJEDQ=
-			</data>
-		</dict>
-		<key>Modules/HyBid.swiftmodule/x86_64.swiftdoc</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			ihWnoNzTEZgwYsjrppZDRwBezt0=
-			</data>
-			<key>hash2</key>
-			<data>
-			qQVeGo+f5buY9sEa0HOuEb7/hQ2Us0ULNV6y3AnX9Ys=
-			</data>
-		</dict>
-		<key>Modules/HyBid.swiftmodule/x86_64.swiftinterface</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			sQA4DwRrzgVDEkf61GA1Sr3OKWE=
-			</data>
-			<key>hash2</key>
-			<data>
-			0Yo19w3Qv3OPKJUqk9J2Fax3tdAR0hsGlZeL/BRnznY=
-			</data>
-		</dict>
-		<key>Modules/HyBid.swiftmodule/x86_64.swiftmodule</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			+wvFUAY1qBIOkS6jOEhFkp64w/Q=
-			</data>
-			<key>hash2</key>
-			<data>
-			ZXERXHQs1KDBE2d9wdJWCTsOKUESIT8sjza+LUMJEDQ=
-			</data>
-		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			GuVp+qolMBMKUxQNbVgofVDAn8s=
+			oEr10jPKYBVScTRLl0d1aixGUvM=
 			</data>
 			<key>hash2</key>
 			<data>
-			bgKENIgTuacr+XSllOxo2ybvSP8tkyA8uU/vO38Y0D0=
+			nszCcTw+sa4za7uyL5GEw62C3AqU/Msa2HF+aBFsUHo=
 			</data>
 		</dict>
 		<key>PNLiteClose.png</key>
@@ -1500,286 +1015,77 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			95PrXTGXx+PduZ49rJWpTfHiVXo=
+			A32R2DWmDWvCe28yJ469t2zHDf0=
 			</data>
 			<key>hash2</key>
 			<data>
-			00Qk6+cXKgiGfakOdH5P+VOA1ivHYUXL2oeAzuDCJn8=
+			+OFrc32TF5LHUwOdCRS9oS1tcUaIZoUjhZWLxjQfAxs=
 			</data>
 		</dict>
 		<key>PNLiteVASTPlayerFullScreenViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			9H3IJnEjuBhHjDM1p4OCVDVFXf8=
+			Oaiv4EM7vOr9fOnkGziwk7tRRFw=
 			</data>
 			<key>hash2</key>
 			<data>
-			uB3SJdv7Ue59WGkX4ctkg+R+vNgx5STRRfqBcj/dOQs=
+			GERMbszsZGt7MG6DUasH+W6ZMELdhqwCVN3e23Mluvg=
 			</data>
 		</dict>
 		<key>PNLiteVASTPlayerInterstitialViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			/upyvfzoqrsvGZHSClupKXBJWgA=
+			WbpCRbEwHJ3+wB0Vp10+HEmP90w=
 			</data>
 			<key>hash2</key>
 			<data>
-			8WeT6imajx6GaMivQ9TyBecEcAL2e924pTzQOfhhWRw=
+			WGLcHLFFOoH9huoW7j1+eSHqrYLapeaeOLAZOYiOmQ8=
 			</data>
 		</dict>
 		<key>PNLiteVASTPlayerRewardedViewController.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			3L0OJBLt5weI4lFcOKz0yBm8MEE=
+			Y5efn9OLMTSGFlnA7XeZ8CUp+uc=
 			</data>
 			<key>hash2</key>
 			<data>
-			Ce3uFLbiwXpigBEnSZ7LFCT+A8Cx8XPZ19scIQs8V+4=
+			TRu91A9nQnpjVs57NfZBftLmecxsoo8cEkJmp0q/ROk=
 			</data>
 		</dict>
 		<key>PNLiteVASTPlayerRewardedViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			t5vpetqn9hWx+b+rulyoQzJTjEI=
+			uYPF7iD9r1j8msCHvRFPE6yR+4U=
 			</data>
 			<key>hash2</key>
 			<data>
-			MEfZKC8NlY3B6eDG2oxuV256kTfm1JMRkQvJiTMMQso=
+			PJFhKY76SsDQlaHLPjIe+6P+Cir7GdCuXbdSmKkE0L4=
 			</data>
 		</dict>
 		<key>PNLiteVASTPlayerViewController.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			dA3IA0jO/kYzEVZuXq51sWXmvdg=
+			kTyjgK3W7HiPxnnTjRH7JJy3FZY=
 			</data>
 			<key>hash2</key>
 			<data>
-			fWWePuJtzpMf85/KAEfU/qw929rSJwifSNRrQG/wrQ8=
+			gNbhnEa6ZO66+E5w2fUf5fEyfwHdl4nbx7Sq8/49Hao=
 			</data>
 		</dict>
 		<key>PNLiteVASTPlayerViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			uA6fECuDb5tjq4UFrpRjyfNC71s=
+			clOlzy7eNQm6oU5bvfaYJIlyjno=
 			</data>
 			<key>hash2</key>
 			<data>
-			C8zoCwvHrhcHM+NPJVoJtKn5CEZ+hFCHAysX4oJIS/U=
-			</data>
-		</dict>
-		<key>age.mlmodelc/analytics/coremldata.bin</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			ln5x1Y/L2zqdPZ4KZL2EV++GTdg=
-			</data>
-			<key>hash2</key>
-			<data>
-			+2IxU9gz+T0FrHl0YlVB/xClZfx2MBu+kTKRdtKxY0U=
-			</data>
-		</dict>
-		<key>age.mlmodelc/coremldata.bin</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			/oI+zWcmqAcrx7/gj9xCksmdhmU=
-			</data>
-			<key>hash2</key>
-			<data>
-			dWqQWKl7Xfc5VIcVN5q8Gv/k2K0SCdyM7Wl9dniv7Bs=
-			</data>
-		</dict>
-		<key>age.mlmodelc/metadata.json</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			c0MQCs9FVDeIbmxvGD/YRFWNqmo=
-			</data>
-			<key>hash2</key>
-			<data>
-			ANErBe3ll6bzrQ2XFzQqD5PJTfZUecVy32pP7q0DBh8=
-			</data>
-		</dict>
-		<key>age.mlmodelc/model.espresso.net</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			M8rgTayaEzdRpfDhr+hda5vH4OE=
-			</data>
-			<key>hash2</key>
-			<data>
-			a/Mc3bhKpvFfIRoouEd6CIimh0MAKKRrZYF4cB+qeM8=
-			</data>
-		</dict>
-		<key>age.mlmodelc/model.espresso.shape</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			uZPa4B/C9auc8QYKNI5VWWcijEo=
-			</data>
-			<key>hash2</key>
-			<data>
-			ER0wT2piWSIJzi6VlnB24EYYswXsrpZC48sGs12xViY=
-			</data>
-		</dict>
-		<key>age.mlmodelc/model.espresso.weights</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			itlhltkuDoix520rLNkZS+ca3AY=
-			</data>
-			<key>hash2</key>
-			<data>
-			aCVbPGzr51zc5yBwOEgCdLcECMtw3nZzgHnJlUpLQhE=
-			</data>
-		</dict>
-		<key>age.mlmodelc/model.rank.info.json</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			G9jOKPMHXIaZBopGKOvWZJFbSho=
-			</data>
-			<key>hash2</key>
-			<data>
-			+KWibjBW62+wbe6z28z9iK50kAIAyYxwtZZru37J1N4=
-			</data>
-		</dict>
-		<key>age.mlmodelc/model/coremldata.bin</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			yNfQ7w7t+oLS6hqlkoRbmm1LArc=
-			</data>
-			<key>hash2</key>
-			<data>
-			9aX9QtFqIDAnmO9u0wmXm0MAPSMg2fDo6pgxqSdZ+0s=
-			</data>
-		</dict>
-		<key>age.mlmodelc/neural_network_optionals/coremldata.bin</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			F4eV5mXReQYVzJ6dkMJcS5UbxSA=
-			</data>
-			<key>hash2</key>
-			<data>
-			fqS+FcI4rEwuh08zvYHDQXdsHxzEcqyRceEHSzm0arE=
-			</data>
-		</dict>
-		<key>gender_model_january_update_single_output_male.mlmodelc/analytics/coremldata.bin</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			3IdbYJtDoIHefRUofE8jWZSitR8=
-			</data>
-			<key>hash2</key>
-			<data>
-			KkTxOjy2tCa0oKdfoXcRJucJc7mqeibPu7G8tcGYO0Q=
-			</data>
-		</dict>
-		<key>gender_model_january_update_single_output_male.mlmodelc/coremldata.bin</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			eNadvfkUKo7VhjmqKtELwQsV6/M=
-			</data>
-			<key>hash2</key>
-			<data>
-			zn7trOj+pkj+Uyq9YvpN1RAbIZzXD+MsRxA88QKDoLE=
-			</data>
-		</dict>
-		<key>gender_model_january_update_single_output_male.mlmodelc/metadata.json</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			UnR1rVFmkpBOx+kHPuB1VKW038M=
-			</data>
-			<key>hash2</key>
-			<data>
-			SvknrKonmQIpKUkY5eenEyUImqfOsq8BgHky0iybCNM=
-			</data>
-		</dict>
-		<key>gender_model_january_update_single_output_male.mlmodelc/model.espresso.net</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			E25JYYa45VKu/Hh6xOsAnrvGVOo=
-			</data>
-			<key>hash2</key>
-			<data>
-			3+DrkF9+7wyhPR4ldJTS/1s4zg9KFfurl53cBLplm40=
-			</data>
-		</dict>
-		<key>gender_model_january_update_single_output_male.mlmodelc/model.espresso.shape</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			sAjzfzCE0Q16/YBJsVV/Q/MosMo=
-			</data>
-			<key>hash2</key>
-			<data>
-			aBG9H+6v44RFfJxX0bcUGTu/zoaDu35xl74mz6yydhc=
-			</data>
-		</dict>
-		<key>gender_model_january_update_single_output_male.mlmodelc/model.espresso.weights</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			zTIo911x+ubhwaxC9kjL/3tyUEI=
-			</data>
-			<key>hash2</key>
-			<data>
-			hFP2U5c/fcTbw14Vz8Wt//iE9F2F0IHU6IQ6/BGTi/Q=
-			</data>
-		</dict>
-		<key>gender_model_january_update_single_output_male.mlmodelc/model.rank.info.json</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			G9jOKPMHXIaZBopGKOvWZJFbSho=
-			</data>
-			<key>hash2</key>
-			<data>
-			+KWibjBW62+wbe6z28z9iK50kAIAyYxwtZZru37J1N4=
-			</data>
-		</dict>
-		<key>gender_model_january_update_single_output_male.mlmodelc/model/coremldata.bin</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			yNfQ7w7t+oLS6hqlkoRbmm1LArc=
-			</data>
-			<key>hash2</key>
-			<data>
-			9aX9QtFqIDAnmO9u0wmXm0MAPSMg2fDo6pgxqSdZ+0s=
-			</data>
-		</dict>
-		<key>gender_model_january_update_single_output_male.mlmodelc/neural_network_optionals/coremldata.bin</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			tkgF5pxT7RlO+9uypQti9obolyA=
-			</data>
-			<key>hash2</key>
-			<data>
-			WTG9U2xFUClKISxvyNPBvuddqBeYC6C2cchgPa+zYjg=
-			</data>
-		</dict>
-		<key>hybid_metadata.db</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			bIZG2IV4np4nqLaAkubGf/WbCM8=
-			</data>
-			<key>hash2</key>
-			<data>
-			CTI/D5EIja2lT++abThOa1wpbzx1qSUEWxekXnZvVcw=
+			BjQj4+kG2EC53nPYRx1M4Df6MJDCJkz5u4mmomBkjPE=
 			</data>
 		</dict>
 		<key>hybidmraidscaling.js</key>
@@ -1802,17 +1108,6 @@
 			<key>hash2</key>
 			<data>
 			XEsuSv9uuCV7TAqKJKxSlurWe6Th/xK8Cp7SRMY78Po=
-			</data>
-		</dict>
-		<key>merged_sessions.csv</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			TPHOw1FWDNuGNOIsnldxrUVSnX0=
-			</data>
-			<key>hash2</key>
-			<data>
-			g9poNE59mniWTJrOnLI4eFEPF7vogTB6jO/wjODkf+o=
 			</data>
 		</dict>
 		<key>omsdk.js</key>

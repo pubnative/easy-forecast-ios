@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2E1289B11BE255C43CB298A3 /* Pods_EasyWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA2170FD41C850FF622A68E /* Pods_EasyWeather.framework */; };
+		5A1C837F25D1B0BB00149F27 /* HyBid.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A1C837D25D1B09700149F27 /* HyBid.xcframework */; };
+		5A1C838025D1B0BB00149F27 /* HyBid.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5A1C837D25D1B09700149F27 /* HyBid.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5A1C83EC2229386F00A3C8A3 /* StartAppMRectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C83EB2229386F00A3C8A3 /* StartAppMRectController.swift */; };
 		5A1C83EE2229457900A3C8A3 /* StartAppInterstitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C83ED2229457900A3C8A3 /* StartAppInterstitialController.swift */; };
 		5A1C83F02229540B00A3C8A3 /* StartAppRewardedVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C83EF2229540B00A3C8A3 /* StartAppRewardedVideoController.swift */; };
@@ -99,8 +101,6 @@
 		E75E46A0203B3F0C00FF9672 /* CurrentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75E469F203B3F0C00FF9672 /* CurrentResponse.swift */; };
 		E75E46A3203B468600FF9672 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75E46A2203B468600FF9672 /* ApiClient.swift */; };
 		E776E9A8203B1D0200101093 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = E776E9A7203B1D0200101093 /* Country.swift */; };
-		E78FFA1425D1A23100B1BA88 /* HyBid.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78FFA1225D1A22600B1BA88 /* HyBid.xcframework */; };
-		E78FFA1525D1A23100B1BA88 /* HyBid.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E78FFA1225D1A22600B1BA88 /* HyBid.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E7CC276C203AF265006A95B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CC276B203AF265006A95B9 /* AppDelegate.swift */; };
 		E7CC276E203AF265006A95B9 /* SummaryWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CC276D203AF265006A95B9 /* SummaryWeatherViewController.swift */; };
 		E7CC2771203AF265006A95B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7CC276F203AF265006A95B9 /* Main.storyboard */; };
@@ -115,7 +115,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E78FFA1525D1A23100B1BA88 /* HyBid.xcframework in Embed Frameworks */,
+				5A1C838025D1B0BB00149F27 /* HyBid.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -126,6 +126,7 @@
 		15701703DFD883A08558AB00 /* Pods-EasyWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyWeather.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyWeather/Pods-EasyWeather.release.xcconfig"; sourceTree = "<group>"; };
 		3EA2170FD41C850FF622A68E /* Pods_EasyWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		468D9A763598D44D9B0194E8 /* Pods-EasyWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyWeather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyWeather/Pods-EasyWeather.debug.xcconfig"; sourceTree = "<group>"; };
+		5A1C837D25D1B09700149F27 /* HyBid.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = HyBid.xcframework; sourceTree = "<group>"; };
 		5A1C83EB2229386F00A3C8A3 /* StartAppMRectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppMRectController.swift; sourceTree = "<group>"; };
 		5A1C83ED2229457900A3C8A3 /* StartAppInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppInterstitialController.swift; sourceTree = "<group>"; };
 		5A1C83EF2229540B00A3C8A3 /* StartAppRewardedVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppRewardedVideoController.swift; sourceTree = "<group>"; };
@@ -218,7 +219,6 @@
 		E75E469F203B3F0C00FF9672 /* CurrentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentResponse.swift; sourceTree = "<group>"; };
 		E75E46A2203B468600FF9672 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		E776E9A7203B1D0200101093 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
-		E78FFA1225D1A22600B1BA88 /* HyBid.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = HyBid.xcframework; sourceTree = "<group>"; };
 		E7CC2768203AF265006A95B9 /* EasyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7CC276B203AF265006A95B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7CC276D203AF265006A95B9 /* SummaryWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryWeatherViewController.swift; sourceTree = "<group>"; };
@@ -233,7 +233,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E78FFA1425D1A23100B1BA88 /* HyBid.xcframework in Frameworks */,
+				5A1C837F25D1B0BB00149F27 /* HyBid.xcframework in Frameworks */,
 				2E1289B11BE255C43CB298A3 /* Pods_EasyWeather.framework in Frameworks */,
 				5AD53C882226D5E200370B75 /* UnityAds.framework in Frameworks */,
 			);
@@ -495,9 +495,9 @@
 		E7CC275F203AF265006A95B9 = {
 			isa = PBXGroup;
 			children = (
-				E78FFA1225D1A22600B1BA88 /* HyBid.xcframework */,
 				5AD53C942228333D00370B75 /* EasyWeather-Bridging-Header.h */,
 				5AD53C872226D5E200370B75 /* UnityAds.framework */,
+				5A1C837D25D1B09700149F27 /* HyBid.xcframework */,
 				E7CC276A203AF265006A95B9 /* EasyWeather */,
 				E7CC2769203AF265006A95B9 /* Products */,
 				9CE1A5FC539F853B68140ACE /* Pods */,
@@ -959,7 +959,7 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 2.15;
+				MARKETING_VERSION = 2.17;
 				PRODUCT_BUNDLE_IDENTIFIER = net.easynaps.EasyForecast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -990,7 +990,7 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 2.15;
+				MARKETING_VERSION = 2.17;
 				PRODUCT_BUNDLE_IDENTIFIER = net.easynaps.EasyForecast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

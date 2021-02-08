@@ -4,8 +4,3 @@ framework module HyBid {
   export *
   module * { export * }
 }
-
-module HyBid.Swift {
-    header "HyBid-Swift.h"
-    requires objc
-}
