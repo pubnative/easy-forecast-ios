@@ -23,6 +23,7 @@
 import UIKit
 import CoreLocation
 import Lottie
+import AppTrackingTransparency
 
 class SummaryWeatherViewController: UIViewController {
     
@@ -74,6 +75,7 @@ class SummaryWeatherViewController: UIViewController {
         forecastWeatherTableView.isHidden = true
         currentWeatherView.isHidden = true
         currentWeatherBackgroundView.addParallaxEffect()
+        checkTrackingConsent()
         checkLocationServices()
         loadAd()
     }
@@ -103,6 +105,16 @@ class SummaryWeatherViewController: UIViewController {
     func stopLoadingAnimation() {
         loadingAnimationView.stop()
         loadingAnimationView.isHidden = true
+    }
+    
+    func checkTrackingConsent() {
+        if #available(iOS 14, *) {
+            if (ATTrackingManager.trackingAuthorizationStatus != ATTrackingManager.AuthorizationStatus.authorized) {
+                ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+                    
+                })
+            }
+        }
     }
         
     @objc func updateWeather() {
