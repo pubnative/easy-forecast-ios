@@ -23,6 +23,7 @@
 import UIKit
 import CoreLocation
 import Lottie
+import AppTrackingTransparency
 
 class SummaryWeatherViewController: UIViewController {
     
@@ -56,6 +57,7 @@ class SummaryWeatherViewController: UIViewController {
     }
     var adRequestFinished: Bool = true
     var interstitialAdRequestFinished: Bool = true
+    var refreshAdTimer: Timer?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -63,11 +65,17 @@ class SummaryWeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(appCameToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
         apiClient.currentDelegate = self
         apiClient.forecastDelegate = self
         forecastWeatherTableView.isHidden = true
         currentWeatherView.isHidden = true
         currentWeatherBackgroundView.addParallaxEffect()
+        checkTrackingConsent()
         checkLocationServices()
         loadAd()
     }
@@ -77,6 +85,14 @@ class SummaryWeatherViewController: UIViewController {
         if !isInitialWeatherLoaded {
 
         }
+    }
+    
+    @objc func appMovedToBackground() {
+        refreshAdTimer?.invalidate()
+    }
+    
+    @objc func appCameToForeground() {
+        loadAd()
     }
         
     func startLoadingAnimation() {
@@ -89,6 +105,16 @@ class SummaryWeatherViewController: UIViewController {
     func stopLoadingAnimation() {
         loadingAnimationView.stop()
         loadingAnimationView.isHidden = true
+    }
+    
+    func checkTrackingConsent() {
+        if #available(iOS 14, *) {
+            if (ATTrackingManager.trackingAuthorizationStatus != ATTrackingManager.AuthorizationStatus.authorized) {
+                ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+                    
+                })
+            }
+        }
     }
         
     @objc func updateWeather() {
@@ -148,7 +174,7 @@ class SummaryWeatherViewController: UIViewController {
         loadInterstitial()
     }
     
-    func loadAd() {
+    @objc func loadAd() {
         if adRequestFinished {
             bannerAdContainer.isHidden = true
             bannerAdContainerHeightConstraint.constant = 0
@@ -157,6 +183,8 @@ class SummaryWeatherViewController: UIViewController {
             adPlacement = placement
             adPlacement.loadAd()
             adRequestFinished = false
+            refreshAdTimer?.invalidate()
+            refreshAdTimer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(SummaryWeatherViewController.loadAd), userInfo: nil, repeats: false)
         }
     }
     

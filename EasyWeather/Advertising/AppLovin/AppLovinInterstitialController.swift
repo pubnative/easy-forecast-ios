@@ -39,7 +39,7 @@ class AppLovinInterstitialController: InterstitialPlacement {
         adAnalyticsSession.start()
         ad = nil
         guard let sharedInstance = ALSdk.shared() else { return }
-        sharedInstance.adService.loadNextAd(ALAdSize.sizeInterstitial(), andNotify: self)
+        sharedInstance.adService.loadNextAd(ALAdSize.interstitial, andNotify: self)
     }
     
     override func show() {
@@ -47,7 +47,7 @@ class AppLovinInterstitialController: InterstitialPlacement {
         guard let ad = ad else { return }
         ALInterstitialAd.shared().adDisplayDelegate = self
         ALInterstitialAd.shared().adVideoPlaybackDelegate = self
-        ALInterstitialAd.shared().showOver(UIApplication.shared.keyWindow!, andRender: ad)
+        ALInterstitialAd.shared().show(ad)
     }
     
     override func isReady() -> Bool {

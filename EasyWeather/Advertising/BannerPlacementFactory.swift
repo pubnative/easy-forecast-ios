@@ -22,7 +22,7 @@
 
 import Foundation
 import HyBid
-import MoPub
+import MoPubSDK
 import GoogleMobileAds
 import FBAudienceNetwork
 import AppLovinSDK
@@ -37,8 +37,6 @@ class BannerPlacementFactory {
             return createAppLovinPlacement(withAdPlacementDelegate: delegate)
         case .ironSource:
             return createIronSourcePlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
-        case .fyber:
-            return createFyberPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .facebook:
             return createFacebookPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .moPub:
@@ -57,22 +55,18 @@ class BannerPlacementFactory {
     }
     
     fileprivate func createPubNativePlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        let adView = HyBidBannerAdView(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+        let adView = HyBidAdView(size: HyBidAdSize.size_320x50)!
         return PubNativeBannerController(withAdView: adView, withZoneID: PUBNATIVE_BANNER_ZONE_ID, adPlacementDelegate: delegate)
     }
     
     fileprivate func createAppLovinPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement? {
         guard let sharedInstance = ALSdk.shared() else { return nil }
-        let adView = ALAdView(frame: CGRect(x: 0, y: 0, width: 320, height: 50), size: ALAdSize.sizeBanner(), sdk: sharedInstance)
+        let adView = ALAdView(frame: CGRect(x: 0, y: 0, width: 320, height: 50), size: ALAdSize.banner, sdk: sharedInstance)
         return AppLovinBannerController(withAdView: adView, adPlacementDelegate: delegate)
     }
     
     fileprivate func createIronSourcePlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
         return IronSourceBannerController(withViewController: viewController, withAdPlacementDelegate: delegate)
-    }
-    
-    fileprivate func createFyberPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        return FyberBannerController(withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
     fileprivate func createFacebookPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {

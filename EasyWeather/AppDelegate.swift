@@ -23,14 +23,14 @@
 import UIKit
 import CoreData
 import Firebase
-import Fabric
-import Crashlytics
 import HyBid
-import MoPub
+import MoPubSDK
 import GoogleMobileAds
 import AdSupport.ASIdentifierManager
 import UnityAds
 import AppLovinSDK
+import StoreKit
+import Audiences
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -39,10 +39,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+        if #available(iOS 11.3, *) {
+            SKAdNetwork.registerAppForAdNetworkAttribution()
+        }
+        
+        let token = NumberEight.start(withApiKey: "T954C5VJTIAXAGMUVPDU0TZMGEV2", launchOptions: launchOptions, consentOptions: ConsentOptions.withConsentToAll(), completion: nil)
+        
+        Audiences.startRecording(apiToken: token)
+        
         saveCityListToUserDefaults()
         
         FirebaseApp.configure()
-        Fabric.with([Crashlytics.self])
+        
         HyBid.initWithAppToken(PUBNATIVE_APP_TOKEN) { (success) in
             if (success) {
                 HyBidLogger.setLogLevel(HyBidLogLevelDebug)
@@ -52,6 +60,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         HyBid.setCoppa(false)
         HyBid.setTestMode(false)
+        HyBid.setAppStoreAppID("1382171002")
+        
+        let hyBidTargeting = HyBidTargetingModel()
+        let interests = [String]()
+        hyBidTargeting.interests = interests
+        hyBidTargeting.interests.append("easyforecast:2.12")
+        HyBid.setTargeting(hyBidTargeting)
         
         let moPubSDKConfig = MPMoPubConfiguration(adUnitIdForAppInitialization: MOPUB_BANNER_AD_UNIT_ID)
         MoPub.sharedInstance().initializeSdk(with: moPubSDKConfig, completion: nil)
@@ -66,7 +81,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             startAppSDK.appID = STARTAPP_APP_ID
         }
         
-        HeyzapAds.start(withPublisherID: FYBER_PUBLISHER_ID)
         ALSdk.initializeSdk()
         
         return true

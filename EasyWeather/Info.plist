@@ -19,9 +19,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.1</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -45,14 +45,29 @@
 	</dict>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Advertisement would like to create a calendar event.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>To determine the type of place the user is situated in while interacting with the app.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>To determine the type of place the user is situated in while interacting with the app.</string>
 	<key>NSLocationUsageDescription</key>
 	<string>We need your current location in order to show you weather information.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need your current location in order to show you weather information.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>To determine physical interaction with the device while using the app.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Advertisement would like to store a photo.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Advertisement would like to store a photo.</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>This identifier will be used to deliver personalized ads to you.</string>
+	<key>SKAdNetworkItems</key>
+	<array>
+		<dict>
+			<key>SKAdNetworkIdentifier</key>
+			<string>TL55SBB4FM.skadnetwork</string>
+		</dict>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

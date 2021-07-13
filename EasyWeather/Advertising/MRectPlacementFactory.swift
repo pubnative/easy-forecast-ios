@@ -22,7 +22,7 @@
 
 import Foundation
 import HyBid
-import MoPub
+import MoPubSDK
 import GoogleMobileAds
 import FBAudienceNetwork
 import AppLovinSDK
@@ -57,13 +57,13 @@ class MRectPlacementFactory {
     }
     
     fileprivate func createPubNativePlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        let adView = HyBidMRectAdView(frame: CGRect(x: 0, y: 0, width: 300, height: 250))
+        let adView = HyBidAdView(size: HyBidAdSize.size_300x250)!
         return PubNativeMRectController(withAdView: adView, withZoneID: PUBNATIVE_MRECT_ZONE_ID, adPlacementDelegate: delegate)
     }
     
     fileprivate func createAppLovinPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement? {
         guard let sharedInstance = ALSdk.shared() else { return nil }
-        let adView = ALAdView(frame: CGRect(x: 0, y: 0, width: 300, height: 250), size: ALAdSize.sizeMRec(), sdk: sharedInstance)
+        let adView = ALAdView(frame: CGRect(x: 0, y: 0, width: 300, height: 250), size: ALAdSize.mrec, sdk: sharedInstance)
         return AppLovinMRectController(withAdView: adView, adPlacementDelegate: delegate)
     }
     

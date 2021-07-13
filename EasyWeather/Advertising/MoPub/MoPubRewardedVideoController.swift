@@ -21,7 +21,7 @@
 //
 
 import UIKit
-import MoPub
+import MoPubSDK
 
 class MoPubRewardedVideoController: RewardedVideoPlacement {
 
