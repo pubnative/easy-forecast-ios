@@ -22,7 +22,7 @@
 
 import Foundation
 import HyBid
-import MoPub
+import MoPubSDK
 import GoogleMobileAds
 import FBAudienceNetwork
 import AppLovinSDK
@@ -61,7 +61,7 @@ class BannerPlacementFactory {
     
     fileprivate func createAppLovinPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement? {
         guard let sharedInstance = ALSdk.shared() else { return nil }
-        let adView = ALAdView(frame: CGRect(x: 0, y: 0, width: 320, height: 50), size: ALAdSize.sizeBanner(), sdk: sharedInstance)
+        let adView = ALAdView(frame: CGRect(x: 0, y: 0, width: 320, height: 50), size: ALAdSize.banner, sdk: sharedInstance)
         return AppLovinBannerController(withAdView: adView, adPlacementDelegate: delegate)
     }
     

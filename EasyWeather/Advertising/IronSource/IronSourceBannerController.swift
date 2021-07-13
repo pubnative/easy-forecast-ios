@@ -81,4 +81,7 @@ extension IronSourceBannerController: ISBannerDelegate {
         adAnalyticsSession.confirmLeftApplication()
     }
     
+    func bannerDidShow() {
+    }
+    
 }

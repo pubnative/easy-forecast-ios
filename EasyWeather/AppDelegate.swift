@@ -24,7 +24,7 @@ import UIKit
 import CoreData
 import Firebase
 import HyBid
-import MoPub
+import MoPubSDK
 import GoogleMobileAds
 import AdSupport.ASIdentifierManager
 import UnityAds

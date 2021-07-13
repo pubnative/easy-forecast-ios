@@ -49,8 +49,8 @@ class PubNativeBannerController: AdPlacement {
         hyBidTargeting.interests.append("easyforecast:2.12")
 
         let audiences = Audiences.currentMemberships
-        hyBidTargeting.interests.append(audiences.joined(separator: ","))
-        
+        hyBidTargeting.interests.append(audiences.map { $0.description }.joined(separator: ","))
+
         HyBid.setTargeting(hyBidTargeting)
         
         adAnalyticsSession.start()

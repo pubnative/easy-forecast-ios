@@ -80,4 +80,7 @@ extension IronSourceMRectController: ISBannerDelegate {
         adAnalyticsSession.confirmLeftApplication()
     }
     
+    func bannerDidShow() {
+        
+    }
 }
