@@ -24,7 +24,6 @@
 #import "HyBidAd.h"
 #import "HyBidAdRequest.h"
 #import "HyBidAdPresenter.h"
-#import "HyBidSignalDataProcessor.h"
 
 @class HyBidAdView;
 
@@ -43,7 +42,7 @@ typedef enum {
 
 @end
 
-@interface HyBidAdView : UIView <HyBidAdRequestDelegate, HyBidAdPresenterDelegate, HyBidSignalDataProcessorDelegate>
+@interface HyBidAdView : UIView <HyBidAdRequestDelegate, HyBidAdPresenterDelegate>
 
 @property (nonatomic, strong) HyBidAdRequest *adRequest;
 @property (nonatomic, strong) HyBidAd *ad;
@@ -56,7 +55,6 @@ typedef enum {
 - (instancetype)initWithSize:(HyBidAdSize *)adSize NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithCoder:(NSCoder *)coder NS_UNAVAILABLE;
 - (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
-//- (instancetype)init NS_UNAVAILABLE;
 - (void)loadWithZoneID:(NSString *)zoneID andWithDelegate:(NSObject<HyBidAdViewDelegate> *)delegate;
 - (void)loadWithZoneID:(NSString *)zoneID withPosition:(BannerPosition)bannerPosition andWithDelegate:(NSObject<HyBidAdViewDelegate> *)delegate;
 - (void)setupAdView:(UIView *)adView;

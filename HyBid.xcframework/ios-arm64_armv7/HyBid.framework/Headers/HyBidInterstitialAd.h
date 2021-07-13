@@ -22,7 +22,6 @@
 
 #import <Foundation/Foundation.h>
 #import "HyBidAd.h"
-#import "HyBidSignalDataProcessor.h"
 
 @protocol HyBidInterstitialAdDelegate<NSObject>
 
@@ -34,7 +33,7 @@
 
 @end
 
-@interface HyBidInterstitialAd : NSObject <HyBidSignalDataProcessorDelegate>
+@interface HyBidInterstitialAd : NSObject
 
 @property (nonatomic, strong) HyBidAd *ad;
 @property (nonatomic, assign) BOOL isReady;
@@ -63,5 +62,6 @@
 - (void)hide;
 
 - (void)setSkipOffset:(NSInteger)seconds;
+- (void)setCloseOnFinish:(BOOL)closeOnFinish;
 
 @end

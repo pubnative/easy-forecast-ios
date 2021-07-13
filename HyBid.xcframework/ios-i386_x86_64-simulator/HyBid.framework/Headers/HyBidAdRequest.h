@@ -26,6 +26,7 @@
 #import "HyBidAdSize.h"
 
 @class HyBidAdRequest;
+@class PNLiteAdRequestModel;
 
 typedef enum {
      NATIVE,
@@ -51,5 +52,6 @@ typedef enum {
 - (void)setIntegrationType:(IntegrationType)integrationType withZoneID:(NSString *)zoneID;
 - (void)requestAdWithDelegate:(NSObject<HyBidAdRequestDelegate> *)delegate withZoneID:(NSString *)zoneID;
 - (void)requestVideoTagFrom:(NSString *)url andWithDelegate:(NSObject<HyBidAdRequestDelegate> *)delegate;
+- (NSURL*)requestURLFromAdRequestModel:(PNLiteAdRequestModel *)adRequestModel;
 
 @end
