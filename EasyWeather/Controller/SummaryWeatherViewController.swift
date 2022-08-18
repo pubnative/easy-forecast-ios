@@ -178,9 +178,9 @@ class SummaryWeatherViewController: UIViewController {
         if adRequestFinished {
             bannerAdContainer.isHidden = true
             bannerAdContainerHeightConstraint.constant = 0
-            guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: BANNER_PLACEMENT) else { return }
-            guard let placement = BannerPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withViewController: self, withAdPlacementDelegate: self) else { return }
-            adPlacement = placement
+//            guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: BANNER_PLACEMENT) else { return }
+//            guard let placement = BannerPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withViewController: self, withAdPlacementDelegate: self) else { return }
+//            adPlacement = placement
             adPlacement.loadAd()
             adRequestFinished = false
             refreshAdTimer?.invalidate()
@@ -191,9 +191,9 @@ class SummaryWeatherViewController: UIViewController {
     func loadInterstitial() {
         if interstitialAdRequestFinished {
             interstitialPlacement.cleanUp()
-            guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: INTERSTITIAL_PLACEMENT) else { return }
-            guard let placement = InterstitialPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withViewController: self, withInterstitialPlacementDelegate: self) else { return }
-            interstitialPlacement = placement
+//            guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: INTERSTITIAL_PLACEMENT) else { return }
+//            guard let placement = InterstitialPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withViewController: self, withInterstitialPlacementDelegate: self) else { return }
+//            interstitialPlacement = placement
             interstitialPlacement.loadAd()
             interstitialAdRequestFinished = false
         }

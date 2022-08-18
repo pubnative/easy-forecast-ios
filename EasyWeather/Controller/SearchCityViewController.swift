@@ -94,9 +94,9 @@ class SearchCityViewController: UIViewController {
     func loadAd() {
         if adRequestFinished {
             mRectContainerView.isHidden = true
-            guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: MRECT_PLACEMENT) else { return }
-            guard let placement = MRectPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withViewController: self, withAdPlacementDelegate: self) else { return }
-            adPlacement = placement
+//            guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: MRECT_PLACEMENT) else { return }
+//            guard let placement = MRectPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withViewController: self, withAdPlacementDelegate: self) else { return }
+//            adPlacement = placement
             adPlacement.loadAd()
             adRequestFinished = false
         }
