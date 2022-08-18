@@ -21,9 +21,9 @@
 //
 
 import UIKit
-import MoPubSDK
+//import MoPubSDK
 
-class MoPubRewardedVideoController: RewardedVideoPlacement {
+/*class MoPubRewardedVideoController: RewardedVideoPlacement {
 
     var viewController: UIViewController!
     var delegate: RewardedVideoPlacementDelegate?
@@ -107,3 +107,4 @@ extension MoPubRewardedVideoController: MPRewardedVideoDelegate {
     }
     
 }
+ */

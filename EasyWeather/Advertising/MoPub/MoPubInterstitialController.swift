@@ -21,9 +21,9 @@
 //
 
 import UIKit
-import MoPubSDK
+//import MoPubSDK
 
-class MoPubInterstitialController: InterstitialPlacement {
+/*class MoPubInterstitialController: InterstitialPlacement {
     
     var interstitial: MPInterstitialAdController!
     var viewController: UIViewController!
@@ -94,3 +94,4 @@ extension MoPubInterstitialController: MPInterstitialAdControllerDelegate {
         delegate.interstitialPlacementDidTrackClick()
     }
 }
+ */

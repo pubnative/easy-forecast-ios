@@ -21,9 +21,9 @@
 //
 
 import UIKit
-import MoPubSDK
+//import MoPubSDK
 
-class MoPubMRectController: AdPlacement {
+/*class MoPubMRectController: AdPlacement {
 
     var mRectAdView: MPAdView!
     var viewController: UIViewController!
@@ -81,3 +81,4 @@ extension MoPubMRectController: MPAdViewDelegate {
     }
     
 }
+ */

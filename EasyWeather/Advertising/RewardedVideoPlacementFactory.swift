@@ -21,11 +21,11 @@
 //
 
 import Foundation
-import MoPubSDK
+//import MoPubSDK
 import AppLovinSDK
 import FBAudienceNetwork
 
-class RewardedVideoPlacementFactory {
+/*class RewardedVideoPlacementFactory {
     
     func createAdPlacement(withAdNetwork adNetwork: AdNetwork, withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement? {
         switch adNetwork {
@@ -91,3 +91,4 @@ class RewardedVideoPlacementFactory {
     
 }
 
+ */

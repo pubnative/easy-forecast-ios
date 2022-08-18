@@ -13,7 +13,7 @@ target 'EasyWeather' do
   pod 'AlamofireObjectMapper', '~> 6.2.0'
   pod 'lottie-ios', '2.5.3'
   pod 'mopub-ios-sdk'
-  pod 'Google-Mobile-Ads-SDK', '~> 7.0'
+  # pod 'Google-Mobile-Ads-SDK', '~> 7.0'
   pod 'FBAudienceNetwork'
   pod 'IronSourceSDK'
   pod 'StartAppSDK', '3.12.0'

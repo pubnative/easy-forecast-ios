@@ -21,9 +21,9 @@
 //
 
 import UIKit
-import MoPubSDK
+//import MoPubSDK
 
-class MoPubBannerController: AdPlacement {
+/*class MoPubBannerController: AdPlacement {
 
     var bannerAdView: MPAdView!
     var viewController: UIViewController!
@@ -81,3 +81,4 @@ extension MoPubBannerController: MPAdViewDelegate {
     }
     
 }
+ */

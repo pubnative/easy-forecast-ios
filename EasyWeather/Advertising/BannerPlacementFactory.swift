@@ -22,12 +22,12 @@
 
 import Foundation
 import HyBid
-import MoPubSDK
+//import MoPubSDK
 import GoogleMobileAds
 import FBAudienceNetwork
 import AppLovinSDK
 
-class BannerPlacementFactory {
+/*class BannerPlacementFactory {
     
     func createAdPlacement(withAdNetwork adNetwork: AdNetwork, withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement? {
         switch adNetwork {
@@ -99,3 +99,4 @@ class BannerPlacementFactory {
     }
     
 }
+ */

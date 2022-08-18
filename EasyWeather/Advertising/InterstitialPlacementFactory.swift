@@ -21,12 +21,12 @@
 //
 
 import Foundation
-import MoPubSDK
+//import MoPubSDK
 import GoogleMobileAds
 import FBAudienceNetwork
 import UnityAds
 
-class InterstitialPlacementFactory {
+/*class InterstitialPlacementFactory {
     
     func createAdPlacement(withAdNetwork adNetwork: AdNetwork, withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement? {
         switch adNetwork {
@@ -94,3 +94,4 @@ class InterstitialPlacementFactory {
     }
     
 }
+ */
