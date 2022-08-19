@@ -38,7 +38,7 @@ class SummaryWeatherViewController: UIViewController {
     @IBOutlet weak var currentWeatherBackgroundView: UIImageView!
     @IBOutlet weak var forecastWeatherTableView: UITableView!
     @IBOutlet weak var bannerAdContainerHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var loadingAnimationView: LOTAnimationView!
+    @IBOutlet weak var loadingAnimationView: AnimationView?
     
     var adPlacement = AdPlacement()
     var interstitialPlacement = InterstitialPlacement()
@@ -96,15 +96,15 @@ class SummaryWeatherViewController: UIViewController {
     }
         
     func startLoadingAnimation() {
-        loadingAnimationView.setAnimation(named: "LoadingAnimation")
-        loadingAnimationView.loopAnimation = true
-        loadingAnimationView.play()
-        loadingAnimationView.isHidden = false
+        loadingAnimationView? = AnimationView.init(name: "LoadingAnimation")
+        loadingAnimationView?.loopMode = .loop
+        loadingAnimationView?.play()
+        loadingAnimationView?.isHidden = false
     }
     
     func stopLoadingAnimation() {
-        loadingAnimationView.stop()
-        loadingAnimationView.isHidden = true
+        loadingAnimationView?.stop()
+        loadingAnimationView?.isHidden = true
     }
     
     func checkTrackingConsent() {

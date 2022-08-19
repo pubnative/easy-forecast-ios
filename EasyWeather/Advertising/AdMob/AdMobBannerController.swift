@@ -57,22 +57,22 @@ extension AdMobBannerController: GADBannerViewDelegate {
         delegate.adPlacementDidLoad()
     }
     
-    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
         adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidFail(withError: error)
     }
-    
-    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
+
+    func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
         adAnalyticsSession.confirmOpened()
         print("adViewWillPresentScreen")
     }
     
-    func adViewWillDismissScreen(_ bannerView: GADBannerView) {
+    func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
         print("adViewWillDismissScreen")
     }
     
-    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
+    func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
         adAnalyticsSession.confirmClosed()
         print("adViewDidDismissScreen")
     }

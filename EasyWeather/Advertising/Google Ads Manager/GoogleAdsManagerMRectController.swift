@@ -25,11 +25,11 @@ import GoogleMobileAds
 
 class GoogleAdsManagerMRectController: AdPlacement {
     
-    var mRectAdView: DFPBannerView!
+    var mRectAdView: GADBannerView!
     var delegate: AdPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
 
-    init(withAdView adView: DFPBannerView, withAdUnitID adUnitID: String, withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
+    init(withAdView adView: GADBannerView, withAdUnitID adUnitID: String, withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         mRectAdView = adView
         mRectAdView.adUnitID = adUnitID
@@ -45,43 +45,50 @@ class GoogleAdsManagerMRectController: AdPlacement {
     
     override func loadAd() {
         adAnalyticsSession.start()
-        mRectAdView.load(DFPRequest())
+        mRectAdView.load(GADRequest())
     }
 
 }
 
 extension GoogleAdsManagerMRectController: GADBannerViewDelegate {
-    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+    
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
         adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidLoad()
     }
     
-    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
         adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidFail(withError: error)
     }
     
-    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
+    func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
         adAnalyticsSession.confirmOpened()
-        print("adViewWillPresentScreen")
+        print("bannerViewWillPresentScreen")
     }
     
-    func adViewWillDismissScreen(_ bannerView: GADBannerView) {
-        print("adViewWillDismissScreen")
+    func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
+        print("bannerViewWillDismissScreen")
     }
     
-    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
+    func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
         adAnalyticsSession.confirmClosed()
-        print("adViewDidDismissScreen")
+        print("bannerViewDidDismissScreen")
     }
     
-    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+    func bannerViewDidRecordClick(_ bannerView: GADBannerView) {
         adAnalyticsSession.confirmClick()
         adAnalyticsSession.confirmLeftApplication()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackClick()
     }
     
+//    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+//        adAnalyticsSession.confirmClick()
+//        adAnalyticsSession.confirmLeftApplication()
+//        guard let delegate = self.delegate else { return }
+//        delegate.adPlacementDidTrackClick()
+//    }
 }

@@ -23,15 +23,16 @@
 import UIKit
 import GoogleMobileAds
 
-class GoogleAdsManagerRewardedVideoController: RewardedVideoPlacement {
+class GoogleAdsManagerRewardedVideoController: RewardedVideoPlacement, UIViewController {
     
     var viewController: UIViewController!
     var delegate: RewardedVideoPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
+    private var rewardedAd: GADRewardedAd?
 
     init(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) {
         super.init()
-        GADRewardBasedVideoAd.sharedInstance().delegate = self
+        //GADRewardBasedVideoAd.sharedInstance().delegate = self
         self.viewController = viewController
         self.delegate = delegate
         adAnalyticsSession = AdAnalyticsSession(withAdType: .rewardedVideo, withAdNetwork: .googleAdsManager)
@@ -39,12 +40,40 @@ class GoogleAdsManagerRewardedVideoController: RewardedVideoPlacement {
     
     override func loadAd() {
         adAnalyticsSession.start()
-        GADRewardBasedVideoAd.sharedInstance().load(DFPRequest(), withAdUnitID: GOOGLE_ADS_MANAGER_REWARDED_VIDEO_AD_UNIT_ID)
+        //GADRewardBasedVideoAd.sharedInstance().load(DFPRequest(), withAdUnitID: GOOGLE_ADS_MANAGER_REWARDED_VIDEO_AD_UNIT_ID)
+        let request = GADRequest()
+        GADRewardedAd.load(withAdUnitID: GOOGLE_ADS_MANAGER_REWARDED_VIDEO_AD_UNIT_ID,
+                           request: request,
+                           completionHandler: { [weak self] ad, error in
+            if let error = error {
+                print("Failed to load rewarded ad with error: \(error.localizedDescription)")
+                return
+            }
+            self?.rewardedAd = ad
+            self?.rewardedAd?.fullScreenContentDelegate = self
+            print("Rewarded ad loaded.")
+        }
+        )
     }
     
     override func show() {
         adAnalyticsSession.confirmInterstitialShow()
-        GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: viewController)
+        //GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: viewController)
+        
+        if let ad = rewardedAd {
+            
+            guard let vc = self as? UIViewController else {
+                return
+            }
+            
+            ad.present(fromRootViewController: vc) {
+              let reward = ad.adReward
+              print("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
+              // TODO: Reward the user.
+            }
+          } else {
+            print("Ad wasn't ready")
+          }
     }
     
     override func isReady() -> Bool {
@@ -57,7 +86,9 @@ class GoogleAdsManagerRewardedVideoController: RewardedVideoPlacement {
     
 }
 
-extension GoogleAdsManagerRewardedVideoController: GADRewardBasedVideoAdDelegate {
+extension GoogleAdsManagerRewardedVideoController: GADFullScreenContentDelegate {
+    
+    
     
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
         adAnalyticsSession.confirmReward()
