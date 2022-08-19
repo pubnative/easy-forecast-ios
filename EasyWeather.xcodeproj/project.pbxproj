@@ -672,12 +672,10 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-EasyWeather/Pods-EasyWeather-resources.sh",
 				"${PODS_ROOT}/AppLovinSDK/applovin-ios-sdk-11.4.3/AppLovinSDKResources.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/StartAppSDK/StartAppSDK.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AppLovinSDKResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/StartAppSDK.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
