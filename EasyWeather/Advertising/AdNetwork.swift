@@ -29,7 +29,6 @@ enum AdNetwork: String {
     case ironSource = "IronSource"
     case fyber = "fyber"
     case facebook = "facebook"
-    case moPub = "MoPub"
     case googleAdsManager = "GoogleAdsManager"
     case admob = "Admob"
     case startApp = "StartApp"

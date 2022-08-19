@@ -24,7 +24,6 @@ import UIKit
 import CoreData
 import Firebase
 import HyBid
-//import MoPubSDK
 import GoogleMobileAds
 import AdSupport.ASIdentifierManager
 import UnityAds
@@ -67,9 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         hyBidTargeting.interests = interests
         hyBidTargeting.interests.append("easyforecast:2.12")
         HyBid.setTargeting(hyBidTargeting)
-        
-//        let moPubSDKConfig = MPMoPubConfiguration(adUnitIdForAppInitialization: MOPUB_BANNER_AD_UNIT_ID)
-//        MoPub.sharedInstance().initializeSdk(with: moPubSDKConfig, completion: nil)
         
         GADMobileAds.configure(withApplicationID: ADMOB_APP_ID)
 
