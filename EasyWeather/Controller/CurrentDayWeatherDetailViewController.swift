@@ -101,9 +101,9 @@ class CurrentDayWeatherDetailViewController: UIViewController {
     func loadRewardedVideo() {
         if adRequestFinished {
             rewardedVideoPlacement.cleanUp()
-//            guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: REWARDED_VIDEO_PLACEMENT) else { return }
-//            guard let placement = RewardedVideoPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withViewController: self, withRewardedVideoPlacementDelegate: self) else { return }
-//            rewardedVideoPlacement = placement
+            guard let adNetwork = AdManager.sharedInstance.getNextNetwork(withPlacement: REWARDED_VIDEO_PLACEMENT) else { return }
+            guard let placement = RewardedVideoPlacementFactory().createAdPlacement(withAdNetwork: adNetwork, withViewController: self, withRewardedVideoPlacementDelegate: self) else { return }
+            rewardedVideoPlacement = placement
             rewardedVideoPlacement.loadAd()
             adRequestFinished = false
         }

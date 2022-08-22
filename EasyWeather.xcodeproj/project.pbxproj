@@ -73,6 +73,9 @@
 		5AFFD3BD221AEBD0004EC91F /* LoadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AFFD3BC221AEBD0004EC91F /* LoadingAnimation.json */; };
 		6237280F269DDA2200767DFB /* HyBid.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6237280D269DDA1300767DFB /* HyBid.xcframework */; };
 		62372810269DDA2200767DFB /* HyBid.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6237280D269DDA1300767DFB /* HyBid.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		91CCBB2F28B3DF1800105971 /* RewardedVideoPlacementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CCBB2E28B3DF1800105971 /* RewardedVideoPlacementFactory.swift */; };
+		91CCBB3128B3DF3700105971 /* MRectPlacementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CCBB3028B3DF3700105971 /* MRectPlacementFactory.swift */; };
+		91CCBB3328B3DF3F00105971 /* InterstitialPlacementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CCBB3228B3DF3F00105971 /* InterstitialPlacementFactory.swift */; };
 		E7566C36203C3A8C00487557 /* ForecastUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7566C35203C3A8C00487557 /* ForecastUpdateDelegate.swift */; };
 		E7566C38203C3B1F00487557 /* CurrentUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7566C37203C3B1F00487557 /* CurrentUpdateDelegate.swift */; };
 		E75E4682203B3DB500FF9672 /* ForecastCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75E4681203B3DB500FF9672 /* ForecastCity.swift */; };
@@ -183,6 +186,10 @@
 		5AFA79C522259FE800ABBDFE /* UnityInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnityInterstitialController.swift; sourceTree = "<group>"; };
 		5AFFD3BC221AEBD0004EC91F /* LoadingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingAnimation.json; sourceTree = "<group>"; };
 		6237280D269DDA1300767DFB /* HyBid.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = HyBid.xcframework; sourceTree = "<group>"; };
+		91CCBB2D28B3DCE900105971 /* BannerPlacementFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BannerPlacementFactory.swift; path = "../../../easy-forecast-ios-master-clean/EasyWeather/Advertising/BannerPlacementFactory.swift"; sourceTree = "<group>"; };
+		91CCBB2E28B3DF1800105971 /* RewardedVideoPlacementFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardedVideoPlacementFactory.swift; sourceTree = "<group>"; };
+		91CCBB3028B3DF3700105971 /* MRectPlacementFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MRectPlacementFactory.swift; sourceTree = "<group>"; };
+		91CCBB3228B3DF3F00105971 /* InterstitialPlacementFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterstitialPlacementFactory.swift; sourceTree = "<group>"; };
 		E7566C35203C3A8C00487557 /* ForecastUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastUpdateDelegate.swift; sourceTree = "<group>"; };
 		E7566C37203C3B1F00487557 /* CurrentUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUpdateDelegate.swift; sourceTree = "<group>"; };
 		E75E4681203B3DB500FF9672 /* ForecastCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCity.swift; sourceTree = "<group>"; };
@@ -308,8 +315,12 @@
 				5ABCE304221C5CA8004F8882 /* AdType.swift */,
 				5ABCE302221C5A47004F8882 /* AdNetworkConstants.swift */,
 				5ABCE2FA221C5192004F8882 /* AdPlacement.swift */,
+				91CCBB2D28B3DCE900105971 /* BannerPlacementFactory.swift */,
+				91CCBB3228B3DF3F00105971 /* InterstitialPlacementFactory.swift */,
+				91CCBB3028B3DF3700105971 /* MRectPlacementFactory.swift */,
 				5ABCE2FC221C53D4004F8882 /* InterstitialPlacement.swift */,
 				5ABCE2FE221C5639004F8882 /* RewardedVideoPlacement.swift */,
+				91CCBB2E28B3DF1800105971 /* RewardedVideoPlacementFactory.swift */,
 			);
 			path = Advertising;
 			sourceTree = "<group>";
@@ -735,6 +746,7 @@
 				5A89810A222ECA5500F1CE62 /* AppLovinBannerController.swift in Sources */,
 				E75E4690203B3E8500FF9672 /* ForecastSys.swift in Sources */,
 				5ABCE303221C5A47004F8882 /* AdNetworkConstants.swift in Sources */,
+				91CCBB3328B3DF3F00105971 /* InterstitialPlacementFactory.swift in Sources */,
 				5A682E022236B2D20072CD31 /* FacebookRewardedVideoController.swift in Sources */,
 				5AA496B6222FE24500537126 /* AdAnalyticsSession.swift in Sources */,
 				5AE362C6222421CB002D7CB9 /* AdMobRewardedVideoController.swift in Sources */,
@@ -745,6 +757,7 @@
 				E75E4696203B3EC100FF9672 /* CurrentSys.swift in Sources */,
 				E75E46A3203B468600FF9672 /* ApiClient.swift in Sources */,
 				E75E46A0203B3F0C00FF9672 /* CurrentResponse.swift in Sources */,
+				91CCBB3128B3DF3700105971 /* MRectPlacementFactory.swift in Sources */,
 				5A257F68220D8B7B00FDCCDB /* SearchCityViewController.swift in Sources */,
 				5A4CDA0C2211BA2600217E5F /* ParallaxEffect.swift in Sources */,
 				E75E469C203B3EF300FF9672 /* CurrentWind.swift in Sources */,
@@ -764,6 +777,7 @@
 				5A6A8C1620862C8B00494187 /* ForecastSummaryCell.swift in Sources */,
 				E75E4686203B3DD800FF9672 /* ForecastItem.swift in Sources */,
 				5A1C83F02229540B00A3C8A3 /* StartAppRewardedVideoController.swift in Sources */,
+				91CCBB2F28B3DF1800105971 /* RewardedVideoPlacementFactory.swift in Sources */,
 				5AA496B2222FD9BD00537126 /* AdEvent.swift in Sources */,
 				5A9280EC221EB4DE00D43FF3 /* PubNativeInterstitialController.swift in Sources */,
 				5AA496B8222FE27D00537126 /* AdAnalytics.swift in Sources */,
