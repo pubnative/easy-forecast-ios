@@ -84,11 +84,4 @@ extension GoogleAdsManagerMRectController: GADBannerViewDelegate {
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackClick()
     }
-    
-//    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
-//        adAnalyticsSession.confirmClick()
-//        adAnalyticsSession.confirmLeftApplication()
-//        guard let delegate = self.delegate else { return }
-//        delegate.adPlacementDidTrackClick()
-//    }
 }

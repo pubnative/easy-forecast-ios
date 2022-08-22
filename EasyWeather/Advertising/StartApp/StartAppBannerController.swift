@@ -33,7 +33,7 @@ class StartAppBannerController: AdPlacement {
         super.init()
         self.delegate = delegate
         let summaryViewController = viewController as! SummaryWeatherViewController
-        bannerAdView = STABannerView(size: STA_PortraitAdSize_320x50, autoOrigin: STAAdOrigin_Top, with: summaryViewController.bannerAdContainer, withDelegate: self)
+        bannerAdView = STABannerView(size: STA_PortraitAdSize_320x50, autoOrigin: STAAdOrigin_Top, /*with: summaryViewController.bannerAdContainer,*/ withDelegate: self)
         adAnalyticsSession = AdAnalyticsSession(withAdType: .banner, withAdNetwork: .startApp)
     }
     

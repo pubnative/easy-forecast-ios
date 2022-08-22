@@ -32,7 +32,7 @@ class StartAppMRectController: AdPlacement {
         super.init()
         self.delegate = delegate
         let summaryViewController = viewController as! SearchCityViewController
-        mRectAdView = STABannerView(size: STA_MRecAdSize_300x250, autoOrigin: STAAdOrigin_Top, with: summaryViewController.mRectContainerView, withDelegate: self)
+        mRectAdView = STABannerView(size: STA_MRecAdSize_300x250, autoOrigin: STAAdOrigin_Top, /*with: summaryViewController.mRectContainerView,*/ withDelegate: self)
         adAnalyticsSession = AdAnalyticsSession(withAdType: .mRect, withAdNetwork: .startApp)
     }
     
