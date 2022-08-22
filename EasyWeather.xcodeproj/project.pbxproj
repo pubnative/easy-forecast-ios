@@ -73,6 +73,7 @@
 		5AFFD3BD221AEBD0004EC91F /* LoadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AFFD3BC221AEBD0004EC91F /* LoadingAnimation.json */; };
 		6237280F269DDA2200767DFB /* HyBid.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6237280D269DDA1300767DFB /* HyBid.xcframework */; };
 		62372810269DDA2200767DFB /* HyBid.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6237280D269DDA1300767DFB /* HyBid.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		919B537B28B3E8D000708473 /* BannerPlacementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919B537A28B3E8D000708473 /* BannerPlacementFactory.swift */; };
 		91CCBB2F28B3DF1800105971 /* RewardedVideoPlacementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CCBB2E28B3DF1800105971 /* RewardedVideoPlacementFactory.swift */; };
 		91CCBB3128B3DF3700105971 /* MRectPlacementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CCBB3028B3DF3700105971 /* MRectPlacementFactory.swift */; };
 		91CCBB3328B3DF3F00105971 /* InterstitialPlacementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CCBB3228B3DF3F00105971 /* InterstitialPlacementFactory.swift */; };
@@ -186,7 +187,7 @@
 		5AFA79C522259FE800ABBDFE /* UnityInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnityInterstitialController.swift; sourceTree = "<group>"; };
 		5AFFD3BC221AEBD0004EC91F /* LoadingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingAnimation.json; sourceTree = "<group>"; };
 		6237280D269DDA1300767DFB /* HyBid.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = HyBid.xcframework; sourceTree = "<group>"; };
-		91CCBB2D28B3DCE900105971 /* BannerPlacementFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BannerPlacementFactory.swift; path = "../../../easy-forecast-ios-master-clean/EasyWeather/Advertising/BannerPlacementFactory.swift"; sourceTree = "<group>"; };
+		919B537A28B3E8D000708473 /* BannerPlacementFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BannerPlacementFactory.swift; path = ../../../../.Trash/BannerPlacementFactory.swift; sourceTree = "<group>"; };
 		91CCBB2E28B3DF1800105971 /* RewardedVideoPlacementFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardedVideoPlacementFactory.swift; sourceTree = "<group>"; };
 		91CCBB3028B3DF3700105971 /* MRectPlacementFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MRectPlacementFactory.swift; sourceTree = "<group>"; };
 		91CCBB3228B3DF3F00105971 /* InterstitialPlacementFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterstitialPlacementFactory.swift; sourceTree = "<group>"; };
@@ -315,7 +316,7 @@
 				5ABCE304221C5CA8004F8882 /* AdType.swift */,
 				5ABCE302221C5A47004F8882 /* AdNetworkConstants.swift */,
 				5ABCE2FA221C5192004F8882 /* AdPlacement.swift */,
-				91CCBB2D28B3DCE900105971 /* BannerPlacementFactory.swift */,
+				919B537A28B3E8D000708473 /* BannerPlacementFactory.swift */,
 				91CCBB3228B3DF3F00105971 /* InterstitialPlacementFactory.swift */,
 				91CCBB3028B3DF3700105971 /* MRectPlacementFactory.swift */,
 				5ABCE2FC221C53D4004F8882 /* InterstitialPlacement.swift */,
@@ -774,6 +775,7 @@
 				5A89810E222ED29B00F1CE62 /* AppLovinInterstitialController.swift in Sources */,
 				5ACDB1B22209DAE700E13AAD /* DateExtension.swift in Sources */,
 				E7CC276C203AF265006A95B9 /* AppDelegate.swift in Sources */,
+				919B537B28B3E8D000708473 /* BannerPlacementFactory.swift in Sources */,
 				5A6A8C1620862C8B00494187 /* ForecastSummaryCell.swift in Sources */,
 				E75E4686203B3DD800FF9672 /* ForecastItem.swift in Sources */,
 				5A1C83F02229540B00A3C8A3 /* StartAppRewardedVideoController.swift in Sources */,
