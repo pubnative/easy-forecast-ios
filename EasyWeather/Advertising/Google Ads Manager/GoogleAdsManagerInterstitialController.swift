@@ -33,7 +33,6 @@ class GoogleAdsManagerInterstitialController: InterstitialPlacement {
     init(withInterstitial interstitial: GADInterstitialAd, withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) {
         super.init()
         self.interstitial = interstitial
-        //self.interstitial.delegate = self
         self.viewController = viewController
         self.delegate = delegate
         adAnalyticsSession = AdAnalyticsSession(withAdType: .interstitial, withAdNetwork: .googleAdsManager)
@@ -59,10 +58,6 @@ class GoogleAdsManagerInterstitialController: InterstitialPlacement {
         adAnalyticsSession.confirmInterstitialShow()
         interstitial.present(fromRootViewController: viewController)
     }
-    
-    //    override func isReady() -> Bool {
-    //        return interstitial.isReady
-    //    }
     
     override func cleanUp() {
         delegate = nil

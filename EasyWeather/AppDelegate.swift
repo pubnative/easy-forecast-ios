@@ -67,7 +67,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         hyBidTargeting.interests.append("easyforecast:2.12")
         HyBid.setTargeting(hyBidTargeting)
         
-        //GADMobileAds.configure(withApplicationID: ADMOB_APP_ID)
         GADMobileAds.sharedInstance().start(completionHandler: nil)
 
         UnityAds.initialize(UNITY_GAME_ID, delegate: nil, testMode: false)

@@ -32,7 +32,6 @@ class GoogleAdsManagerRewardedVideoController: RewardedVideoPlacement {
     
     init(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) {
         super.init()
-        //GADRewardBasedVideoAd.sharedInstance().delegate = self
         self.viewController = viewController
         self.delegate = delegate
         adAnalyticsSession = AdAnalyticsSession(withAdType: .rewardedVideo, withAdNetwork: .googleAdsManager)
@@ -56,7 +55,6 @@ class GoogleAdsManagerRewardedVideoController: RewardedVideoPlacement {
     
     override func show() {
         adAnalyticsSession.confirmInterstitialShow()
-        //GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: viewController)
         if let ad = rewardedAd {
             ad.present(fromRootViewController: self.viewController) {
                 let reward = ad.adReward
@@ -68,10 +66,6 @@ class GoogleAdsManagerRewardedVideoController: RewardedVideoPlacement {
         }
     }
     
-    //    override func isReady() -> Bool {
-    //        return GADRewardedAd.sharedInstance().isReady
-    //    }
-    
     override func cleanUp() {
         delegate = nil
     }
@@ -80,7 +74,6 @@ class GoogleAdsManagerRewardedVideoController: RewardedVideoPlacement {
 
 extension GoogleAdsManagerRewardedVideoController: GADFullScreenContentDelegate {
     
-    /// Tells the delegate that the ad failed to present full screen content.
     func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         print("Ad did fail to present full screen content.")
         adAnalyticsSession.confirmError()
@@ -88,7 +81,6 @@ extension GoogleAdsManagerRewardedVideoController: GADFullScreenContentDelegate 
         delegate.rewardedVideoPlacementDidFail(withError: error)
     }
     
-    /// Tells the delegate that the ad will present full screen content.
     func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad will present full screen content.")
         adAnalyticsSession.confirmImpression()
@@ -97,7 +89,6 @@ extension GoogleAdsManagerRewardedVideoController: GADFullScreenContentDelegate 
         delegate.rewardedVideoPlacementDidOpen()
     }
     
-    /// Tells the delegate that the ad dismissed full screen content.
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad did dismiss full screen content.")
         adAnalyticsSession.confirmInterstitialDismissed()
@@ -112,28 +103,16 @@ extension GoogleAdsManagerRewardedVideoController: GADFullScreenContentDelegate 
         delegate.rewardedVideoPlacementDidTrackClick()
     }
     
-    //    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
-    //        adAnalyticsSession.confirmReward()
-    //        guard let delegate = self.delegate else { return }
-    //        delegate.rewardedVideoPlacementDidReward(withReward: AdReward(withName: reward.type, withAmount: reward.amount as! Int))
-    //    }
-    //
-    //    func rewardBasedVideoAdDidReceive(_ rewardBasedVideoAd:GADRewardBasedVideoAd) {
-    //        adAnalyticsSession.confirmLoaded()
-    //        guard let delegate = self.delegate else { return }
-    //        delegate.rewardedVideoPlacementDidLoad()
-    //    }
-    //
-    //    func rewardBasedVideoAdDidStartPlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
-    //        adAnalyticsSession.confirmVideoStarted()
-    //        guard let delegate = self.delegate else { return }
-    //        delegate.rewardedVideoPlacementDidStart()
-    //    }
-    //
-    //    func rewardBasedVideoAdDidCompletePlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
-    //        adAnalyticsSession.confirmVideoFinished()
-    //        guard let delegate = self.delegate else { return }
-    //        delegate.rewardedVideoPlacementDidFinish()
-    //    }
+    func adWillDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        adAnalyticsSession.confirmVideoFinished()
+        guard let delegate = self.delegate else { return }
+        delegate.rewardedVideoPlacementDidFinish()
+    }
+    
+    func adDidRecordImpression(_ ad: GADFullScreenPresentingAd) {
+        adAnalyticsSession.confirmVideoStarted()
+        guard let delegate = self.delegate else { return }
+        delegate.rewardedVideoPlacementDidStart()
+    }
 }
 

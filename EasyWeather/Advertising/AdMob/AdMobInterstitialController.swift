@@ -59,10 +59,6 @@ class AdMobInterstitialController: InterstitialPlacement {
         interstitial.present(fromRootViewController: viewController)
     }
     
-//    override func isReady() -> Bool {
-//        return interstitial.isReady
-//    }
-    
     override func cleanUp() {
         delegate = nil
     }
