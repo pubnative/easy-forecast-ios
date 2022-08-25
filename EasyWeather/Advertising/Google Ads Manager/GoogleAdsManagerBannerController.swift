@@ -37,7 +37,7 @@ class GoogleAdsManagerBannerController: AdPlacement {
         bannerAdView.rootViewController = viewController
         self.delegate = delegate
         adAnalyticsSession = AdAnalyticsSession(withAdType: .banner, withAdNetwork: .googleAdsManager)
-
+        viewController.view.addSubview(bannerAdView)
     }
     
     override func adView() -> UIView? {
@@ -59,6 +59,7 @@ extension GoogleAdsManagerBannerController: GADBannerViewDelegate {
     }
     
     func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
+        print("jacobo bannerDidFailToLoadWithError ", error)
         adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidFail(withError: error)

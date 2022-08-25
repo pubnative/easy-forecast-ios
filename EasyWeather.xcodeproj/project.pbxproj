@@ -49,7 +49,6 @@
 		5ACDB1B22209DAE700E13AAD /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACDB1B12209DAE700E13AAD /* DateExtension.swift */; };
 		5ACDB1B62209F1C600E13AAD /* ForecastSummaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACDB1B52209F1C600E13AAD /* ForecastSummaryItem.swift */; };
 		5AD53C862226C8B500370B75 /* UnityRewardedVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD53C852226C8B500370B75 /* UnityRewardedVideoController.swift */; };
-		5AD53C882226D5E200370B75 /* UnityAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD53C872226D5E200370B75 /* UnityAds.framework */; };
 		5AD53C8D2226EE5900370B75 /* IronSourceBannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD53C8C2226EE5900370B75 /* IronSourceBannerController.swift */; };
 		5AD53C8F2226F5BD00370B75 /* IronSourceInterstitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD53C8E2226F5BD00370B75 /* IronSourceInterstitialController.swift */; };
 		5AD53C912227F31400370B75 /* IronSourceRewardedVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD53C902227F31400370B75 /* IronSourceRewardedVideoController.swift */; };
@@ -71,12 +70,18 @@
 		5AF5A01C2214859700004163 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF5A01B2214859700004163 /* SearchTextField.swift */; };
 		5AFA79C622259FE800ABBDFE /* UnityInterstitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA79C522259FE800ABBDFE /* UnityInterstitialController.swift */; };
 		5AFFD3BD221AEBD0004EC91F /* LoadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AFFD3BC221AEBD0004EC91F /* LoadingAnimation.json */; };
-		6237280F269DDA2200767DFB /* HyBid.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6237280D269DDA1300767DFB /* HyBid.xcframework */; };
-		62372810269DDA2200767DFB /* HyBid.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6237280D269DDA1300767DFB /* HyBid.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		911A16FB28B63B5D001BE64A /* FBAudienceNetwork.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 911A16F928B63B55001BE64A /* FBAudienceNetwork.xcframework */; };
+		911A16FC28B63B5D001BE64A /* FBAudienceNetwork.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 911A16F928B63B55001BE64A /* FBAudienceNetwork.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		918190E128B77ACC00F40AB7 /* PubNativeRewardedVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918190E028B77ACC00F40AB7 /* PubNativeRewardedVideoController.swift */; };
 		919B537B28B3E8D000708473 /* BannerPlacementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919B537A28B3E8D000708473 /* BannerPlacementFactory.swift */; };
 		91CCBB2F28B3DF1800105971 /* RewardedVideoPlacementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CCBB2E28B3DF1800105971 /* RewardedVideoPlacementFactory.swift */; };
 		91CCBB3128B3DF3700105971 /* MRectPlacementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CCBB3028B3DF3700105971 /* MRectPlacementFactory.swift */; };
 		91CCBB3328B3DF3F00105971 /* InterstitialPlacementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CCBB3228B3DF3F00105971 /* InterstitialPlacementFactory.swift */; };
+		91EE469328B526DB0053F85D /* UnityAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91EE469228B526DB0053F85D /* UnityAds.xcframework */; };
+		91F56DE128B51174002F45A9 /* OMSDK_Pubnativenet.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F56DDD28B5116C002F45A9 /* OMSDK_Pubnativenet.xcframework */; };
+		91F56DE228B51174002F45A9 /* OMSDK_Pubnativenet.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91F56DDD28B5116C002F45A9 /* OMSDK_Pubnativenet.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		91F56DE528B5228D002F45A9 /* HyBid.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F56DE328B52283002F45A9 /* HyBid.xcframework */; };
+		91F56DE628B5228D002F45A9 /* HyBid.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91F56DE328B52283002F45A9 /* HyBid.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E7566C36203C3A8C00487557 /* ForecastUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7566C35203C3A8C00487557 /* ForecastUpdateDelegate.swift */; };
 		E7566C38203C3B1F00487557 /* CurrentUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7566C37203C3B1F00487557 /* CurrentUpdateDelegate.swift */; };
 		E75E4682203B3DB500FF9672 /* ForecastCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75E4681203B3DB500FF9672 /* ForecastCity.swift */; };
@@ -111,7 +116,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				62372810269DDA2200767DFB /* HyBid.xcframework in Embed Frameworks */,
+				91F56DE628B5228D002F45A9 /* HyBid.xcframework in Embed Frameworks */,
+				91F56DE228B51174002F45A9 /* OMSDK_Pubnativenet.xcframework in Embed Frameworks */,
+				911A16FC28B63B5D001BE64A /* FBAudienceNetwork.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -163,7 +170,6 @@
 		5ACDB1B12209DAE700E13AAD /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		5ACDB1B52209F1C600E13AAD /* ForecastSummaryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastSummaryItem.swift; sourceTree = "<group>"; };
 		5AD53C852226C8B500370B75 /* UnityRewardedVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnityRewardedVideoController.swift; sourceTree = "<group>"; };
-		5AD53C872226D5E200370B75 /* UnityAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UnityAds.framework; sourceTree = "<group>"; };
 		5AD53C8C2226EE5900370B75 /* IronSourceBannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IronSourceBannerController.swift; sourceTree = "<group>"; };
 		5AD53C8E2226F5BD00370B75 /* IronSourceInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IronSourceInterstitialController.swift; sourceTree = "<group>"; };
 		5AD53C902227F31400370B75 /* IronSourceRewardedVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IronSourceRewardedVideoController.swift; sourceTree = "<group>"; };
@@ -186,11 +192,15 @@
 		5AF5A01B2214859700004163 /* SearchTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		5AFA79C522259FE800ABBDFE /* UnityInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnityInterstitialController.swift; sourceTree = "<group>"; };
 		5AFFD3BC221AEBD0004EC91F /* LoadingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingAnimation.json; sourceTree = "<group>"; };
-		6237280D269DDA1300767DFB /* HyBid.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = HyBid.xcframework; sourceTree = "<group>"; };
+		911A16F928B63B55001BE64A /* FBAudienceNetwork.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FBAudienceNetwork.xcframework; sourceTree = "<group>"; };
+		918190E028B77ACC00F40AB7 /* PubNativeRewardedVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubNativeRewardedVideoController.swift; sourceTree = "<group>"; };
 		919B537A28B3E8D000708473 /* BannerPlacementFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BannerPlacementFactory.swift; path = ../../../../.Trash/BannerPlacementFactory.swift; sourceTree = "<group>"; };
 		91CCBB2E28B3DF1800105971 /* RewardedVideoPlacementFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardedVideoPlacementFactory.swift; sourceTree = "<group>"; };
 		91CCBB3028B3DF3700105971 /* MRectPlacementFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MRectPlacementFactory.swift; sourceTree = "<group>"; };
 		91CCBB3228B3DF3F00105971 /* InterstitialPlacementFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterstitialPlacementFactory.swift; sourceTree = "<group>"; };
+		91EE469228B526DB0053F85D /* UnityAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = UnityAds.xcframework; sourceTree = "<group>"; };
+		91F56DDD28B5116C002F45A9 /* OMSDK_Pubnativenet.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = OMSDK_Pubnativenet.xcframework; sourceTree = "<group>"; };
+		91F56DE328B52283002F45A9 /* HyBid.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = HyBid.xcframework; sourceTree = "<group>"; };
 		E7566C35203C3A8C00487557 /* ForecastUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastUpdateDelegate.swift; sourceTree = "<group>"; };
 		E7566C37203C3B1F00487557 /* CurrentUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUpdateDelegate.swift; sourceTree = "<group>"; };
 		E75E4681203B3DB500FF9672 /* ForecastCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCity.swift; sourceTree = "<group>"; };
@@ -225,9 +235,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6237280F269DDA2200767DFB /* HyBid.xcframework in Frameworks */,
+				91EE469328B526DB0053F85D /* UnityAds.xcframework in Frameworks */,
+				91F56DE528B5228D002F45A9 /* HyBid.xcframework in Frameworks */,
 				2E1289B11BE255C43CB298A3 /* Pods_EasyWeather.framework in Frameworks */,
-				5AD53C882226D5E200370B75 /* UnityAds.framework in Frameworks */,
+				91F56DE128B51174002F45A9 /* OMSDK_Pubnativenet.xcframework in Frameworks */,
+				911A16FB28B63B5D001BE64A /* FBAudienceNetwork.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +344,7 @@
 				5ABCE315221D890B004F8882 /* PubNativeBannerController.swift */,
 				5A9280E8221DA7FC00D43FF3 /* PubNativeMRectController.swift */,
 				5A9280EB221EB4DE00D43FF3 /* PubNativeInterstitialController.swift */,
+				918190E028B77ACC00F40AB7 /* PubNativeRewardedVideoController.swift */,
 			);
 			path = PubNative;
 			sourceTree = "<group>";
@@ -475,9 +488,11 @@
 		E7CC275F203AF265006A95B9 = {
 			isa = PBXGroup;
 			children = (
-				6237280D269DDA1300767DFB /* HyBid.xcframework */,
+				91F56DE328B52283002F45A9 /* HyBid.xcframework */,
+				91F56DDD28B5116C002F45A9 /* OMSDK_Pubnativenet.xcframework */,
+				91EE469228B526DB0053F85D /* UnityAds.xcframework */,
+				911A16F928B63B55001BE64A /* FBAudienceNetwork.xcframework */,
 				5AD53C942228333D00370B75 /* EasyWeather-Bridging-Header.h */,
-				5AD53C872226D5E200370B75 /* UnityAds.framework */,
 				E7CC276A203AF265006A95B9 /* EasyWeather */,
 				E7CC2769203AF265006A95B9 /* Products */,
 				9CE1A5FC539F853B68140ACE /* Pods */,
@@ -606,6 +621,7 @@
 				"${BUILT_PRODUCTS_DIR}/FirebaseABTesting/FirebaseABTesting.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebasePerformance/FirebasePerformance.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseRemoteConfig/FirebaseRemoteConfig.framework",
@@ -613,7 +629,6 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -627,6 +642,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseABTesting.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreDiagnostics.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreInternal.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstallations.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebasePerformance.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseRemoteConfig.framework",
@@ -634,7 +650,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -755,6 +770,7 @@
 				5A4CDA0E2211D9C500217E5F /* RoundedImageView.swift in Sources */,
 				5AE362C02224042B002D7CB9 /* AdMobBannerController.swift in Sources */,
 				5ACDB1B02209C86100E13AAD /* WeatherImageMapper.swift in Sources */,
+				918190E128B77ACC00F40AB7 /* PubNativeRewardedVideoController.swift in Sources */,
 				E75E4696203B3EC100FF9672 /* CurrentSys.swift in Sources */,
 				E75E46A3203B468600FF9672 /* ApiClient.swift in Sources */,
 				E75E46A0203B3F0C00FF9672 /* CurrentResponse.swift in Sources */,

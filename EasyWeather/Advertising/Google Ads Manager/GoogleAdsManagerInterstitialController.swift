@@ -40,7 +40,7 @@ class GoogleAdsManagerInterstitialController: InterstitialPlacement {
     
     override func loadAd() {
         adAnalyticsSession.start()
-        GADInterstitialAd.load(withAdUnitID: "", request: GADRequest()) { [weak self] ad, error in
+        GADInterstitialAd.load(withAdUnitID: GOOGLE_ADS_MANAGER_INTERSTITIAL_AD_UNIT_ID, request: GADRequest()) { [weak self] ad, error in
             if let error = error {
                 print("Failed to load interstitial ad with error: \(error.localizedDescription)")
                 return

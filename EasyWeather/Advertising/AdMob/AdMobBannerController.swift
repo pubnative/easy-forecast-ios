@@ -24,11 +24,11 @@ import UIKit
 import GoogleMobileAds
 
 class AdMobBannerController: AdPlacement {
-
+    
     var bannerAdView: GADBannerView!
     var delegate: AdPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
-
+    
     init(withAdView adView: GADBannerView, withAdUnitID adUnitID: String, withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         bannerAdView = adView
@@ -37,6 +37,28 @@ class AdMobBannerController: AdPlacement {
         bannerAdView.rootViewController = viewController
         self.delegate = delegate
         adAnalyticsSession = AdAnalyticsSession(withAdType: .banner, withAdNetwork: .admob)
+        addBannerViewToView(bannerAdView, view: viewController.view)
+    }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView, view: UIView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: view.safeAreaLayoutGuide,
+                                attribute: .bottom,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0)
+            ])
     }
     
     override func adView() -> UIView? {
@@ -62,7 +84,7 @@ extension AdMobBannerController: GADBannerViewDelegate {
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidFail(withError: error)
     }
-
+    
     func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
         adAnalyticsSession.confirmOpened()
         print("adViewWillPresentScreen")

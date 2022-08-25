@@ -67,6 +67,7 @@ extension FacebookInterstitialController: FBInterstitialAdDelegate {
     }
     
     func interstitialAd(_ interstitialAd: FBInterstitialAd, didFailWithError error: Error) {
+        print("jacobo didFailWithError ", error)
         adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidFail(withError: error)

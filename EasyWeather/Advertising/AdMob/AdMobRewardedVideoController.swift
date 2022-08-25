@@ -49,7 +49,11 @@ class AdMobRewardedVideoController: RewardedVideoPlacement {
             }
             self?.rewardedAd = ad
             self?.rewardedAd?.fullScreenContentDelegate = self
-            print("Rewarded ad loaded.")
+            
+            self?.adAnalyticsSession.confirmLoaded()
+            guard let delegate = self?.delegate else { return }
+            delegate.rewardedVideoPlacementDidLoad()
+            
         })
     }
     

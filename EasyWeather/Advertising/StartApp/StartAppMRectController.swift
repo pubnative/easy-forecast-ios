@@ -33,6 +33,7 @@ class StartAppMRectController: AdPlacement {
         self.delegate = delegate
         mRectAdView = STABannerView(size: STA_MRecAdSize_300x250, autoOrigin: STAAdOrigin_Top, withDelegate: self)
         adAnalyticsSession = AdAnalyticsSession(withAdType: .mRect, withAdNetwork: .startApp)
+        viewController.view.addSubview(mRectAdView)
     }
     
     override func adView() -> UIView? {

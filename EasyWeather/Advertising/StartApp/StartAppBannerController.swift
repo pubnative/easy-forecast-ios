@@ -34,6 +34,7 @@ class StartAppBannerController: AdPlacement {
         self.delegate = delegate
         bannerAdView = STABannerView(size: STA_PortraitAdSize_320x50, autoOrigin: STAAdOrigin_Top, withDelegate: self)
         adAnalyticsSession = AdAnalyticsSession(withAdType: .banner, withAdNetwork: .startApp)
+        viewController.view.addSubview(bannerAdView)
     }
     
     override func adView() -> UIView? {
@@ -42,14 +43,12 @@ class StartAppBannerController: AdPlacement {
     
     override func loadAd() {
         adAnalyticsSession.start()
-        
     }
 }
 
 extension StartAppBannerController: STABannerDelegateProtocol {
     
     func didDisplayBannerAd(_ banner: STABannerView!) {
-        
         if isShown {
             guard let delegate = self.delegate else { return }
             delegate.adPlacementDidTrackClick()

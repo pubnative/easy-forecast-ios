@@ -24,16 +24,16 @@
 import UIKit
 import UnityAds
 
-class UnityInterstitialController: InterstitialPlacement {
+class UnityInterstitialController: InterstitialPlacement, UnityAdsShowDelegate {
     
     var viewController: UIViewController!
     var delegate: InterstitialPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
     var isShown = false
-
+    private var isUnityAdReady = false
+    
     init(withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) {
         super.init()
-        UnityAds.setDelegate(self)
         self.viewController = viewController
         self.delegate = delegate
         adAnalyticsSession = AdAnalyticsSession(withAdType: .interstitial, withAdNetwork: .unity)
@@ -41,30 +41,74 @@ class UnityInterstitialController: InterstitialPlacement {
     
     override func loadAd() {
         adAnalyticsSession.start()
-        if (UnityAds.isReady(UNITY_INTERSTITIAL_AD_UNIT_ID)) {
+        UnityAds.load(UNITY_INTERSTITIAL_AD_UNIT_ID, loadDelegate: self)
+        if isUnityAdReady {
             unityAdsReady(UNITY_INTERSTITIAL_AD_UNIT_ID)
         } else {
-            unityAdsDidError(UnityAdsError(rawValue: 0)!, withMessage: "Error when loading the ad")
+            unityAdsDidError(UnityAdsInitializationError(rawValue: 0)!, withMessage: "Error when loading the ad")
         }
     }
     
     override func show() {
         adAnalyticsSession.confirmInterstitialShow()
-        UnityAds.show(viewController, placementId: UNITY_INTERSTITIAL_AD_UNIT_ID)
+        UnityAds.show(viewController, placementId: UNITY_INTERSTITIAL_AD_UNIT_ID, showDelegate: self)
     }
     
     override func isReady() -> Bool {
-        return UnityAds.isReady(UNITY_INTERSTITIAL_AD_UNIT_ID)
+        return isUnityAdReady
     }
     
     override func cleanUp() {
         delegate = nil
+        isUnityAdReady = false
     }
     
 }
 
-extension UnityInterstitialController: UnityAdsDelegate {
+extension UnityInterstitialController: UnityAdsInitializationDelegate, UnityAdsLoadDelegate {
     
+    func unityAdsAdLoaded(_ placementId: String) {
+        isUnityAdReady = true
+        unityAdsReady(placementId)
+    }
+    
+    func unityAdsAdFailed(toLoad placementId: String, withError error: UnityAdsLoadError, withMessage message: String) {
+        adAnalyticsSession.confirmError()
+        guard let delegate = self.delegate else { return }
+        let error = NSError(domain: "EasyForecast", code: 0, userInfo: [NSLocalizedDescriptionKey : message])
+        delegate.interstitialPlacementDidFail(withError: error)
+    }
+    
+    func initializationComplete() {
+        isUnityAdReady = true
+        unityAdsReady(UNITY_INTERSTITIAL_AD_UNIT_ID)
+    }
+    
+    func initializationFailed(_ error: UnityAdsInitializationError, withMessage message: String) {
+        unityAdsDidError(error, withMessage: message)
+    }
+    
+    func unityAdsShowStart(_ placementId: String) {
+        unityAdsDidStart(placementId)
+    }
+    
+    func unityAdsShowFailed(_ placementId: String, withError error: UnityAdsShowError, withMessage message: String) {
+        adAnalyticsSession.confirmError()
+        guard let delegate = self.delegate else { return }
+        let error = NSError(domain: "EasyForecast", code: 0, userInfo: [NSLocalizedDescriptionKey : message])
+        delegate.interstitialPlacementDidFail(withError: error)
+    }
+    
+    func unityAdsShowComplete(_ placementId: String, withFinish state: UnityAdsShowCompletionState) {
+        unityAdsDidFinish(placementId, with: state)
+    }
+    
+    func unityAdsShowClick(_ placementId: String) {
+        print("unityAdsShowClick - placementId \(placementId)")
+    }
+    
+    // MARK: Custom methods
+
     func unityAdsReady(_ placementId: String) {
         if !isShown {
             isShown = true
@@ -76,7 +120,7 @@ extension UnityInterstitialController: UnityAdsDelegate {
         }
     }
     
-    func unityAdsDidError(_ error: UnityAdsError, withMessage message: String) {
+    func unityAdsDidError(_ error: UnityAdsInitializationError, withMessage message: String) {
         adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         let error = NSError(domain: "EasyForecast", code: 0, userInfo: [NSLocalizedDescriptionKey : message])
@@ -91,9 +135,11 @@ extension UnityInterstitialController: UnityAdsDelegate {
         delegate.interstitialPlacementDidShow()
     }
     
-    func unityAdsDidFinish(_ placementId: String, with state: UnityAdsFinishState) {
+    func unityAdsDidFinish(_ placementId: String, with state: UnityAdsShowCompletionState) {
         adAnalyticsSession.confirmInterstitialDismissed()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidDismissed()
     }
 }
+
+

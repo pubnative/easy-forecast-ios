@@ -53,45 +53,45 @@ class AdManager {
     
     fileprivate func setupBannerQueue() {
         var queue = Queue<AdNetwork>()
-        queue.enqueue(.pubnative)
-        //queue.enqueue(.appLovin)
+//        queue.enqueue(.pubnative) //*
+//        queue.enqueue(.appLovin)
 //        queue.enqueue(.ironSource)
-        //queue.enqueue(.fyber)
-        //queue.enqueue(.facebook)
-        //queue.enqueue(.googleAdsManager)
-        //queue.enqueue(.admob)
-        //queue.enqueue(.startApp)
-        //queue.enqueue(.unity)
+//        queue.enqueue(.fyber)
+//        queue.enqueue(.facebook)
+//        queue.enqueue(.googleAdsManager)
+//        queue.enqueue(.admob)
+//        queue.enqueue(.startApp)
+        queue.enqueue(.unity)
         
         networkDictionary.updateValue(queue, forKey: BANNER_PLACEMENT)
     }
     
     fileprivate func setupMRectQueue() {
         var queue = Queue<AdNetwork>()
-        queue.enqueue(.pubnative)
+//        queue.enqueue(.pubnative) //*
 //        queue.enqueue(.appLovin)
 //        queue.enqueue(.ironSource)
 //        queue.enqueue(.fyber)
-        //queue.enqueue(.facebook)
-        //queue.enqueue(.googleAdsManager)
+//        queue.enqueue(.facebook)
+//        queue.enqueue(.googleAdsManager)
 //        queue.enqueue(.admob)
-        //queue.enqueue(.startApp)
-        //queue.enqueue(.unity)
+//        queue.enqueue(.startApp)
+        queue.enqueue(.unity)
         
         networkDictionary.updateValue(queue, forKey: MRECT_PLACEMENT)
     }
     
     fileprivate func setupInterstitialQueue() {
         var queue = Queue<AdNetwork>()
-        queue.enqueue(.pubnative)
-        //queue.enqueue(.appLovin)
+//        queue.enqueue(.pubnative) //*
+//        queue.enqueue(.appLovin)
 //        queue.enqueue(.ironSource)
 //        queue.enqueue(.fyber)
-        //queue.enqueue(.facebook)
-        //queue.enqueue(.googleAdsManager)
-        //queue.enqueue(.admob)
-        //queue.enqueue(.startApp)
-        //queue.enqueue(.unity)
+//        queue.enqueue(.facebook)
+//        queue.enqueue(.googleAdsManager)
+//        queue.enqueue(.admob)
+//        queue.enqueue(.startApp)
+        queue.enqueue(.unity)
         
         networkDictionary.updateValue(queue, forKey: INTERSTITIAL_PLACEMENT)
     }
@@ -99,14 +99,14 @@ class AdManager {
     fileprivate func setupRewardedVideoQueue() {
         var queue = Queue<AdNetwork>()
 //        queue.enqueue(.pubnative)
-        queue.enqueue(.appLovin)
+//        queue.enqueue(.appLovin) //*
 //        queue.enqueue(.ironSource)
 //        queue.enqueue(.fyber)
 //        queue.enqueue(.facebook)
 //        queue.enqueue(.googleAdsManager)
-        queue.enqueue(.admob)
+//        queue.enqueue(.admob) //*
 //        queue.enqueue(.startApp)
-//        queue.enqueue(.unity)
+        queue.enqueue(.unity)
         
         networkDictionary.updateValue(queue, forKey: REWARDED_VIDEO_PLACEMENT)
     }

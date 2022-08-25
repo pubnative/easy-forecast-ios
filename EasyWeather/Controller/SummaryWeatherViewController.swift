@@ -61,7 +61,7 @@ class SummaryWeatherViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
-    } 
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,14 +76,16 @@ class SummaryWeatherViewController: UIViewController {
         currentWeatherView.isHidden = true
         currentWeatherBackgroundView.addParallaxEffect()
         checkTrackingConsent()
-        checkLocationServices()
+        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+            self?.checkLocationServices()
+        }
         loadAd()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if !isInitialWeatherLoaded {
-
+            
         }
     }
     
@@ -94,7 +96,7 @@ class SummaryWeatherViewController: UIViewController {
     @objc func appCameToForeground() {
         loadAd()
     }
-        
+    
     func startLoadingAnimation() {
         loadingAnimationView? = AnimationView.init(name: "LoadingAnimation")
         loadingAnimationView?.loopMode = .loop
@@ -116,7 +118,7 @@ class SummaryWeatherViewController: UIViewController {
             }
         }
     }
-        
+    
     @objc func updateWeather() {
         if cityID != nil {
             fetchWeather(forCityID: cityID)
@@ -184,7 +186,7 @@ class SummaryWeatherViewController: UIViewController {
             adPlacement.loadAd()
             adRequestFinished = false
             refreshAdTimer?.invalidate()
-            refreshAdTimer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(SummaryWeatherViewController.loadAd), userInfo: nil, repeats: false)
+            refreshAdTimer = Timer.scheduledTimer(timeInterval: 5/*30*/, target: self, selector: #selector(SummaryWeatherViewController.loadAd), userInfo: nil, repeats: false)
         }
     }
     
@@ -318,7 +320,7 @@ extension SummaryWeatherViewController: ForecastUpdateDelegate {
             } else {
                 
             }
-
+            
             dataSource = summaryArray
             forecastWeatherTableView?.reloadData()
             forecastWeatherTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
@@ -397,10 +399,12 @@ extension SummaryWeatherViewController: CLLocationManagerDelegate {
             setupLocationManager()
             checkLocationAuthorization()
         } else {
-            warningLabel.isHidden = false
-            backgroundView.isHidden = true
-            forecastWeatherTableView.isHidden = true
-            currentWeatherView.isHidden = true
+            DispatchQueue.main.async { [weak self] in
+                self?.warningLabel.isHidden = false
+                self?.backgroundView.isHidden = true
+                self?.forecastWeatherTableView.isHidden = true
+                self?.currentWeatherView.isHidden = true
+            }
         }
     }
     
@@ -415,21 +419,25 @@ extension SummaryWeatherViewController: CLLocationManagerDelegate {
             locationManager.requestWhenInUseAuthorization()
             break
         case .authorizedWhenInUse:
-            warningLabel.isHidden = true
-            currentLocationButton.isHidden = false
-            backgroundView.isHidden = false
-            locationManager.startUpdatingLocation()
+            DispatchQueue.main.async { [weak self] in
+                self?.warningLabel.isHidden = true
+                self?.currentLocationButton.isHidden = false
+                self?.backgroundView.isHidden = false
+                self?.locationManager.startUpdatingLocation()
+            }
             break
         case .authorizedAlways:
             break
         case .restricted:
             break
         case .denied:
-            warningLabel.isHidden = false
-            currentLocationButton.isHidden = true
-            backgroundView.isHidden = true
-            forecastWeatherTableView.isHidden = true
-            currentWeatherView.isHidden = true
+            DispatchQueue.main.async { [weak self] in
+                self?.warningLabel.isHidden = false
+                self?.currentLocationButton.isHidden = true
+                self?.backgroundView.isHidden = true
+                self?.forecastWeatherTableView.isHidden = true
+                self?.currentWeatherView.isHidden = true
+            }
             break
         }
     }

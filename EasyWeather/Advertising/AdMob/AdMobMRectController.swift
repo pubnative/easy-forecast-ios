@@ -52,12 +52,14 @@ class AdMobMRectController: AdPlacement {
 extension AdMobMRectController: GADBannerViewDelegate {
     
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("jacobo adViewDidReceiveAd ")
         adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidLoad()
     }
     
     func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
+        print("jacobo didFailToReceiveAdWithError ", error)
         adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidFail(withError: error)
