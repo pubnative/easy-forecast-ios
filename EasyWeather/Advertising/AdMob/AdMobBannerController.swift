@@ -37,28 +37,6 @@ class AdMobBannerController: AdPlacement {
         bannerAdView.rootViewController = viewController
         self.delegate = delegate
         adAnalyticsSession = AdAnalyticsSession(withAdType: .banner, withAdNetwork: .admob)
-        addBannerViewToView(bannerAdView, view: viewController.view)
-    }
-    
-    func addBannerViewToView(_ bannerView: GADBannerView, view: UIView) {
-        bannerView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(bannerView)
-        view.addConstraints(
-            [NSLayoutConstraint(item: bannerView,
-                                attribute: .bottom,
-                                relatedBy: .equal,
-                                toItem: view.safeAreaLayoutGuide,
-                                attribute: .bottom,
-                                multiplier: 1,
-                                constant: 0),
-             NSLayoutConstraint(item: bannerView,
-                                attribute: .centerX,
-                                relatedBy: .equal,
-                                toItem: view,
-                                attribute: .centerX,
-                                multiplier: 1,
-                                constant: 0)
-            ])
     }
     
     override func adView() -> UIView? {
@@ -73,7 +51,7 @@ class AdMobBannerController: AdPlacement {
 
 extension AdMobBannerController: GADBannerViewDelegate {
     
-    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
         adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidLoad()
@@ -99,7 +77,7 @@ extension AdMobBannerController: GADBannerViewDelegate {
         print("adViewDidDismissScreen")
     }
     
-    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+    func bannerViewDidRecordClick(_ bannerView: GADBannerView) {
         adAnalyticsSession.confirmClick()
         adAnalyticsSession.confirmLeftApplication()
         guard let delegate = self.delegate else { return }

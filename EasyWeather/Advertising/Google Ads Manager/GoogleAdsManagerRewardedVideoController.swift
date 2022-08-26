@@ -47,22 +47,24 @@ class GoogleAdsManagerRewardedVideoController: RewardedVideoPlacement {
                 print("Failed to load rewarded ad with error: \(error.localizedDescription)")
                 return
             }
+            
+            guard let ad = ad else { return }
+            
             self?.rewardedAd = ad
             self?.rewardedAd?.fullScreenContentDelegate = self
             
-            self?.adAnalyticsSession.confirmLoaded()
-            guard let delegate = self?.delegate else { return }
-            delegate.rewardedVideoPlacementDidLoad()
+            self?.rewardBasedVideoAdDidReceive(ad)
         })
     }
     
     override func show() {
         adAnalyticsSession.confirmInterstitialShow()
         if let ad = rewardedAd {
-            ad.present(fromRootViewController: self.viewController) {
+            ad.present(fromRootViewController: self.viewController) { [weak self] in
                 let reward = ad.adReward
                 print("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
                 // TODO: Reward the user.
+                self?.rewardBasedVideoAd(ad, didRewardUserWith: reward)
             }
         } else {
             print("Ad wasn't ready")
@@ -77,11 +79,16 @@ class GoogleAdsManagerRewardedVideoController: RewardedVideoPlacement {
 
 extension GoogleAdsManagerRewardedVideoController: GADFullScreenContentDelegate {
     
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        print("Ad did fail to present full screen content.")
-        adAnalyticsSession.confirmError()
+    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADFullScreenPresentingAd, didRewardUserWith reward: GADAdReward) {
+        adAnalyticsSession.confirmReward()
         guard let delegate = self.delegate else { return }
-        delegate.rewardedVideoPlacementDidFail(withError: error)
+        delegate.rewardedVideoPlacementDidReward(withReward: AdReward(withName: reward.type, withAmount: reward.amount as! Int))
+    }
+    
+    func rewardBasedVideoAdDidReceive(_ rewardBasedVideoAd: GADFullScreenPresentingAd) {
+        adAnalyticsSession.confirmLoaded()
+        guard let delegate = self.delegate else { return }
+        delegate.rewardedVideoPlacementDidLoad()
     }
     
     func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
@@ -90,6 +97,18 @@ extension GoogleAdsManagerRewardedVideoController: GADFullScreenContentDelegate 
         adAnalyticsSession.confirmInterstitialShown()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidOpen()
+    }
+    
+    func adDidRecordImpression(_ ad: GADFullScreenPresentingAd) {
+        adAnalyticsSession.confirmVideoStarted()
+        guard let delegate = self.delegate else { return }
+        delegate.rewardedVideoPlacementDidStart()
+    }
+    
+    func adWillDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        adAnalyticsSession.confirmVideoFinished()
+        guard let delegate = self.delegate else { return }
+        delegate.rewardedVideoPlacementDidFinish()
     }
     
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
@@ -106,16 +125,11 @@ extension GoogleAdsManagerRewardedVideoController: GADFullScreenContentDelegate 
         delegate.rewardedVideoPlacementDidTrackClick()
     }
     
-    func adWillDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        adAnalyticsSession.confirmVideoFinished()
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        print("Ad did fail to present full screen content.")
+        adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
-        delegate.rewardedVideoPlacementDidFinish()
-    }
-    
-    func adDidRecordImpression(_ ad: GADFullScreenPresentingAd) {
-        adAnalyticsSession.confirmVideoStarted()
-        guard let delegate = self.delegate else { return }
-        delegate.rewardedVideoPlacementDidStart()
+        delegate.rewardedVideoPlacementDidFail(withError: error)
     }
 }
 

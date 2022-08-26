@@ -23,7 +23,7 @@
 import UIKit
 
 class IronSourceBannerController: AdPlacement {
-
+    
     var bannerAdView: ISBannerView!
     var viewController: UIViewController!
     var delegate: AdPlacementDelegate?

@@ -24,11 +24,11 @@ import UIKit
 import GoogleMobileAds
 
 class AdMobMRectController: AdPlacement {
-
+    
     var mRectAdView: GADBannerView!
     var delegate: AdPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
-
+    
     init(withAdView adView: GADBannerView, withAdUnitID adUnitID: String, withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         mRectAdView = adView
@@ -51,15 +51,13 @@ class AdMobMRectController: AdPlacement {
 
 extension AdMobMRectController: GADBannerViewDelegate {
     
-    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
-        print("jacobo adViewDidReceiveAd ")
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
         adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidLoad()
     }
     
     func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
-        print("jacobo didFailToReceiveAdWithError ", error)
         adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidFail(withError: error)
@@ -79,7 +77,7 @@ extension AdMobMRectController: GADBannerViewDelegate {
         print("bannerViewDidDismissScreen")
     }
     
-    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+    func bannerViewDidRecordClick(_ bannerView: GADBannerView) {
         adAnalyticsSession.confirmClick()
         adAnalyticsSession.confirmLeftApplication()
         guard let delegate = self.delegate else { return }

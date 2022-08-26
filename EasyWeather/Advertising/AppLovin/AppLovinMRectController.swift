@@ -38,7 +38,6 @@
          let width: CGFloat = adView.frame.width
          
          mRectAdView.frame = CGRect(x: adView.frame.origin.x, y: adView.frame.origin.y, width: width, height: height)
-         mRectAdView.center.x = adView.center.x
          adView.addSubview(mRectAdView)
          
          self.delegate = delegate
@@ -65,19 +64,6 @@
          
      }
      
-     func didLoad(_ ad: MAAd) {
-         adAnalyticsSession.confirmLoaded()
-         guard let delegate = self.delegate else { return }
-         delegate.adPlacementDidLoad()
-     }
-     
-     func didFailToLoadAd(forAdUnitIdentifier adUnitIdentifier: String, withError error: MAError) {
-         adAnalyticsSession.confirmError()
-         guard let delegate = self.delegate else { return }
-         let error = NSError(domain: "EasyForecast", code: 0, userInfo: [NSLocalizedDescriptionKey : "AppLovin MRect did fail to load"])
-         delegate.adPlacementDidFail(withError: error)
-     }
-     
      func didDisplay(_ ad: MAAd) {
          adAnalyticsSession.confirmImpression()
          guard let delegate = self.delegate else { return }
@@ -94,11 +80,22 @@
          delegate.adPlacementDidTrackClick()
      }
      
-     func didFail(toDisplay ad: MAAd, withError error: MAError) {
-
+     func didLoad(_ ad: MAAd) {
+         adAnalyticsSession.confirmLoaded()
+         guard let delegate = self.delegate else { return }
+         delegate.adPlacementDidLoad()
      }
      
+     func didFailToLoadAd(forAdUnitIdentifier adUnitIdentifier: String, withError error: MAError) {
+         adAnalyticsSession.confirmError()
+         guard let delegate = self.delegate else { return }
+         let error = NSError(domain: "EasyForecast", code: 0, userInfo: [NSLocalizedDescriptionKey : "AppLovin MRect did fail to load"])
+         delegate.adPlacementDidFail(withError: error)
+     }
      
+     func didFail(toDisplay ad: MAAd, withError error: MAError) {
+
+     }  
  }
 
 

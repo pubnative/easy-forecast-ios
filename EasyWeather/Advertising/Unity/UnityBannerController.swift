@@ -24,41 +24,19 @@ import UIKit
 import UnityAds
 
 class UnityBannerController: AdPlacement {
-
+    
     var delegate: AdPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
     var isShown = false
     private var unityBannerView = UADSBannerView(placementId: UNITY_BANNER_AD_UNIT_ID, size: CGSizeMake(320, 50))
     private var isUnityAdReady = false
-
+    
     init(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         unityBannerView.removeFromSuperview()
         self.delegate = delegate
         unityBannerView.delegate = self
         adAnalyticsSession = AdAnalyticsSession(withAdType: .banner, withAdNetwork: .unity)
-        addBannerViewToView(unityBannerView, view: viewController.view)
-    }
-    
-    func addBannerViewToView(_ bannerView: UADSBannerView, view: UIView) {
-        bannerView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(bannerView)
-        view.addConstraints(
-            [NSLayoutConstraint(item: bannerView,
-                                attribute: .bottom,
-                                relatedBy: .equal,
-                                toItem: view.safeAreaLayoutGuide,
-                                attribute: .bottom,
-                                multiplier: 1,
-                                constant: 0),
-             NSLayoutConstraint(item: bannerView,
-                                attribute: .centerX,
-                                relatedBy: .equal,
-                                toItem: view,
-                                attribute: .centerX,
-                                multiplier: 1,
-                                constant: 0)
-            ])
     }
     
     override func adView() -> UIView? {
@@ -70,10 +48,9 @@ class UnityBannerController: AdPlacement {
         unityBannerView.load()
     }
 }
-
 extension UnityBannerController: UADSBannerViewDelegate {
     
-    func unityAdsBannerDidLoad(_ placementId: String, view: UIView) {
+    func bannerViewDidLoad(_ bannerView: UADSBannerView!) {
         adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidLoad()
@@ -87,7 +64,7 @@ extension UnityBannerController: UADSBannerViewDelegate {
     }
     
     func unityAdsBannerDidUnload(_ placementId: String) {
-    
+        
     }
     
     func unityAdsBannerDidShow(_ placementId: String) {

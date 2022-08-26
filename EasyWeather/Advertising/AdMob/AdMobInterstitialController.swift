@@ -45,12 +45,13 @@ class AdMobInterstitialController: InterstitialPlacement {
                 print("Failed to load interstitial ad with error: \(error.localizedDescription)")
                 return
             }
+            
+            guard let ad = ad else { return }
+            
             self?.interstitial = ad
             self?.interstitial.fullScreenContentDelegate = self
             
-            self?.adAnalyticsSession.confirmLoaded()
-            guard let delegate = self?.delegate else { return }
-            delegate.interstitialPlacementDidLoad()
+            self?.interstitialDidReceiveAd(ad)
         }
     }
     
@@ -65,6 +66,12 @@ class AdMobInterstitialController: InterstitialPlacement {
 }
 
 extension AdMobInterstitialController: GADFullScreenContentDelegate {
+    
+    func interstitialDidReceiveAd(_ ad: GADInterstitialAd) {
+        adAnalyticsSession.confirmLoaded()
+        guard let delegate = self.delegate else { return }
+        delegate.interstitialPlacementDidLoad()
+    }
     
     func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         adAnalyticsSession.confirmError()

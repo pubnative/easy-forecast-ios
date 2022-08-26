@@ -80,8 +80,7 @@ extension UnityInterstitialController: UnityAdsInitializationDelegate, UnityAdsL
     }
     
     func initializationComplete() {
-        isUnityAdReady = true
-        unityAdsReady(UNITY_INTERSTITIAL_AD_UNIT_ID)
+        
     }
     
     func initializationFailed(_ error: UnityAdsInitializationError, withMessage message: String) {

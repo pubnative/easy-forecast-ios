@@ -17,9 +17,17 @@ target 'EasyWeather' do
 
   # pod 'mopub-ios-sdk'
   pod 'Google-Mobile-Ads-SDK', '>= 9.9.0'
+  # pod 'Google-Mobile-Ads-SDK', '>= 9.7.0'
 
   pod 'FBAudienceNetwork', '>= 6.11.2'
-  pod 'IronSourceSDK', '>= 7.2.4'
+
+
+  pod 'IronSourceSDK','7.2.4.0'
+  # pod 'IronSourceAdMobAdapter','4.3.34.1'
+  # pod 'IronSourceAppLovinAdapter','4.3.34.1'
+  # pod 'IronSourceFacebookAdapter','4.3.37.0'
+  # pod 'IronSourceUnityAdsAdapter','4.3.23.1'
+
   pod 'StartAppSDK', '>= 4.7.3'
   pod 'AppLovinSDK', '>= 11.4.3'
 
