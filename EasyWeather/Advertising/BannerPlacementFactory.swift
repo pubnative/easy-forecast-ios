@@ -22,7 +22,6 @@
 
 import Foundation
 import HyBid
-import MoPubSDK
 import GoogleMobileAds
 import FBAudienceNetwork
 import AppLovinSDK
@@ -39,8 +38,6 @@ class BannerPlacementFactory {
             return createIronSourcePlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .facebook:
             return createFacebookPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
-        case .moPub:
-            return createMoPubPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .googleAdsManager:
             return createGoogleAdsManagerPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .admob:
@@ -75,18 +72,13 @@ class BannerPlacementFactory {
         return FacebookBannerController(withAdView: adView, withAdPlacementDelegate: delegate)
     }
     
-    fileprivate func createMoPubPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement? {
-        guard let adView = MPAdView(adUnitId: MOPUB_BANNER_AD_UNIT_ID, size: MOPUB_BANNER_SIZE) else { return nil }
-        return MoPubBannerController(withAdView: adView, withViewController: viewController, withAdPlacementDelegate: delegate)
-    }
-    
     fileprivate func createGoogleAdsManagerPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        let adView = DFPBannerView(adSize: kGADAdSizeBanner)
+        let adView = GADBannerView(adSize: GADAdSize)
         return GoogleAdsManagerBannerController(withAdView: adView, withAdUnitID: GOOGLE_ADS_MANAGER_BANNER_AD_UNIT_ID, withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
     fileprivate func createAdmobPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        let adView = GADBannerView(adSize: kGADAdSizeBanner)
+        let adView = GADBannerView(adSize: GADAdSize)
         return AdMobBannerController(withAdView: adView, withAdUnitID: ADMOB_BANNER_AD_UNIT_ID, withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
@@ -95,7 +87,7 @@ class BannerPlacementFactory {
     }
     
     fileprivate func createUnityPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        return UnityBannerController(withAdPlacementDelegate: delegate)
+        return UnityBannerController(withViewController: viewco, withAdPlacementDelegate: delegate)
     }
     
 }
