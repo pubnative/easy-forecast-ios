@@ -59,9 +59,9 @@ class AdManager {
 //        queue.enqueue(.fyber)
 //        queue.enqueue(.facebook)
 //        queue.enqueue(.googleAdsManager)
-//        queue.enqueue(.admob)
+        queue.enqueue(.admob)
 //        queue.enqueue(.startApp)
-        queue.enqueue(.unity)
+//        queue.enqueue(.unity)
         
         networkDictionary.updateValue(queue, forKey: BANNER_PLACEMENT)
     }
@@ -74,9 +74,9 @@ class AdManager {
 //        queue.enqueue(.fyber)
 //        queue.enqueue(.facebook)
 //        queue.enqueue(.googleAdsManager)
-//        queue.enqueue(.admob)
+        queue.enqueue(.admob)
 //        queue.enqueue(.startApp)
-        queue.enqueue(.unity)
+//        queue.enqueue(.unity)
         
         networkDictionary.updateValue(queue, forKey: MRECT_PLACEMENT)
     }
@@ -89,9 +89,9 @@ class AdManager {
 //        queue.enqueue(.fyber)
 //        queue.enqueue(.facebook)
 //        queue.enqueue(.googleAdsManager)
-//        queue.enqueue(.admob)
+        queue.enqueue(.admob)
 //        queue.enqueue(.startApp)
-        queue.enqueue(.unity)
+//        queue.enqueue(.unity)
         
         networkDictionary.updateValue(queue, forKey: INTERSTITIAL_PLACEMENT)
     }
@@ -104,9 +104,9 @@ class AdManager {
 //        queue.enqueue(.fyber)
 //        queue.enqueue(.facebook)
 //        queue.enqueue(.googleAdsManager)
-//        queue.enqueue(.admob) //*
+        queue.enqueue(.admob) //*
 //        queue.enqueue(.startApp)
-        queue.enqueue(.unity)
+//        queue.enqueue(.unity)
         
         networkDictionary.updateValue(queue, forKey: REWARDED_VIDEO_PLACEMENT)
     }

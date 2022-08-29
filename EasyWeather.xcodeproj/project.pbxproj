@@ -72,8 +72,8 @@
 		5AFFD3BD221AEBD0004EC91F /* LoadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AFFD3BC221AEBD0004EC91F /* LoadingAnimation.json */; };
 		911A16FB28B63B5D001BE64A /* FBAudienceNetwork.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 911A16F928B63B55001BE64A /* FBAudienceNetwork.xcframework */; };
 		911A16FC28B63B5D001BE64A /* FBAudienceNetwork.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 911A16F928B63B55001BE64A /* FBAudienceNetwork.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9169306D28BD28F300FDB42F /* BannerPlacementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9169306C28BD28F300FDB42F /* BannerPlacementFactory.swift */; };
 		918190E128B77ACC00F40AB7 /* PubNativeRewardedVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918190E028B77ACC00F40AB7 /* PubNativeRewardedVideoController.swift */; };
-		919B537B28B3E8D000708473 /* BannerPlacementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919B537A28B3E8D000708473 /* BannerPlacementFactory.swift */; };
 		91CCBB2F28B3DF1800105971 /* RewardedVideoPlacementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CCBB2E28B3DF1800105971 /* RewardedVideoPlacementFactory.swift */; };
 		91CCBB3128B3DF3700105971 /* MRectPlacementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CCBB3028B3DF3700105971 /* MRectPlacementFactory.swift */; };
 		91CCBB3328B3DF3F00105971 /* InterstitialPlacementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CCBB3228B3DF3F00105971 /* InterstitialPlacementFactory.swift */; };
@@ -194,8 +194,8 @@
 		5AFA79C522259FE800ABBDFE /* UnityInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnityInterstitialController.swift; sourceTree = "<group>"; };
 		5AFFD3BC221AEBD0004EC91F /* LoadingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingAnimation.json; sourceTree = "<group>"; };
 		911A16F928B63B55001BE64A /* FBAudienceNetwork.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FBAudienceNetwork.xcframework; sourceTree = "<group>"; };
+		9169306C28BD28F300FDB42F /* BannerPlacementFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerPlacementFactory.swift; sourceTree = "<group>"; };
 		918190E028B77ACC00F40AB7 /* PubNativeRewardedVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubNativeRewardedVideoController.swift; sourceTree = "<group>"; };
-		919B537A28B3E8D000708473 /* BannerPlacementFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BannerPlacementFactory.swift; path = ../../../../.Trash/BannerPlacementFactory.swift; sourceTree = "<group>"; };
 		91CCBB2E28B3DF1800105971 /* RewardedVideoPlacementFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardedVideoPlacementFactory.swift; sourceTree = "<group>"; };
 		91CCBB3028B3DF3700105971 /* MRectPlacementFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MRectPlacementFactory.swift; sourceTree = "<group>"; };
 		91CCBB3228B3DF3F00105971 /* InterstitialPlacementFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterstitialPlacementFactory.swift; sourceTree = "<group>"; };
@@ -331,12 +331,12 @@
 				5ABCE304221C5CA8004F8882 /* AdType.swift */,
 				5ABCE302221C5A47004F8882 /* AdNetworkConstants.swift */,
 				5ABCE2FA221C5192004F8882 /* AdPlacement.swift */,
-				919B537A28B3E8D000708473 /* BannerPlacementFactory.swift */,
 				91CCBB3228B3DF3F00105971 /* InterstitialPlacementFactory.swift */,
 				91CCBB3028B3DF3700105971 /* MRectPlacementFactory.swift */,
 				5ABCE2FC221C53D4004F8882 /* InterstitialPlacement.swift */,
 				5ABCE2FE221C5639004F8882 /* RewardedVideoPlacement.swift */,
 				91CCBB2E28B3DF1800105971 /* RewardedVideoPlacementFactory.swift */,
+				9169306C28BD28F300FDB42F /* BannerPlacementFactory.swift */,
 			);
 			path = Advertising;
 			sourceTree = "<group>";
@@ -624,7 +624,6 @@
 				"${BUILT_PRODUCTS_DIR}/FirebaseABTesting/FirebaseABTesting.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebasePerformance/FirebasePerformance.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseRemoteConfig/FirebaseRemoteConfig.framework",
@@ -632,6 +631,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -645,7 +645,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseABTesting.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreDiagnostics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreInternal.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstallations.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebasePerformance.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseRemoteConfig.framework",
@@ -653,6 +652,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -792,9 +792,9 @@
 				5ABCE307221C5D84004F8882 /* AdNetwork.swift in Sources */,
 				E7566C36203C3A8C00487557 /* ForecastUpdateDelegate.swift in Sources */,
 				5A89810E222ED29B00F1CE62 /* AppLovinInterstitialController.swift in Sources */,
+				9169306D28BD28F300FDB42F /* BannerPlacementFactory.swift in Sources */,
 				5ACDB1B22209DAE700E13AAD /* DateExtension.swift in Sources */,
 				E7CC276C203AF265006A95B9 /* AppDelegate.swift in Sources */,
-				919B537B28B3E8D000708473 /* BannerPlacementFactory.swift in Sources */,
 				5A6A8C1620862C8B00494187 /* ForecastSummaryCell.swift in Sources */,
 				E75E4686203B3DD800FF9672 /* ForecastItem.swift in Sources */,
 				91CFA03D28B8B9DF00C00CD1 /* UnityMRectViewController.swift in Sources */,
