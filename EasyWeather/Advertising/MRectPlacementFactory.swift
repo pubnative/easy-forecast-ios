@@ -92,6 +92,7 @@ class MRectPlacementFactory {
         return StartAppMRectController(withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
+
     fileprivate func createUnityPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
         return UnityMRectViewController(withAdPlacementDelegate: delegate)
     }

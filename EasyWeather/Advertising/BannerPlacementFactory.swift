@@ -45,7 +45,7 @@ class BannerPlacementFactory {
         case .startApp:
             return createStartAppPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .unity:
-            return createUnityPlacement(withAdPlacementDelegate: delegate)
+            return createUnityPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         default:
             return nil
         }
@@ -73,12 +73,12 @@ class BannerPlacementFactory {
     }
     
     fileprivate func createGoogleAdsManagerPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        let adView = GADBannerView(adSize: GADAdSize)
+        let adView = GADBannerView(adSize: GADAdSizeBanner)
         return GoogleAdsManagerBannerController(withAdView: adView, withAdUnitID: GOOGLE_ADS_MANAGER_BANNER_AD_UNIT_ID, withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
     fileprivate func createAdmobPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        let adView = GADBannerView(adSize: GADAdSize)
+        let adView = GADBannerView(adSize: GADAdSizeBanner)
         return AdMobBannerController(withAdView: adView, withAdUnitID: ADMOB_BANNER_AD_UNIT_ID, withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
@@ -86,8 +86,8 @@ class BannerPlacementFactory {
         return StartAppBannerController(withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
-    fileprivate func createUnityPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        return UnityBannerController(withViewController: viewco, withAdPlacementDelegate: delegate)
+    fileprivate func createUnityPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
+        return UnityBannerController(withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
 }
