@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2E1289B11BE255C43CB298A3 /* Pods_EasyWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA2170FD41C850FF622A68E /* Pods_EasyWeather.framework */; };
+		3425C4B228BD381E0069FB5E /* HyBid.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3425C4B028BD381B0069FB5E /* HyBid.xcframework */; };
+		3425C4B328BD381E0069FB5E /* HyBid.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3425C4B028BD381B0069FB5E /* HyBid.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3425C4B528BD38390069FB5E /* OMSDK_Pubnativenet.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3425C4B428BD38390069FB5E /* OMSDK_Pubnativenet.xcframework */; };
 		5A1C83EC2229386F00A3C8A3 /* StartAppMRectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C83EB2229386F00A3C8A3 /* StartAppMRectController.swift */; };
 		5A1C83EE2229457900A3C8A3 /* StartAppInterstitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C83ED2229457900A3C8A3 /* StartAppInterstitialController.swift */; };
 		5A1C83F02229540B00A3C8A3 /* StartAppRewardedVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C83EF2229540B00A3C8A3 /* StartAppRewardedVideoController.swift */; };
@@ -79,10 +82,6 @@
 		91CCBB3328B3DF3F00105971 /* InterstitialPlacementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CCBB3228B3DF3F00105971 /* InterstitialPlacementFactory.swift */; };
 		91CFA03D28B8B9DF00C00CD1 /* UnityMRectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CFA03C28B8B9DF00C00CD1 /* UnityMRectViewController.swift */; };
 		91EE469328B526DB0053F85D /* UnityAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91EE469228B526DB0053F85D /* UnityAds.xcframework */; };
-		91F56DE128B51174002F45A9 /* OMSDK_Pubnativenet.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F56DDD28B5116C002F45A9 /* OMSDK_Pubnativenet.xcframework */; };
-		91F56DE228B51174002F45A9 /* OMSDK_Pubnativenet.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91F56DDD28B5116C002F45A9 /* OMSDK_Pubnativenet.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		91F56DE528B5228D002F45A9 /* HyBid.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F56DE328B52283002F45A9 /* HyBid.xcframework */; };
-		91F56DE628B5228D002F45A9 /* HyBid.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91F56DE328B52283002F45A9 /* HyBid.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E7566C36203C3A8C00487557 /* ForecastUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7566C35203C3A8C00487557 /* ForecastUpdateDelegate.swift */; };
 		E7566C38203C3B1F00487557 /* CurrentUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7566C37203C3B1F00487557 /* CurrentUpdateDelegate.swift */; };
 		E75E4682203B3DB500FF9672 /* ForecastCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75E4681203B3DB500FF9672 /* ForecastCity.swift */; };
@@ -117,8 +116,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				91F56DE628B5228D002F45A9 /* HyBid.xcframework in Embed Frameworks */,
-				91F56DE228B51174002F45A9 /* OMSDK_Pubnativenet.xcframework in Embed Frameworks */,
+				3425C4B328BD381E0069FB5E /* HyBid.xcframework in Embed Frameworks */,
 				911A16FC28B63B5D001BE64A /* FBAudienceNetwork.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -128,6 +126,8 @@
 
 /* Begin PBXFileReference section */
 		15701703DFD883A08558AB00 /* Pods-EasyWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyWeather.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyWeather/Pods-EasyWeather.release.xcconfig"; sourceTree = "<group>"; };
+		3425C4B028BD381B0069FB5E /* HyBid.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = HyBid.xcframework; sourceTree = "<group>"; };
+		3425C4B428BD38390069FB5E /* OMSDK_Pubnativenet.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = OMSDK_Pubnativenet.xcframework; sourceTree = "<group>"; };
 		3EA2170FD41C850FF622A68E /* Pods_EasyWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		468D9A763598D44D9B0194E8 /* Pods-EasyWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyWeather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyWeather/Pods-EasyWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		5A1C83EB2229386F00A3C8A3 /* StartAppMRectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppMRectController.swift; sourceTree = "<group>"; };
@@ -201,8 +201,6 @@
 		91CCBB3228B3DF3F00105971 /* InterstitialPlacementFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterstitialPlacementFactory.swift; sourceTree = "<group>"; };
 		91CFA03C28B8B9DF00C00CD1 /* UnityMRectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnityMRectViewController.swift; sourceTree = "<group>"; };
 		91EE469228B526DB0053F85D /* UnityAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = UnityAds.xcframework; sourceTree = "<group>"; };
-		91F56DDD28B5116C002F45A9 /* OMSDK_Pubnativenet.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = OMSDK_Pubnativenet.xcframework; sourceTree = "<group>"; };
-		91F56DE328B52283002F45A9 /* HyBid.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = HyBid.xcframework; sourceTree = "<group>"; };
 		E7566C35203C3A8C00487557 /* ForecastUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastUpdateDelegate.swift; sourceTree = "<group>"; };
 		E7566C37203C3B1F00487557 /* CurrentUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUpdateDelegate.swift; sourceTree = "<group>"; };
 		E75E4681203B3DB500FF9672 /* ForecastCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCity.swift; sourceTree = "<group>"; };
@@ -238,9 +236,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				91EE469328B526DB0053F85D /* UnityAds.xcframework in Frameworks */,
-				91F56DE528B5228D002F45A9 /* HyBid.xcframework in Frameworks */,
+				3425C4B528BD38390069FB5E /* OMSDK_Pubnativenet.xcframework in Frameworks */,
 				2E1289B11BE255C43CB298A3 /* Pods_EasyWeather.framework in Frameworks */,
-				91F56DE128B51174002F45A9 /* OMSDK_Pubnativenet.xcframework in Frameworks */,
+				3425C4B228BD381E0069FB5E /* HyBid.xcframework in Frameworks */,
 				911A16FB28B63B5D001BE64A /* FBAudienceNetwork.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,8 +489,8 @@
 		E7CC275F203AF265006A95B9 = {
 			isa = PBXGroup;
 			children = (
-				91F56DE328B52283002F45A9 /* HyBid.xcframework */,
-				91F56DDD28B5116C002F45A9 /* OMSDK_Pubnativenet.xcframework */,
+				3425C4B028BD381B0069FB5E /* HyBid.xcframework */,
+				3425C4B428BD38390069FB5E /* OMSDK_Pubnativenet.xcframework */,
 				91EE469228B526DB0053F85D /* UnityAds.xcframework */,
 				911A16F928B63B55001BE64A /* FBAudienceNetwork.xcframework */,
 				5AD53C942228333D00370B75 /* EasyWeather-Bridging-Header.h */,
