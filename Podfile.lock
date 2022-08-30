@@ -158,7 +158,7 @@ DEPENDENCIES:
   - StartAppSDK (>= 4.7.3)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - AlamofireObjectMapper
     - AppLovinSDK
