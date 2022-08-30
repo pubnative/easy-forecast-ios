@@ -24,7 +24,6 @@ import UIKit
 import CoreData
 import Firebase
 import HyBid
-import MoPubSDK
 import GoogleMobileAds
 import AdSupport.ASIdentifierManager
 import UnityAds
@@ -59,21 +58,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         HyBid.setCoppa(false)
-        HyBid.setTestMode(false)
-        HyBid.setAppStoreAppID("1382171002")
         
+        #if DEBUG
+        HyBid.setTestMode(true)
+        UnityAds.initialize(UNITY_GAME_ID, testMode: true)
+        #else
+        HyBid.setTestMode(false)
+        UnityAds.initialize(UNITY_GAME_ID, testMode: false)
+        #endif
+
         let hyBidTargeting = HyBidTargetingModel()
         let interests = [String]()
         hyBidTargeting.interests = interests
         hyBidTargeting.interests.append("easyforecast:2.12")
         HyBid.setTargeting(hyBidTargeting)
         
-        let moPubSDKConfig = MPMoPubConfiguration(adUnitIdForAppInitialization: MOPUB_BANNER_AD_UNIT_ID)
-        MoPub.sharedInstance().initializeSdk(with: moPubSDKConfig, completion: nil)
-        
-        GADMobileAds.configure(withApplicationID: ADMOB_APP_ID)
-
-        UnityAds.initialize(UNITY_GAME_ID, delegate: nil, testMode: false)
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         IronSource.initWithAppKey(IRONSOURCE_APPKEY)
         
@@ -111,9 +111,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func showConsentAndSaveParameters()
     {
-        HyBidUserDataManager.sharedInstance()?.loadConsentPage(completion: { (loadError) in
+        HyBidUserDataManager.sharedInstance().loadConsentPage(completion: { (loadError) in
             if (loadError == nil) {
-                HyBidUserDataManager.sharedInstance()?.showConsentPage({
+                HyBidUserDataManager.sharedInstance().showConsentPage({
           
                 }, didDismiss: {
                     UserDefaults.standard.set(Date(), forKey: "ConsentCheckDate")

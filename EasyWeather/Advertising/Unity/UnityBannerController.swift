@@ -24,39 +24,36 @@ import UIKit
 import UnityAds
 
 class UnityBannerController: AdPlacement {
-
-    var bannerAdView: UIView!
+    
     var delegate: AdPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
     var isShown = false
-
-    init(withAdPlacementDelegate delegate: AdPlacementDelegate) {
+//    private var unityBannerView = UADSBannerView(placementId: UNITY_BANNER_AD_UNIT_ID, size: CGSizeMake(320, 50))
+    private var unityBannerView = UADSBannerView(placementId: UNITY_BANNER_AD_UNIT_ID, size: CGSize(width: 320, height: 50))
+    private var isUnityAdReady = false
+    
+    init(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
-        UnityAdsBanner.destroy()
-        UnityAdsBanner.setDelegate(self)
-        UnityAdsBanner.setBannerPosition(.center)
+        unityBannerView.removeFromSuperview()
         self.delegate = delegate
+        unityBannerView.delegate = self
         adAnalyticsSession = AdAnalyticsSession(withAdType: .banner, withAdNetwork: .unity)
     }
     
     override func adView() -> UIView? {
-        return bannerAdView
+        return unityBannerView
     }
     
     override func loadAd() {
         adAnalyticsSession.start()
-        if (UnityAds.isReady(UNITY_BANNER_AD_UNIT_ID)) {
-            UnityAdsBanner.load(UNITY_BANNER_AD_UNIT_ID)
-        }
+        unityBannerView.load()
     }
 }
-
-extension UnityBannerController: UnityAdsBannerDelegate {
+extension UnityBannerController: UADSBannerViewDelegate {
     
-    func unityAdsBannerDidLoad(_ placementId: String, view: UIView) {
+    func bannerViewDidLoad(_ bannerView: UADSBannerView!) {
         adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
-        bannerAdView = view
         delegate.adPlacementDidLoad()
     }
     
@@ -86,7 +83,7 @@ extension UnityBannerController: UnityAdsBannerDelegate {
     
     func unityAdsBannerDidClick(_ placementId: String) {
         adAnalyticsSession.confirmClick()
-        UnityAdsBanner.destroy()
+        unityBannerView.removeFromSuperview()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidTrackClick()
     }

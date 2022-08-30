@@ -22,7 +22,6 @@
 
 import Foundation
 import HyBid
-import MoPubSDK
 import GoogleMobileAds
 import FBAudienceNetwork
 import AppLovinSDK
@@ -41,8 +40,6 @@ class MRectPlacementFactory {
             return createFyberPlacement(withAdPlacementDelegate: delegate)
         case .facebook:
             return createFacebookPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
-        case .moPub:
-            return createMoPubPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .googleAdsManager:
             return createGoogleAdsManagerPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .admob:
@@ -50,7 +47,7 @@ class MRectPlacementFactory {
         case .startApp:
             return createStartAppPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .unity:
-            return createUnityPlacement(withAdPlacementDelegate: delegate)
+            return createUnityPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         default:
             return nil
         }
@@ -81,18 +78,13 @@ class MRectPlacementFactory {
         return FacebookMRectController(withAdView: adView, withAdPlacementDelegate: delegate)
     }
     
-    fileprivate func createMoPubPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement? {
-        guard let adView = MPAdView(adUnitId: MOPUB_MRECT_AD_UNIT_ID, size: MOPUB_MEDIUM_RECT_SIZE) else { return nil }
-        return MoPubMRectController(withAdView: adView, withViewController: viewController, withAdPlacementDelegate: delegate)
-    }
-    
     fileprivate func createGoogleAdsManagerPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        let adView = DFPBannerView(adSize: kGADAdSizeMediumRectangle)
+        let adView = GADBannerView(adSize: GADAdSizeMediumRectangle)
         return GoogleAdsManagerMRectController(withAdView: adView, withAdUnitID: GOOGLE_ADS_MANAGER_MRECT_AD_UNIT_ID, withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
     fileprivate func createAdmobPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        let adView = GADBannerView(adSize: kGADAdSizeMediumRectangle)
+        let adView = GADBannerView(adSize: GADAdSizeMediumRectangle)
         return AdMobMRectController(withAdView: adView, withAdUnitID: ADMOB_MRECT_AD_UNIT_ID, withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
@@ -100,8 +92,9 @@ class MRectPlacementFactory {
         return StartAppMRectController(withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
-    fileprivate func createUnityPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        return AdPlacement()
+
+    fileprivate func createUnityPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
+        return UnityMRectViewController(withAdPlacementDelegate: delegate)
     }
     
 }

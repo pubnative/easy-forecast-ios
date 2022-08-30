@@ -28,10 +28,10 @@ class AdMobRewardedVideoController: RewardedVideoPlacement {
     var viewController: UIViewController!
     var delegate: RewardedVideoPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
+    private var rewardedAd: GADRewardedAd?
 
     init(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) {
         super.init()
-        GADRewardBasedVideoAd.sharedInstance().delegate = self
         self.viewController = viewController
         self.delegate = delegate
         adAnalyticsSession = AdAnalyticsSession(withAdType: .rewardedVideo, withAdNetwork: .admob)
@@ -39,16 +39,37 @@ class AdMobRewardedVideoController: RewardedVideoPlacement {
     
     override func loadAd() {
         adAnalyticsSession.start()
-        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(), withAdUnitID: ADMOB_REWARDED_VIDEO_AD_UNIT_ID)
+        let request = GADRequest()
+        GADRewardedAd.load(withAdUnitID: GOOGLE_ADS_MANAGER_REWARDED_VIDEO_AD_UNIT_ID,
+                           request: request,
+                           completionHandler: { [weak self] ad, error in
+            if let error = error {
+                print("Failed to load rewarded ad with error: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let ad = ad else { return }
+            
+            self?.rewardedAd = ad
+            self?.rewardedAd?.fullScreenContentDelegate = self
+            
+            self?.rewardBasedVideoAdDidReceive(ad)
+            
+        })
     }
     
     override func show() {
         adAnalyticsSession.confirmInterstitialShow()
-        GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: viewController)
-    }
-    
-    override func isReady() -> Bool {
-        return GADRewardBasedVideoAd.sharedInstance().isReady
+        if let ad = rewardedAd {
+            ad.present(fromRootViewController: self.viewController) { [weak self] in
+                let reward = ad.adReward
+                print("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
+                // TODO: Reward the user.
+                self?.rewardBasedVideoAd(ad, didRewardUserWith: reward)
+            }
+        } else {
+            print("Ad wasn't ready")
+        }
     }
     
     override func cleanUp() {
@@ -57,56 +78,58 @@ class AdMobRewardedVideoController: RewardedVideoPlacement {
     
 }
 
-extension AdMobRewardedVideoController: GADRewardBasedVideoAdDelegate {
+extension AdMobRewardedVideoController: GADFullScreenContentDelegate {
     
-    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
+    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADFullScreenPresentingAd, didRewardUserWith reward: GADAdReward) {
         adAnalyticsSession.confirmReward()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidReward(withReward: AdReward(withName: reward.type, withAmount: reward.amount as! Int))
     }
     
-    func rewardBasedVideoAdDidReceive(_ rewardBasedVideoAd:GADRewardBasedVideoAd) {
+    func rewardBasedVideoAdDidReceive(_ rewardBasedVideoAd: GADFullScreenPresentingAd) {
         adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidLoad()
     }
     
-    func rewardBasedVideoAdDidOpen(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad will present full screen content.")
         adAnalyticsSession.confirmImpression()
         adAnalyticsSession.confirmInterstitialShown()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidOpen()
     }
     
-    func rewardBasedVideoAdDidStartPlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+    func adDidRecordImpression(_ ad: GADFullScreenPresentingAd) {
         adAnalyticsSession.confirmVideoStarted()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidStart()
     }
     
-    func rewardBasedVideoAdDidCompletePlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+    func adWillDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         adAnalyticsSession.confirmVideoFinished()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidFinish()
     }
     
-    func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad did dismiss full screen content.")
         adAnalyticsSession.confirmInterstitialDismissed()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidClose()
     }
     
-    func rewardBasedVideoAdWillLeaveApplication(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+    func adDidRecordClick(_ ad: GADFullScreenPresentingAd) {
         adAnalyticsSession.confirmClick()
         adAnalyticsSession.confirmLeftApplication()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidTrackClick()
     }
     
-    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didFailToLoadWithError error: Error) {
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        print("Ad did fail to present full screen content.")
         adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.rewardedVideoPlacementDidFail(withError: error)
     }
-    
 }

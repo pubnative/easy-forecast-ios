@@ -21,7 +21,6 @@
 //
 
 import Foundation
-import MoPubSDK
 import GoogleMobileAds
 import FBAudienceNetwork
 import UnityAds
@@ -38,8 +37,6 @@ class InterstitialPlacementFactory {
             return createIronSourcePlacement(withViewController: viewController, withInterstitialPlacementDelegate: delegate)
         case .facebook:
             return createFacebookPlacement(withViewController: viewController, withInterstitialPlacementDelegate: delegate)
-        case .moPub:
-            return createMoPubPlacement(withViewController: viewController, withInterstitialPlacementDelegate: delegate)
         case .googleAdsManager:
             return createGoogleAdsManagerPlacement(withViewController: viewController, withInterstitialPlacementDelegate: delegate)
         case .admob:
@@ -70,18 +67,15 @@ class InterstitialPlacementFactory {
         return FacebookInterstitialController(withInterstitial: interstitial, withViewController: viewController, withInterstitialPlacementDelegate: delegate)
     }
     
-    fileprivate func createMoPubPlacement(withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement? {
-        guard let interstitial = MPInterstitialAdController(forAdUnitId: MOPUB_INTERSTITIAL_AD_UNIT_ID) else { return nil }
-        return MoPubInterstitialController(withInterstitial: interstitial, withViewController: viewController, withInterstitialPlacementDelegate: delegate)
-    }
-    
     fileprivate func createGoogleAdsManagerPlacement(withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {
-        let interstitial = DFPInterstitial(adUnitID: GOOGLE_ADS_MANAGER_INTERSTITIAL_AD_UNIT_ID)
+        let interstitial = GAMInterstitialAd() //DFPInterstitial(adUnitID: GOOGLE_ADS_MANAGER_INTERSTITIAL_AD_UNIT_ID)
+//        interstitial.adUnitID = GOOGLE_ADS_MANAGER_INTERSTITIAL_AD_UNIT_ID
         return GoogleAdsManagerInterstitialController(withInterstitial: interstitial, withViewController: viewController, withInterstitialPlacementDelegate: delegate)
     }
     
     fileprivate func createAdmobPlacement(withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {
-        let interstitial = GADInterstitial(adUnitID: ADMOB_INTERSTITIAL_AD_UNIT_ID)
+        let interstitial =  GAMInterstitialAd()//GADInterstitial(adUnitID: ADMOB_INTERSTITIAL_AD_UNIT_ID)
+//        interstitial.adUnitID = ADMOB_INTERSTITIAL_AD_UNIT_ID
         return AdMobInterstitialController(withInterstitial: interstitial, withViewController: viewController, withInterstitialPlacementDelegate: delegate)
     }
     

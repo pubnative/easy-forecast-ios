@@ -25,15 +25,14 @@ import GoogleMobileAds
 
 class AdMobInterstitialController: InterstitialPlacement {
 
-    var interstitial: GADInterstitial!
+    var interstitial: GADInterstitialAd!
     var viewController: UIViewController!
     var delegate: InterstitialPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
 
-    init(withInterstitial interstitial: GADInterstitial, withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) {
+    init(withInterstitial interstitial: GADInterstitialAd, withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) {
         super.init()
         self.interstitial = interstitial
-        self.interstitial.delegate = self
         self.viewController = viewController
         self.delegate = delegate
         adAnalyticsSession = AdAnalyticsSession(withAdType: .interstitial, withAdNetwork: .admob)
@@ -41,7 +40,19 @@ class AdMobInterstitialController: InterstitialPlacement {
     
     override func loadAd() {
         adAnalyticsSession.start()
-        interstitial.load(GADRequest())
+        GADInterstitialAd.load(withAdUnitID: GOOGLE_ADS_MANAGER_INTERSTITIAL_AD_UNIT_ID, request: GADRequest()) { [weak self] ad, error in
+            if let error = error {
+                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let ad = ad else { return }
+            
+            self?.interstitial = ad
+            self?.interstitial.fullScreenContentDelegate = self
+            
+            self?.interstitialDidReceiveAd(ad)
+        }
     }
     
     override func show() {
@@ -49,30 +60,26 @@ class AdMobInterstitialController: InterstitialPlacement {
         interstitial.present(fromRootViewController: viewController)
     }
     
-    override func isReady() -> Bool {
-        return interstitial.isReady
-    }
-    
     override func cleanUp() {
         delegate = nil
     }
 }
 
-extension AdMobInterstitialController: GADInterstitialDelegate {
+extension AdMobInterstitialController: GADFullScreenContentDelegate {
     
-    func interstitialDidReceiveAd(_ ad: GADInterstitial) {
+    func interstitialDidReceiveAd(_ ad: GADInterstitialAd) {
         adAnalyticsSession.confirmLoaded()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidLoad()
     }
     
-    func interstitial(_ ad: GADInterstitial, didFailToReceiveAdWithError error: GADRequestError) {
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidFail(withError: error)
     }
     
-    func interstitialWillPresentScreen(_ ad: GADInterstitial) {
+    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         adAnalyticsSession.confirmImpression()
         adAnalyticsSession.confirmInterstitialShown()
         guard let delegate = self.delegate else { return }
@@ -80,17 +87,17 @@ extension AdMobInterstitialController: GADInterstitialDelegate {
         delegate.interstitialPlacementDidShow()
     }
     
-    func interstitialWillDismissScreen(_ ad: GADInterstitial) {
-        print("interstitialWillDismissScreen")
+    func adWillDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("adWillDismissFullScreenContent")
     }
     
-    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         adAnalyticsSession.confirmInterstitialDismissed()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidDismissed()
     }
     
-    func interstitialWillLeaveApplication(_ ad: GADInterstitial) {
+    func adDidRecordClick(_ ad: GADFullScreenPresentingAd) {
         adAnalyticsSession.confirmClick()
         adAnalyticsSession.confirmLeftApplication()
         guard let delegate = self.delegate else { return }

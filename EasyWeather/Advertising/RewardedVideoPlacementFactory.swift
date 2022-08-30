@@ -21,7 +21,6 @@
 //
 
 import Foundation
-import MoPubSDK
 import AppLovinSDK
 import FBAudienceNetwork
 
@@ -37,8 +36,6 @@ class RewardedVideoPlacementFactory {
             return createIronSourcePlacement(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
         case .facebook:
             return createFacebookPlacement(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
-        case .moPub:
-            return createMoPubPlacement(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
         case .googleAdsManager:
             return createGoogleAdsManagerPlacement(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
         case .admob:
@@ -53,7 +50,8 @@ class RewardedVideoPlacementFactory {
     }
     
     fileprivate func createPubNativePlacement(withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {
-        return RewardedVideoPlacement()
+//        return RewardedVideoPlacement()
+        return PubNativeRewardedVideoController(withRewardedVideoPlacementDelegate: delegate, zoneID: PUBNATIVE_REWARDED_AD_ZONE_ID)
     }
     
     fileprivate func createAppLovinPlacement(withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {
@@ -67,10 +65,6 @@ class RewardedVideoPlacementFactory {
     fileprivate func createFacebookPlacement(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {
         let rewardedVideo = FBRewardedVideoAd(placementID: FACEBOOK_REWARDED_VIDEO_AD_UNIT_ID)
         return FacebookRewardedVideoController(withRewardedVideo: rewardedVideo, withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
-    }
-    
-    fileprivate func createMoPubPlacement(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {
-        return MoPubRewardedVideoController(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
     }
     
     fileprivate func createGoogleAdsManagerPlacement(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {
