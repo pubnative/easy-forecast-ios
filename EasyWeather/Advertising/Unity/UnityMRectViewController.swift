@@ -11,7 +11,7 @@ import UnityAds
 
 class UnityMRectViewController: AdPlacement {
 
-    private var unityMRectAdView = UADSBannerView(placementId: UNITY_BANNER_AD_UNIT_ID, size: CGSizeMake(320, 50))
+    private var unityMRectAdView = UADSBannerView(placementId: UNITY_BANNER_AD_UNIT_ID, size: CGSize(width: 320, height: 50))
     private var delegate: AdPlacementDelegate?
     private var adAnalyticsSession: AdAnalyticsSession!
     private var isShown = false

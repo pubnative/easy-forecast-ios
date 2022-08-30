@@ -28,7 +28,8 @@ class UnityBannerController: AdPlacement {
     var delegate: AdPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
     var isShown = false
-    private var unityBannerView = UADSBannerView(placementId: UNITY_BANNER_AD_UNIT_ID, size: CGSizeMake(320, 50))
+//    private var unityBannerView = UADSBannerView(placementId: UNITY_BANNER_AD_UNIT_ID, size: CGSizeMake(320, 50))
+    private var unityBannerView = UADSBannerView(placementId: UNITY_BANNER_AD_UNIT_ID, size: CGSize(width: 320, height: 50))
     private var isUnityAdReady = false
     
     init(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
