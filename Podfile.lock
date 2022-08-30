@@ -3,15 +3,9 @@ PODS:
   - AlamofireObjectMapper (6.2.0):
     - Alamofire (= 5.0.0-rc.2)
     - ObjectMapper (~> 3.5.1)
-  - AppLovinSDK (10.3.2)
-  - Audiences (2.3.8):
-    - Insights (~> 2.3.8)
+  - AppLovinSDK (11.4.3)
   - Codability (0.2.1)
-  - FBAudienceNetwork (6.5.1):
-    - FBSDKCoreKit_Basics
-  - FBSDKCoreKit_Basics (11.0.1):
-    - FBSDKCoreKit_Basics/Basics (= 11.0.1)
-  - FBSDKCoreKit_Basics/Basics (11.0.1)
+  - FBAudienceNetwork (6.11.2)
   - Firebase/Core (8.3.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (~> 8.3.0)
@@ -69,7 +63,9 @@ PODS:
     - FirebaseInstallations (~> 8.0)
     - GoogleUtilities/Environment (~> 7.4)
     - "GoogleUtilities/NSData+zlib (~> 7.4)"
-  - Google-Mobile-Ads-SDK (7.41.0)
+  - Google-Mobile-Ads-SDK (9.9.0):
+    - GoogleAppMeasurement (< 10.0, >= 7.0)
+    - GoogleUserMessagingPlatform (>= 1.1)
   - GoogleAppMeasurement (8.3.0):
     - GoogleAppMeasurement/AdIdSupport (= 8.3.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
@@ -87,6 +83,7 @@ PODS:
     - GoogleUtilities/Environment (~> 7.2)
     - nanopb (~> 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
+  - GoogleUserMessagingPlatform (2.0.0)
   - GoogleUtilities/AppDelegateSwizzler (7.5.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -107,54 +104,49 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (7.5.0):
     - GoogleUtilities/Logger
-  - Insights (2.3.8):
-    - Codability (~> 0.2.1)
-    - NumberEightCore (~> 2.3.8)
-    - SQLite.swift (~> 0.12.2)
-  - IronSourceSDK (7.1.7.0)
-  - lottie-ios (2.5.3)
-  - mopub-ios-sdk (5.17.0):
-    - mopub-ios-sdk/MoPubSDK (= 5.17.0)
-  - mopub-ios-sdk/Core (5.17.0)
-  - mopub-ios-sdk/MoPubSDK (5.17.0):
-    - mopub-ios-sdk/Core
-    - mopub-ios-sdk/NativeAds
-  - mopub-ios-sdk/NativeAds (5.17.0):
-    - mopub-ios-sdk/Core
+  - IronSourceSDK (7.2.4.0)
+  - lottie-ios (3.4.2)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
-  - NumberEight (2.3.8):
-    - NumberEight/Core (= 2.3.8)
-  - NumberEight/Audiences (2.3.8):
-    - Audiences (= 2.3.8)
-  - NumberEight/Core (2.3.8):
-    - NumberEightCore (= 2.3.8)
-  - NumberEightCore (2.3.8)
+  - NumberEight (3.5.0):
+    - NumberEight/Core (= 3.5.0)
+  - NumberEight/Audiences (3.5.0):
+    - NumberEightAudiences (= 3.5.0)
+  - NumberEight/Core (3.5.0):
+    - NumberEightCore (= 3.5.0)
+  - NumberEightAudiences (3.5.0):
+    - NumberEightInsights (= 3.5.0)
+  - NumberEightCompiled (3.5.0)
+  - NumberEightCore (3.5.0):
+    - NumberEightCompiled (= 3.5.0)
+  - NumberEightInsights (3.5.0):
+    - Codability (~> 0.2.1)
+    - NumberEightCore (= 3.5.0)
+    - SQLite.swift (~> 0.13.0)
   - ObjectMapper (3.5.3)
   - PromisesObjC (1.2.12)
   - Protobuf (3.17.0)
-  - SQLite.swift (0.12.2):
-    - SQLite.swift/standard (= 0.12.2)
-  - SQLite.swift/standard (0.12.2)
-  - StartAppSDK (3.12.0)
+  - SQLite.swift (0.13.3):
+    - SQLite.swift/standard (= 0.13.3)
+  - SQLite.swift/standard (0.13.3)
+  - StartAppSDK (4.7.3)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.0.0-rc.2)
-  - AlamofireObjectMapper (~> 6.2.0)
-  - AppLovinSDK
-  - FBAudienceNetwork
-  - Firebase/Core (= 8.3.0)
-  - Firebase/Performance (= 8.3.0)
-  - Google-Mobile-Ads-SDK (~> 7.0)
-  - IronSourceSDK
-  - lottie-ios (= 2.5.3)
-  - mopub-ios-sdk
-  - NumberEight
-  - NumberEight/Audiences
-  - StartAppSDK (= 3.12.0)
+  - Alamofire (>= 5.0.0-rc.2)
+  - AlamofireObjectMapper (>= 6.2.0)
+  - AppLovinSDK (>= 11.4.3)
+  - FBAudienceNetwork (>= 6.11.2)
+  - Firebase/Core
+  - Firebase/Performance
+  - Google-Mobile-Ads-SDK (>= 9.9.0)
+  - IronSourceSDK (= 7.2.4.0)
+  - lottie-ios (>= 3.4.2)
+  - NumberEight (>= 3.4.1)
+  - NumberEight/Audiences (>= 3.4.1)
+  - StartAppSDK (>= 4.7.3)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -163,7 +155,6 @@ SPEC REPOS:
     - AppLovinSDK
     - Codability
     - FBAudienceNetwork
-    - FBSDKCoreKit_Basics
     - Firebase
     - FirebaseABTesting
     - FirebaseAnalytics
@@ -175,30 +166,28 @@ SPEC REPOS:
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleDataTransport
+    - GoogleUserMessagingPlatform
     - GoogleUtilities
     - IronSourceSDK
     - lottie-ios
-    - mopub-ios-sdk
     - nanopb
+    - NumberEight
+    - NumberEightAudiences
+    - NumberEightCompiled
+    - NumberEightCore
+    - NumberEightInsights
     - ObjectMapper
     - PromisesObjC
     - Protobuf
     - SQLite.swift
     - StartAppSDK
-  https://gitlab.com/NumberEight/CocoaPods:
-    - Audiences
-    - Insights
-    - NumberEight
-    - NumberEightCore
 
 SPEC CHECKSUMS:
   Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
   AlamofireObjectMapper: 74d1440c92c42bbcc2b5f4dc81654ac095ec669f
-  AppLovinSDK: 3bbfef1e3ac84d85f556fda26e50f5a70230b970
-  Audiences: 51bbbc2c2dd1c3aec8cad33f6a912010c39ab12e
+  AppLovinSDK: 221dfbdff620be0ff227ed5b018b97b1f3d15713
   Codability: c888a339f4784c15a482b2180799e1836fc119aa
-  FBAudienceNetwork: 9a5f277d6ed36a46354a045c46a4858b47407a72
-  FBSDKCoreKit_Basics: 06780a4a12e16596bde8406add02c6aa1bf38616
+  FBAudienceNetwork: 4600bc7fa9bd925b1e397b7c9bbef02923062bbc
   Firebase: 817b9171d0d51dccc458b94a5e8edff6b1dd323d
   FirebaseABTesting: 7fe1b1d6b2bba76d3259f5d2a2089c05faf72ff0
   FirebaseAnalytics: 456f2c51599870a15ded4548d1f1f7b2cabf65a7
@@ -207,23 +196,25 @@ SPEC CHECKSUMS:
   FirebaseInstallations: b69db7680870dbac17bba7a51fc0b5c4b365baa7
   FirebasePerformance: 3861ee8f7b2ee35fe09a54939d1db1cf24b395bc
   FirebaseRemoteConfig: 648648205dc7fd546880aeafc737bc19a2543d31
-  Google-Mobile-Ads-SDK: 101ce89b94fdf60ec64ba7b6e9b9d812dc765936
+  Google-Mobile-Ads-SDK: 8822993da940ab920bad131b5bffce7eb3f62c6a
   GoogleAppMeasurement: de70802583dedceb0bca18172b345307e8f410b8
   GoogleDataTransport: 85fd18ff3019bb85d3f2c551d04c481dedf71fc9
+  GoogleUserMessagingPlatform: ab890ce5f6620f293a21b6bdd82e416a2c73aeca
   GoogleUtilities: eea970f4a389963963bffe8d8fabe43540678b9c
-  Insights: 26648e2e8f6e3cb797a8f6ed99f7b32261f10544
-  IronSourceSDK: 6a3b2809c44a345bb6e99c3310437d3f89b25661
-  lottie-ios: a50d5c0160425cd4b01b852bb9578963e6d92d31
-  mopub-ios-sdk: 36d322902674b79b0560a1cb8d15af0548d364ea
+  IronSourceSDK: 7cc4c28187764dfdf900dbf3dbd063ba22296bab
+  lottie-ios: 6bbc53eef6957e4744a50321507015fba72d8ca6
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
-  NumberEight: 91cc6ac9bcefc0294f08a7ac3db68662f2800d39
-  NumberEightCore: 11b7fb74a66ab2d58c975514e86c25b52b0e4146
+  NumberEight: 7415bfa7a1c4658cfdb5d54924c90719fa1201c4
+  NumberEightAudiences: 8c31957ce78bd090b0a0de7a216c8f8ac906f988
+  NumberEightCompiled: 410b1766a259618618e807dd6ec24344ca4d7004
+  NumberEightCore: b221db5296b66c59f826e89bf1821bc518f6ac70
+  NumberEightInsights: b67cb26050dd51e4e3f7435788317a676eb6f7ba
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   Protobuf: 7327d4444215b5f18e560a97f879ff5503c4581c
-  SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
-  StartAppSDK: e9c4695c10314297f2ffbf2c5104024e81cfbb84
+  SQLite.swift: 903bfa3bc9ab06345fdfbb578e34f47cfcf417da
+  StartAppSDK: d67d929f6b5b43b84373f948ed20c272aada5522
 
-PODFILE CHECKSUM: 9819df8c71c909c423a28947ac099b2dc3b51b8d
+PODFILE CHECKSUM: b5ad725f15aa15498c26540dbcbe53e8924052f7
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.3
