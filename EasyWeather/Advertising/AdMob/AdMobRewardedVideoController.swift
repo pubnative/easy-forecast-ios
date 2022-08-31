@@ -24,12 +24,12 @@ import UIKit
 import GoogleMobileAds
 
 class AdMobRewardedVideoController: RewardedVideoPlacement {
-
+    
     var viewController: UIViewController!
     var delegate: RewardedVideoPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
     private var rewardedAd: GADRewardedAd?
-
+    
     init(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) {
         super.init()
         self.viewController = viewController
@@ -45,6 +45,9 @@ class AdMobRewardedVideoController: RewardedVideoPlacement {
                            completionHandler: { [weak self] ad, error in
             if let error = error {
                 print("Failed to load rewarded ad with error: \(error.localizedDescription)")
+                self?.adAnalyticsSession.confirmError()
+                guard let delegate = self?.delegate else { return }
+                delegate.rewardedVideoPlacementDidFail(withError: error)
                 return
             }
             

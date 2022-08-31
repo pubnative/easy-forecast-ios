@@ -36,8 +36,6 @@ class MRectPlacementFactory {
             return createAppLovinPlacement(withAdPlacementDelegate: delegate)
         case .ironSource:
             return createIronSourcePlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
-        case .fyber:
-            return createFyberPlacement(withAdPlacementDelegate: delegate)
         case .facebook:
             return createFacebookPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .googleAdsManager:
@@ -45,9 +43,11 @@ class MRectPlacementFactory {
         case .admob:
             return createAdmobPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .startApp:
-            return createStartAppPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
+            return createStartAppPlacement(withAdPlacementDelegate: delegate)
         case .unity:
-            return createUnityPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
+            return createUnityPlacement(withAdPlacementDelegate: delegate)
+        case .fyber:
+            return createFyberPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         default:
             return nil
         }
@@ -68,10 +68,6 @@ class MRectPlacementFactory {
         return IronSourceMRectController(withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
-    fileprivate func createFyberPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        return AdPlacement()
-    }
-    
     fileprivate func createFacebookPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
         let adView = FBAdView(placementID: FACEBOOK_MRECT_AD_UNIT_ID, adSize: kFBAdSizeHeight250Rectangle, rootViewController: viewController)
         adView.frame = CGRect(x: 0, y: 0, width: 300, height: 250)
@@ -88,13 +84,16 @@ class MRectPlacementFactory {
         return AdMobMRectController(withAdView: adView, withAdUnitID: ADMOB_MRECT_AD_UNIT_ID, withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
-    fileprivate func createStartAppPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        return StartAppMRectController(withViewController: viewController, withAdPlacementDelegate: delegate)
+    fileprivate func createStartAppPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
+        return StartAppMRectController(withAdPlacementDelegate: delegate)
     }
     
-
-    fileprivate func createUnityPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
+    fileprivate func createUnityPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
         return UnityMRectViewController(withAdPlacementDelegate: delegate)
+    }
+    
+    fileprivate func createFyberPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
+        return FyberMRectController(withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
 }

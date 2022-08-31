@@ -24,7 +24,7 @@ import UIKit
 import GoogleMobileAds
 
 class GoogleAdsManagerBannerController: AdPlacement {
-
+    
     var bannerAdView: GADBannerView!
     var delegate: AdPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
@@ -56,27 +56,27 @@ extension GoogleAdsManagerBannerController: GADBannerViewDelegate {
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidLoad()
     }
-
+    
     func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
         adAnalyticsSession.confirmError()
         guard let delegate = self.delegate else { return }
         delegate.adPlacementDidFail(withError: error)
     }
-
+    
     func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
         adAnalyticsSession.confirmOpened()
         print("bannerViewWillPresentScreen")
     }
-
+    
     func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
         print("bannerViewWillDismissScreen")
     }
-
+    
     func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
         adAnalyticsSession.confirmClosed()
         print("bannerViewDidDismissScreen")
     }
-
+    
     func bannerViewDidRecordClick(_ bannerView: GADBannerView) {
         adAnalyticsSession.confirmClick()
         adAnalyticsSession.confirmLeftApplication()

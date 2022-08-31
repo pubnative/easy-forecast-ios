@@ -43,6 +43,9 @@ class GoogleAdsManagerInterstitialController: InterstitialPlacement {
         GADInterstitialAd.load(withAdUnitID: GOOGLE_ADS_MANAGER_INTERSTITIAL_AD_UNIT_ID, request: GADRequest()) { [weak self] ad, error in
             if let error = error {
                 print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                self?.adAnalyticsSession.confirmError()
+                guard let delegate = self?.delegate else { return }
+                delegate.interstitialPlacementDidFail(withError: error)
                 return
             }
             guard let ad = ad else { return }
@@ -73,7 +76,7 @@ extension GoogleAdsManagerInterstitialController: GADFullScreenContentDelegate {
     }
     
     func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        adAnalyticsSession.confirmError()
+        adAnalyticsSession.confirmInterstitialShowError()
         guard let delegate = self.delegate else { return }
         delegate.interstitialPlacementDidFail(withError: error)
     }

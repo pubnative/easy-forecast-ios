@@ -10,18 +10,18 @@ import UIKit
 import UnityAds
 
 class UnityMRectViewController: AdPlacement {
-
+    
     private var unityMRectAdView = UADSBannerView(placementId: UNITY_BANNER_AD_UNIT_ID, size: CGSize(width: 320, height: 50))
     private var delegate: AdPlacementDelegate?
     private var adAnalyticsSession: AdAnalyticsSession!
     private var isShown = false
-
+    
     init(withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         unityMRectAdView.removeFromSuperview()
         self.delegate = delegate
         unityMRectAdView.delegate = self
-        adAnalyticsSession = AdAnalyticsSession(withAdType: .banner, withAdNetwork: .unity)
+        adAnalyticsSession = AdAnalyticsSession(withAdType: .mRect, withAdNetwork: .unity)
     }
     
     override func adView() -> UIView? {
@@ -50,7 +50,7 @@ extension UnityMRectViewController: UADSBannerViewDelegate {
     }
     
     func unityAdsBannerDidUnload(_ placementId: String) {
-    
+        
     }
     
     func unityAdsBannerDidShow(_ placementId: String) {

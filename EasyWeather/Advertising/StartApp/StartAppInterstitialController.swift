@@ -23,11 +23,11 @@
 import UIKit
 
 class StartAppInterstitialController: InterstitialPlacement {
-
+    
     var interstitial: STAStartAppAd!
     var delegate: InterstitialPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
-
+    
     init(withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) {
         super.init()
         interstitial = STAStartAppAd()

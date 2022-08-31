@@ -29,7 +29,7 @@ class StartAppBannerController: AdPlacement {
     var adAnalyticsSession: AdAnalyticsSession!
     var isShown = false
     
-    init(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
+    init(withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         self.delegate = delegate
         bannerAdView = STABannerView(size: STA_PortraitAdSize_320x50, autoOrigin: STAAdOrigin_Top, withDelegate: self)

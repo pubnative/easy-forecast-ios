@@ -47,16 +47,16 @@ class PubNativeBannerController: AdPlacement {
         let interests = [String]()
         hyBidTargeting.interests = interests
         hyBidTargeting.interests.append("easyforecast:2.12")
-
+        
         let audiences = Audiences.currentMemberships
         hyBidTargeting.interests.append(audiences.map { $0.description }.joined(separator: ","))
-
+        
         HyBid.setTargeting(hyBidTargeting)
         
         adAnalyticsSession.start()
         bannerAdView.load(withZoneID: zoneID, andWith: self)
     }
-
+    
 }
 
 extension PubNativeBannerController: HyBidAdViewDelegate {

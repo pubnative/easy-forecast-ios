@@ -24,7 +24,7 @@ import UIKit
 import AppLovinSDK
 
 class AppLovinBannerController: AdPlacement {
-
+    
     var bannerAdView: ALAdView!
     var delegate: AdPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!

@@ -44,13 +44,14 @@ class RewardedVideoPlacementFactory {
             return createStartAppPlacement(withRewardedVideoPlacementDelegate: delegate)
         case .unity:
             return createUnityPlacement(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
+        case .fyber:
+            return createFyberPlacement(withRewardedVideoPlacementDelegate: delegate)
         default:
             return nil
         }
     }
     
     fileprivate func createPubNativePlacement(withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {
-//        return RewardedVideoPlacement()
         return PubNativeRewardedVideoController(withRewardedVideoPlacementDelegate: delegate, zoneID: PUBNATIVE_REWARDED_AD_ZONE_ID)
     }
     
@@ -83,5 +84,8 @@ class RewardedVideoPlacementFactory {
         return UnityRewardedVideoController(withViewController: viewController, withRewardedVideoPlacementDelegate: delegate)
     }
     
+    fileprivate func createFyberPlacement(withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) -> RewardedVideoPlacement {
+        return FyberRewardedVideoController(withRewardedVideoPlacementDelegate: delegate)
+    }
 }
 

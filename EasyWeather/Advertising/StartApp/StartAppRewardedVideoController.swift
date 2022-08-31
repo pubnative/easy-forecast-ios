@@ -23,11 +23,11 @@
 import UIKit
 
 class StartAppRewardedVideoController: RewardedVideoPlacement {
-
+    
     var rewardedVideo: STAStartAppAd!
     var delegate: RewardedVideoPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
-
+    
     init(withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) {
         super.init()
         rewardedVideo = STAStartAppAd()
@@ -41,8 +41,8 @@ class StartAppRewardedVideoController: RewardedVideoPlacement {
     }
     
     override func show() {
-    adAnalyticsSession.confirmInterstitialShow()
-       rewardedVideo.show()
+        adAnalyticsSession.confirmInterstitialShow()
+        rewardedVideo.show()
     }
     
     override func isReady() -> Bool {

@@ -22,13 +22,13 @@
 import UIKit
 
 class StartAppMRectController: AdPlacement {
-
+    
     var mRectAdView: STABannerView!
     var delegate: AdPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
     var isShown = false
-
-    init(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
+    
+    init(withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         self.delegate = delegate
         mRectAdView = STABannerView(size: STA_MRecAdSize_300x250, autoOrigin: STAAdOrigin_Top, withDelegate: self)

@@ -23,12 +23,12 @@
 import UIKit
 
 class IronSourceMRectController: AdPlacement {
-
+    
     var mRectAdView: ISBannerView!
     var viewController: UIViewController!
     var delegate: AdPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
-
+    
     init(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         self.viewController = viewController
