@@ -37,7 +37,7 @@ class FyberMRectController: AdPlacement {
     
     override func loadAd() {
         adAnalyticsSession.start()
-        FYBBanner.show(in: viewController.view, position: .top, options: mRectOptions)
+        FYBBanner.show(in: viewController.view, position: .bottom, options: mRectOptions)
     }
 
 }

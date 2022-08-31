@@ -186,7 +186,7 @@ class SummaryWeatherViewController: UIViewController {
             adPlacement.loadAd()
             adRequestFinished = false
             refreshAdTimer?.invalidate()
-            refreshAdTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(SummaryWeatherViewController.loadAd), userInfo: nil, repeats: false)
+            refreshAdTimer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(SummaryWeatherViewController.loadAd), userInfo: nil, repeats: false)
         }
     }
     
