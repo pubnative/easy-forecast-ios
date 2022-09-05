@@ -28,7 +28,7 @@ class IronSourceBannerController: AdPlacement {
     var viewController: UIViewController!
     var delegate: AdPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
-
+    
     init(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         self.viewController = viewController

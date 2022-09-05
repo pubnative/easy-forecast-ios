@@ -45,6 +45,8 @@ class InterstitialPlacementFactory {
             return createStartAppPlacement(withInterstitialPlacementDelegate: delegate)
         case .unity:
             return createUnityPlacement(withViewController: viewController, withInterstitialPlacementDelegate: delegate)
+        case .fyber:
+            return createFyberPlacement(withInterstitialPlacementDelegate: delegate)
         default:
             return nil
         }
@@ -68,14 +70,12 @@ class InterstitialPlacementFactory {
     }
     
     fileprivate func createGoogleAdsManagerPlacement(withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {
-        let interstitial = GAMInterstitialAd() //DFPInterstitial(adUnitID: GOOGLE_ADS_MANAGER_INTERSTITIAL_AD_UNIT_ID)
-//        interstitial.adUnitID = GOOGLE_ADS_MANAGER_INTERSTITIAL_AD_UNIT_ID
+        let interstitial = GAMInterstitialAd()
         return GoogleAdsManagerInterstitialController(withInterstitial: interstitial, withViewController: viewController, withInterstitialPlacementDelegate: delegate)
     }
     
     fileprivate func createAdmobPlacement(withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {
-        let interstitial =  GAMInterstitialAd()//GADInterstitial(adUnitID: ADMOB_INTERSTITIAL_AD_UNIT_ID)
-//        interstitial.adUnitID = ADMOB_INTERSTITIAL_AD_UNIT_ID
+        let interstitial =  GAMInterstitialAd()
         return AdMobInterstitialController(withInterstitial: interstitial, withViewController: viewController, withInterstitialPlacementDelegate: delegate)
     }
     
@@ -85,6 +85,10 @@ class InterstitialPlacementFactory {
     
     fileprivate func createUnityPlacement(withViewController viewController: UIViewController, withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {
         return UnityInterstitialController(withViewController: viewController, withInterstitialPlacementDelegate: delegate)
+    }
+    
+    fileprivate func createFyberPlacement(withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) -> InterstitialPlacement {
+        return FyberInterstitialController(withAdPlacementDelegate: delegate)
     }
     
 }

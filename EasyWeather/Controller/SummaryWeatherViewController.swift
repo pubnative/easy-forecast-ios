@@ -216,7 +216,6 @@ class SummaryWeatherViewController: UIViewController {
         bannerAdContainer.isHidden = true
         bannerAdContainerHeightConstraint.constant = 0
     }
-    
 }
 
 extension SummaryWeatherViewController: InterstitialPlacementDelegate {

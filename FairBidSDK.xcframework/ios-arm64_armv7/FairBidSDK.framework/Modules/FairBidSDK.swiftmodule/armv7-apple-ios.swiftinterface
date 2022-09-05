@@ -1,0 +1,308 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-module-flags: -target armv7-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name FairBidSDK
+@_exported import FairBidSDK
+import Foundation
+import MachO
+import Swift
+import UIKit
+import _Concurrency
+import MachO.loader
+public class AnalyticsEventRequest : FairBidSDK.NetworkRequest {
+  public var headers: [Swift.String : Swift.String]? {
+    get
+    set
+  }
+  public var urlString: Swift.String
+  public var params: [Swift.String : Any]?
+  public var timeoutInterval: Foundation.TimeInterval?
+  public var method: FairBidSDK.HTTPMethod {
+    get
+  }
+  public var returnType: FairBidSDK.ReturnType {
+    get
+  }
+  public init(urlString: Swift.String, eventId: Swift.Int, parameters: [Swift.String : Any])
+  @objc deinit
+}
+public class IntegrationStatusRequest : FairBidSDK.NetworkRequest {
+  public var timeoutInterval: Foundation.TimeInterval?
+  public var urlString: Swift.String
+  public var params: [Swift.String : Any]?
+  public var headers: [Swift.String : Swift.String]? {
+    get
+  }
+  public var method: FairBidSDK.HTTPMethod {
+    get
+  }
+  public var returnType: FairBidSDK.ReturnType {
+    get
+  }
+  public init(requestBody: FairBidSDK.IntegrationStatusRequestBody)
+  @objc deinit
+}
+public class ReportAdDisplayedRequest : FairBidSDK.NetworkRequest {
+  public var urlString: Swift.String
+  public var params: [Swift.String : Any]?
+  public var timeoutInterval: Foundation.TimeInterval?
+  public var headers: [Swift.String : Swift.String]? {
+    get
+  }
+  public var method: FairBidSDK.HTTPMethod {
+    get
+  }
+  public var returnType: FairBidSDK.ReturnType {
+    get
+  }
+  public init(urlString: Swift.String, timeStamp: Foundation.NSNumber, hashValue: Swift.String, userId: ObjectiveC.NSObject, customParameters: [Swift.String : Any]? = nil)
+  @objc deinit
+}
+@objc @objcMembers public class FYBAuctionService : ObjectiveC.NSObject {
+  @objc public static var shared: FairBidSDK.FYBAuctionService
+  public init(requestExecutor: FairBidSDK.RequestExecutor)
+  @objc public func runAuction(urlString: Swift.String, params: [Swift.String : Any]?, userAgent: Swift.String, success: @escaping (Foundation.Data?, Foundation.URLResponse?, Foundation.NSNumber?) -> Swift.Void, failure: @escaping (Swift.Error?, Foundation.NSNumber?) -> Swift.Void)
+  @objc public func executeMockBehaviour(urlString: Swift.String, mockResponseId: Swift.String)
+  @objc deinit
+}
+public class MediateRequest : FairBidSDK.NetworkRequest {
+  public var urlString: Swift.String
+  public var params: [Swift.String : Any]?
+  public var timeoutInterval: Foundation.TimeInterval?
+  public var headers: [Swift.String : Swift.String]? {
+    get
+  }
+  public var method: FairBidSDK.HTTPMethod {
+    get
+  }
+  public var returnType: FairBidSDK.ReturnType {
+    get
+  }
+  public init(urlString: Swift.String, hash: Swift.String, installId: Swift.String, sdkSessionId: Swift.String, hoursSinceInstall: Swift.Int, gender: FairBidSDK.FYBGender, birthDate: Swift.Int?, needsVariants: Swift.Bool?, defaultParameters: [Swift.String : Any])
+  @objc deinit
+}
+public enum HTTPMethod : Swift.String {
+  case get
+  case post
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum ReturnType {
+  case json
+  case data
+  case none
+  public static func == (a: FairBidSDK.ReturnType, b: FairBidSDK.ReturnType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol NetworkRequest {
+  var method: FairBidSDK.HTTPMethod { get }
+  var urlString: Swift.String { get set }
+  var params: [Swift.String : Any]? { get set }
+  var headers: [Swift.String : Swift.String]? { get }
+  var returnType: FairBidSDK.ReturnType { get }
+  var timeoutInterval: Foundation.TimeInterval? { get set }
+}
+public typealias AdType = Swift.Int
+@objc @_inheritsConvenienceInitializers @objcMembers public class BackoffIntervals : ObjectiveC.NSObject {
+  @objc public subscript(type: FairBidSDK.AdType) -> [Foundation.NSNumber]? {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc public func interval(type: FairBidSDK.AdType, position: Swift.Int) -> Foundation.NSNumber?
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class FYBFrameworkInfo : ObjectiveC.NSObject {
+  @objc public class var uuid: Foundation.NSUUID? {
+    @objc get
+  }
+  @objc public class var baseAddress: Foundation.NSNumber? {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @objcMembers public class FYBMediationService : ObjectiveC.NSObject {
+  @objc public static var shared: FairBidSDK.FYBMediationService
+  public init(requestExecutor: FairBidSDK.RequestExecutor)
+  @objc public func getMediate(urlString: Swift.String, hash: Swift.String, installId: Swift.String, sdkSessionId: Swift.String, hoursSinceInstall: Foundation.NSNumber, genderValue: Swift.Int, birthDate: Foundation.NSNumber, needsVariants: Swift.Bool, defaultParameters: [Swift.String : Any], success: @escaping (Foundation.Data?, Foundation.URLResponse?) -> Swift.Void, failure: @escaping (Swift.Error?) -> Swift.Void)
+  @objc deinit
+}
+@objc @objcMembers public class FYBUserTrackingService : ObjectiveC.NSObject {
+  @objc public static var shared: FairBidSDK.FYBUserTrackingService
+  public init(requestExecutor: FairBidSDK.RequestExecutor)
+  @objc public func reportActiveUser(urlString: Swift.String, deviceId: Swift.String, idfv: Swift.String, publisherSuppliedUserId: ObjectiveC.NSObject, success: @escaping (Foundation.Data?) -> Swift.Void, failure: @escaping (Swift.Error?) -> Swift.Void)
+  @objc deinit
+}
+public class AuctionRequest : FairBidSDK.NetworkRequest {
+  public var headers: [Swift.String : Swift.String]? {
+    get
+    set
+  }
+  public var urlString: Swift.String
+  public var params: [Swift.String : Any]?
+  public var timeoutInterval: Foundation.TimeInterval?
+  public var method: FairBidSDK.HTTPMethod {
+    get
+  }
+  public var returnType: FairBidSDK.ReturnType {
+    get
+  }
+  public init(urlString: Swift.String, params: [Swift.String : Any]?, userAgent: Swift.String, mockResponseId: Swift.String? = nil)
+  @objc deinit
+}
+@objc @objcMembers open class FYBIntegrationStatusService : ObjectiveC.NSObject {
+  @objc public static var shared: FairBidSDK.FYBIntegrationStatusService
+  public init(requestExecutor: FairBidSDK.RequestExecutor)
+  @objc open func checkIntegrationStatus(appId: Swift.String, framework: Swift.String, networks: [[Swift.String : Swift.String]], osVersion: Swift.String, platform: Swift.String, skAdNetworkIds: [Swift.String], sdkVersion: Swift.String, success: @escaping (FairBidSDK.IntegrationStatusResponse?) -> Swift.Void, failure: @escaping (Swift.Error?) -> Swift.Void)
+  @objc deinit
+}
+@objc(FYBScreenshotFormat) public enum ScreenshotFormat : Swift.Int {
+  case png
+  case jpg
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @objcMembers public class FYBEventReportingService : ObjectiveC.NSObject {
+  @objc public static var shared: FairBidSDK.FYBEventReportingService
+  public init(requestExecutor: FairBidSDK.RequestExecutor)
+  @objc public func reportImpression(urlString: Swift.String, success: @escaping (Foundation.Data?) -> Swift.Void, failure: @escaping (Swift.Error?) -> Swift.Void)
+  @objc public func reportAdClicked(urlString: Swift.String, success: @escaping (Foundation.Data?) -> Swift.Void, failure: @escaping (Swift.Error?) -> Swift.Void)
+  @objc public func reportAdDisplayedCompletion(urlString: Swift.String, timeStamp: Foundation.NSNumber, hashValue: Swift.String, userId: ObjectiveC.NSObject, customParameters: [Swift.String : Any]? = nil, success: @escaping (Foundation.Data?) -> Swift.Void, failure: @escaping (Swift.Error?) -> Swift.Void)
+  @objc deinit
+}
+public class TrackActiveUserRequest : FairBidSDK.NetworkRequest {
+  public var urlString: Swift.String
+  public var params: [Swift.String : Any]?
+  public var timeoutInterval: Foundation.TimeInterval?
+  public var headers: [Swift.String : Swift.String]? {
+    get
+  }
+  public var method: FairBidSDK.HTTPMethod {
+    get
+  }
+  public var returnType: FairBidSDK.ReturnType {
+    get
+  }
+  public init(urlString: Swift.String, deviceId: Swift.String, idfv: Swift.String, publisherSuppliedUserId: ObjectiveC.NSObject?)
+  @objc deinit
+}
+public class ReportImpressionRequest : FairBidSDK.NetworkRequest {
+  public var urlString: Swift.String
+  public var params: [Swift.String : Any]?
+  public var headers: [Swift.String : Swift.String]?
+  public var timeoutInterval: Foundation.TimeInterval?
+  public var method: FairBidSDK.HTTPMethod {
+    get
+  }
+  public var returnType: FairBidSDK.ReturnType {
+    get
+  }
+  public init(urlString: Swift.String)
+  @objc deinit
+}
+@objc @objcMembers public class AnalyticsReporterClient : ObjectiveC.NSObject {
+  @objc public init(loggingDelegate: FairBidSDK.ResponseLoggable?, urlProvider: @escaping () -> Foundation.URL)
+  @objc public func reportEvent(_ event: Swift.Int, parameters: [Swift.String : Any], completion: @escaping ((FairBidSDK.AnalyticsEventOperationResult) -> Swift.Bool))
+  @objc public func reportEventWhenTimestampReceived(_ event: Swift.Int, parameters: [Swift.String : Any])
+  @objc public func dispatchBlockedEvents()
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class AnalyticsEventOperationResult : ObjectiveC.NSObject {
+  @objc final public let timestamp: Foundation.NSNumber?
+  @objc final public let error: Swift.Error?
+  @objc final public let statusCode: Foundation.NSNumber?
+  @objc final public let success: Swift.Bool
+  @objc public var errorMessage: Swift.String? {
+    @objc get
+  }
+  @objc deinit
+}
+@objc public protocol ResponseLoggable {
+  @objc optional func logSuccessResponse(eventId: ObjectiveC.NSInteger, statusCode: ObjectiveC.NSInteger)
+  @objc optional func logFailureResponse(eventId: ObjectiveC.NSInteger, statusCode: ObjectiveC.NSInteger, errorMessage: Foundation.NSString)
+}
+@_inheritsConvenienceInitializers @objc(FYBAutomationSupport) @objcMembers public class AutomationSupport : ObjectiveC.NSObject {
+  @objc public static var automationEnabled: Swift.Bool {
+    get
+  }
+  @objc public class func logDictionary(_ dictionary: [Swift.String : Any])
+  @objc public class func logDictionary(_ dictionary: [Swift.String : Any], nullifyingKey: Swift.String)
+  @objc public class func log(_ string: Swift.String)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @objcMembers public class FetchError : ObjectiveC.NSObject {
+  @objc public var date: Foundation.NSDate {
+    get
+  }
+  @objc public var error: Foundation.NSError {
+    @objc get
+    @objc set
+  }
+  @objc public init(error: Foundation.NSError)
+  @objc deinit
+}
+@objc @objcMembers public class IntegrationStatusRequestBody : ObjectiveC.NSObject, Swift.Encodable {
+  @objc final public let appId: Swift.String
+  @objc final public let framework: Swift.String
+  @objc final public let osVersion: Swift.String
+  @objc final public let platform: Swift.String
+  @objc final public let skAdNetworkIds: [Swift.String]
+  @objc final public let sdkVersion: Swift.String
+  @objc final public let networks: [[Swift.String : Swift.String]]
+  @objc public init(appId: Swift.String, framework: Swift.String, networks: [[Swift.String : Swift.String]], osVersion: Swift.String, platform: Swift.String, skAdNetworkIds: [Swift.String], sdkVersion: Swift.String)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public class ReportAdClickedRequest : FairBidSDK.NetworkRequest {
+  public var urlString: Swift.String
+  public var params: [Swift.String : Any]?
+  public var headers: [Swift.String : Swift.String]?
+  public var timeoutInterval: Foundation.TimeInterval?
+  public var method: FairBidSDK.HTTPMethod {
+    get
+  }
+  public var returnType: FairBidSDK.ReturnType {
+    get
+  }
+  public init(urlString: Swift.String)
+  @objc deinit
+}
+public protocol RequestExecutorPlugin {
+  func onRequest(_ request: FairBidSDK.NetworkRequest)
+  func onSuccess(_ request: FairBidSDK.NetworkRequest, response: Foundation.Data?)
+  func onError(_ request: FairBidSDK.NetworkRequest, error: Swift.Error?)
+}
+open class RequestExecutor {
+  public init(plugins: [FairBidSDK.RequestExecutorPlugin] = [])
+  open func executeRequest<T>(_ request: FairBidSDK.NetworkRequest, success: @escaping (T?, Foundation.URLResponse, Swift.Int) -> Swift.Void, failure: @escaping (Swift.Error?, Swift.Int?) -> Swift.Void) where T : Swift.Decodable
+  @objc deinit
+}
+@objc @objcMembers public class IntegrationStatusResponse : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let success: Swift.Bool
+  @objc final public let message: Swift.String?
+  @objc final public let extendedMessage: Swift.String?
+  @objc final public let infoPlist: Swift.String?
+  @objc final public let unrecognizedNetworks: [Swift.String]?
+  @objc public func formattedExtendedMessage(textColor: UIKit.UIColor) -> Foundation.NSAttributedString?
+  @objc public func formattedInfoPlist() -> Swift.String?
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+}
+extension FairBidSDK.HTTPMethod : Swift.Equatable {}
+extension FairBidSDK.HTTPMethod : Swift.Hashable {}
+extension FairBidSDK.HTTPMethod : Swift.RawRepresentable {}
+extension FairBidSDK.ReturnType : Swift.Equatable {}
+extension FairBidSDK.ReturnType : Swift.Hashable {}
+extension FairBidSDK.ScreenshotFormat : Swift.Equatable {}
+extension FairBidSDK.ScreenshotFormat : Swift.Hashable {}
+extension FairBidSDK.ScreenshotFormat : Swift.RawRepresentable {}

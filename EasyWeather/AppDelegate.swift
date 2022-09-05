@@ -30,6 +30,7 @@ import UnityAds
 import AppLovinSDK
 import StoreKit
 import Audiences
+import FairBidSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -82,6 +83,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         ALSdk.initializeSdk()
+
+        FairBid.start(withAppId: FYBER_APP_ID)
         
         return true
     }

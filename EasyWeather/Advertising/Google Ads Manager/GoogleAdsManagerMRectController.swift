@@ -28,7 +28,7 @@ class GoogleAdsManagerMRectController: AdPlacement {
     var mRectAdView: GADBannerView!
     var delegate: AdPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
-
+    
     init(withAdView adView: GADBannerView, withAdUnitID adUnitID: String, withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) {
         super.init()
         mRectAdView = adView
@@ -47,7 +47,7 @@ class GoogleAdsManagerMRectController: AdPlacement {
         adAnalyticsSession.start()
         mRectAdView.load(GADRequest())
     }
-
+    
 }
 
 extension GoogleAdsManagerMRectController: GADBannerViewDelegate {

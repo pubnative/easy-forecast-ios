@@ -24,7 +24,7 @@
 import UIKit
 import UnityAds
 
-class UnityInterstitialController: InterstitialPlacement, UnityAdsShowDelegate {
+class UnityInterstitialController: InterstitialPlacement {
     
     var viewController: UIViewController!
     var delegate: InterstitialPlacementDelegate?
@@ -65,7 +65,7 @@ class UnityInterstitialController: InterstitialPlacement, UnityAdsShowDelegate {
     
 }
 
-extension UnityInterstitialController: UnityAdsInitializationDelegate, UnityAdsLoadDelegate {
+extension UnityInterstitialController: UnityAdsInitializationDelegate, UnityAdsLoadDelegate, UnityAdsShowDelegate {
     
     func unityAdsAdLoaded(_ placementId: String) {
         isUnityAdReady = true

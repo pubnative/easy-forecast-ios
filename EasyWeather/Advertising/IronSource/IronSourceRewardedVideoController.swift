@@ -24,11 +24,11 @@
 import UIKit
 
 class IronSourceRewardedVideoController: RewardedVideoPlacement {
-
+    
     var viewController: UIViewController!
     var delegate: RewardedVideoPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
-
+    
     init(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) {
         super.init()
         IronSource.setRewardedVideoDelegate(self)
@@ -58,7 +58,7 @@ class IronSourceRewardedVideoController: RewardedVideoPlacement {
     override func cleanUp() {
         delegate = nil
     }
-
+    
 }
 
 extension IronSourceRewardedVideoController: ISRewardedVideoDelegate {

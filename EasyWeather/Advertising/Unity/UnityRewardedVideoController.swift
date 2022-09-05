@@ -25,13 +25,13 @@ import UIKit
 import UnityAds
 
 class UnityRewardedVideoController: RewardedVideoPlacement {
- 
+    
     var viewController: UIViewController!
     var delegate: RewardedVideoPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
     var isShown = false
     private var isUnityAdReady = false
-
+    
     init(withViewController viewController: UIViewController, withRewardedVideoPlacementDelegate delegate: RewardedVideoPlacementDelegate) {
         super.init()
         self.viewController = viewController

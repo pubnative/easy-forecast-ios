@@ -24,7 +24,7 @@ import UIKit
 import AppLovinSDK
 
 class AppLovinRewardedVideoController: RewardedVideoPlacement {
-
+    
     var delegate: RewardedVideoPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
     
@@ -95,7 +95,8 @@ extension AppLovinRewardedVideoController: ALAdLoadDelegate, ALAdDisplayDelegate
         guard let delegate = self.delegate else { return }
         let currencyName = response["currency"] as! String
         let amountGiven = response["amount"] as! String
-        delegate.rewardedVideoPlacementDidReward(withReward: AdReward(withName: currencyName, withAmount: 0))
+        let amount = (Int(amountGiven) ?? 0)
+        delegate.rewardedVideoPlacementDidReward(withReward: AdReward(withName: currencyName, withAmount: amount))
     }
     
     func rewardValidationRequest(for ad: ALAd, didExceedQuotaWithResponse response: [AnyHashable : Any]) {

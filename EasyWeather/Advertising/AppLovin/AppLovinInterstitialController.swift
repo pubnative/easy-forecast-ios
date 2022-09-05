@@ -24,11 +24,11 @@ import UIKit
 import AppLovinSDK
 
 class AppLovinInterstitialController: InterstitialPlacement {
-
+    
     var ad: ALAd?
     var delegate: InterstitialPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
-
+    
     init(withInterstitialPlacementDelegate delegate: InterstitialPlacementDelegate) {
         super.init()
         self.delegate = delegate

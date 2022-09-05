@@ -76,7 +76,13 @@
 		911A16FB28B63B5D001BE64A /* FBAudienceNetwork.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 911A16F928B63B55001BE64A /* FBAudienceNetwork.xcframework */; };
 		911A16FC28B63B5D001BE64A /* FBAudienceNetwork.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 911A16F928B63B55001BE64A /* FBAudienceNetwork.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9169306D28BD28F300FDB42F /* BannerPlacementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9169306C28BD28F300FDB42F /* BannerPlacementFactory.swift */; };
+		916C036B28BE496B005DB22D /* FyberBannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916C036A28BE496B005DB22D /* FyberBannerController.swift */; };
+		9173055328BF8AAD00D22D45 /* FyberMRectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9173055228BF8AAD00D22D45 /* FyberMRectController.swift */; };
+		9173055528BF8C7000D22D45 /* FyberInterstitialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9173055428BF8C7000D22D45 /* FyberInterstitialController.swift */; };
+		9173055728BF9BA700D22D45 /* FyberRewardedVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9173055628BF9BA700D22D45 /* FyberRewardedVideoController.swift */; };
 		918190E128B77ACC00F40AB7 /* PubNativeRewardedVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918190E028B77ACC00F40AB7 /* PubNativeRewardedVideoController.swift */; };
+		91BFB60828BE567000560099 /* FairBidSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91BFB60628BE55D300560099 /* FairBidSDK.xcframework */; };
+		91BFB60928BE567000560099 /* FairBidSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91BFB60628BE55D300560099 /* FairBidSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		91CCBB2F28B3DF1800105971 /* RewardedVideoPlacementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CCBB2E28B3DF1800105971 /* RewardedVideoPlacementFactory.swift */; };
 		91CCBB3128B3DF3700105971 /* MRectPlacementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CCBB3028B3DF3700105971 /* MRectPlacementFactory.swift */; };
 		91CCBB3328B3DF3F00105971 /* InterstitialPlacementFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CCBB3228B3DF3F00105971 /* InterstitialPlacementFactory.swift */; };
@@ -118,6 +124,7 @@
 			files = (
 				3425C4B328BD381E0069FB5E /* HyBid.xcframework in Embed Frameworks */,
 				911A16FC28B63B5D001BE64A /* FBAudienceNetwork.xcframework in Embed Frameworks */,
+				91BFB60928BE567000560099 /* FairBidSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,7 +202,12 @@
 		5AFFD3BC221AEBD0004EC91F /* LoadingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingAnimation.json; sourceTree = "<group>"; };
 		911A16F928B63B55001BE64A /* FBAudienceNetwork.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FBAudienceNetwork.xcframework; sourceTree = "<group>"; };
 		9169306C28BD28F300FDB42F /* BannerPlacementFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerPlacementFactory.swift; sourceTree = "<group>"; };
+		916C036A28BE496B005DB22D /* FyberBannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FyberBannerController.swift; sourceTree = "<group>"; };
+		9173055228BF8AAD00D22D45 /* FyberMRectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FyberMRectController.swift; sourceTree = "<group>"; };
+		9173055428BF8C7000D22D45 /* FyberInterstitialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FyberInterstitialController.swift; sourceTree = "<group>"; };
+		9173055628BF9BA700D22D45 /* FyberRewardedVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FyberRewardedVideoController.swift; sourceTree = "<group>"; };
 		918190E028B77ACC00F40AB7 /* PubNativeRewardedVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubNativeRewardedVideoController.swift; sourceTree = "<group>"; };
+		91BFB60628BE55D300560099 /* FairBidSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FairBidSDK.xcframework; sourceTree = "<group>"; };
 		91CCBB2E28B3DF1800105971 /* RewardedVideoPlacementFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardedVideoPlacementFactory.swift; sourceTree = "<group>"; };
 		91CCBB3028B3DF3700105971 /* MRectPlacementFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MRectPlacementFactory.swift; sourceTree = "<group>"; };
 		91CCBB3228B3DF3F00105971 /* InterstitialPlacementFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterstitialPlacementFactory.swift; sourceTree = "<group>"; };
@@ -237,6 +249,7 @@
 			files = (
 				91EE469328B526DB0053F85D /* UnityAds.xcframework in Frameworks */,
 				3425C4B528BD38390069FB5E /* OMSDK_Pubnativenet.xcframework in Frameworks */,
+				91BFB60828BE567000560099 /* FairBidSDK.xcframework in Frameworks */,
 				2E1289B11BE255C43CB298A3 /* Pods_EasyWeather.framework in Frameworks */,
 				3425C4B228BD381E0069FB5E /* HyBid.xcframework in Frameworks */,
 				911A16FB28B63B5D001BE64A /* FBAudienceNetwork.xcframework in Frameworks */,
@@ -313,6 +326,7 @@
 		5ABCE2F9221C4DB0004F8882 /* Advertising */ = {
 			isa = PBXGroup;
 			children = (
+				916C036928BE494E005DB22D /* Fyber */,
 				5AA496B0222FD95A00537126 /* Analytics */,
 				5ABCE314221D88C4004F8882 /* PubNative */,
 				5A898108222EC6B300F1CE62 /* AppLovin */,
@@ -444,6 +458,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		916C036928BE494E005DB22D /* Fyber */ = {
+			isa = PBXGroup;
+			children = (
+				916C036A28BE496B005DB22D /* FyberBannerController.swift */,
+				9173055228BF8AAD00D22D45 /* FyberMRectController.swift */,
+				9173055428BF8C7000D22D45 /* FyberInterstitialController.swift */,
+				9173055628BF9BA700D22D45 /* FyberRewardedVideoController.swift */,
+			);
+			path = Fyber;
+			sourceTree = "<group>";
+		};
 		9CE1A5FC539F853B68140ACE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -493,6 +518,7 @@
 				3425C4B428BD38390069FB5E /* OMSDK_Pubnativenet.xcframework */,
 				91EE469228B526DB0053F85D /* UnityAds.xcframework */,
 				911A16F928B63B55001BE64A /* FBAudienceNetwork.xcframework */,
+				91BFB60628BE55D300560099 /* FairBidSDK.xcframework */,
 				5AD53C942228333D00370B75 /* EasyWeather-Bridging-Header.h */,
 				E7CC276A203AF265006A95B9 /* EasyWeather */,
 				E7CC2769203AF265006A95B9 /* Products */,
@@ -729,6 +755,7 @@
 				5A4CDA0A2211998200217E5F /* ForecastDetailCell.swift in Sources */,
 				5AE362C222240ACE002D7CB9 /* AdMobMRectController.swift in Sources */,
 				E75E4692203B3E9100FF9672 /* ForecastResponse.swift in Sources */,
+				9173055328BF8AAD00D22D45 /* FyberMRectController.swift in Sources */,
 				E75E4698203B3ED000FF9672 /* CurrentMain.swift in Sources */,
 				5A257F66220D8B4500FDCCDB /* CustomTextField.swift in Sources */,
 				5ABCE316221D890B004F8882 /* PubNativeBannerController.swift in Sources */,
@@ -736,6 +763,7 @@
 				5ACDB1B62209F1C600E13AAD /* ForecastSummaryItem.swift in Sources */,
 				E75E469E203B3F0100FF9672 /* CurrentClouds.swift in Sources */,
 				E75E4682203B3DB500FF9672 /* ForecastCity.swift in Sources */,
+				9173055528BF8C7000D22D45 /* FyberInterstitialController.swift in Sources */,
 				5AD9A6CD2215895900129944 /* City.swift in Sources */,
 				5ABCE2FB221C5192004F8882 /* AdPlacement.swift in Sources */,
 				5A1C83EC2229386F00A3C8A3 /* StartAppMRectController.swift in Sources */,
@@ -777,6 +805,7 @@
 				E75E46A0203B3F0C00FF9672 /* CurrentResponse.swift in Sources */,
 				91CCBB3128B3DF3700105971 /* MRectPlacementFactory.swift in Sources */,
 				5A257F68220D8B7B00FDCCDB /* SearchCityViewController.swift in Sources */,
+				9173055728BF9BA700D22D45 /* FyberRewardedVideoController.swift in Sources */,
 				5A4CDA0C2211BA2600217E5F /* ParallaxEffect.swift in Sources */,
 				E75E469C203B3EF300FF9672 /* CurrentWind.swift in Sources */,
 				5A9280E9221DA7FC00D43FF3 /* PubNativeMRectController.swift in Sources */,
@@ -803,6 +832,7 @@
 				5AA496B8222FE27D00537126 /* AdAnalytics.swift in Sources */,
 				5AD53C972228452100370B75 /* StartAppBannerController.swift in Sources */,
 				E75E4694203B3EB800FF9672 /* CurrentCoordinate.swift in Sources */,
+				916C036B28BE496B005DB22D /* FyberBannerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -962,11 +992,15 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/fyber-sdk-lib",
+				);
 				MARKETING_VERSION = 2.17;
 				PRODUCT_BUNDLE_IDENTIFIER = net.easynaps.EasyForecast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "EasyWeather-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -993,11 +1027,15 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/fyber-sdk-lib",
+				);
 				MARKETING_VERSION = 2.17;
 				PRODUCT_BUNDLE_IDENTIFIER = net.easynaps.EasyForecast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "EasyWeather-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;

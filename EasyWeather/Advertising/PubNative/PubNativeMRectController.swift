@@ -24,12 +24,12 @@ import UIKit
 import HyBid
 
 class PubNativeMRectController: AdPlacement {
-
+    
     var mRectAdView: HyBidAdView!
     var zoneID: String!
     var delegate: AdPlacementDelegate?
     var adAnalyticsSession: AdAnalyticsSession!
-
+    
     init(withAdView adView: HyBidAdView, withZoneID zoneID: String, adPlacementDelegate delegate: AdPlacementDelegate) {
         self.mRectAdView = adView
         self.zoneID = zoneID

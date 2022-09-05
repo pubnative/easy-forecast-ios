@@ -1,0 +1,11 @@
+framework module FairBidSDK {
+  umbrella header "FairBidSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module FairBidSDK.Swift {
+    header "FairBidSDK-Swift.h"
+    requires objc
+}

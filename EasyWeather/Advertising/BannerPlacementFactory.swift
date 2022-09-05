@@ -43,9 +43,11 @@ class BannerPlacementFactory {
         case .admob:
             return createAdmobPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         case .startApp:
-            return createStartAppPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
+            return createStartAppPlacement(withAdPlacementDelegate: delegate)
         case .unity:
-            return createUnityPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
+            return createUnityPlacement(withAdPlacementDelegate: delegate)
+        case .fyber:
+            return createFyberPlacement(withViewController: viewController, withAdPlacementDelegate: delegate)
         default:
             return nil
         }
@@ -82,12 +84,16 @@ class BannerPlacementFactory {
         return AdMobBannerController(withAdView: adView, withAdUnitID: ADMOB_BANNER_AD_UNIT_ID, withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
-    fileprivate func createStartAppPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        return StartAppBannerController(withViewController: viewController, withAdPlacementDelegate: delegate)
+    fileprivate func createStartAppPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
+        return StartAppBannerController(withAdPlacementDelegate: delegate)
     }
     
-    fileprivate func createUnityPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
-        return UnityBannerController(withViewController: viewController, withAdPlacementDelegate: delegate)
+    fileprivate func createUnityPlacement(withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
+        return UnityBannerController(withAdPlacementDelegate: delegate)
+    }
+    
+    fileprivate func createFyberPlacement(withViewController viewController: UIViewController, withAdPlacementDelegate delegate: AdPlacementDelegate) -> AdPlacement {
+        return FyberBannerViewController(withViewController: viewController, withAdPlacementDelegate: delegate)
     }
     
 }
