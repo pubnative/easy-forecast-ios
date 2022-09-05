@@ -98,6 +98,8 @@ let UNITY_MRECT_AD_UNIT_ID = ""
 let UNITY_INTERSTITIAL_AD_UNIT_ID = "interstitial"
 let UNITY_REWARDED_VIDEO_AD_UNIT_ID = "rewardedVideo"
 
+// TODO: These credentials are public ones, which means NEVER used for a release, just for testing purposes.
+
 //Fyber
 #if DEBUG
 let FYBER_APP_ID = "109613"
@@ -105,6 +107,9 @@ let FYBER_BANNER_AD_UNIT_ID = "197407"
 let FYBER_MRECT_AD_UNIT_ID = "197407"
 let FYBER_INTERSTITIAL_AD_UNIT_ID = "197405"
 let FYBER_REWARDED_VIDEO_AD_UNIT_ID = "197406"
+
+// TODO: For a release is a must to create the app on Fyber dashboard and add official credentials.
+
 #else
 let ADMOB_APP_ID = ""
 let ADMOB_BANNER_AD_UNIT_ID = ""
